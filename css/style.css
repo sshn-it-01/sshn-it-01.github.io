@@ -216,10 +216,17 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                                     /* 列定义：自适应填充，每列最小 300px，最大 1fr */
     gap: 30px;                      /* 间距：网格项之间 30px */
+    align-items: stretch;           /* 垂直对齐：拉伸所有项至相同高度，解决卡片高度不一致问题 */
 }
 
 /* 卡片链接包装器 - 使整个卡片可点击 */
 .card-link {
+    display: flex;                  /* Flexbox 布局：使卡片能够自适应高度 */
+    height: 100%;                   /* 高度：占满父容器，确保与网格项同高 */
+}
+
+/* 卡片链接包装器 - 使整个卡片可点击（旧版保留） */
+.card-link-wrapper {
     display: block;                 /* 块级显示 */
     transition: transform 0.3s;     /* 过渡动画：变形 0.3 秒 */
     text-decoration: none;          /* 移除下划线 */
@@ -238,6 +245,10 @@ header {
     border-radius: 8px;             /* 圆角：8px */
     overflow: hidden;               /* 溢出隐藏：防止内容超出圆角 */
     transition: transform 0.3s;     /* 过渡动画：变形 0.3 秒 */
+    display: flex;                  /* Flexbox 布局：内部使用弹性布局 */
+    flex-direction: column;         /* 主轴方向：垂直排列，图片在上内容在下 */
+    height: 100%;                   /* 高度：占满父容器，确保所有卡片等高 */
+    width: 100%;                    /* 宽度：占满父容器，确保所有卡片等宽 */
 }
 
 /* 卡片悬停效果 */
@@ -246,16 +257,23 @@ header {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);  /* 阴影：增加深度感 */
 }
 
-/* 卡片图片 */
-.card img { 
-    width: 100%;                    /* 宽度：占满卡片 */
-    height: 200px;                  /* 高度：固定 200px */
-    object-fit: cover;              /* 填充方式：裁剪覆盖，保持比例 */
-}
-
 /* 卡片内容区域 */
 .card-content { 
     padding: 20px;                  /* 内边距：20px */
+    flex: 1;                        /* 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
+}
+
+/* 卡片标题样式 */
+.card-content h3 {
+    margin-bottom: 15px;            /* 下边距：15px */
+    font-size: 20px;                /* 字号：20px */
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
+}
+
+/* 卡片描述文字 */
+.card-content p {
+    color: #666;                    /* 颜色：浅灰色 */
+    line-height: 1.6;               /* 行高：1.6 倍 */
 }
 
 /* -----------------------------------------------------------------------------
@@ -263,6 +281,33 @@ header {
  * 功能：为不同产品分类定义背景图片（使用 CSS 背景图而非<img>标签）
  * 规范：遵循图片资源管理规范，装饰性图片使用 CSS 背景
  * -------------------------------------------------------------------------- */
+
+/* 产品卡片图片容器统一样式 */
+.card-image {
+    width: 100%;                    /* 宽度：占满卡片 */
+    height: 200px;                  /* 高度：固定 200px */
+    object-fit: cover;              /* 填充方式：裁剪覆盖，保持比例 */
+    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
+    background-position: center;    /* 背景位置：居中 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
+}
+
+/* 首页产品卡片背景图样式 */
+
+/* 工业润滑油卡片背景 */
+.card-img-industrial {
+    background-image: url('/images/products/industry_gears_01.jpg');
+}
+
+/* 车用润滑油卡片背景 */
+.card-img-automotive {
+    background-image: url('/images/vehicle_maintance_01.jpg');
+}
+
+/* 特种润滑油卡片背景 */
+.card-img-special {
+    background-image: url('/images/products/industry_bearing_01.jpg');
+}
 
 /* 工业润滑油分类卡片背景 */
 .card-img-hydraulic {
@@ -317,15 +362,6 @@ header {
 
 .card-img-aviation {
     background-image: url('/images/products/Aviation+Hydraulic+Oil');
-}
-
-/* 产品卡片图片容器统一样式 */
-.card-image {
-    width: 100%;                    /* 宽度：占满卡片 */
-    height: 200px;                  /* 高度：固定 200px */
-    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
-    background-position: center;    /* 背景位置：居中 */
-    background-repeat: no-repeat;   /* 不重复平铺 */
 }
 
 /* -----------------------------------------------------------------------------

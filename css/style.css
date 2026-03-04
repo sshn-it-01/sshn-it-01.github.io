@@ -281,42 +281,42 @@ header {
 
 /* 发动机油分类卡片背景 */
 .card-img-engine {
-    background-image: url('https://via.placeholder.com/400x250?text=Engine+Oil');
+    background-image: url('/images/products/Engine+Oil');
 }
 
 /* 变速箱油分类卡片背景 */
 .card-img-transmission {
-    background-image: url('https://via.placeholder.com/400x250?text=Transmission+Oil');
+    background-image: url('/images/products/Transmission+Oil');
 }
 
 /* 刹车油分类卡片背景 */
 .card-img-brake {
-    background-image: url('https://via.placeholder.com/400x250?text=Brake+Fluid');
+    background-image: url('/images/products/Brake+Fluid');
 }
 
 /* 液压油系列产品背景图 */
 .card-img-hm {
-    background-image: url('https://via.placeholder.com/400x250?text=HM+Anti-wear+Hydraulic+Oil');
+    background-image: url('/images/products/HM+Anti-wear+Hydraulic+Oil');
 }
 
 .card-img-hv {
-    background-image: url('https://via.placeholder.com/400x250?text=HV+Low-temperature+Hydraulic+Oil');
+    background-image: url('/images/products/HV+Low-temperature+Hydraulic+Oil');
 }
 
 .card-img-hg {
-    background-image: url('https://via.placeholder.com/400x250?text=HG+Hydraulic+Guideway+Oil');
+    background-image: url('/images/products/HG+Hydraulic+Guideway+Oil');
 }
 
 .card-img-ashless {
-    background-image: url('https://via.placeholder.com/400x250?text=Ashless+Hydraulic+Oil');
+    background-image: url('/images/products/Ashless+Hydraulic+Oil');
 }
 
 .card-img-fire-resistant {
-    background-image: url('https://via.placeholder.com/400x250?text=Fire-resistant+Hydraulic+Oil');
+    background-image: url('/images/products/Fire-resistant+Hydraulic+Oil');
 }
 
 .card-img-aviation {
-    background-image: url('https://via.placeholder.com/400x250?text=Aviation+Hydraulic+Oil');
+    background-image: url('/images/products/Aviation+Hydraulic+Oil');
 }
 
 /* 产品卡片图片容器统一样式 */

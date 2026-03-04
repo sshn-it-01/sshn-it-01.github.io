@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目案例 - 某某润滑油有限公司</title>
+    <link rel="stylesheet" href="css/style.css">
+        <script src="js/main.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">某某润滑油</div>
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">公司介绍</a></li>
+                <li><a href="products.html">产品展示</a></li>
+                <li><a href="cases.html" class="active">项目案例</a></li>
+                <li><a href="contact.html">联系方式</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title">合作案例</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Factory+Case" alt="工厂案例">
+                <div class="card-content">
+                    <h3>某大型制造工厂</h3>
+                    <p>提供全套工业润滑油解决方案，设备故障率降低 30%。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Transport+Case" alt="运输公司案例">
+                <div class="card-content">
+                    <h3>某物流运输公司</h3>
+                    <p>车队使用我司车用润滑油，发动机寿命延长 20%。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Mining+Case" alt="矿山案例">
+                <div class="card-content">
+                    <h3>某矿山企业</h3>
+                    <p>特种润滑油应对极端工况，设备维护成本大幅降低。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer>
+    <p>&copy; <span id="current-year"></span> 某某润滑油有限公司。All Rights Reserved.</p>
+</footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

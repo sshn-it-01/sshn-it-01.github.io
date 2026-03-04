@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>某某润滑油有限公司 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+        <script src="js/main.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">某某润滑油</div>
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="about.html">公司介绍</a></li>
+                <li><a href="products.html">产品展示</a></li>
+                <li><a href="cases.html">项目案例</a></li>
+                <li><a href="contact.html">联系方式</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>专业润滑油供应商，护航工业与出行</h1>
+        <p>提供高品质工业润滑油与车用润滑油解决方案</p>
+        <a href="products.html" class="btn">查看产品</a>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">关于我们</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p>某某润滑油有限公司成立于 2026 年，专注于工业润滑油和车用润滑油的研发、生产与销售。我们致力于为客户提供高性能、环保的润滑解决方案。</p>
+        </div>
+    </section>
+
+    <section class="container" style="background-color: #f9f9f9;">
+        <h2 class="section-title">产品系列</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Industrial+Oil" alt="工业润滑油">
+                <div class="card-content">
+                    <h3>工业润滑油</h3>
+                    <p>适用于各类工业设备，提供卓越的润滑保护。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Automotive+Oil" alt="车用润滑油">
+                <div class="card-content">
+                    <h3>车用润滑油</h3>
+                    <p>为汽车发动机提供全方位保护，延长使用寿命。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Special+Oil" alt="特种润滑油">
+                <div class="card-content">
+                    <h3>特种润滑油</h3>
+                    <p>针对特殊工况定制的高性能润滑产品。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer>
+    <p>&copy; <span id="current-year"></span> 某某润滑油有限公司。All Rights Reserved.</p>
+</footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

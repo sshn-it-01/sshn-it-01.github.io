@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品展示 - 某某润滑油有限公司</title>
+    <link rel="stylesheet" href="css/style.css">
+        <script src="js/main.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">某某润滑油</div>
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">公司介绍</a></li>
+                <li><a href="products.html" class="active">产品展示</a></li>
+                <li><a href="cases.html">项目案例</a></li>
+                <li><a href="contact.html">联系方式</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 class="section-title">工业润滑油系列</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Hydraulic+Oil" alt="液压油">
+                <div class="card-content">
+                    <h3>液压油</h3>
+                    <p>适用于液压系统，抗氧化、抗磨损性能优异。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Gear+Oil" alt="齿轮油">
+                <div class="card-content">
+                    <h3>齿轮油</h3>
+                    <p>保护齿轮传动系统，减少摩擦损耗。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Bearing+Oil" alt="轴承油">
+                <div class="card-content">
+                    <h3>轴承油</h3>
+                    <p>专为轴承设计，延长设备使用寿命。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="background-color: #f9f9f9;">
+        <h2 class="section-title">车用润滑油系列</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Engine+Oil" alt="发动机油">
+                <div class="card-content">
+                    <h3>发动机油</h3>
+                    <p>全合成/半合成机油，保护发动机核心部件。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Transmission+Oil" alt="变速箱油">
+                <div class="card-content">
+                    <h3>变速箱油</h3>
+                    <p>确保变速箱平稳运行，换挡顺畅。</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/400x250?text=Brake+Fluid" alt="刹车油">
+                <div class="card-content">
+                    <h3>刹车油</h3>
+                    <p>高沸点配方，保障制动系统安全。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer>
+    <p>&copy; <span id="current-year"></span> 某某润滑油有限公司。All Rights Reserved.</p>
+</footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

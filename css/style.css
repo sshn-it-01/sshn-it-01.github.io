@@ -45,9 +45,23 @@ header {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
+}
+
+.logo-icon {
+    height: 1.5rem;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    white-space: nowrap;
 }
 
 .nav-links {
@@ -79,8 +93,9 @@ header {
 }
 
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../images/banner.jpg'); /* 记得放一张 banner.jpg 或者去掉背景图使用纯色 */
-    background-color: var(--primary-color); /*  fallback */
+    /* background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/home_bg_1.jpg'); */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('');
+    background-color: var(--primary-color);
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -162,6 +177,15 @@ footer {
     }
 
     .nav-links.active { display: flex; } /* 点击后显示 */
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .logo-icon {
+        height: 1.3rem;
+        width: auto;
+    }
     
     .hero h1 { font-size: 1.8rem; }
 }

@@ -11,8 +11,10 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <img src="images/hn-logo-trans.png" alt="佛山市华南森孚有限公司" class="logo-icon">
-                <span class="logo-text">佛山市华南森孚有限公司</span>
+                <a href="index.html" aria-label="公司首页">
+                    <span class="logo-icon"></span>
+                </a>
+                <a href="index.html" class="logo-text">佛山市华南森孚有限公司</a>
             </div>
             <div class="menu-toggle" id="mobile-menu">☰</div>
             <ul class="nav-links" id="nav-links">
@@ -27,7 +29,7 @@
 
     <section class="container">
         <h2 class="section-title">联系我们</h2>
-        <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="grid grid-two-columns">
             <div>
                 <h3>公司信息</h3>
                 <p><strong>地址：</strong> 北京市朝阳区科技路 88 号</p>
@@ -36,22 +38,17 @@
                 <p><strong>工作时间：</strong> 周一至周五 9:00-18:00</p>
             </div>
             <div>
-                <h3>在线留言</h3>
-                <form>
-                    <div class="form-group">
-                        <label>姓名</label>
-                        <input type="text" placeholder="您的姓名">
+                <h3>关注我们</h3>
+                <div class="qr-codes">
+                    <div class="qr-code-item">
+                        <img src="images/contact/qrcode_for_gh_5158d90bc494_344.jpg" alt="微信公众号二维码">
+                        <p>微信公众号</p>
                     </div>
-                    <div class="form-group">
-                        <label>邮箱</label>
-                        <input type="email" placeholder="您的邮箱">
+                    <div class="qr-code-item">
+                        <img src="images/contact/qrcode_for_gh_5158d90bc494_344.jpg" alt="微信小程序二维码">
+                        <p>微信小程序</p>
                     </div>
-                    <div class="form-group">
-                        <label>留言内容</label>
-                        <textarea rows="5" placeholder="请输入您的需求"></textarea>
-                    </div>
-                    <button type="submit" class="btn">提交</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -60,12 +57,5 @@
     <p>&copy; <span id="current-year"></span> 佛山市华南森孚有限公司。All Rights Reserved.</p>
 </footer>
 
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

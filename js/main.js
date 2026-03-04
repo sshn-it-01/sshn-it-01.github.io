@@ -10,10 +10,36 @@ function updateFooterYear() {
 function initMobileMenu() {
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
+    
+    console.log('Init mobile menu - menuToggle:', menuToggle);
+    console.log('Init mobile menu - navLinks:', navLinks);
+    
     if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // 初始状态检查
+        console.log('Initial classList:', navLinks.classList);
+        console.log('Initial has active?', navLinks.classList.contains('active'));
+        
+        menuToggle.addEventListener('click', function() {
+            // 使用 add/remove 替代 toggle，确保行为明确
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                console.log('Removed active class');
+            } else {
+                navLinks.classList.add('active');
+                console.log('Added active class');
+            }
+            
+            console.log('Window width:', window.innerWidth);
+            console.log('NavLinks computed display:', window.getComputedStyle(navLinks).display);
+            console.log('Current classList:', navLinks.className);
+            
+            // 更新汉堡按钮图标
+            this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
         });
+    } else {
+        console.error('Mobile menu elements not found!');
+        console.error('menuToggle:', menuToggle);
+        console.error('navLinks:', navLinks);
     }
 }
 

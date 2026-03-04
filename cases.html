@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>项目案例 - 佛山市华南森孚有限公司</title>
     <link rel="stylesheet" href="css/style.css">
-        <script src="js/main.js" defer></script>
-
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <header>
         <div class="nav-container">
             <div class="logo">
-                <img src="images/hn-logo-trans.png" alt="佛山市华南森孚有限公司" class="logo-icon">
-                <span class="logo-text">佛山市华南森孚有限公司</span>
+                <a href="index.html" aria-label="公司首页">
+                    <span class="logo-icon"></span>
+                </a>
+                <a href="index.html" class="logo-text">佛山市华南森孚有限公司</a>
             </div>
             <div class="menu-toggle" id="mobile-menu">☰</div>
             <ul class="nav-links" id="nav-links">
@@ -57,12 +58,5 @@
     <p>&copy; <span id="current-year"></span> 佛山市华南森孚有限公司。All Rights Reserved.</p>
 </footer>
 
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

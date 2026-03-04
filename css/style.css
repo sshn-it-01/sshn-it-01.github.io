@@ -37,7 +37,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    overflow-x: hidden; /* 防止导航栏内容溢出 */
 }
 
 .nav-container {
@@ -47,7 +46,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    width: 100%; /* 确保容器占满宽度 */
 }
 
 .logo {
@@ -57,7 +55,6 @@ header {
     font-size: 24px;
     font-weight: bold;
     color: var(--primary-color);
-    flex-shrink: 0; /* 防止 Logo 被压缩 */
 }
 
 .logo-icon {
@@ -431,27 +428,6 @@ footer {
         overflow-x: hidden;
     }
 
-    /* 导航栏容器优化 */
-    .nav-container {
-        padding: 12px 15px; /* 减小内边距，增加可用空间 */
-    }
-
-    /* Logo 在小屏幕上的适配 */
-    .logo {
-        gap: 8px; /* 减小 Logo 间距 */
-    }
-
-    .logo-icon {
-        height: 32px; /* 缩小 Logo 图标 */
-        width: 32px;
-    }
-
-    .logo-text {
-        font-size: 18px; /* 缩小 Logo 文字 */
-        white-space: nowrap; /* 防止文字换行 */
-    }
-
-    /* 移动端下拉菜单 */
     .nav-links {
         display: none;
         position: absolute;
@@ -460,10 +436,9 @@ footer {
         width: 100%;
         background: var(--white);
         flex-direction: column;
-        padding: 15px 0;
+        padding: 20px 0;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 1000;
-        overflow-x: hidden; /* 防止菜单内容溢出 */
     }
 
     .nav-links.active {
@@ -472,22 +447,15 @@ footer {
 
     .nav-links li {
         text-align: center;
-        margin: 10px 0;
+        margin: 15px 0;
     }
 
-    .nav-links a {
-        display: block;
-        padding: 10px 15px; /* 增加点击区域 */
-    }
-
-    /* 移动端菜单按钮 */
     .menu-toggle {
         display: block;
         cursor: pointer;
-        padding: 8px; /* 调整按钮内边距 */
-        font-size: 22px; /* 稍微缩小菜单图标 */
+        padding: 10px;
+        font-size: 24px;
         z-index: 1001;
-        flex-shrink: 0; /* 防止按钮被压缩 */
     }
 
     .grid-two-columns {

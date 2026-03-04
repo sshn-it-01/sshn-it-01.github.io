@@ -16,10 +16,14 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Alibaba PuHuiTi', '阿里巴巴普惠体', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--white);
+    min-height: 100vh; /* 使用 100vh 才能确保 footer 始终贴合页面底部。使用 100% 导致 Sticky Footer 布局失效 */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* 防止小屏幕上出现水平滚动条和右侧空隙 */
 }
 
 a { text-decoration: none; color: inherit; }
@@ -33,6 +37,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    overflow-x: hidden; /* 防止导航栏内容溢出 */
 }
 
 .nav-container {
@@ -41,23 +46,38 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 20px;
+    padding: 16px 20px;
+    width: 100%; /* 确保容器占满宽度 */
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: bold;
     color: var(--primary-color);
+    flex-shrink: 0; /* 防止 Logo 被压缩 */
 }
 
 .logo-icon {
-    height: 1.5rem;
-    width: auto;
-    object-fit: contain;
+    height: 40px;
+    width: 40px;
+    background-image: url('../images/hn-logo-trans.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     flex-shrink: 0;
+    display: block;
+}
+
+.logo a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    opacity: 0.8;
 }
 
 .logo-text {
@@ -81,7 +101,7 @@ header {
 /* 移动端菜单按钮 (默认隐藏) */
 .menu-toggle {
     display: none;
-    font-size: 1.5rem;
+    font-size: 24px;
     cursor: pointer;
 }
 
@@ -90,6 +110,7 @@ header {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 40px 20px;
+    width: 100%; /* 确保 container 不会超出父容器宽度 */
 }
 
 .hero {
@@ -103,7 +124,7 @@ header {
     padding: 100px 20px;
 }
 
-.hero h1 { font-size: 2.5rem; margin-bottom: 20px; }
+.hero h1 { font-size: 28px; margin-bottom: 20px; }
 .btn {
     display: inline-block;
     background: var(--primary-color);
@@ -118,7 +139,7 @@ header {
 .section-title {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2rem;
+    font-size: 32px;
     color: var(--primary-color);
 }
 
@@ -127,6 +148,17 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+}
+
+.card-link {
+    display: block;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-link:hover {
+    transform: translateY(-5px);
 }
 
 .card {
@@ -140,6 +172,66 @@ header {
 .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 .card img { width: 100%; height: 200px; object-fit: cover; }
 .card-content { padding: 20px; }
+
+/* 产品卡片背景图样式 */
+/* 液压油 */
+.card-img-hydraulic {
+    background-image: url('/images/products/industry_hydraulic_01.jpg');
+}
+/* 齿轮油 */
+.card-img-gear {
+    background-image: url('/images/products/industry_gears_01.jpg');
+}
+/* 轴承油 */
+.card-img-bearing {
+    background-image: url('/images/products/industry_bearing_01.jpg');
+}
+/* 发动机油 */
+.card-img-engine {
+    background-image: url('https://via.placeholder.com/400x250?text=Engine+Oil');
+}
+/* 变速箱油 */
+.card-img-transmission {
+    background-image: url('https://via.placeholder.com/400x250?text=Transmission+Oil');
+}
+/* 刹车油 */
+.card-img-brake {
+    background-image: url('https://via.placeholder.com/400x250?text=Brake+Fluid');
+}
+
+/* 液压油产品系列背景图 */
+.card-img-hm {
+    background-image: url('https://via.placeholder.com/400x250?text=HM+Anti-wear+Hydraulic+Oil');
+}
+
+.card-img-hv {
+    background-image: url('https://via.placeholder.com/400x250?text=HV+Low-temperature+Hydraulic+Oil');
+}
+
+.card-img-hg {
+    background-image: url('https://via.placeholder.com/400x250?text=HG+Hydraulic+Guideway+Oil');
+}
+
+.card-img-ashless {
+    background-image: url('https://via.placeholder.com/400x250?text=Ashless+Hydraulic+Oil');
+}
+
+.card-img-fire-resistant {
+    background-image: url('https://via.placeholder.com/400x250?text=Fire-resistant+Hydraulic+Oil');
+}
+
+.card-img-aviation {
+    background-image: url('https://via.placeholder.com/400x250?text=Aviation+Hydraulic+Oil');
+}
+
+/* 产品卡片图片容器统一样式 */
+.card-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 /* 表单样式 */
 .form-group { margin-bottom: 20px; }
@@ -157,35 +249,269 @@ footer {
     color: var(--white);
     text-align: center;
     padding: 20px;
-    margin-top: 50px;
+    margin-top: auto;
+}
+
+/* 通用内容区域样式 */
+.content-max-width {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-section-title {
+    margin-top: 30px;
+}
+
+.content-list {
+    list-style: disc;
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-gray {
+    background-color: #f9f9f9;
+}
+
+.grid-two-columns {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* 面包屑导航样式 */
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #666;
+    text-decoration: none;
+}
+
+.breadcrumb-current {
+    color: var(--primary-color);
+}
+
+/* 产品介绍区域 */
+.product-intro {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.product-intro p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* 产品规格样式 */
+.product-specs {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.product-specs p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.product-specs strong {
+    color: #333;
+}
+
+/* 应用领域图标区域 */
+.application-section {
+    margin-top: 60px;
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 8px;
+}
+
+.section-title-center {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.application-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.application-area {
+    text-align: center;
+    padding: 20px;
+}
+
+.application-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.application-title {
+    margin-bottom: 10px;
+}
+
+.application-desc {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 联系 CTA 区域 */
+.contact-cta {
+    margin-top: 60px;
+    text-align: center;
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 8px;
+}
+
+.contact-cta h3 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.contact-cta p {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.contact-cta .btn {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* 二维码展示样式 */
+.qr-codes {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.qr-code-item {
+    text-align: center;
+}
+
+.qr-code-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.qr-code-item img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.qr-code-item p {
+    margin-top: 15px;
+    font-size: 16px;
+    color: var(--text-color);
+    font-weight: 500;
 }
 
 /* 4. 媒体查询 (适配手机和平板) */
 @media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    
+    /* 全局设置：防止小屏幕上的水平溢出 */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* 导航栏容器优化 */
+    .nav-container {
+        padding: 12px 15px; /* 减小内边距，增加可用空间 */
+    }
+
+    /* Logo 在小屏幕上的适配 */
+    .logo {
+        gap: 8px; /* 减小 Logo 间距 */
+    }
+
+    .logo-icon {
+        height: 32px; /* 缩小 Logo 图标 */
+        width: 32px;
+    }
+
+    .logo-text {
+        font-size: 18px; /* 缩小 Logo 文字 */
+        white-space: nowrap; /* 防止文字换行 */
+    }
+
+    /* 移动端下拉菜单 */
     .nav-links {
-        display: none; /* 默认隐藏 */
-        flex-direction: column;
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background: var(--white);
-        padding: 20px;
-        box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+        overflow-x: hidden; /* 防止菜单内容溢出 */
     }
 
-    .nav-links.active { display: flex; } /* 点击后显示 */
-    
-    .logo {
-        font-size: 1.3rem;
+    .nav-links.active {
+        display: flex;
     }
-    
-    .logo-icon {
-        height: 1.3rem;
-        width: auto;
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
     }
-    
-    .hero h1 { font-size: 1.8rem; }
+
+    .nav-links a {
+        display: block;
+        padding: 10px 15px; /* 增加点击区域 */
+    }
+
+    /* 移动端菜单按钮 */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        padding: 8px; /* 调整按钮内边距 */
+        font-size: 22px; /* 稍微缩小菜单图标 */
+        z-index: 1001;
+        flex-shrink: 0; /* 防止按钮被压缩 */
+    }
+
+    .grid-two-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .qr-codes {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .qr-code-item img {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* 确保 container 在小屏幕上正确适配 */
+    .container {
+        padding: 30px 15px;
+        width: 100%;
+    }
+
+    /* 确保所有网格布局在小屏幕上单列显示 */
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
 }

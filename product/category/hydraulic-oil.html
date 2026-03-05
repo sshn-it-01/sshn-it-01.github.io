@@ -39,7 +39,9 @@
     <link rel="icon" href="../../images/hn-logo-low.jpg" type="image/jpeg">
     
     <!-- 引入外部资源 -->
-    <link rel="stylesheet" href="../../css/style.css">  <!-- 主样式表 -->
+    <link rel="stylesheet" href="../../css/style.css">  <!-- 主样式表：布局和组件样式 -->
+    <link rel="stylesheet" href="../../css/images.css">  <!-- 图片资源样式：所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="../../css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询：所有断点适配规则（必须放在最后） -->
     <script src="../../js/main.js" defer></script>
                             <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
 </head>
@@ -94,7 +96,7 @@
         </div>
 
         <!-- 章节主标题 -->
-        <h2 class="section-title">液压油系列</h2>
+        <h2 class="section-title section-title-banner">液压油系列</h2>
         
         <!-- 产品介绍区域：居中布局，限制最大宽度提升可读性 -->
         <div class="product-intro">
@@ -107,34 +109,38 @@
         <!-- 产品网格布局：自动适应列数 -->
         <div class="grid">
             
-            <!-- 产品 1：HM 抗磨液压油 -->
-            <div class="card">
-                <!-- 产品图片：使用 CSS 背景图实现 -->
-                <div class="card-image card-img-hm"></div>
-                <!-- 卡片内容区域 -->
-                <div class="card-content">
-                    <h3>HM 抗磨液压油</h3>
-                    <p>高压抗磨配方，适用于高压液压系统，有效延长设备使用寿命。</p>
-                    <!-- 产品规格参数 -->
-                    <div class="product-specs">
-                        <p><strong>粘度等级：</strong>32、46、68</p>
-                        <p><strong>包装规格：</strong>170L、200L</p>
+            <!-- 产品 1 -->
+            <a href="http://mobil.martech-global.com/product/view?id=125" class="card-link">
+                <div class="card">
+                    <!-- 产品图片：使用 CSS 背景图实现 -->
+                    <div class="card-image card-img-hm"></div>
+                    <!-- 卡片内容区域 -->
+                    <div class="card-content">
+                        <h3>美孚DTE®20UT长效液压油系列</h3>
+                        <p>高性能抗磨液压油，该系列产品满足使用高压、高输出泵的液压系统，以及其他液压元件如紧密间隙伺服阀和数控机床的严苛需求。</p>
+                        <!-- 产品规格参数 -->
+                        <div class="product-specs">
+                            <p><strong>粘度等级：</strong>ISO 10、22、32、46、68、100</p>
+                            <p><strong>包装规格：</strong>170L、200L</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <!-- 产品 2：HV 低温液压油 -->
-            <div class="card">
-                <div class="card-image card-img-hv"></div>
-                <div class="card-content">
-                    <h3>HV 低温液压油</h3>
-                    <p>优异的低温柔韧性，适用于寒冷环境下的户外液压设备。</p>
-                    <div class="product-specs">
-                        <p><strong>粘度等级：</strong>32、46</p>
-                        <p><strong>包装规格：</strong>170L、200L</p>
+            <!-- 产品 2 -->
+            <a href="http://mobil.martech-global.com/product/view?id=22" class="card-link">
+                <div class="card">
+                    <div class="card-image card-img-hv"></div>
+                    <div class="card-content">
+                        <h3>美孚DTE® 10 超凡系列</h3>
+                        <p>专门为满足现代高压工业和移动设备的液压系统需求所设计的高性能抗磨液压油。</p>
+                        <div class="product-specs">
+                            <p><strong>粘度等级：</strong>ISO 15、22、32、46、68、100、150</p>
+                            <p><strong>包装规格：</strong>170L、200L</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- 产品 3：HG 液压导轨油 -->
             <div class="card">
@@ -187,58 +193,25 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- =========================================================================
-             应用领域展示区域
-             功能：通过图标和文字结合，直观展示产品的应用场景
-             布局：灰色背景区分，四列网格布局展示四个应用领域
-             ========================================================================= -->
-        <div class="application-section">
-            <h3 class="section-title-center">应用领域</h3>
-            <!-- 应用网格：使用 application-grid 类定义响应式布局 -->
-            <div class="grid application-grid">
-                
-                <!-- 应用领域 1：工业制造 -->
-                <div class="application-area">
-                    <div class="application-icon">🏭</div>
-                    <h4 class="application-title">工业制造</h4>
-                    <p class="application-desc">注塑机、压铸机、机床等设备</p>
-                </div>
-                
-                <!-- 应用领域 2：工程机械 -->
-                <div class="application-area">
-                    <div class="application-icon">🚧</div>
-                    <h4 class="application-title">工程机械</h4>
-                    <p class="application-desc">挖掘机、起重机、装载机等</p>
-                </div>
-                
-                <!-- 应用领域 3：电力行业 -->
-                <div class="application-area">
-                    <div class="application-icon">⚡</div>
-                    <h4 class="application-title">电力行业</h4>
-                    <p class="application-desc">汽轮机、水轮机等发电设备</p>
-                </div>
-                
-                <!-- 应用领域 4：船舶工业 -->
-                <div class="application-area">
-                    <div class="application-icon">🚢</div>
-                    <h4 class="application-title">船舶工业</h4>
-                    <p class="application-desc">船舶液压系统、舵机系统等</p>
+            <!-- 咨询卡片：没找到想要的产品 -->
+            <!-- 
+                咨询卡片组件 - 用于引导未找到合适产品的用户联系企业
+                功能：点击卡片跳转到联系页面 (../../contact.html)
+                样式：使用 card-consultation 类定义特殊样式
+                交互：通过 onclick 事件实现页面跳转，设置 cursor: pointer 提升用户体验，避免了使用有冲突的card-link样式
+            -->
+            <div class="card card-consultation" onclick="window.location.href='../../contact.html'" style="cursor: pointer;">
+                <div class="card-image card-img-aviation"></div>
+                <div class="card-content">
+                    <h3>没找到想要的产品？</h3>
+                    <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
+                    <a href="../../contact.html" class="btn btn-primary">立即咨询</a>
                 </div>
             </div>
+
         </div>
 
-        <!-- =========================================================================
-             联系 CTA 区域（Call To Action）
-             功能：引导用户进行技术咨询，促进转化
-             设计：渐变背景突出显示，白色按钮形成强烈对比
-             ========================================================================= -->
-        <div class="contact-cta">
-            <h3>需要技术选型建议？</h3>
-            <p>我们的专家团队将为您提供专业的产品选择和解决方案</p>
-            <a href="../../contact.html" class="btn">联系我们</a>
-        </div>
     </section>
 
     <!-- =========================================================================

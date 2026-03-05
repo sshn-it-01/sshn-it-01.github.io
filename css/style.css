@@ -110,16 +110,7 @@ header {
 }
 
 /* 图形 Logo - 公司图标 */
-.logo-icon {
-    height: 40px;                   /* 高度：40px */
-    width: 40px;                    /* 宽度：40px */
-    background-image: url('../images/hn-logo-trans.png');  /* 背景图：公司 Logo 图片 */
-    background-size: contain;       /* 背景尺寸：完整显示，保持比例 */
-    background-repeat: no-repeat;   /* 不重复平铺 */
-    background-position: center;    /* 居中显示 */
-    flex-shrink: 0;                 /* 不收缩 */
-    display: block;                 /* 块级显示 */
-}
+/* .logo-icon样式， logo图片定义在 images.css 中 */
 
 /* Logo 链接样式 */
 .logo a {
@@ -173,16 +164,32 @@ header {
     width: 100%;                    /* 宽度：占满父容器，防止溢出 */
 }
 
+/* 区域间距 - 用于 section 之间的垂直分隔 */
+.section-spacing {
+    margin-top: 30px;               /* 上边距：30px，创建舒适的区域间隔 */
+    margin-bottom: 30px;            /* 下边距：60px，创建舒适的区域间隔 */
+}
+
 /* Hero 区域 - 页面顶部的横幅展示区 */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('');
-                                    /* 背景：渐变遮罩 + 背景图（当前为空） */
-    background-color: var(--primary-color);  /* 背景色：品牌蓝（备用） */
-    background-size: cover;         /* 背景尺寸：覆盖整个区域 */
-    background-position: center;    /* 背景位置：居中 */
+    background-color: var(--primary-color);  /* 背景色：品牌蓝（当前未使用背景图） */
     color: var(--white);            /* 文字颜色：白色 */
     text-align: center;             /* 文字对齐：居中 */
     padding: 100px 20px;            /* 内边距：上下 100px，左右 20px */
+    /* Hero 区域背景效果：
+     * - 使用线性渐变创建半透明黑色遮罩层，增强文字可读性
+     * - 渐变从 rgba(0,0,0,0.6) 到 rgba(0,0,0,0.6)，形成均匀的 60% 透明度黑色遮罩
+     * - 背景图覆盖整个区域并保持居中显示
+     */
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+    background-size: cover;
+    background-position: center;
+
+
+/* Hero 区域背景（备用，如需添加背景图可在此定义） */
+/* .hero {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/hero-bg.jpg');
+} */
 }
 
 /* Hero 标题 */
@@ -207,12 +214,35 @@ header {
     background: #004494;            /* 悬停背景：更深的蓝色，提供视觉反馈 */
 }
 
+/* 主要按钮样式 - 用于强调重要操作 */
+.btn-primary {
+    background: var(--primary-color);  /* 品牌蓝背景 */
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+                                    /* 阴影效果：营造悬浮感 */
+}
+
+.btn-primary:hover {
+    background: #004494;            /* 悬停时更深的蓝色 */
+    transform: translateY(-2px);    /* 轻微上移，增强交互反馈 */
+    box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
+                                    /* 悬停时增强阴影 */
+}
+
 /* 章节标题 - 各板块的标题样式 */
 .section-title {
     text-align: center;             /* 文字对齐：居中 */
     margin-bottom: 40px;            /* 下边距：40px */
     font-size: 32px;                /* 字号：32px */
     color: var(--primary-color);    /* 颜色：品牌蓝 */
+}
+
+/* 带横幅背景的标题 - 用于突出显示重要区域标题 */
+.section-title-banner {
+    text-align: center;             /* 文字对齐：居中 */
+    margin-bottom: 40px;            /* 下边距：40px */
+    font-size: 32px;                /* 字号：32px */
+    color: white;                   /* 白色文字：与背景形成强烈对比 */
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
 }
 
 /* -----------------------------------------------------------------------------
@@ -235,18 +265,6 @@ header {
     height: 100%;                   /* 高度：占满父容器，确保与网格项同高 */
 }
 
-/* 卡片链接包装器 - 使整个卡片可点击（旧版保留） */
-.card-link-wrapper {
-    display: block;                 /* 块级显示 */
-    transition: transform 0.3s;     /* 过渡动画：变形 0.3 秒 */
-    text-decoration: none;          /* 移除下划线 */
-    color: inherit;                 /* 继承颜色 */
-}
-
-/* 卡片链接悬停效果 */
-.card-link:hover {
-    transform: translateY(-5px);    /* 悬停效果：向上移动 5px，营造悬浮感 */
-}
 
 /* 卡片组件 - 产品/案例展示卡片 */
 .card {
@@ -265,6 +283,21 @@ header {
 .card:hover { 
     transform: translateY(-5px);    /* 向上移动 5px */
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);  /* 阴影：增加深度感 */
+}
+
+/* 咨询卡片特殊样式 - 用于引导用户联系 */
+.card-consultation {
+    border: 1px solid var(--primary-color);  /* [强调] 蓝色边框突出显示 */
+}
+
+.card-consultation .card-content h3 {
+    color: #004494;                 /* 更深的蓝色标题，强调重要性 */
+    font-weight: 600;               /* 加粗字重，增强视觉冲击力 */
+}
+
+.card-consultation .card-content p {
+    font-size: 15px;                /* 稍小的字号 */
+    line-height: 1.7;               /* 稍大的行高，提升可读性 */
 }
 
 /* 卡片内容区域 */
@@ -287,92 +320,11 @@ header {
 }
 
 /* -----------------------------------------------------------------------------
- * 5. 产品卡片背景图样式
+ * 5. 产品卡片背景图样式（已移至 images.css）
  * 功能：为不同产品分类定义背景图片（使用 CSS 背景图而非<img>标签）
  * 规范：遵循图片资源管理规范，装饰性图片使用 CSS 背景
+ * 注：所有图片路径已统一移至 images.css 管理
  * -------------------------------------------------------------------------- */
-
-/* 产品卡片图片容器统一样式 */
-.card-image {
-    width: 100%;                    /* 宽度：占满卡片 */
-    height: 200px;                  /* 高度：固定 200px */
-    object-fit: cover;              /* 填充方式：裁剪覆盖，保持比例 */
-    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
-    background-position: center;    /* 背景位置：居中 */
-    background-repeat: no-repeat;   /* 不重复平铺 */
-}
-
-/* 首页产品卡片背景图样式 */
-
-/* 工业润滑油卡片背景 */
-.card-img-industrial {
-    background-image: url('/images/products/industry_gears_01.jpg');
-}
-
-/* 车用润滑油卡片背景 */
-.card-img-automotive {
-    background-image: url('/images/vehicle_maintance_01.jpg');
-}
-
-/* 特种润滑油卡片背景 */
-.card-img-special {
-    background-image: url('/images/products/industry_bearing_01.jpg');
-}
-
-/* 工业润滑油分类卡片背景 */
-.card-img-hydraulic {
-    background-image: url('/images/products/industry_hydraulic_01.jpg');
-}
-
-/* 齿轮油分类卡片背景 */
-.card-img-gear {
-    background-image: url('/images/products/industry_gears_01.jpg');
-}
-
-/* 轴承油分类卡片背景 */
-.card-img-bearing {
-    background-image: url('/images/products/industry_bearing_01.jpg');
-}
-
-/* 发动机油分类卡片背景 */
-.card-img-engine {
-    background-image: url('/images/products/Engine+Oil');
-}
-
-/* 变速箱油分类卡片背景 */
-.card-img-transmission {
-    background-image: url('/images/products/Transmission+Oil');
-}
-
-/* 刹车油分类卡片背景 */
-.card-img-brake {
-    background-image: url('/images/products/Brake+Fluid');
-}
-
-/* 液压油系列产品背景图 */
-.card-img-hm {
-    background-image: url('/images/products/HM+Anti-wear+Hydraulic+Oil');
-}
-
-.card-img-hv {
-    background-image: url('/images/products/HV+Low-temperature+Hydraulic+Oil');
-}
-
-.card-img-hg {
-    background-image: url('/images/products/HG+Hydraulic+Guideway+Oil');
-}
-
-.card-img-ashless {
-    background-image: url('/images/products/Ashless+Hydraulic+Oil');
-}
-
-.card-img-fire-resistant {
-    background-image: url('/images/products/Fire-resistant+Hydraulic+Oil');
-}
-
-.card-img-aviation {
-    background-image: url('/images/products/Aviation+Hydraulic+Oil');
-}
 
 /* -----------------------------------------------------------------------------
  * 6. 表单组件
@@ -516,12 +468,6 @@ footer p {
     border-radius: 8px;             /* 圆角 8px：柔和的视觉边界 */
 }
 
-.section-title-center {
-    text-align: center;             /* 居中对齐：营造平衡、正式的视觉效果 */
-    margin-bottom: 30px;            /* 下边距 30px：与下方网格保持充足距离 */
-    color: var(--primary-color);    /* 主色调：强化品牌识别 */
-}
-
 .application-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     /* [智能响应式策略] 最小 250px 一列，自适应屏幕宽度 */
@@ -551,7 +497,8 @@ footer p {
  * 策略：醒目的渐变背景，强烈的行动号召，促进用户转化
  * -------------------------------------------------------------------------- */
 .contact-cta {
-    margin-top: 60px;               /* 上边距 60px：与上方内容保持较大距离，突出重要性 */
+    margin-top: 30px;               /* 上边距 30px：与上方内容保持较大距离，突出重要性 */
+    margin-bottom: 10px;            /* 下边距 15px */
     text-align: center;             /* 文字居中：营造聚焦的视觉效果 */
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
     /* [渐变策略] 135 度对角线渐变，从主色调到更深的蓝色，营造深度和动感 */
@@ -577,6 +524,7 @@ footer p {
 
 /* 13. 二维码展示样式
  * 策略：清晰的二维码展示，悬停交互反馈，便于用户扫码
+ *       注：二维码图片使用CSS背景图实现，遵循图片资源管理规范
  * -------------------------------------------------------------------------- */
 .qr-codes {
     display: flex;                  /* Flexbox 布局：二维码水平排列 */
@@ -590,22 +538,28 @@ footer p {
     text-align: center;             /* 居中对齐：图片和文字垂直居中排列 */
 }
 
-.qr-code-item img {
+/* 二维码图片容器 - 使用背景图显示 */
+.qr-code-image {
     width: 200px;                   /* 宽度 200px：适合扫码的最佳尺寸 */
     height: 200px;                  /* 高度 200px：正方形比例，保持二维码完整性 */
-    object-fit: contain;            /* 包含模式：确保二维码完整显示，不变形 */
     border: 1px solid #ddd;         /* [例外] 边框 1px：浅灰色边框，清晰的视觉边界 */
     border-radius: 8px;             /* 圆角 8px：柔和的视觉感受 */
     padding: 10px;                  /* 内边距 10px：二维码与边框的呼吸空间 */
     background-color: #fff;         /* 白色背景：确保扫码识别率 */
+    background-size: contain;       /* 背景尺寸：包含模式，确保二维码完整显示 */
+    background-position: center;    /* 背景位置：居中 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
     transition: transform 0.3s, box-shadow 0.3s;
-    /* 过渡动画 0.3s：悬停效果平滑自然 */
+                                    /* 过渡动画 0.3s：悬停效果平滑自然 */
+    margin: 0 auto;                 /* 水平居中 */
 }
 
-.qr-code-item img:hover {
+.qr-code-image:hover {
     transform: translateY(-5px);    /* 悬停上移 5px：营造轻微悬浮感，提示可互动 */
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);     /* 阴影效果：5px 模糊，15px 扩散，营造深度感 */
 }
+
+/* 二维码功能图片 - 仅用于占位和无障碍访问 */
 
 .qr-code-item p {
     margin-top: 15px;               /* 上边距 15px：图片与说明文字的连接 */
@@ -686,270 +640,92 @@ footer p {
                                     /* 悬停背景：极淡的蓝色，提供交互反馈 */
 }
 
-/* 4. 媒体查询 (适配手机和平板) */
-@media (max-width: 768px) {
-    /* 全局设置：防止小屏幕上的水平溢出 */
-    body {
-        overflow-x: hidden;
-    }
 
-    /* 导航栏容器优化 */
-    .nav-container {
-        padding: 12px 15px; /* 减小内边距，增加可用空间 */
-    }
 
-    /* Logo 在小屏幕上的适配 */
-    .logo {
-        gap: 8px; /* 减小 Logo 间距 */
-    }
-
-    .logo-icon {
-        height: 32px; /* 缩小 Logo 图标 */
-        width: 32px;
-    }
-
-    .logo-text {
-        font-size: 18px; /* 缩小 Logo 文字 */
-        white-space: nowrap; /* 防止文字换行 */
-    }
-
-    /* 移动端下拉菜单 */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--white);
-        flex-direction: column;
-        padding: 15px 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
-        overflow-x: hidden; /* 防止菜单内容溢出 */
-
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 10px 15px; /* 增加点击区域 */
-    }
-
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        padding: 8px; /* 调整按钮内边距 */
-        font-size: 22px; /* 稍微缩小菜单图标 */
-        z-index: 1001;
-        flex-shrink: 0; /* 防止按钮被压缩 */
-    }
-
-    .grid-two-columns {
-        grid-template-columns: 1fr;
-    }
-
-    .qr-codes {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .qr-code-item img {
-        width: 180px;
-        height: 180px;
-    }
-
-    .contact-info-box {
-        padding: 20px;
-    }
-
-    .contact-info-box h3 {
-        font-size: 18px;
-    }
-
-    .contact-info-box h4 {
-        font-size: 16px;
-    }
-
-    .contact-info-box p {
-        font-size: 14px;
-    }
-
-    /* 确保 container 在小屏幕上正确适配 */
-    .container {
-        padding: 30px 15px;
-        width: 100%;
-    }
-
-    /* 确保所有网格布局在小屏幕上单列显示 */
-    .grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-/* 联系信息框样式 */
-.contact-info-box {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.contact-info-box h3 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    font-size: 20px;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-}
-
-.contact-info-box h4 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #333;
-}
-
-.contact-info-box p {
-    margin-bottom: 12px;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.contact-info-box strong {
-    color: var(--primary-color);
-    margin-right: 5px;
-}
 
 /* -----------------------------------------------------------------------------
- * 16. 媒体查询（响应式设计核心）
- * 策略：三层防护机制确保移动端完美显示
- * - 全局层：overflow-x: hidden 防止水平溢出
- * - 容器层：width: 100% 确保不超出父容器
- * - 布局层：强制单列布局，适当减小内边距
- * 断点说明：768px 是平板和手机的分界点
+ * 16. 公司图片展示区域样式
+ * 功能：为公司风采照片提供美观的横向滚动布局和卡片样式
+ * 策略：响应式横向滚动布局，大屏幕显示多张图片，小屏幕可左右滑动浏览
  * -------------------------------------------------------------------------- */
 
-@media (max-width: 768px) {
-    /* [第一层防护] 全局设置：防止小屏幕上的水平溢出 */
-    body {
-        overflow-x: hidden;         /* [关键] 隐藏横向滚动条：强制内容自适应屏幕宽度 */
-    }
+/* 横向滚动容器 - Flexbox 布局 */
+.company-gallery-scroll {
+    display: flex;                  /* 启用 Flexbox 布局 */
+    flex-wrap: nowrap;              /* [关键] 不换行：所有卡片在一行内排列 */
+    overflow-x: auto;               /* [关键] 允许横向滚动 */
+    gap: 20px;                      /* 卡片间距 20px：保证图片之间的呼吸空间 */
+    margin-top: 30px;               /* 上边距 30px：与标题保持适当距离 */
+    padding-bottom: 10px;           /* 底部内边距 10px：为滚动条预留空间 */
+    scroll-snap-type: x proximity;  /* [优化] 滚动捕捉：提升滚动体验 */
+    -webkit-overflow-scrolling: touch;  /* [移动端优化] iOS 设备平滑滚动 */
+}
 
-    /* 导航栏容器优化 */
-    .nav-container {
-        padding: 12px 15px;         /* 减小内边距：上下 12px，左右 15px，增加可用空间 */
-    }
+/* 隐藏滚动条但保留滚动功能（美化效果） */
+.company-gallery-scroll::-webkit-scrollbar {
+    height: 6px;                    /* 滚动条高度 6px */
+}
 
-    /* Logo 在小屏幕上的适配 */
-    .logo {
-        gap: 8px;                   /* 减小间距：8px */
-    }
+.company-gallery-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1); /* 轨道背景：浅灰色 */
+    border-radius: 3px;             /* 圆角 3px */
+}
 
-    .logo-icon {
-        height: 32px;               /* 缩小图标：32px */
-        width: 32px;                /* 宽度：32px */
-    }
+.company-gallery-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 86, 179, 0.5);  /* 滚动块颜色：半透明品牌色 */
+    border-radius: 3px;             /* 圆角 3px */
+}
 
-    .logo-text {
-        font-size: 18px;            /* 缩小文字：18px */
-        white-space: nowrap;        /* 不换行 */
-    }
+.company-gallery-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 86, 179, 0.8);  /* 悬停时加深颜色 */
+}
 
-    /* [第二层防护] 移动端下拉菜单 - 关键交互组件 */
-    .nav-links {
-        display: none;                          /* 默认隐藏：点击汉堡菜单后才显示 */
-        position: absolute;                     /* 绝对定位：脱离文档流，避免挤压其他内容 */
-        top: 100%;                              /* 紧贴导航栏底部：从 header 下方开始显示 */
-        left: 0;                                /* 左对齐：与导航栏左侧对齐 */
-        width: 100%;                            /* 占满宽度：充分利用小屏幕空间 */
-        background: var(--white);               /* 白色背景：与导航栏保持一致 */
-        flex-direction: column;                 /* 垂直排列：导航项从上到下堆叠 */
-        padding: 15px 0;                        /* 上下内边距 15px：提供舒适的点击区域 */
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);  /* 阴影效果：4px 模糊，6px 扩散，营造悬浮深度感 */
-        z-index: 1002;                          /* [关键] 层级 1002：必须高于 header(1000) 和 menu-toggle(1001)，确保菜单显示在最上层 */
-        overflow-x: hidden;                     /* [第三层防护] 防止菜单内容溢出 */
-    }
+/* 单张照片卡片 */
+.company-photo-card {
+    flex: 0 0 auto;                 /* [关键] 不收缩、不增长、自动基础宽度 */
+    width: 300px;                   /* 固定宽度 300px：确保统一尺寸 */
+    background-color: var(--white); /* 白色背景 */
+    border-radius: 8px;             /* 圆角 8px：柔和边界 */
+    overflow: hidden;               /* 隐藏超出边界的内容，确保图片圆角效果 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* 轻微阴影增强层次感 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 平滑过渡效果 */
+    display: flex;                  /* 弹性布局：垂直排列图片和说明文字 */
+    flex-direction: column;         /* 垂直方向排列 */
+    scroll-snap-align: start;       /* [优化] 滚动捕捉对齐起点 */
+}
 
-    .nav-links.active {
-        display: flex;              /* 激活状态：显示下拉菜单 */
-    }
+/* 照片卡片悬停效果 */
+.company-photo-card:hover {
+    transform: translateY(-5px);    /* 向上移动 5px：营造浮起效果 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);  /* 阴影加深增强立体感 */
+}
 
-    /* 菜单项 */
-    .nav-links li {
-        text-align: center;         /* 文字居中 */
-        margin: 10px 0;             /* 上下边距：10px */
-    }
+/* 照片图片样式 */
+.company-photo-img {
+    width: 100%;                    /* 占满卡片宽度 */
+    height: 200px;                  /* 固定高度 200px：确保统一性 */
+    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
+    background-position: center;    /* 背景位置：居中显示 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
+}
 
-    /* 菜单链接 */
-    .nav-links a {
-        display: block;             /* 块级显示，增加点击区域 */
-        padding: 10px 15px;         /* 内边距：增加触摸区域 */
-    }
+/* 照片说明文字 */
+.company-photo-caption {
+    padding: 12px 16px;             /* 内边距：上下 12px，左右 16px */
+    text-align: center;             /* 文字居中 */
+    font-size: 14px;                /* 字号 14px */
+    color: var(--text-color);       /* 深灰色文字 */
+    font-weight: 500;               /* 中等字重：清晰易读 */
+    background-color: var(--white); /* 白色背景 */
+    flex: 1;                        /* 自动填充剩余空间 */
+}
 
-    /* 移动端菜单按钮 */
-    .menu-toggle {
-        display: block;                         /* 显示按钮：小屏幕下启用汉堡菜单 */
-        cursor: pointer;                        /* 鼠标指针：提示可点击 */
-        padding: 8px;                           /* 内边距 8px：增加按钮点击区域 */
-        font-size: 22px;                        /* 图标大小 22px：易于识别和点击 */
-        z-index: 1001;                          /* [关键] 层级 1001：必须高于下拉菜单的 1000，确保按钮始终可见 */
-        flex-shrink: 0;                         /* 禁止压缩：防止按钮被挤压变形 */
-    }
-
-    /* 两列网格改为单列 */
-    .grid-two-columns {
-        grid-template-columns: 1fr; /* 单列布局 */
-    }
-
-    /* 二维码垂直排列 */
-    .qr-codes {
-        flex-direction: column;     /* 垂直排列 */
-        gap: 20px;                  /* 间距：20px */
-    }
-
-    .qr-code-item img {
-        width: 180px;               /* 缩小图片：180px */
-        height: 180px;              /* 高度：180px */
-    }
-
-    /* 联系信息框适配 */
-    .contact-info-box {
-        padding: 20px;              /* 减小内边距：20px */
-    }
-
-    .contact-info-box h3 {
-        font-size: 18px;            /* 缩小标题：18px */
-    }
-
-    .contact-info-box h4 {
-        font-size: 16px;            /* 缩小副标题：16px */
-    }
-
-    .contact-info-box p {
-        font-size: 14px;            /* 缩小文字：14px */
-    }
-
-    /* 内容容器适配 */
-    .container {
-        padding: 30px 15px;         /* 减小内边距：上下 30px，左右 15px */
-        width: 100%;                /* 占满全宽 */
-    }
-
-    /* 网格布局强制单列 */
-    .grid {
-        grid-template-columns: 1fr !important;  /* 单列布局 */
-    }
-
-    /* 地址链接在小屏幕的处理 */
-    .address-link {
-        word-break: break-all;      /* [防溢出] 允许单词内换行，防止长文本溢出 */
-    }
+/* 滚动提示文字 */
+.gallery-scroll-hint {
+    text-align: center;             /* 文字居中 */
+    font-size: 14px;                /* 字号 14px */
+    color: #666;                    /* 灰色文字 */
+    margin-top: 15px;               /* 上边距 15px */
+    opacity: 0.7;                   /* 半透明效果 */
+    display: none;                  /* 默认隐藏（桌面端不显示） */
 }

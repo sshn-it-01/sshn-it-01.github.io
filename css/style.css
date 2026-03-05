@@ -1,4 +1,13 @@
-/* css/style.css */
+/* 
+ * =============================================================================
+ * 华南森孚贸易有限公司 - 全局样式文件
+ * =============================================================================
+ * 文件说明：本项目的主样式表，包含所有页面的视觉样式定义
+ * 命名规范：BEM 命名法（Block Element Modifier）
+ * 单位规范：统一使用 px 作为尺寸单位
+ * 响应式断点：768px（移动设备与桌面设备的分界点）
+ * =============================================================================
+ */
 
 /* -----------------------------------------------------------------------------
  * 1. 全局重置与基础变量
@@ -16,565 +25,820 @@ section[id] {
 }
 
 :root {
-    --primary-color: #0056b3; /* 主色调：深蓝 */
-    --secondary-color: #f4f4f4; /* 背景灰 */
-    --text-color: #333;
-    --white: #ffffff;
-    --max-width: 1200px;
+    /* 颜色变量 - 用于保持全站色彩一致性 */
+    --primary-color: #0056b3;      /* 主色调：深蓝色，用于品牌色、按钮、链接等 */
+    --secondary-color: #f4f4f4;    /* 辅助色：浅灰色，用于背景区域 */
+    --text-color: #333;            /* 主文字颜色：深灰色，保证阅读舒适度 */
+    --white: #ffffff;              /* 白色：用于背景或反白文字 */
+    
+    /* 布局变量 */
+    --max-width: 1200px;           /* 页面最大宽度：限制内容区域的最大宽度 */
 }
 
+/* 全局选择器重置 - 移除浏览器默认样式 */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;                      /* 移除所有元素的外边距 */
+    padding: 0;                     /* 移除所有元素的内边距 */
+    box-sizing: border-box;         /* 边框盒模型：元素的总宽度包含 padding 和 border */
 }
 
+/* Body 基础样式 - 整个页面的容器 */
 body {
     font-family: 'Alibaba PuHuiTi', '阿里巴巴普惠体', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--white);
-    min-height: 100vh; /* 使用 100vh 才能确保 footer 始终贴合页面底部。使用 100% 导致 Sticky Footer 布局失效 */
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden; /* 防止小屏幕上出现水平滚动条和右侧空隙 */
+                                    /* 字体栈：优先使用阿里巴巴普惠体，逐级降级 */
+    line-height: 1.6;               /* 行高：1.6 倍字号，提升文字可读性 */
+    color: var(--text-color);       /* 文字颜色：使用定义的深灰色 */
+    background-color: var(--white); /* 背景色：白色 */
+    min-height: 100vh;              /* 最小高度：100% 视口高度，实现 Sticky Footer 的关键 */
+    display: flex;                  /* Flexbox 布局：启用弹性盒子 */
+    flex-direction: column;         /* 主轴方向：垂直排列子元素（header、main、footer） */
+    overflow-x: hidden;             /* 隐藏水平溢出：防止小屏幕出现横向滚动条 */
 }
 
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
+/* 链接样式 - 全局统一的超链接样式 */
+a { 
+    text-decoration: none;          /* 移除下划线 */
+    color: inherit;                 /* 继承父元素的文字颜色 */
+}
 
-/* 2. 导航栏 (响应式关键) */
+/* 列表样式 - 移除默认项目符号 */
+ul { 
+    list-style: none;               /* 移除列表前的圆点或数字 */
+}
+
+/* 图片样式 - 响应式图片处理 */
+img { 
+    max-width: 100%;                /* 最大宽度：不超过父容器宽度 */
+    display: block;                 /* 块级显示：消除图片底部的空隙 */
+}
+
+/* -----------------------------------------------------------------------------
+ * 2. 导航栏组件
+ * 功能：顶部固定导航栏，包含 Logo、菜单链接和移动端汉堡菜单
+ * 响应式：在 768px 以下切换为移动端汉堡菜单
+ * -------------------------------------------------------------------------- */
+
+/* 导航栏容器 - 固定在页面顶部 */
 header {
-    background: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: var(--white);       /* 背景色：白色 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* 阴影：底部轻微阴影，增加层次感 */
+    position: sticky;               /* 粘性定位：滚动时保持在顶部 */
+    top: 0;                         /* 粘性位置：距离顶部 0px */
+    z-index: 1000;                  /* 层级：确保在最上层，避免被其他内容遮挡 */
 }
 
+/* 导航栏内部容器 - 控制最大宽度和居中 */
 .nav-container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    width: 100%; /* 确保容器占满宽度 */
+    max-width: var(--max-width);    /* 最大宽度：1200px */
+    margin: 0 auto;                 /* 水平居中 */
+    display: flex;                  /* Flexbox 布局：横向排列 Logo 和菜单 */
+    justify-content: space-between; /* 主轴分布：两端对齐 */
+    align-items: center;            /* 交叉轴对齐：垂直居中 */
+    padding: 16px 20px;             /* 内边距：上下 16px，左右 20px */
+    width: 100%;                    /* 宽度：占满父容器 */
 }
 
+/* Logo 区域 - 包含图形 Logo 和文字 Logo */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--primary-color);
-    flex-shrink: 0; /* 防止 Logo 被压缩 */
+    display: flex;                  /* Flexbox 布局：横向排列图形和文字 */
+    align-items: center;            /* 垂直居中对齐 */
+    gap: 10px;                      /* 间距：图形和文字之间 10px */
+    font-size: 24px;                /* 字号：24px */
+    font-weight: bold;              /* 字重：加粗 */
+    color: var(--primary-color);    /* 颜色：品牌蓝色 */
+    flex-shrink: 0;                 /* 不收缩：防止在小屏幕被压缩 */
 }
 
+/* 图形 Logo - 公司图标 */
 .logo-icon {
-    height: 40px;
-    width: 40px;
-    background-image: url('../images/hn-logo-trans.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    flex-shrink: 0;
-    display: block;
+    height: 40px;                   /* 高度：40px */
+    width: 40px;                    /* 宽度：40px */
+    background-image: url('../images/hn-logo-trans.png');  /* 背景图：公司 Logo 图片 */
+    background-size: contain;       /* 背景尺寸：完整显示，保持比例 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
+    background-position: center;    /* 居中显示 */
+    flex-shrink: 0;                 /* 不收缩 */
+    display: block;                 /* 块级显示 */
 }
 
+/* Logo 链接样式 */
 .logo a {
-    color: inherit;
-    text-decoration: none;
+    color: inherit;                 /* 继承父元素颜色 */
+    text-decoration: none;          /* 移除下划线 */
 }
 
 .logo a:hover {
-    opacity: 0.8;
+    opacity: 0.8;                   /* 悬停效果：透明度降低到 80% */
 }
 
+/* 文字 Logo - 公司名称 */
 .logo-text {
-    white-space: nowrap;
+    white-space: nowrap;            /* 不换行：保持单行显示 */
 }
 
+/* 导航链接列表 */
 .nav-links {
-    display: flex;
-    gap: 20px;
+    display: flex;                  /* Flexbox 布局：横向排列菜单项 */
+    gap: 20px;                      /* 间距：菜单项之间 20px */
 }
 
+/* 导航链接单项 */
 .nav-links a {
-    font-weight: 500;
-    transition: color 0.3s;
+    font-weight: 500;               /* 字重：中等粗细 */
+    transition: color 0.3s;         /* 过渡动画：颜色变化 0.3 秒 */
 }
 
+/* 导航链接悬停和激活状态 */
 .nav-links a:hover, .nav-links a.active {
-    color: var(--primary-color);
+    color: var(--primary-color);    /* 颜色：变为品牌蓝色 */
 }
 
-/* 移动端菜单按钮 (默认隐藏) */
+/* 移动端菜单按钮（汉堡菜单）- 默认隐藏 */
 .menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
+    display: none;                  /* 默认隐藏：桌面端不显示 */
+    font-size: 24px;                /* 字号：24px */
+    cursor: pointer;                /* 鼠标样式：手型光标 */
 }
 
-/* 3. 通用布局组件 */
+/* -----------------------------------------------------------------------------
+ * 3. 通用布局组件
+ * 功能：页面主体内容容器、Hero 区域、按钮等通用组件
+ * -------------------------------------------------------------------------- */
+
+/* 内容容器 - 限制内容宽度并居中 */
 .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 40px 20px;
-    width: 100%; /* 确保 container 不会超出父容器宽度 */
+    max-width: var(--max-width);    /* 最大宽度：1200px */
+    margin: 0 auto;                 /* 水平居中 */
+    padding: 40px 20px;             /* 内边距：上下 40px，左右 20px */
+    width: 100%;                    /* 宽度：占满父容器，防止溢出 */
 }
 
+/* Hero 区域 - 页面顶部的横幅展示区 */
 .hero {
-    /* background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/home_bg_1.jpg'); */
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('');
-    background-color: var(--primary-color);
-    background-size: cover;
-    background-position: center;
-    color: var(--white);
-    text-align: center;
-    padding: 100px 20px;
+                                    /* 背景：渐变遮罩 + 背景图（当前为空） */
+    background-color: var(--primary-color);  /* 背景色：品牌蓝（备用） */
+    background-size: cover;         /* 背景尺寸：覆盖整个区域 */
+    background-position: center;    /* 背景位置：居中 */
+    color: var(--white);            /* 文字颜色：白色 */
+    text-align: center;             /* 文字对齐：居中 */
+    padding: 100px 20px;            /* 内边距：上下 100px，左右 20px */
 }
 
-.hero h1 { font-size: 28px; margin-bottom: 20px; }
+/* Hero 标题 */
+.hero h1 { 
+    font-size: 28px;                /* 字号：28px */
+    margin-bottom: 20px;            /* 下边距：20px */
+}
+
+/* 按钮组件 - 主要行动按钮 */
 .btn {
-    display: inline-block;
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 10px 25px;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background 0.3s;
+    display: inline-block;          /* 行内块级：可设置宽高但保持在行内 */
+    background: var(--primary-color);  /* 背景色：品牌蓝 */
+    color: var(--white);            /* 文字颜色：白色 */
+    padding: 10px 25px;             /* 内边距：上下 10px，左右 25px */
+    border-radius: 5px;             /* 圆角：5px */
+    margin-top: 20px;               /* 上边距：20px */
+    transition: background 0.3s;    /* 过渡动画：背景色 0.3 秒 */
 }
-.btn:hover { background: #004494; }
 
+/* 按钮悬停状态 */
+.btn:hover { 
+    background: #004494;            /* 悬停背景：更深的蓝色 */
+}
+
+/* 章节标题 - 各板块的标题样式 */
 .section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 32px;
-    color: var(--primary-color);
+    text-align: center;             /* 文字对齐：居中 */
+    margin-bottom: 40px;            /* 下边距：40px */
+    font-size: 32px;                /* 字号：32px */
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
 }
 
-/* 网格布局 (用于产品和案例) */
+/* -----------------------------------------------------------------------------
+ * 4. 网格布局系统
+ * 功能：用于产品展示、案例展示等需要网格排列的场景
+ * -------------------------------------------------------------------------- */
+
+/* 网格容器 - 自动适应列数 */
 .grid {
-    display: grid;
+    display: grid;                  /* Grid 布局：启用网格系统 */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+                                    /* 列定义：自适应填充，每列最小 300px，最大 1fr */
+    gap: 30px;                      /* 间距：网格项之间 30px */
+    align-items: stretch;           /* 垂直对齐：拉伸所有项至相同高度，解决卡片高度不一致问题 */
 }
 
+/* 卡片链接包装器 - 使整个卡片可点击 */
 .card-link {
-    display: block;
-    transition: transform 0.3s;
-    text-decoration: none;
-    color: inherit;
+    display: flex;                  /* Flexbox 布局：使卡片能够自适应高度 */
+    height: 100%;                   /* 高度：占满父容器，确保与网格项同高 */
 }
 
+/* 卡片链接包装器 - 使整个卡片可点击（旧版保留） */
+.card-link-wrapper {
+    display: block;                 /* 块级显示 */
+    transition: transform 0.3s;     /* 过渡动画：变形 0.3 秒 */
+    text-decoration: none;          /* 移除下划线 */
+    color: inherit;                 /* 继承颜色 */
+}
+
+/* 卡片链接悬停效果 */
 .card-link:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px);    /* 悬停效果：向上移动 5px */
 }
 
+/* 卡片组件 - 产品/案例展示卡片 */
 .card {
-    background: var(--white);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s;
+    background: var(--white);       /* 背景色：白色 */
+    border: 1px solid #ddd;         /* 边框：1px 浅灰色实线 */
+    border-radius: 8px;             /* 圆角：8px */
+    overflow: hidden;               /* 溢出隐藏：防止内容超出圆角 */
+    transition: transform 0.3s;     /* 过渡动画：变形 0.3 秒 */
+    display: flex;                  /* Flexbox 布局：内部使用弹性布局 */
+    flex-direction: column;         /* 主轴方向：垂直排列，图片在上内容在下 */
+    height: 100%;                   /* 高度：占满父容器，确保所有卡片等高 */
+    width: 100%;                    /* 宽度：占满父容器，确保所有卡片等宽 */
 }
 
-.card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-.card img { width: 100%; height: 200px; object-fit: cover; }
-.card-content { padding: 20px; }
-
-/* 产品卡片背景图样式 */
-/* 液压油 */
-.card-img-hydraulic {
-    background-image: url('/images/products/industry_hydraulic_01.jpg');
-}
-/* 齿轮油 */
-.card-img-gear {
-    background-image: url('/images/products/industry_gears_01.jpg');
-}
-/* 轴承油 */
-.card-img-bearing {
-    background-image: url('/images/products/industry_bearing_01.jpg');
-}
-/* 发动机油 */
-.card-img-engine {
-    background-image: url('https://via.placeholder.com/400x250?text=Engine+Oil');
-}
-/* 变速箱油 */
-.card-img-transmission {
-    background-image: url('https://via.placeholder.com/400x250?text=Transmission+Oil');
-}
-/* 刹车油 */
-.card-img-brake {
-    background-image: url('https://via.placeholder.com/400x250?text=Brake+Fluid');
+/* 卡片悬停效果 */
+.card:hover { 
+    transform: translateY(-5px);    /* 向上移动 5px */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);  /* 阴影：增加深度感 */
 }
 
-/* 液压油产品系列背景图 */
-.card-img-hm {
-    background-image: url('https://via.placeholder.com/400x250?text=HM+Anti-wear+Hydraulic+Oil');
+/* 卡片内容区域 */
+.card-content { 
+    padding: 20px;                  /* 内边距：20px */
+    flex: 1;                        /* 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
 }
 
-.card-img-hv {
-    background-image: url('https://via.placeholder.com/400x250?text=HV+Low-temperature+Hydraulic+Oil');
+/* 卡片标题样式 */
+.card-content h3 {
+    margin-bottom: 15px;            /* 下边距：15px */
+    font-size: 20px;                /* 字号：20px */
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
 }
 
-.card-img-hg {
-    background-image: url('https://via.placeholder.com/400x250?text=HG+Hydraulic+Guideway+Oil');
+/* 卡片描述文字 */
+.card-content p {
+    color: #666;                    /* 颜色：浅灰色 */
+    line-height: 1.6;               /* 行高：1.6 倍 */
 }
 
-.card-img-ashless {
-    background-image: url('https://via.placeholder.com/400x250?text=Ashless+Hydraulic+Oil');
-}
-
-.card-img-fire-resistant {
-    background-image: url('https://via.placeholder.com/400x250?text=Fire-resistant+Hydraulic+Oil');
-}
-
-.card-img-aviation {
-    background-image: url('https://via.placeholder.com/400x250?text=Aviation+Hydraulic+Oil');
-}
+/* -----------------------------------------------------------------------------
+ * 5. 产品卡片背景图样式
+ * 功能：为不同产品分类定义背景图片（使用 CSS 背景图而非<img>标签）
+ * 规范：遵循图片资源管理规范，装饰性图片使用 CSS 背景
+ * -------------------------------------------------------------------------- */
 
 /* 产品卡片图片容器统一样式 */
 .card-image {
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 100%;                    /* 宽度：占满卡片 */
+    height: 200px;                  /* 高度：固定 200px */
+    object-fit: cover;              /* 填充方式：裁剪覆盖，保持比例 */
+    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
+    background-position: center;    /* 背景位置：居中 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
 }
 
-/* 表单样式 */
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; margin-bottom: 5px; }
+/* 首页产品卡片背景图样式 */
+
+/* 工业润滑油卡片背景 */
+.card-img-industrial {
+    background-image: url('/images/products/industry_gears_01.jpg');
+}
+
+/* 车用润滑油卡片背景 */
+.card-img-automotive {
+    background-image: url('/images/vehicle_maintance_01.jpg');
+}
+
+/* 特种润滑油卡片背景 */
+.card-img-special {
+    background-image: url('/images/products/industry_bearing_01.jpg');
+}
+
+/* 工业润滑油分类卡片背景 */
+.card-img-hydraulic {
+    background-image: url('/images/products/industry_hydraulic_01.jpg');
+}
+
+/* 齿轮油分类卡片背景 */
+.card-img-gear {
+    background-image: url('/images/products/industry_gears_01.jpg');
+}
+
+/* 轴承油分类卡片背景 */
+.card-img-bearing {
+    background-image: url('/images/products/industry_bearing_01.jpg');
+}
+
+/* 发动机油分类卡片背景 */
+.card-img-engine {
+    background-image: url('/images/products/Engine+Oil');
+}
+
+/* 变速箱油分类卡片背景 */
+.card-img-transmission {
+    background-image: url('/images/products/Transmission+Oil');
+}
+
+/* 刹车油分类卡片背景 */
+.card-img-brake {
+    background-image: url('/images/products/Brake+Fluid');
+}
+
+/* 液压油系列产品背景图 */
+.card-img-hm {
+    background-image: url('/images/products/HM+Anti-wear+Hydraulic+Oil');
+}
+
+.card-img-hv {
+    background-image: url('/images/products/HV+Low-temperature+Hydraulic+Oil');
+}
+
+.card-img-hg {
+    background-image: url('/images/products/HG+Hydraulic+Guideway+Oil');
+}
+
+.card-img-ashless {
+    background-image: url('/images/products/Ashless+Hydraulic+Oil');
+}
+
+.card-img-fire-resistant {
+    background-image: url('/images/products/Fire-resistant+Hydraulic+Oil');
+}
+
+.card-img-aviation {
+    background-image: url('/images/products/Aviation+Hydraulic+Oil');
+}
+
+/* -----------------------------------------------------------------------------
+ * 6. 表单组件
+ * 功能：联系表单、留言表单等输入控件样式
+ * -------------------------------------------------------------------------- */
+
+/* 表单分组 - 每个表单项的容器 */
+.form-group { 
+    margin-bottom: 20px;            /* 下边距：20px，分隔各表单项 */
+}
+
+/* 表单标签 */
+.form-group label { 
+    display: block;                 /* 块级显示：独占一行 */
+    margin-bottom: 5px;             /* 下边距：5px */
+}
+
+/* 表单输入框和文本域 */
 .form-group input, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 100%;                    /* 宽度：占满父容器 */
+    padding: 10px;                  /* 内边距：10px */
+    border: 1px solid #ddd;         /* 边框：1px 浅灰色 */
+    border-radius: 4px;             /* 圆角：4px */
 }
 
-/* 页脚 */
+/* -----------------------------------------------------------------------------
+ * 7. 页脚组件
+ * 功能：页面底部版权信息区域，使用 Sticky Footer 布局
+ * -------------------------------------------------------------------------- */
+
 footer {
-    background: #333;
-    color: var(--white);
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
+    background: #333;               /* 背景色：深灰色 */
+    color: var(--white);            /* 文字颜色：白色 */
+    text-align: center;             /* 文字对齐：居中 */
+    padding: 20px;                  /* 内边距：20px */
+    margin-top: auto;               /* 上边距：auto，Flexbox 中自动推到容器底部 */
 }
 
-/* 通用内容区域样式 */
+/* -----------------------------------------------------------------------------
+ * 8. 通用工具类
+ * 功能：可复用的布局和内容样式类
+ * -------------------------------------------------------------------------- */
+
+/* 最大宽度限制容器 */
 .content-max-width {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px;               /* 最大宽度：800px */
+    margin: 0 auto;                 /* 水平居中 */
 }
 
+/* 章节标题上边距 */
 .content-section-title {
-    margin-top: 30px;
+    margin-top: 30px;               /* 上边距：30px */
 }
 
+/* 内容列表 */
 .content-list {
-    list-style: disc;
-    padding-left: 20px;
-    margin-top: 15px;
+    list-style: disc;               /* 列表样式：圆点 */
+    padding-left: 20px;             /* 左边距：20px */
+    margin-top: 15px;               /* 上边距：15px */
 }
 
+/* 文本居中 */
 .text-center {
-    text-align: center;
+    text-align: center;             /* 文字对齐：居中 */
 }
 
+/* 灰色背景 */
 .bg-gray {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9;      /* 背景色：浅灰色 */
 }
 
+/* 两列网格布局 */
 .grid-two-columns {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* 两列等分布局 */
 }
 
-/* 面包屑导航样式 */
+/* -----------------------------------------------------------------------------
+ * 9. 面包屑导航
+ * 功能：显示页面层级关系，帮助用户定位当前位置
+ * -------------------------------------------------------------------------- */
+
 .breadcrumb {
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: #666;
+    margin-bottom: 20px;            /* 下边距：20px */
+    font-size: 14px;                /* 字号：14px */
+    color: #666;                    /* 颜色：灰色 */
 }
 
+/* 面包屑链接 */
 .breadcrumb a {
-    color: #666;
-    text-decoration: none;
+    color: #666;                    /* 颜色：灰色 */
+    text-decoration: none;          /* 移除下划线 */
 }
 
+/* 面包屑当前页高亮 */
 .breadcrumb-current {
-    color: var(--primary-color);
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
 }
+
+/* -----------------------------------------------------------------------------
+ * 10. 产品展示页面专用样式
+ * 功能：产品介绍、规格参数等区域样式
+ * -------------------------------------------------------------------------- */
 
 /* 产品介绍区域 */
 .product-intro {
-    max-width: 800px;
-    margin: 0 auto 40px;
-    text-align: center;
+    max-width: 800px;               /* 最大宽度：800px */
+    margin: 0 auto 40px;            /* 居中，下边距 40px */
+    text-align: center;             /* 文字居中 */
 }
 
+/* 介绍文字 */
 .product-intro p {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 16px;                /* 字号：16px */
+    line-height: 1.8;               /* 行高：1.8 倍 */
 }
 
-/* 产品规格样式 */
+/* 产品规格区域 */
 .product-specs {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
+    margin-top: 15px;               /* 上边距：15px */
+    padding-top: 15px;              /* 上内边距：15px */
+    border-top: 1px solid #eee;     /* 顶部边框：1px 浅灰色 */
 }
 
+/* 规格文字 */
 .product-specs p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
+    font-size: 14px;                /* 字号：14px */
+    color: #666;                    /* 颜色：灰色 */
+    margin-bottom: 5px;             /* 下边距：5px */
 }
 
+/* 规格强调文字 */
 .product-specs strong {
-    color: #333;
+    color: #333;                    /* 颜色：深灰色 */
 }
 
-/* 应用领域图标区域 */
+/* -----------------------------------------------------------------------------
+ * 11. 应用领域展示区域
+ * 功能：展示产品在不同行业的应用场景
+ * -------------------------------------------------------------------------- */
+
+/* 应用领域容器 */
 .application-section {
-    margin-top: 60px;
-    background-color: #f9f9f9;
-    padding: 40px 20px;
-    border-radius: 8px;
+    margin-top: 60px;               /* 上边距：60px */
+    background-color: #f9f9f9;      /* 背景色：浅灰色 */
+    padding: 40px 20px;             /* 内边距：上下 40px，左右 20px */
+    border-radius: 8px;             /* 圆角：8px */
 }
 
+/* 居中标题 */
 .section-title-center {
-    text-align: center;
-    margin-bottom: 30px;
-    color: var(--primary-color);
+    text-align: center;             /* 文字居中 */
+    margin-bottom: 30px;            /* 下边距：30px */
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
 }
 
+/* 应用网格布局 */
 .application-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+                                    /* 列定义：自适应，最小 250px */
+    gap: 20px;                      /* 间距：20px */
 }
 
+/* 单个应用区域 */
 .application-area {
-    text-align: center;
-    padding: 20px;
+    text-align: center;             /* 文字居中 */
+    padding: 20px;                  /* 内边距：20px */
 }
 
+/* 应用图标 */
 .application-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 40px;                /* 字号：40px */
+    margin-bottom: 10px;            /* 下边距：10px */
 }
 
+/* 应用标题 */
 .application-title {
-    margin-bottom: 10px;
+    margin-bottom: 10px;            /* 下边距：10px */
 }
 
+/* 应用描述 */
 .application-desc {
-    font-size: 14px;
-    color: #666;
+    font-size: 14px;                /* 字号：14px */
+    color: #666;                    /* 颜色：灰色 */
 }
 
-/* 联系 CTA 区域 */
+/* -----------------------------------------------------------------------------
+ * 12. 联系 CTA 区域
+ * 功能：Call To Action，引导用户联系咨询
+ * -------------------------------------------------------------------------- */
+
+/* 联系 CTA 容器 */
 .contact-cta {
-    margin-top: 60px;
-    text-align: center;
+    margin-top: 60px;               /* 上边距：60px */
+    text-align: center;             /* 文字居中 */
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
-    color: white;
-    padding: 40px 20px;
-    border-radius: 8px;
+                                    /* 背景：蓝色渐变 */
+    color: white;                   /* 文字颜色：白色 */
+    padding: 40px 20px;             /* 内边距：上下 40px，左右 20px */
+    border-radius: 8px;             /* 圆角：8px */
 }
 
+/* CTA 标题 */
 .contact-cta h3 {
-    margin-bottom: 15px;
-    font-size: 24px;
+    margin-bottom: 15px;            /* 下边距：15px */
+    font-size: 24px;                /* 字号：24px */
 }
 
+/* CTA 描述 */
 .contact-cta p {
-    margin-bottom: 25px;
-    font-size: 16px;
+    margin-bottom: 25px;            /* 下边距：25px */
+    font-size: 16px;                /* 字号：16px */
 }
 
+/* CTA 按钮 */
 .contact-cta .btn {
-    background-color: white;
-    color: var(--primary-color);
+    background-color: white;        /* 背景色：白色 */
+    color: var(--primary-color);    /* 文字颜色：品牌蓝 */
 }
 
-/* 二维码展示样式 */
+/* -----------------------------------------------------------------------------
+ * 13. 二维码展示组件
+ * 功能：展示微信公众号、小程序二维码
+ * -------------------------------------------------------------------------- */
+
+/* 二维码容器 */
 .qr-codes {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    display: flex;                  /* Flexbox 布局 */
+    gap: 30px;                      /* 间距：30px */
+    justify-content: center;        /* 主轴居中 */
+    align-items: center;            /* 交叉轴居中 */
+    margin-top: 20px;               /* 上边距：20px */
 }
 
+/* 单个二维码项 */
 .qr-code-item {
-    text-align: center;
+    text-align: center;             /* 文字居中 */
 }
 
+/* 二维码图片 */
 .qr-code-item img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: #fff;
+    width: 200px;                   /* 宽度：200px */
+    height: 200px;                  /* 高度：200px */
+    object-fit: contain;            /* 填充方式：完整显示 */
+    border: 1px solid #ddd;         /* 边框：1px 浅灰色 */
+    border-radius: 8px;             /* 圆角：8px */
+    padding: 10px;                  /* 内边距：10px */
+    background-color: #fff;         /* 背景色：白色 */
     transition: transform 0.3s, box-shadow 0.3s;
+                                    /* 过渡动画：变形和阴影 0.3 秒 */
 }
 
+/* 二维码悬停效果 */
 .qr-code-item img:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px);    /* 向上移动 5px */
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                    /* 阴影：增加悬浮感 */
 }
 
+/* 二维码说明文字 */
 .qr-code-item p {
-    margin-top: 15px;
-    font-size: 16px;
-    color: var(--text-color);
-    font-weight: 500;
+    margin-top: 15px;               /* 上边距：15px */
+    font-size: 16px;                /* 字号：16px */
+    color: var(--text-color);       /* 颜色：主文字色 */
+    font-weight: 500;               /* 字重：中等 */
 }
 
-/* 4. 媒体查询 (适配手机和平板) */
+/* -----------------------------------------------------------------------------
+ * 14. 联系信息框样式
+ * 功能：包裹公司地址、电话等信息的卡片容器
+ * -------------------------------------------------------------------------- */
+
+.contact-info-box {
+    background-color: #f9f9f9;      /* 背景色：浅灰色 */
+    border: 1px solid #e0e0e0;      /* 边框：1px 浅灰色 */
+    border-radius: 8px;             /* 圆角：8px */
+    padding: 30px;                  /* 内边距：30px */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                                    /* 阴影：轻微阴影，增加层次感 */
+}
+
+/* 信息框标题 */
+.contact-info-box h3 {
+    margin-bottom: 20px;            /* 下边距：20px */
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    font-size: 20px;                /* 字号：20px */
+    border-bottom: 2px solid var(--primary-color);
+                                    /* 底部边框：2px 蓝色，装饰作用 */
+    padding-bottom: 10px;           /* 下内边距：10px */
+}
+
+/* 信息框副标题 */
+.contact-info-box h4 {
+    margin-bottom: 15px;            /* 下边距：15px */
+    font-size: 18px;                /* 字号：18px */
+    color: #333;                    /* 颜色：深灰色 */
+}
+
+/* 信息框段落 */
+.contact-info-box p {
+    margin-bottom: 12px;            /* 下边距：12px */
+    font-size: 15px;                /* 字号：15px */
+    line-height: 1.6;               /* 行高：1.6 倍 */
+}
+
+/* 信息框强调文字 */
+.contact-info-box strong {
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    margin-right: 5px;              /* 右边距：5px */
+}
+
+/* -----------------------------------------------------------------------------
+ * 15. 可点击链接样式
+ * 功能：地址、电话等可点击链接的统一样式
+ * -------------------------------------------------------------------------- */
+
+/* 地址链接 */
+.address-link {
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    text-decoration: none;          /* 移除下划线 */
+    border-bottom: 1px dashed var(--primary-color);
+                                    /* 底部边框：1px 蓝色虚线，提示可点击 */
+}
+
+.address-link:hover {
+    color: #004494;                 /* 悬停颜色：更深的蓝色 */
+    border-bottom-color: #004494;   /* 悬停边框颜色 */
+    background-color: rgba(0, 86, 179, 0.05);
+                                    /* 悬停背景：极淡的蓝色 */
+}
+
+/* 电话链接 */
+.phone-link {
+    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    text-decoration: none;          /* 移除下划线 */
+    border-bottom: 1px dashed var(--primary-color);
+                                    /* 底部边框：1px 蓝色虚线，提示可点击 */
+}
+
+.phone-link:hover {
+    color: #004494;                 /* 悬停颜色：更深的蓝色 */
+    border-bottom-color: #004494;   /* 悬停边框颜色 */
+    background-color: rgba(0, 86, 179, 0.05);
+                                    /* 悬停背景：极淡的蓝色 */
+}
+
+/* -----------------------------------------------------------------------------
+ * 16. 媒体查询 - 移动端适配（768px 及以下）
+ * 功能：针对手机、平板等小屏幕设备的响应式布局调整
+ * 断点：768px（常见的移动设备与桌面设备分界点）
+ * -------------------------------------------------------------------------- */
+
 @media (max-width: 768px) {
     /* 全局设置：防止小屏幕上的水平溢出 */
     body {
-        overflow-x: hidden;
+        overflow-x: hidden;         /* 隐藏水平滚动条 */
     }
 
     /* 导航栏容器优化 */
     .nav-container {
-        padding: 12px 15px; /* 减小内边距，增加可用空间 */
+        padding: 12px 15px;         /* 减小内边距：上下 12px，左右 15px */
     }
 
     /* Logo 在小屏幕上的适配 */
     .logo {
-        gap: 8px; /* 减小 Logo 间距 */
+        gap: 8px;                   /* 减小间距：8px */
     }
 
     .logo-icon {
-        height: 32px; /* 缩小 Logo 图标 */
-        width: 32px;
+        height: 32px;               /* 缩小图标：32px */
+        width: 32px;                /* 宽度：32px */
     }
 
     .logo-text {
-        font-size: 18px; /* 缩小 Logo 文字 */
-        white-space: nowrap; /* 防止文字换行 */
+        font-size: 18px;            /* 缩小文字：18px */
+        white-space: nowrap;        /* 不换行 */
     }
 
-    /* 移动端下拉菜单 */
+    /* 移动端下拉菜单 - 从顶部导航栏下方展开 */
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--white);
-        flex-direction: column;
-        padding: 15px 0;
+        display: none;              /* 默认隐藏 */
+        position: absolute;         /* 绝对定位 */
+        top: 100%;                  /* 位于导航栏底部 */
+        left: 0;                    /* 左对齐 */
+        width: 100%;                /* 占满全宽 */
+        background: var(--white);   /* 背景：白色 */
+        flex-direction: column;     /* 垂直排列菜单项 */
+        padding: 15px 0;            /* 内边距：上下 15px */
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 1000;
-        overflow-x: hidden; /* 防止菜单内容溢出 */
-
+                                    /* 阴影：增加层次感 */
+        z-index: 1000;              /* 层级：在其他内容之上 */
+        overflow-x: hidden;         /* 隐藏水平溢出 */
     }
 
+    /* 菜单激活状态（通过 JS 添加 active 类） */
     .nav-links.active {
-        display: flex;
+        display: flex;              /* 显示菜单 */
     }
 
+    /* 菜单项 */
     .nav-links li {
-        text-align: center;
-        margin: 10px 0;
+        text-align: center;         /* 文字居中 */
+        margin: 10px 0;             /* 上下边距：10px */
     }
 
+    /* 菜单链接 */
     .nav-links a {
-        display: block;
-        padding: 10px 15px; /* 增加点击区域 */
+        display: block;             /* 块级显示，增加点击区域 */
+        padding: 10px 15px;         /* 内边距：增加触摸区域 */
     }
 
+    /* 汉堡菜单按钮 - 在小屏幕显示 */
     .menu-toggle {
-        display: block;
-        cursor: pointer;
-        padding: 8px; /* 调整按钮内边距 */
-        font-size: 22px; /* 稍微缩小菜单图标 */
-        z-index: 1001;
-        flex-shrink: 0; /* 防止按钮被压缩 */
+        display: block;             /* 显示按钮 */
+        cursor: pointer;            /* 手型光标 */
+        padding: 8px;               /* 内边距：8px */
+        font-size: 22px;            /* 图标大小：22px */
+        z-index: 1001;              /* 层级：高于菜单 */
+        flex-shrink: 0;             /* 不收缩 */
     }
 
+    /* 两列网格改为单列 */
     .grid-two-columns {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 单列布局 */
     }
 
+    /* 二维码垂直排列 */
     .qr-codes {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: column;     /* 垂直排列 */
+        gap: 20px;                  /* 间距：20px */
     }
 
     .qr-code-item img {
-        width: 180px;
-        height: 180px;
+        width: 180px;               /* 缩小图片：180px */
+        height: 180px;              /* 高度：180px */
     }
 
+    /* 联系信息框适配 */
     .contact-info-box {
-        padding: 20px;
+        padding: 20px;              /* 减小内边距：20px */
     }
 
     .contact-info-box h3 {
-        font-size: 18px;
+        font-size: 18px;            /* 缩小标题：18px */
     }
 
     .contact-info-box h4 {
-        font-size: 16px;
+        font-size: 16px;            /* 缩小副标题：16px */
     }
 
     .contact-info-box p {
-        font-size: 14px;
+        font-size: 14px;            /* 缩小文字：14px */
     }
 
-    /* 确保 container 在小屏幕上正确适配 */
+    /* 内容容器适配 */
     .container {
-        padding: 30px 15px;
-        width: 100%;
+        padding: 30px 15px;         /* 减小内边距：上下 30px，左右 15px */
+        width: 100%;                /* 占满全宽 */
     }
 
-    /* 确保所有网格布局在小屏幕上单列显示 */
+    /* 网格布局强制单列 */
     .grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important;  /* 单列布局 */
     }
-}
 
-/* 联系信息框样式 */
-.contact-info-box {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.contact-info-box h3 {
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    font-size: 20px;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-}
-
-.contact-info-box h4 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #333;
-}
-
-.contact-info-box p {
-    margin-bottom: 12px;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-.contact-info-box strong {
-    color: var(--primary-color);
-    margin-right: 5px;
+    /* 地址链接在小屏幕的处理 */
+    .address-link {
+        word-break: break-all;      /* 允许单词内换行，防止溢出 */
+    }
 }

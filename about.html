@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <!-- 视口设置：响应式关键，确保在移动设备上正确缩放 -->
     <title>公司介绍 - 华南森孚</title>
+                            <!-- 页面标题：包含业务类型，利于 SEO -->
     
     <!-- 网站图标（Favicon）：显示在浏览器标签页标题前 -->
     <link rel="icon" href="images/hn-logo-low.jpg" type="image/jpeg">
@@ -15,19 +16,35 @@
     <script src="js/main.js" defer></script>
                             <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
 </head>
-<body>
-    <header>
-        <div class="nav-container">
+
+<body>  <!-- 页面主体内容开始 -->
+
+    <!-- =========================================================================
+         头部导航栏区域
+         功能：固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
+         注意：当前页面在"公司介绍"上添加 active 类高亮
+         ========================================================================= -->
+    <header>  <!-- 语义化标签：页面头部 -->
+        <div class="nav-container">  <!-- 导航容器：控制最大宽度和居中 -->
+            
+            <!-- Logo 区域：包含图形 Logo 和文字 Logo -->
             <div class="logo">
+                <!-- 图形 Logo：点击返回首页，aria-label 提供无障碍访问支持 -->
                 <a href="index.html" aria-label="公司首页">
-                    <span class="logo-icon"></span>
+                    <span class="logo-icon"></span>  <!-- CSS 背景图显示 Logo -->
                 </a>
+                <!-- 文字 Logo：公司名称，可点击返回首页 -->
                 <a href="index.html" class="logo-text">佛山市华南森孚贸易有限公司</a>
             </div>
+            
+            <!-- 移动端汉堡菜单按钮：仅在小屏幕显示 -->
             <div class="menu-toggle" id="mobile-menu">☰</div>
+            
+            <!-- 导航链接列表 -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="about.html" class="active">公司介绍</a></li>
+                    <!-- 当前页面添加 active 类高亮显示 -->
                 <li><a href="products.html">产品展示</a></li>
                 <li><a href="cases.html">项目案例</a></li>
                 <li><a href="contact.html">联系方式</a></li>

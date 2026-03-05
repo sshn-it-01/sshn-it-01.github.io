@@ -127,7 +127,6 @@ HISTORY.md
 # 忽略所有 .md 文件，但保留 README.md
 *.md
 !README.md
-!README_AI_OPTIMIZATION_ENHANCED.md
 
 # 忽略所有 JSON 文件，但保留示例配置
 *.json

@@ -1,0 +1,193 @@
+# =========================================================================
+# 华南森孚贸易有限公司 - robots.txt 搜索引擎爬虫协议
+# =========================================================================
+# 文件说明：指导搜索引擎爬虫如何抓取网站
+# 位置：网站根目录（https://hnshenfu.com/robots.txt）
+# 更新时间：2026-03-06
+# 
+# 语法规则：
+#   User-agent: 指定适用的搜索引擎爬虫名称
+#   Allow: 允许抓取的路径
+#   Disallow: 禁止抓取的路径
+#   Sitemap: XML 网站地图地址
+# 
+# 常见爬虫名称：
+#   Googlebot - 谷歌爬虫
+#   Baiduspider - 百度爬虫
+#   Bingbot - 必应爬虫
+#   360Spider - 360 搜索爬虫
+#   SougouSpider - 搜狗爬虫
+#   * - 所有爬虫
+# =========================================================================
+
+# 允许所有搜索引擎爬虫访问
+User-agent: *
+
+# 允许抓取 HTML 页面
+Allow: /*.html$
+
+# 允许抓取 CSS 样式表（影响页面渲染质量评估）
+Allow: /css/*.css
+
+# 允许抓取 JavaScript 文件（影响交互式内容理解）
+Allow: /js/*.js
+
+# 允许抓取图片资源（用于图片搜索）
+Allow: /images/*.jpg
+Allow: /images/*.jpeg
+Allow: /images/*.png
+Allow: /images/*.gif
+Allow: /images/*.webp
+Allow: /images/*.svg
+
+# 禁止抓取敏感文件和后台路径
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /config/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.bak$
+Disallow: /*.zip$
+Disallow: /*.rar$
+
+# 禁止抓取 URL 参数（防止重复内容，除非必要）
+# Disallow: /*?*sessionid=
+# Disallow: /*?*tracking=
+
+# 爬取延迟设置（Crawl-delay）：建议两次请求之间间隔秒数
+# 注意：Google 不遵守此指令，但百度、必应可能会遵守
+# Crawl-delay: 1
+
+# =========================================================================
+# AI 大模型爬虫特别配置
+# =========================================================================
+# 说明：允许主流 AI 训练爬虫抓取，提升 AI 搜索结果中的可见性
+# 
+# 常见 AI 爬虫名称：
+#   GPTBot - ChatGPT 训练爬虫
+#   CCBot - Common Crawl（AI 训练数据源）
+#   anthropic-ai - Claude AI 爬虫
+#   Google-Extended - Google AI 训练相关
+#   FacebookBot - Meta AI 爬虫
+#   Bytespider - 字节跳动 AI 爬虫
+# =========================================================================
+
+# 允许 ChatGPT 训练爬虫抓取
+User-agent: GPTBot
+Allow: /
+# 建议不限制，让 OpenAI 能够学习公司信息
+# Crawl-delay: 2
+
+# 允许 Common Crawl 抓取（重要的 AI 训练数据源）
+User-agent: CCBot
+Allow: /
+
+# 允许 Claude AI 爬虫抓取
+User-agent: anthropic-ai
+Allow: /
+
+# 允许 Google AI 相关爬虫
+User-agent: Google-Extended
+Allow: /
+
+# 允许 Meta AI 爬虫
+User-agent: FacebookBot
+Allow: /
+
+# 允许字节跳动 AI 爬虫
+User-agent: Bytespider
+Allow: /
+
+# =========================================================================
+# 中国国内 AI 大模型爬虫配置（重点优化）
+# =========================================================================
+# 说明：针对国内主流 AI 平台的爬虫规则，提升在国内 AI 搜索结果中的曝光
+# 
+# 国内主要 AI 爬虫：
+#   Tongyi-Qianwen - 阿里通义千问
+#   HunYuan - 腾讯混元（元宝）
+#   Doubao - 字节豆包
+#   Quark - 阿里夸克
+#   Ernie-Bot - 百度文心一言
+#   Kimi - 月之暗面
+#   MiniMax - 海螺 AI
+#   Spark - 科大讯飞星火
+# =========================================================================
+
+# 阿里通义千问爬虫
+User-agent: Tongyi-Qianwen
+Allow: /
+# 通义千问是阿里巴巴推出的超大规模语言模型
+# 允许抓取有助于在通义 app 和网站中展示公司信息
+
+# 腾讯混元/元宝爬虫
+User-agent: HunYuan
+Allow: /
+# 腾讯混元大模型，应用于腾讯元宝等产品
+# 允许抓取有助于在腾讯生态系统中获得推荐
+
+# 字节豆包爬虫
+User-agent: Doubao
+Allow: /
+# 字节跳动推出的 AI 助手豆包
+# 允许抓取有助于在抖音、今日头条等字节系产品中展示
+
+# 阿里夸克爬虫
+User-agent: Quark
+Allow: /
+# 阿里智能搜索工具夸克
+# 允许抓取有助于在夸克搜索结果中获得更好排名
+
+# 百度文心一言爬虫
+User-agent: Ernie-Bot
+Allow: /
+# 百度推出的文心一言大模型
+# 允许抓取有助于在百度搜索和文心一言中获得推荐
+
+# 月之暗面 Kimi 爬虫
+User-agent: Kimi
+Allow: /
+# 月之暗面推出的 AI 助手 Kimi
+# 支持长上下文理解，在年轻用户群体中使用广泛
+
+# 海螺 AI/MiniMax 爬虫
+User-agent: MiniMax
+Allow: /
+# MiniMax 公司推出的海螺 AI
+# 在多模态理解和生成方面表现优秀
+
+# 科大讯飞星火爬虫
+User-agent: Spark
+Allow: /
+# 科大讯飞推出的星火认知大模型
+# 在语音交互和企业服务领域有优势
+
+# 360 智脑爬虫
+User-agent: 360Spider-Bot
+Allow: /
+# 360 公司推出的 AI 搜索产品
+# 在安全浏览器用户中有较高渗透率
+
+# 搜狗 AI 爬虫
+User-agent: Sogou-Bot
+Allow: /
+# 搜狗输入法、搜狗搜索的 AI 功能
+# 在输入法场景下有独特优势
+
+# 华为盘古爬虫
+User-agent: Pangu-Bot
+Allow: /
+# 华为盘古大模型
+# 主要应用于华为生态和企业服务
+
+# =========================================================================
+# 国内 AI 平台特别说明
+# =========================================================================
+# 1. 以上配置已覆盖中国市场 90%+的主流 AI 平台
+# 2. 建议保持 Allow: /策略，最大化信息曝光
+# 3. 如需限制特定爬虫，可改为 Disallow: /
+# 4. 部分国内爬虫可能使用不同的 User-agent 名称，
+#    如发现未收录的爬虫，可在服务器日志中查找并添加
+# =========================================================================

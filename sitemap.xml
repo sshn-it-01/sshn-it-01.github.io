@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+=============================================================================
+华南森孚贸易有限公司 - sitemap.xml 网站地图
+=============================================================================
+文件说明：向搜索引擎提供网站所有页面的完整列表，帮助爬虫更高效地索引
+位置：网站根目录（https://hnshenfu.com/sitemap.xml）
+更新时间：2026-03-06
+更新频率：每次添加/修改页面后同步更新
+
+XML 结构说明：
+  <urlset> - 根元素，声明命名空间和协议版本
+  <url> - 每个页面的容器
+    <loc> - 页面的绝对 URL（必需）
+    <lastmod> - 最后修改日期，格式：YYYY-MM-DD（推荐）
+    <changefreq> - 更新频率提示（可选）
+      值：always, hourly, daily, weekly, monthly, yearly, never
+    <priority> - 优先级，范围 0.0-1.0，数值越高越重要（可选）
+      通常首页设为 1.0，其他页面 0.5-0.9
+
+最佳实践：
+  - 只包含规范 URL（canonical URLs），避免重复内容
+  - 确保所有 URL 返回 200 状态码
+  - 及时移除已删除的页面（404）
+  - 单文件大小不超过 50MB，URL 数量不超过 50000 个（超过需分多个 sitemap）
+=============================================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- =========================================================================
+         核心页面（高优先级）
+         ========================================================================= -->
+    
+    <!-- 首页：公司主页面，最重要 -->
+    <url>
+        <loc>https://hnshenfu.com/index.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- AI 大模型优化文件：为 ChatGPT、Claude 等提供结构化企业信息 -->
+    <url>
+        <loc>https://hnshenfu.com/llms.txt</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- SEO 优化指南：搜索引擎优化文档 -->
+    <url>
+        <loc>https://hnshenfu.com/robots.txt</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- XML 网站地图：帮助搜索引擎爬虫抓取 -->
+    <url>
+        <loc>https://hnshenfu.com/sitemap.xml</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- 公司介绍页：展示企业实力和文化 -->
+    <url>
+        <loc>https://hnshenfu.com/about.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 产品展示页：全部产品分类总览 -->
+    <url>
+        <loc>https://hnshenfu.com/products.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- 项目案例页：增强客户信任度 -->
+    <url>
+        <loc>https://hnshenfu.com/cases.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 联系方式页：引导客户咨询 -->
+    <url>
+        <loc>https://hnshenfu.com/contact.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- =========================================================================
+         产品详情页（中优先级）
+         注意：根据实际产品分类持续添加
+         ========================================================================= -->
+    
+    <!-- 液压油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/product/category/hydraulic-oil.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 
+    示例模板：添加新产品分类时复制以下结构并修改
+    
+    <url>
+        <loc>https://hnshenfu.com/product/category/[产品名称].html</loc>
+        <lastmod>YYYY-MM-DD</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    常见产品分类建议：
+    - 齿轮油：gear-oil.html
+    - 轴承油：bearing-oil.html
+    - 发动机油：engine-oil.html
+    - 变速箱油：transmission-oil.html
+    - 刹车油：brake-fluid.html
+    - 导热油：heat-transfer-oil.html
+    - 压缩机油：compressor-oil.html
+    - 真空泵油：vacuum-pump-oil.html
+    - 导轨油：way-oil.html
+    - 火花机油：spark-erosion-oil.html
+    -->
+    
+    <!-- =========================================================================
+         其他页面（按需添加）
+         ========================================================================= -->
+    
+    <!-- 
+    如果未来有以下页面，可在此添加：
+    
+    新闻中心
+    <url>
+        <loc>https://hnshenfu.com/news.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    常见问题
+    <url>
+        <loc>https://hnshenfu.com/faq.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    技术支持
+    <url>
+        <loc>https://hnshenfu.com/support.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    荣誉资质
+    <url>
+        <loc>https://hnshenfu.com/certificates.html</loc>
+        <lastmod>2026-03-06</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    -->
+    
+</urlset>

@@ -31,7 +31,9 @@
     <link rel="icon" href="images/hn-logo-low.jpg" type="image/jpeg">
     
     <!-- 引入外部资源 -->
-    <link rel="stylesheet" href="css/style.css">  <!-- 主样式表 -->
+    <link rel="stylesheet" href="css/style.css">  <!-- 主样式表：布局和组件样式 -->
+    <link rel="stylesheet" href="css/images.css">  <!-- 图片资源样式：所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询：所有断点适配规则（必须放在最后） -->
     <script src="js/main.js" defer></script>
                             <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
 </head>
@@ -86,23 +88,77 @@
             <!-- 公司简介标题 -->
             <h3>公司简介</h3>
             <!-- 简介内容 -->
-            <p>佛山市华南森孚贸易有限公司是一家专业从事润滑油研发、生产和销售的企业。我们拥有先进的生产设备和完善的质量管理体系，产品广泛应用于工业设备和汽车领域。</p>
-            
+            <ul class="content-list">
+            <p>佛山市华南森孚贸易有限公司成立于 1991 年，是美孚润滑油 (Mobil) 在中国的首批授权经销商。公司深耕润滑行业三十余年，凭借深厚的历史积淀与卓越的品牌授权，已发展成为华南地区极具影响力的专业润滑油供应商。公司总部位于广东佛山，致力于通过高品质的产品与专业的技术服务，为汽车制造、工程机械、工厂设备及食品生产等领域提供全方位的润滑解决方案。</p>
+            </ul>
+
             <!-- 核心优势标题：使用 content-section-title 类增加上边距 -->
             <h3 class="content-section-title">核心优势</h3>
             <!-- 优势列表：使用 content-list 类添加圆点项目符号 -->
             <ul class="content-list">
-                <li>采用进口基础油和添加剂，品质可靠</li>
-                <li>通过 ISO9001 质量管理体系认证</li>
-                <li>提供定制化润滑解决方案</li>
-                <li>完善的售后服务体系</li>
+                <li><strong>车用润滑油</strong></li>
+                <p>涵盖汽油发动机油、柴油发动机油及摩托车机油，满足各类交通运输工具的润滑需求。</p>
+                <br>
+                <li><strong>工业润滑油</strong></li>
+                <p>为工厂机械设备提供高效保护，延长设备使用寿命，提升运行效率。</p>
+                <br>
+                <li><strong>特种油品与润滑脂</strong></li>
+                <p>针对特殊工况和特定设备，提供定制化的润滑脂及特种油品解决方案。</p>
             </ul>
 
             <!-- 企业理念标题 -->
             <h3 class="content-section-title">企业理念</h3>
-            <!-- 理念内容 -->
-            <p>以客户为中心，以质量为生命，持续创新，为客户提供最优质的润滑产品和服务。</p>
+            <!-- 经营守则 -->
+            <ul class="content-list">
+                <li><strong>诚实、守信、优质、高效</strong></li>
+                <p>这是公司立足市场的根本准则，贯穿于从采购、销售到售后服务的每一个环节。</p>
+                <br>
+            <!-- 核心理念 -->
+                <li><strong>不能为您节省金钱，我们便不值得您惠顾</strong></li>
+                <p>公司不仅销售产品，更致力于通过科学的用油方案和技术咨询，帮助客户优化维护流程，切实降低综合润滑成本。</p>
+            </ul>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         公司图片展示区域
+         功能：展示公司环境、团队或活动照片
+         布局：响应式横向滚动布局，大屏幕显示多张图片，小屏幕可左右滑动浏览
+         ========================================================================= -->
+    <section class="bg-gray section-spacing">  <!-- 灰色背景区域，添加上下间距 -->
+        <div class="container">  <!-- 内容容器 -->
             
+            <h2 class="section-title">公司风采</h2>
+
+            <!-- 横向滚动容器 -->
+            <div class="company-gallery-scroll">
+                <!-- 图片 1：公司外观 -->
+                <div class="company-photo-card">
+                    <div class="company-photo-img company-photo-building"></div>
+                    <div class="company-photo-caption">公司大楼</div>
+                </div>
+                
+                <!-- 图片 2：办公环境 -->
+                <div class="company-photo-card">
+                    <div class="company-photo-img company-photo-office"></div>
+                    <div class="company-photo-caption">办公环境</div>
+                </div>
+                
+                <!-- 图片 3：团队合影 -->
+                <div class="company-photo-card">
+                    <div class="company-photo-img company-photo-team"></div>
+                    <div class="company-photo-caption">专业团队</div>
+                </div>
+                
+                <!-- 图片 4：仓储设施 -->
+                <div class="company-photo-card">
+                    <div class="company-photo-img company-photo-warehouse"></div>
+                    <div class="company-photo-caption">仓储设施</div>
+                </div>
+            </div>
+            
+            <!-- 滚动提示：仅在移动端显示 -->
+            <p class="gallery-scroll-hint">← 左右滑动查看更多 →</p>
         </div>
     </section>
 

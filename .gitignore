@@ -150,7 +150,7 @@ test-results/
 playwright/.cache/
 
 # 测试截图（但保留 images 目录）
-!images/
+!images/**
 *.png
 *.jpg
 *.jpeg

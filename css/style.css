@@ -359,14 +359,138 @@ footer {
     background: #333;               /* 背景色：深灰色 */
     color: var(--white);            /* 文字颜色：白色 */
     text-align: center;             /* 文字对齐：居中 */
-    padding: 20px;                  /* 内边距：20px */
+    padding: 40px 20px 20px;        /* 内边距：顶部 40px（容纳导航栏），底部和两侧 20px */
     margin-top: auto;               /* [关键] 上边距：auto，Flexbox 中自动推到容器底部，实现 Sticky Footer */
+}
+
+/* 页脚内容区 - 包含导航栏和联系方式 */
+.footer-content {
+    max-width: var(--max-width);    /* 最大宽度：1200px */
+    margin: 0 auto 30px;            /* 水平居中，底部间距 30px */
+    display: grid;                  /* 网格布局：多列显示 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 自适应列宽，最小 250px */
+    gap: 30px;                      /* 网格间距：30px */
+    text-align: left;               /* 文字左对齐 */
+}
+
+/* 页脚区块标题 */
+.footer-section h4 {
+    font-size: 18px;                /* 字号：18px */
+    margin-bottom: 15px;            /* 底部间距：15px */
+    color: var(--white);            /* 颜色：白色 */
+    font-weight: 600;               /* 字重：600，加粗 */
+}
+
+/* 页脚导航链接列表 */
+.footer-links {
+    list-style: none;               /* 移除列表样式 */
+    padding: 0;                     /* 移除内边距 */
+}
+
+/* 页脚导航链接项 */
+.footer-links li {
+    margin-bottom: 10px;            /* 底部间距：10px */
+}
+
+/* 页脚导航链接 */
+.footer-links a {
+    color: #ccc;                    /* 颜色：浅灰色 */
+    transition: all 0.3s ease;      /* 过渡效果：0.3 秒，平滑 */
+    line-height: 1.6;               /* 行高：1.6 倍 */
+}
+
+/* 页脚导航链接悬停效果 */
+.footer-links a:hover {
+    color: var(--primary-color);    /* 悬停颜色：品牌蓝色 */
+    transform: translateX(5px);     /* 悬停位移：右移 5px，提供视觉反馈 */
+}
+
+/* 页脚联系方式列表 */
+.footer-contact {
+    list-style: none;               /* 移除列表样式 */
+    padding: 0;                     /* 移除内边距 */
+}
+
+/* 页脚联系方式项 */
+.footer-contact li {
+    margin-bottom: 12px;            /* 底部间距：12px */
+    color: #ccc;                    /* 颜色：浅灰色 */
+    line-height: 1.6;               /* 行高：1.6 倍 */
+    display: flex;                  /* Flexbox 布局：图标和文字横向排列 */
+    align-items: flex-start;        /* 交叉轴对齐：顶部对齐 */
+}
+
+/* 页脚联系方式图标 */
+.footer-contact li strong {
+    color: var(--white);            /* 颜色：白色 */
+    margin-right: 8px;              /* 右侧间距：8px */
+    flex-shrink: 0;                 /* 不收缩：保持固定宽度 */
+}
+
+/* 页脚联系方式链接 */
+.footer-contact a {
+    color: #ccc;                    /* 颜色：浅灰色 */
+    transition: all 0.3s ease;      /* 过渡效果：0.3 秒 */
+}
+
+/* 页脚联系方式链接悬停 */
+.footer-contact a:hover {
+    color: var(--primary-color);    /* 悬停颜色：品牌蓝色 */
+    text-decoration: underline;     /* 悬停下划线：提示可点击 */
+}
+
+/* 页脚二维码容器 - 小型化自适应显示 */
+.footer-qr-codes {
+    display: flex;                  /* Flexbox 布局：二维码水平排列 */
+    gap: 15px;                      /* 间距：15px，紧凑排列 */
+    justify-content: flex-start;    /* 左对齐 */
+    margin-top: 10px;               /* 上边距：10px */
+}
+
+/* 页脚二维码图片 - 小尺寸自适应 */
+.footer-qr-image {
+    width: 80px;                    /* 宽度：80px，小尺寸节省空间 */
+    height: 80px;                   /* 高度：80px，正方形比例 */
+    border: 1px solid rgba(255,255,255,0.2); /* 边框：白色半透明 */
+    border-radius: 4px;             /* 圆角：4px，柔和边界 */
+    padding: 5px;                   /* 内边距：5px */
+    background-color: #fff;         /* 白色背景：确保扫码识别率 */
+    background-size: contain;       /* 背景尺寸：包含模式，完整显示 */
+    background-position: center;    /* 背景位置：居中 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
+    transition: transform 0.3s ease; /* 过渡动画：0.3 秒 */
+}
+
+/* 页脚二维码悬停效果 */
+.footer-qr-image:hover {
+    transform: scale(1.1);          /* 悬停放大：1.1 倍 */
+    box-shadow: 0 4px 12px rgba(255,255,255,0.2); /* 悬停阴影 */
+}
+
+/* 页脚二维码说明文字 */
+.footer-qr-text {
+    color: #999;                    /* 颜色：中灰色 */
+    font-size: 13px;                /* 字号：13px */
+    line-height: 1.6;               /* 行高：1.6 倍 */
+    margin-top: 8px;                /* 上边距：8px */
+}
+
+/* 页脚分隔线 */
+.footer-divider {
+    border: none;                   /* 移除默认边框 */
+    height: 2px;                    /* 高度：2px */
+    background-color: rgba(255,255,255,0.1); /* 背景色：白色 10% 透明度 */
+    margin: 20px auto;              /* 间距：上下 20px，水平居中 */
+    max-width: var(--max-width);    /* 最大宽度：1200px */
 }
 
 /* 页脚段落 - 版权信息和备案号 */
 footer p {
     word-wrap: break-word;          /* 允许单词内换行：防止长文本在小屏幕溢出 */
     white-space: normal;            /* 正常换行：允许在空格处换行 */
+    color: #999;                    /* 颜色：中灰色，区别于上方的白色 */
+    font-size: 14px;                /* 字号：14px */
+    line-height: 1.8;               /* 行高：1.8 倍，增加可读性 */
 }
 
 /* -----------------------------------------------------------------------------

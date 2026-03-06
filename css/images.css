@@ -170,9 +170,13 @@
  * -------------------------------------------------------------------------- */
 
 /* 公司外观照片 */
-.company-photo-building {
+.company-photo-building-1 {
     /* 继承 .company-photo-img 的所有样式 */
-    background-image: url('../images/company-photo-1.jpg');  /* 背景图：公司大楼外观 */
+    background-image: url('../images/gallary/hnsf_hq.jpg');  /* 背景图：公司大楼外观 */
+}
+
+.company-photo-building-2 {
+    background-image: url('../images/gallary/hnsf_guanghai.jpg');
 }
 
 /* 办公环境照片 */
@@ -188,7 +192,7 @@
 }
 
 /* 仓储设施照片 */
-.company-photo-warehouse {
+.company-photo-warehouse-1 {
     /* 继承 .company-photo-img 的所有样式 */
-    background-image: url('../images/company-photo-4.jpg');  /* 背景图：仓储物流设施 */
+    background-image: url('../images/gallary/hnsf_warehouse_01.jpg');  /* 背景图：仓储物流设施 */
 }

@@ -267,7 +267,9 @@
     /* 联系信息框适配 - 移动端 */
     .contact-info-box {
         padding: 20px;              /* 减小内边距：20px */
-    }
+        height: auto;               /* 移动端同样高度自适应 */
+        flex: none;                 /* 禁用弹性增长 */
+}
 
     .contact-info-box h3 {
         font-size: 18px;            /* 缩小标题：18px */

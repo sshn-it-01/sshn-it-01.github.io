@@ -6,15 +6,24 @@
 # 更新时间：2026-03-06
 # 
 # 语法规则：
-#   # - 注释行，用于说明
-#   * - 通配符，匹配任意字符
-#   ? - 通配符，匹配单个字符
+#   #  - 注释行，用于说明
+#   *  - 通配符，匹配任意字符
+#   ?  - 通配符，匹配单个字符
 #   ** - 匹配多级目录
-#   ! - 否定，表示不忽略
+#   !  - 否定，表示不忽略
 # =========================================================================
 
 # =========================================================================
-# 一、操作系统文件（必须忽略）
+# 一、Node.js 依赖和包管理（必须忽略）
+# =========================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# =========================================================================
+# 二、操作系统临时文件（必须忽略）
 # =========================================================================
 
 # macOS 系统文件
@@ -28,11 +37,11 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
-@eaDir/
 
 # Linux 系统文件
 .directory
 .cache/
+@eaDir/
 
 # 编辑器临时文件
 *~
@@ -41,10 +50,10 @@ $RECYCLE.BIN/
 \#*\#
 
 # =========================================================================
-# 二、代码编辑器和 IDE 文件（建议忽略）
+# 三、代码编辑器和 IDE 配置（建议忽略）
 # =========================================================================
 
-# VS Code（Visual Studio Code）
+# VS Code
 .vscode/
 *.code-workspace
 .history/
@@ -52,46 +61,146 @@ $RECYCLE.BIN/
 # Lingma
 .lingma/
 
+# IntelliJ IDEA
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+*.atom/
+
+# Vim
+*.vim*
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
 # =========================================================================
-# 十一、特定于本项目的忽略规则
+# 四、构建输出和编译产物（必须忽略）
+# =========================================================================
+dist/
+build/
+.next/
+out/
+*.log
+
+# TypeScript 编译输出
+*.tsbuildinfo
+*.js.map
+*.d.ts
+
+# Webpack
+webpack-stats.json
+webpack.bundle.json
+
+# Parcel
+.parcel-cache/
+
+# Rollup
+.rollup.cache/
+
+# Vite
+vite.config.ts.timestamp-*
+
+# =========================================================================
+# 五、环境变量和敏感配置（必须忽略）
+# =========================================================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+
+# 密钥和证书
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# 配置文件（保留示例）
+config.json
+!config.example.json
+!config.template.json
+
+# =========================================================================
+# 六、测试相关（建议忽略）
 # =========================================================================
 
-# AI 优化文档（如果不需要公开）
+# 测试覆盖率
+coverage/
+.nyc_output/
+jest-coverage/
+
+# Playwright 浏览器自动化
+playwright-report/
+test-results/
+playwright/.cache/
+
+# 测试截图（但保留 images 目录）
+*.png
+*.jpg
+*.jpeg
+*.gif
+!images/
+
+# Jest
+jest-snapshots/
+
+# Mocha
+mochawesome-report/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# =========================================================================
+# 七、文档和日志（选择性忽略）
+# =========================================================================
+
+# 自动生成的文档
+CHANGELOG.md
+HISTORY.md
+API.md
+
+# 项目特定文档（如不需要公开）
 DOMESTIC_AI_OPTIMIZATION.md
 AI_OPTIMIZATION_GUIDE.md
 AI_DEPLOYMENT_CHECKLIST.md
 README_AI_OPTIMIZATION.md
 README_AI_OPTIMIZATION_ENHANCED.md
 
-# SEO 文档（如果不需要公开）
+# SEO 文档
 SEO_AI_Guides/
 SEO_GUIDE.md
 
-# =========================================================================
-# 十二、其他常见忽略项
-# =========================================================================
-
-# Release 配置
+# 发布配置
 .releaserc
 .release.json
 
-# Changelog（自动生成）
-CHANGELOG.md
-HISTORY.md
+# 日志文件
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # =========================================================================
-# 十三、不忽略的重要文件（例外规则）
+# 八、本项目的例外规则（重要：不忽略的核心文件）
 # =========================================================================
-
-# 不要忽略重要的配置文件
-!config.json
-!config.example.json
-!package.json
-!tsconfig.json
-!jsconfig.json
-
-# 不要忽略 README（但文档可以忽略）
-!README.md
 
 # 不要忽略入口文件
 !index.html
@@ -100,7 +209,7 @@ HISTORY.md
 !main.css
 !style.css
 
-# 不要忽略必要的 CSS 文件
+# 不要忽略必要的 CSS文件
 !css/style.css
 !css/images.css
 !css/mobile.css
@@ -108,24 +217,37 @@ HISTORY.md
 # 不要忽略必要的 JS 文件
 !js/main.js
 
-# 不要忽略 HTML 文件
+# 不要忽略 HTML文件
 !*.html
 
-# 不要忽略 AI 优化核心文件（建议保留）
+# 不要忽略 AI 优化核心文件（必须保留）
 !robots.txt
 !sitemap.xml
 !llms.txt
 
+# 不要忽略 README
+!README.md
+
+# 不要忽略 package.json
+!package.json
+
+# 不要忽略配置文件
+!config.json
+!config.example.json
+!package.json
+!tsconfig.json
+!jsconfig.json
+
 # =========================================================================
-# 十四、特殊规则说明
+# 九、特殊规则说明
 # =========================================================================
 
-# 忽略所有 .txt 文件，但保留 llms.txt
+# 忽略所有 .txt 文件，但保留重要文件
 *.txt
 !llms.txt
 !robots.txt
 
-# 忽略所有 .md 文件，但保留 README.md
+# 忽略所有 .md 文件，但保留 README
 *.md
 !README.md
 

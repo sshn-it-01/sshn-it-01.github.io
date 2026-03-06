@@ -304,4 +304,49 @@
     .gallery-scroll-hint {
         display: block;             /* 移动端显示滚动提示 */
     }
+    
+    /* 页脚导航栏在移动端的适配 */
+    .footer-content {
+        grid-template-columns: 1fr; /* 单列布局：垂直排列 */
+        text-align: center;         /* 文字居中 */
+        gap: 25px;                  /* 减小间距：25px */
+    }
+    
+    /* 页脚区块标题在移动端的适配 */
+    .footer-section h4 {
+        font-size: 16px;            /* 缩小字号：16px */
+    }
+    
+    /* 页脚导航链接悬停效果在移动端禁用 */
+    .footer-links a:hover {
+        transform: none;            /* 禁用位移效果 */
+    }
+    
+    /* 页脚联系方式在移动端调整 */
+    .footer-contact li {
+        justify-content: center;    /* 居中对齐 */
+    }
+    
+    /* 页脚版权信息在移动端的适配 */
+    footer p {
+        font-size: 13px;            /* 缩小字号：13px */
+        padding: 0 10px;            /* 添加水平内边距，防止文字贴边 */
+    }
+    
+    /* 页脚二维码在移动端的适配 */
+    .footer-qr-codes {
+        justify-content: center;    /* 居中对齐 */
+        gap: 12px;                  /* 减小间距：12px */
+    }
+    
+    /* 页脚二维码图片在移动端进一步缩小 */
+    .footer-qr-image {
+        width: 70px;                /* 移动端宽度：70px */
+        height: 70px;               /* 移动端高度：70px */
+    }
+    
+    /* 页脚二维码说明文字在移动端的适配 */
+    .footer-qr-text {
+        font-size: 12px;            /* 缩小字号：12px */
+    }
 }

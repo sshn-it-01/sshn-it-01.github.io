@@ -114,15 +114,74 @@
         width: 190px;               /* 平板端适度缩小图片：190px */
         height: 190px;              /* 高度：190px */
     }
+    
+    /* 联系页面门店图片卡片在平板端的适配 */    
+    .store-photo-img {
+        height: 160px;              /* 平板端减小图片高度 */
+    }
+    
+    .store-photo-caption {
+        padding: 8px 12px;          /* 减小内边距 */
+        font-size: 13px;            /* 字号 */
+    }
 }
 
 /* -----------------------------------------------------------------------------
- * 2. 768px 断点 - 移动设备适配
- * 功能：完整的移动端样式适配，包括导航、布局、表单等所有组件
- * 策略：三层防护机制确保移动端完美显示
- * - 全局层：overflow-x: hidden 防止水平溢出
- * - 容器层：width: 100% 确保不超出父容器
- * - 布局层：强制单列布局，适当减小内边距
+ * 响应式媒体查询 - 平板设备适配 (768px-1024px)
+ * 目标设备：iPad、小尺寸平板等中等屏幕设备
+ * -------------------------------------------------------------------------- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* 导航栏在平板设备的适配 */
+    .nav-container {
+        padding: 16px;              /* 调整内边距 */
+    }
+    
+    /* [关键修复] 主网格布局强制两列 - 防止 900-1024px 时出现 3+1 的不规则排列 */
+    .grid {
+        grid-template-columns: repeat(2, 1fr);  /* 强制两列布局，确保 2x2 矩阵排列 */
+        gap: 25px;                  /* 适中间距 */
+    }
+    
+    /* 核心优势展示网格在平板设备的适配 - 2x2 布局 */
+    .about-features {
+        grid-template-columns: repeat(2, 1fr);  /* 强制两列布局，形成 2x2 排列 */
+        gap: 20px;                  /* 适中间距 */
+        margin-bottom: 35px;        /* 下边距 */
+    }
+    
+    /* 优势项在平板设备的适配 */
+    .feature-item {
+        padding: 20px 15px;         /* 适中的内边距 */
+    }
+    
+    /* 优势图标在平板设备的大小 */
+    .feature-icon {
+        font-size: 40px;            /* 图标大小介于桌面和移动端之间 */
+        margin-bottom: 12px;        /* 下边距 */
+    }
+    
+    /* 优势标题在平板设备的适配 */
+    .feature-item h3 {
+        font-size: 18px;            /* 字号 */
+        margin-bottom: 8px;         /* 下边距 */
+    }
+    
+    /* 优势描述在平板设备的适配 */
+    .feature-item p {
+        font-size: 14px;            /* 字号 */
+        line-height: 1.6;           /* 行高 */
+    }
+
+    /* 联系信息框适配 - 移动端 */
+    .contact-info-box {
+        padding: 20px;              /* 减小内边距：20px */
+        flex: none;                 /* 禁用弹性增长 */
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * 响应式媒体查询 - 移动设备适配 (最大宽度 768px)
+ * 目标设备：iPhone、Android 手机等小屏幕设备
  * -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     /* [第一层防护] 全局设置：防止小屏幕上的水平溢出 */
@@ -269,7 +328,7 @@
         padding: 20px;              /* 减小内边距：20px */
         height: auto;               /* 移动端同样高度自适应 */
         flex: none;                 /* 禁用弹性增长 */
-}
+    }
 
     .contact-info-box h3 {
         font-size: 18px;            /* 缩小标题：18px */
@@ -281,6 +340,16 @@
 
     .contact-info-box p {
         font-size: 14px;            /* 缩小文字：14px */
+    }
+    
+    /* 联系页面门店图片卡片在移动端的适配 */    
+    .store-photo-img {
+        height: 160px;              /* 移动端减小图片高度 */
+    }
+    
+    .store-photo-caption {
+        padding: 8px 12px;          /* 减小内边距 */
+        font-size: 12px;            /* 移动端缩小字号 */
     }
 
     /* 地址链接在小屏幕的处理 */
@@ -350,5 +419,143 @@
     /* 页脚二维码说明文字在移动端的适配 */
     .footer-qr-text {
         font-size: 12px;            /* 缩小字号：12px */
+    }
+    
+    /* =========================================================================
+     * 联系页面样式 - 移动端适配
+     * 功能：为联系页面的门店图片展示等组件提供移动端优化
+     * ========================================================================= */
+    
+    /* 联系页面门店图片卡片在移动端的适配 */  
+    .store-photo-img {
+        height: 160px;              /* 移动端减小图片高度 */
+    }
+    
+    .store-photo-caption {
+        padding: 8px 12px;          /* 减小内边距 */
+        font-size: 12px;            /* 移动端缩小字号 */
+    }
+    
+    /* =========================================================================
+     * 首页优化样式 - 移动端适配
+     * 功能：为首页新增的 Hero 区域、优势展示等提供移动端优化
+     * ========================================================================= */
+    
+    /* Hero 标题在移动端的适配 */
+    .hero-title {
+        font-size: 26px;            /* 移动端缩小至 26px */
+        margin-bottom: 14px;        /* 减小下边距 */
+    }
+    
+    /* Hero 副标题在移动端的适配 */
+    .hero-subtitle {
+        font-size: 16px;            /* 移动端缩小至 16px */
+        margin-bottom: 25px;        /* 减小下边距 */
+    }
+    
+    /* Hero 按钮组在移动端垂直排列 */
+    .hero-buttons {
+        flex-direction: column;     /* 垂直排列 */
+        gap: 12px;                  /* 减小间距 */
+        align-items: center;        /* 居中对齐 */
+    }
+    
+    /* 大按钮在移动端的适配 */
+    .btn-large {
+        width: 100%;                /* 占满全宽 */
+        max-width: 280px;           /* 最大宽度限制 */
+        padding: 12px 30px;         /* 调整内边距 */
+        font-size: 16px;            /* 缩小字号 */
+    }
+    
+    /* 轮廓按钮在移动端的适配 */
+    .btn-outline:hover {
+        transform: translateY(-2px); /* 减小悬停位移 */
+    }
+    
+    /* 关于我们区块在移动端的适配 */
+    .about-section {
+        padding: 40px 15px;         /* 减小上下内边距 */
+    }
+    
+    /* 关于我们介绍文字在移动端的适配 */
+    .about-intro {
+        font-size: 16px;            /* 缩小字号 */
+        line-height: 1.7;           /* 调整行高 */
+        margin-bottom: 35px;        /* 减小下边距 */
+    }
+    
+    /* 核心优势展示网格在移动端的适配 */
+    .about-features {
+        grid-template-columns: repeat(2, 1fr);  /* 强制两列布局 */
+        gap: 15px;                  /* 减小间距 */
+        margin-bottom: 30px;        /* 减小下边距 */
+    }
+    
+    /* 优势项在移动端的适配 */
+    .feature-item {
+        padding: 18px 12px;         /* 减小内边距 */
+    }
+    
+    /* 优势图标在移动端缩小 */
+    .feature-icon {
+        font-size: 36px;            /* 缩小图标 */
+        margin-bottom: 10px;        /* 减小下边距 */
+    }
+    
+    /* 优势标题在移动端的适配 */
+    .feature-item h3 {
+        font-size: 16px;            /* 缩小字号 */
+        margin-bottom: 8px;         /* 减小下边距 */
+    }
+    
+    /* 优势描述在移动端的适配 */
+    .feature-item p {
+        font-size: 13px;            /* 缩小字号 */
+        line-height: 1.5;           /* 调整行高 */
+    }
+    
+    /* 产品区块在移动端的适配 */
+    .products-section {
+        padding: 40px 15px;         /* 减小上下内边距 */
+    }
+    
+    /* 章节副标题在移动端的适配 */
+    .section-subtitle {
+        font-size: 14px;            /* 缩小字号 */
+        margin-top: -20px;          /* 调整负边距 */
+        margin-bottom: 30px;        /* 减小下边距 */
+        padding: 0 10px;            /* 添加水平内边距 */
+    }
+    
+    /* 产品卡片在移动端的适配 */
+    .card-product .card-image {
+        height: 180px;              /* 减小图片高度 */
+    }
+    
+    /* 产品卡片内容区在移动端的适配 */
+    .card-product .card-content {
+        padding: 18px;              /* 减小内边距 */
+    }
+    
+    /* 产品卡片标题在移动端的适配 */
+    .card-product .card-content h3 {
+        font-size: 18px;            /* 缩小字号 */
+    }
+    
+    /* 产品卡片描述在移动端的适配 */
+    .card-product .card-content p {
+        font-size: 14px;            /* 缩小字号 */
+        line-height: 1.6;           /* 调整行高 */
+    }
+    
+    /* 了解更多链接在移动端的适配 */
+    .card-more {
+        font-size: 14px;            /* 缩小字号 */
+    }
+    
+    /* 产品底部行动按钮区域在移动端的适配 */
+    .products-cta {
+        margin-top: 35px;           /* 减小上边距 */
     }
 }

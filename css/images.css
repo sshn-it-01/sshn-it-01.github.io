@@ -196,3 +196,35 @@
     /* 继承 .company-photo-img 的所有样式 */
     background-image: url('../images/gallary/hnsf_warehouse_01.jpg');  /* 背景图：仓储物流设施 */
 }
+
+/* -----------------------------------------------------------------------------
+ * 10. 旗舰店照片样式
+ * 功能：为旗舰店展示区域的照片定义统一的显示样式
+ * 规范：装饰性图片，使用 CSS 背景图实现，便于统一控制尺寸和显示效果
+ * -------------------------------------------------------------------------- */
+
+/* 旗舰店（预留） */
+.store-flagship {
+    background-image: url('../images/stores/store_flagship.jpg');
+}
+
+/* -----------------------------------------------------------------------------
+ * 11. 联系页面门店照片样式
+ * 功能：为联系页面门店信息卡片中的照片定义统一的显示样式
+ * 规范：装饰性图片，使用 CSS 背景图实现，便于统一控制尺寸和显示效果
+ * -------------------------------------------------------------------------- */
+
+/* 健北店照片 */
+.store-photo-jianbei {
+    background-image: url('../images/gallary/hnsf_hq.jpg');
+}
+
+/* 广海店照片 */
+.store-photo-guanghai {
+    background-image: url('../images/gallary/hnsf_guanghai.jpg');
+}
+
+/* 南丰店照片 */
+.store-photo-nanfeng {
+    background-image: url('../images/gallary/hnsf_guanghai.jpg');
+}

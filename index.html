@@ -79,13 +79,16 @@
     <section class="hero">  <!-- Hero 区域：带背景图和渐变遮罩 -->
         
         <!-- 主标题：一句话概括企业定位 -->
-        <h1>专业润滑油供应商，护航工业与出行</h1>
+        <h1 class="hero-title">专业润滑油供应商，护航工业与出行</h1>
         
         <!-- 副标题：补充说明业务范围 -->
-        <p>提供高品质工业润滑油与车用润滑油解决方案</p>
+        <p class="hero-subtitle">提供高品质工业润滑油与车用润滑油解决方案</p>
         
-        <!-- 行动按钮：引导用户查看产品 -->
-        <a href="cases.html" class="btn">了解更多</a>
+        <!-- 行动按钮组：引导用户查看产品和案例 -->
+        <div class="hero-buttons">
+            <a href="products.html" class="btn btn-primary btn-large">查看产品</a>
+            <a href="cases.html" class="btn btn-outline btn-large">了解更多</a>
+        </div>
     </section>
 
     <!-- =========================================================================
@@ -93,16 +96,42 @@
          功能：简要介绍公司历史、业务领域和市场定位
          布局：居中文字，最大宽度限制（提升可读性）
          ========================================================================= -->
-    <section class="container">  <!-- 内容容器：限制宽度并居中 -->
+    <section class="container about-section">  <!-- 内容容器：限制宽度并居中 -->
         
         <!-- 章节标题 -->
         <h2 class="section-title"><a href="about.html">关于我们</a></h2>
         
-        <!-- 内容区域：text-center 居中对齐，content-max-width 限制最大宽度 -->
-        <div class="text-center content-max-width">
-            <p>
+        <!-- 内容区域：添加更多详细信息 -->
+        <div class="text-center content-max-width about-content">
+            <p class="about-intro">
                 佛山市华南森孚贸易有限公司成立于 1991 年，致力于为汽车制造、工程机械、工厂设备、食品生产等领域的客户提供高品质的润滑解决方案。
             </p>
+            
+            <!-- 核心优势展示 -->
+            <div class="about-features">
+                <div class="feature-item">
+                    <div class="feature-icon">🏆</div>
+                    <h3>30+ 年经验</h3>
+                    <p>深耕行业三十余载，专业技术团队</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>品质保证</h3>
+                    <p>严格质量管控，国际认证标准</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🚀</div>
+                    <h3>快速响应</h3>
+                    <p>24 小时技术支持，及时配送服务</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h3>定制方案</h3>
+                    <p>一对一用油咨询，优化成本方案</p>
+                </div>
+            </div>
+            
+            <a href="about.html" class="btn btn-primary">了解更多</a>
         </div>
     </section>
 
@@ -112,17 +141,20 @@
          布局：三列网格布局（桌面端），使用卡片组件
          背景：bg-gray 浅灰色背景，与其他区域区分
          ========================================================================= -->
-    <section class="container bg-gray">  <!-- 带灰色背景的内容容器 -->
+    <section class="container bg-gray products-section">  <!-- 带灰色背景的内容容器 -->
         
         <!-- 章节标题 -->
         <h2 class="section-title"><a href="products.html">产品系列</a></h2>
+        
+        <!-- 副标题说明 -->
+        <p class="section-subtitle">全面覆盖工业与车用润滑需求，提供高性能产品与专业技术支持</p>
         
         <!-- 网格布局容器：自动适应列数 -->
         <div class="grid">
             
             <!-- 产品卡片 1：工业润滑油 -->
             <a href="products.html#industrial-lubricants" class="card-link">
-                <div class="card">  <!-- 卡片容器：带边框、圆角和悬停效果 -->
+                <div class="card card-product">  <!-- 卡片容器：带边框、圆角和悬停效果 -->
                     
                     <!-- 产品图片：使用 CSS 背景图实现，遵循图片资源管理规范 -->
                     <div class="card-image card-img-industrial"></div>
@@ -130,36 +162,44 @@
                     <!-- 卡片内容区域 -->
                     <div class="card-content">
                         <h3>工业润滑油</h3>  <!-- 产品名称 -->
-                        <p>适用于各类工业设备，提供卓越的润滑保护。</p>
+                        <p>适用于各类工业设备，提供卓越的润滑保护，延长设备使用寿命，提升运行效率。</p>
                             <!-- 产品简介 -->
+                        <span class="card-more">了解详情 →</span>
                     </div>
                 </div>
             </a>
             
             <!-- 产品卡片 2：车用润滑油 -->
             <a href="products.html#automotive-lubricants" class="card-link">
-                <div class="card">
+                <div class="card card-product">
                     <!-- 产品图片：使用 CSS 背景图实现 -->
                     <div class="card-image card-img-automotive"></div>
                     <div class="card-content">
                         <h3>车用润滑油</h3>
-                        <p>为汽车发动机提供全方位保护，延长使用寿命。</p>
+                        <p>为汽车发动机提供全方位保护，有效减少磨损，降低油耗，延长发动机使用寿命。</p>
+                        <span class="card-more">了解详情 →</span>
                     </div>
                 </div>
             </a>
             
             <!-- 产品卡片 3：特种润滑油 -->
             <a href="products.html#special-lubricants" class="card-link">
-                <div class="card">
+                <div class="card card-product">
                     <!-- 产品图片：使用 CSS 背景图实现 -->
                     <div class="card-image card-img-special"></div>
                     <div class="card-content">
                         <h3>特种润滑油</h3>
-                        <p>针对特殊工况定制的高性能润滑产品。</p>
+                        <p>针对特殊工况和特定设备定制的高性能润滑产品，满足极端环境下的润滑需求。</p>
+                        <span class="card-more">了解详情 →</span>
                     </div>
                 </div>
             </a>
             
+        </div>
+        
+        <!-- 底部行动按钮 -->
+        <div class="products-cta">
+            <a href="products.html" class="btn btn-primary">查看全部产品</a>
         </div>
     </section>
 

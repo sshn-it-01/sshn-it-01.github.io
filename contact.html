@@ -80,40 +80,52 @@
         <!-- 章节主标题 -->
         <h2 class="section-title">联系我们</h2>
         
+        <!-- 章节副标题 -->
+        <p class="section-subtitle">欢迎垂询，我们将竭诚为您服务</p>
+        
         <!-- 网格布局容器：grid-two-columns 指定为两列布局 -->
         <div class="grid grid-two-columns">
             
             <!-- 左侧栏目：公司总部信息 -->
             <div class="contact-info-box">  <!-- 信息框容器：带边框和阴影的卡片样式 -->
                 <h3>公司信息</h3>  <!-- 栏目标题 -->
-                <h4>佛山市华南森孚贸易有限公司 (健北店)</h4>  <!-- 副标题：具体分店名 -->
                 
-                <!-- 地址信息：包含可点击的高德地图链接 -->
-                <p>
-                    <strong>地址: </strong>佛山市三水区西南街健力宝北路10号
-                </p>
-                
-                <!-- 导航链接：点击跳转到高德地图 APP -->
-                <p>
-                    <strong>导航: </strong>
-                    <a href="https://www.amap.com/search?query=佛山市华南森孚贸易有限公司" 
-                       target="_blank"  
-                       class="address-link">  <!-- 新标签页打开，不离开当前网站 --><!-- 蓝色虚线下划线样式 -->
-                        📍高德地图
-                    </a>
-                </p>
-                
-                <!-- 联系电话 -->
-                <p><strong>电话: </strong><a href="tel:0757-87722666" class="address-link">0757-87722666</a></p>
-                
-                <!-- 电子邮箱 -->
-                <p><strong>邮箱: </strong><a href="mail:hnsh1991@126.com" class="address-link">hnsh1991@126.com</a></p>
-                
-                <!-- 营业时间 -->
-                <p><strong>工作时间: </strong>周一至周日 08:00-18:00</p>
+                <!-- 文本信息区域 -->
+                <div class="contact-info-text">
+                    <!-- 副标题：具体分店名 -->
+                    <h4>佛山市华南森孚贸易有限公司 (健北店)</h4>  
 
-                <!-- 门店图片 -->
-                <div class="company-photo-img company-photo-building-1"></div>
+                    <!-- 地址信息：包含可点击的高德地图链接 -->
+                    <p>
+                        <strong>地址：</strong>佛山市三水区西南街健力宝北路 10 号
+                    </p>
+                    
+                    <!-- 导航链接：点击跳转到高德地图 APP -->
+                    <p>
+                        <strong>导航：</strong>
+                        <a href="https://www.amap.com/search?query=佛山市华南森孚贸易有限公司" 
+                           target="_blank"  
+                           class="address-link">  <!-- 新标签页打开，不离开当前网站 --><!-- 蓝色虚线下划线样式 -->
+                            📍高德地图
+                        </a>
+                    </p>
+                    
+                    <!-- 联系电话 -->
+                    <p><strong>电话：</strong><a href="tel:0757-87722666" class="address-link">0757-87722666</a></p>
+                    
+                    <!-- 电子邮箱 -->
+                    <p><strong>邮箱：</strong><a href="mailto:hnsh1991@126.com" class="address-link">hnsh1991@126.com</a></p>
+                    
+                    <!-- 营业时间 -->
+                    <p><strong>工作时间：</strong>周一至周日 08:00-18:00</p>
+
+                </div>
+
+                <!-- 门店图片卡片 -->
+                <div class="contact-store-image">
+                    <div class="store-photo-img store-photo-jianbei"></div>
+                    <div class="store-photo-caption">健北店实景</div>
+                </div>
             </div>
             
             <!-- 右侧栏目：各门店信息 -->
@@ -121,33 +133,61 @@
                 <h3>门店信息</h3>
                 
                 <!-- 门店 1：广海店 -->
-                <h4>华南森孚美孚换油中心 (广海店)</h4>
-                <p><strong>地址: </strong>佛山市三水区广海大道西 23 号</p>
-                <p>
-                    <strong>导航: </strong>
-                    <a href="https://www.amap.com/search?query=佛山市华南森孚" 
-                       target="_blank" 
-                       class="address-link">📍高德地图</a>
-                </p>
-                <p><strong>电话: </strong><a href="tel:0757-87820666" class="address-link">0757-87820666</a></p>
-                <p><strong>工作时间: </strong>周一至周日 08:00-18:00</p>
+                <div class="store-info-item">
+                    
+                    <!-- 文本信息区域 -->
+                    <div class="contact-info-text">
+                        <h4>华南森孚美孚换油中心 (广海店)</h4>
+                        <p><strong>地址：</strong>佛山市三水区广海大道西 23 号</p>
+                        <p>
+                            <strong>导航：</strong>
+                            <a href="https://www.amap.com/search?query=佛山市华南森孚" 
+                               target="_blank" 
+                               class="address-link">📍高德地图</a>
+                        </p>
+                        <p><strong>电话：</strong><a href="tel:0757-87820666" class="address-link">0757-87820666</a></p>
+                        <p><strong>邮箱：</strong><a href="mailto:hnsh1991@126.com" class="address-link">hnsh1991@126.com</a></p>
+                        <p><strong>工作时间：</strong>周一至周日 08:00-18:00</p>
 
-                <!-- 空行分隔：视觉区分两个门店 -->
-                <br>
-                
-                <!-- 门店 2：南丰店 -->
-                <h4>华南森孚 (南丰店)</h4>
-                <p><strong>地址: </strong>佛山市三水区南丰大道与荷湖南路交叉口南 120 米</p>
-                <p>
-                    <strong>导航: </strong>
-                    <a href="https://www.amap.com/search?query=佛山市华南森孚" 
-                       target="_blank" 
-                       class="address-link">📍高德地图</a>
-                </p>
-                <p><strong>电话: </strong><a href="tel:0757-87821393" class="address-link">0757-87821393</a></p>
-                <p><strong>工作时间: </strong>周一至周日 08:00-18:00</p>
-
+                    </div>
+                    
+                    <!-- 门店图片卡片 -->
+                    <div class="contact-store-image">
+                        <div class="store-photo-img store-photo-guanghai"></div>
+                        <div class="store-photo-caption">广海店实景</div>
+                    </div>
+                </div>
             </div>
+                
+            <div class="contact-info-box">
+                <h3>门店信息</h3>
+
+                <!-- 门店 2：南丰店 -->
+                <div class="store-info-item">
+                    
+                    <!-- 文本信息区域 -->
+                    <div class="contact-info-text">
+                        <h4>华南森孚 (南丰店)</h4>
+                        <p><strong>地址：</strong>佛山市三水区南丰大道与荷湖南路交叉口南 120 米</p>
+                        <p>
+                            <strong>导航：</strong>
+                            <a href="https://www.amap.com/search?query=佛山市华南森孚" 
+                               target="_blank" 
+                               class="address-link">📍高德地图</a>
+                        </p>
+                        <p><strong>电话：</strong><a href="tel:0757-87821393" class="address-link">0757-87821393</a></p>
+                        <p><strong>邮箱：</strong><a href="mailto:hnsh1991@126.com" class="address-link">hnsh1991@126.com</a></p>
+                        <p><strong>工作时间：</strong>周一至周日 08:00-18:00</p>
+                    </div>
+                    
+                    <!-- 门店图片卡片 -->
+                    <div class="contact-store-image">
+                        <div class="store-photo-img store-photo-nanfeng"></div>
+                        <div class="store-photo-caption">南丰店实景</div>
+                    </div>
+                </div>
+            </div>
+
             
             <!-- 第三栏：微信公众号和小程序二维码 -->
             <div>

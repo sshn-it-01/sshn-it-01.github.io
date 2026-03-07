@@ -31,6 +31,15 @@
     background-repeat: no-repeat;   /* 不重复平铺 */
 }
 
+/* 产品卡片图片容器 - 用于包裹产品图片 */
+.product-card-image {
+    width: 100%;                    /* 宽度：占满卡片容器 */
+    height: 380px;                  /* 高度：380px，提供足够的产品展示空间 */
+    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
+    background-position: center;    /* 背景位置：居中 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
+}
+
 /* -----------------------------------------------------------------------------
  * 2. Logo 图片样式 - 导航栏图形 Logo
  * 功能：公司 Logo 图形元素的显示控制
@@ -90,6 +99,43 @@
 /* 轴承油分类卡片背景 */
 .card-img-bearing {
     background-image: url('/images/products/p_zhou-cheng_01.webp');
+}
+
+/* 没找到想要的产品的卡片背景 */
+.card-img-aviation {
+    background-image: url('/images/products/aviation.webp');
+}
+
+/* -----------------------------------------------------------------------------
+ * 4.1 液压油系列产品背景图
+ * 功能：为液压油产品系列的不同类型定义专用背景图
+ * 规范：装饰性图片，使用 CSS 背景图实现，便于统一控制
+ * -------------------------------------------------------------------------- */
+
+/* 美孚DTE®20UT长效液压油 */
+.card-img-hydraulic-1 {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+/* 美孚DTE® 10 超凡系列 */
+.card-img-hydraulic-2 {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+.card-img-hydraulic-3 {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+.card-img-hydraulic-4 {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+.card-img-hydraulic-5 {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+.card-img-hydraulic-6 {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
 }
 
 /* -----------------------------------------------------------------------------

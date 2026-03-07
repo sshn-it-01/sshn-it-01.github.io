@@ -80,16 +80,35 @@
          ========================================================================= -->
     <section class="container">  <!-- 内容容器：限制宽度并居中 -->
         
-        <!-- 章节标题 -->
+        <!-- 章节主标题 -->
         <h2 class="section-title">合作案例</h2>
+        
+        <!-- 章节副标题 -->
+        <p class="section-subtitle">服务各行业领先企业，用实际效果证明产品价值与专业能力</p>
         
         <!-- 网格布局容器：自动适应列数 -->
         <div class="grid">
             
+            <a href="https://mp.weixin.qq.com/s/WD2MvEW08f3xIrTiJkbg5A" class="card-link">
+                <div class="card">
+                    <div class="card-image case-img-newyear" 
+                         role="img" 
+                         aria-label="华南森孚贺新年图片">
+                    </div>
+                    <div class="card-content">
+                        <h3>华南森孚贺新年</h3>
+                        <p>飞马奔腾启新程</p>
+                    </div>
+                </div>
+            </a>
+
             <!-- 案例卡片 1：某大型制造工厂 -->
             <div class="card">
-                <!-- 案例图片：使用<img>标签展示实际场景 -->
-                <img src="/images/products/Factory+Case" alt="工厂案例">
+                <!-- 案例图片容器：使用 CSS 背景图显示 -->
+                <div class="card-image case-img-factory" 
+                     role="img" 
+                     aria-label="工厂案例图片">
+                </div>
                 <!-- 卡片内容区域 -->
                 <div class="card-content">
                     <h3>某大型制造工厂</h3>  <!-- 案例名称 -->
@@ -100,7 +119,10 @@
             
             <!-- 案例卡片 2：某物流运输公司 -->
             <div class="card">
-                <img src="/images/products/Transport+Case" alt="运输公司案例">
+                <div class="card-image case-img-transport" 
+                     role="img" 
+                     aria-label="运输公司案例图片">
+                </div>
                 <div class="card-content">
                     <h3>某物流运输公司</h3>
                     <p>车队使用我司车用润滑油，发动机寿命延长 20%。</p>
@@ -109,7 +131,10 @@
             
             <!-- 案例卡片 3：某矿山企业 -->
             <div class="card">
-                <img src="/images/products/Mining+Case" alt="矿山案例">
+                <div class="card-image case-img-mining" 
+                     role="img" 
+                     aria-label="矿山案例图片">
+                </div>
                 <div class="card-content">
                     <h3>某矿山企业</h3>
                     <p>特种润滑油应对极端工况，设备维护成本大幅降低。</p>

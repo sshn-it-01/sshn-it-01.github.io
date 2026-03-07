@@ -113,38 +113,29 @@
 }
 
 /* -----------------------------------------------------------------------------
- * 6. 液压油系列产品背景图
- * 功能：为液压油产品系列的不同类型定义专用背景图
+ * 6. 案例卡片背景图样式
+ * 功能：为项目案例页面的合作案例卡片定义背景图片
+ * 规范：装饰性图片，使用 CSS 背景图实现，便于统一控制
  * -------------------------------------------------------------------------- */
 
-/* HM 抗磨液压油 */
-.card-img-hm {
-    background-image: url('/images/products/HM+Anti-wear+Hydraulic+Oil');
+/* 新年贺图案例卡片背景 */
+.case-img-newyear {
+    background-image: url('../images/cases/hnsf_2026-new-year-banner_01.webp');
 }
 
-/* HV 低温液压油 */
-.card-img-hv {
-    background-image: url('/images/products/HV+Low-temperature+Hydraulic+Oil');
+/* 工厂案例卡片背景 */
+.case-img-factory {
+    background-image: url('../images/cases/factory-case.webp');
 }
 
-/* HG 液压导轨油 */
-.card-img-hg {
-    background-image: url('/images/products/HG+Hydraulic+Guideway+Oil');
+/* 运输公司案例卡片背景 */
+.case-img-transport {
+    background-image: url('../images/cases/transport-case.webp');
 }
 
-/* 无灰液压油 */
-.card-img-ashless {
-    background-image: url('/images/products/Ashless+Hydraulic+Oil');
-}
-
-/* 防火液压油 */
-.card-img-fire-resistant {
-    background-image: url('/images/products/Fire-resistant+Hydraulic+Oil');
-}
-
-/* 航空液压油 */
-.card-img-aviation {
-    background-image: url('/images/products/Aviation+Hydraulic+Oil');
+/* 矿山案例卡片背景 */
+.case-img-mining {
+    background-image: url('../images/cases/mining-case.webp');
 }
 
 /* -----------------------------------------------------------------------------

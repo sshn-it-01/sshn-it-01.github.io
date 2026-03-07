@@ -166,7 +166,6 @@ header {
 
 /* 区域间距 - 用于 section 之间的垂直分隔 */
 .section-spacing {
-    margin-top: 30px;               /* 上边距：30px，创建舒适的区域间隔 */
     margin-bottom: 30px;            /* 下边距：60px，创建舒适的区域间隔 */
 }
 

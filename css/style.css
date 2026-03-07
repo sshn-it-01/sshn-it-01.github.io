@@ -427,18 +427,6 @@ footer {
     flex-shrink: 0;                 /* 不收缩：保持固定宽度 */
 }
 
-/* 页脚联系方式链接 */
-.footer-contact a {
-    color: #ccc;                    /* 颜色：浅灰色 */
-    transition: all 0.3s ease;      /* 过渡效果：0.3 秒 */
-}
-
-/* 页脚联系方式链接悬停 */
-.footer-contact a:hover {
-    color: var(--primary-color);    /* 悬停颜色：品牌蓝色 */
-    text-decoration: underline;     /* 悬停下划线：提示可点击 */
-}
-
 /* 页脚二维码容器 - 小型化自适应显示 */
 .footer-qr-codes {
     display: flex;                  /* Flexbox 布局：二维码水平排列 */
@@ -842,6 +830,15 @@ footer p {
     background-size: cover;         /* 背景尺寸：覆盖整个容器 */
     background-position: center;    /* 背景位置：居中显示 */
     background-repeat: no-repeat;   /* 不重复平铺 */
+    cursor: pointer;                /* [交互优化] 鼠标变为手型，提示可点击 */
+    transition: transform 0.3s ease, filter 0.3s ease;
+                                    /* [灯箱功能] 添加过渡效果 */
+}
+
+/* [灯箱功能] 公司照片悬停效果 - 提示可点击放大 */
+.company-photo-img:hover {
+    transform: scale(1.05);         /* 轻微放大 5%，提供视觉反馈 */
+    filter: brightness(1.1);        /* 亮度提升 10%，增强对比 */
 }
 
 /* 照片说明文字 */
@@ -898,6 +895,15 @@ footer p {
     background-size: cover;         /* 背景尺寸：覆盖整个容器 */
     background-position: center;    /* 背景位置：居中显示 */
     background-repeat: no-repeat;   /* 不重复平铺 */
+    cursor: pointer;                /* [交互优化] 鼠标变为手型，提示可点击 */
+    transition: transform 0.3s ease, filter 0.3s ease;
+                                    /* [灯箱功能] 添加过渡效果 */
+}
+
+/* [灯箱功能] 门店照片悬停效果 - 提示可点击放大 */
+.store-photo-img:hover {
+    transform: scale(1.05);         /* 轻微放大 5%，提供视觉反馈 */
+    filter: brightness(1.1);        /* 亮度提升 10%，增强对比 */
 }
 
 /* 门店照片说明文字 */

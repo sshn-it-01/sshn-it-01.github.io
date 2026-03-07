@@ -256,7 +256,7 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                                     /* [智能响应式策略] 自适应填充列数，每列最小 300px，最大等分剩余空间 */
     gap: 30px;                      /* 间距：网格项之间 30px */
-    align-items: stretch;           /* [关键] 垂直对齐：拉伸所有项至相同高度，解决卡片高度不一致问题 */
+    align-items: start;             /* [关键修改] 顶部对齐：防止子元素被强制拉伸产生空白 */
 }
 
 /* 卡片链接包装器 - 使整个卡片可点击 */
@@ -526,9 +526,10 @@ footer p {
     background-color: #f9f9f9;      /* 浅灰背景：区分不同内容区块，增加视觉层次 */
 }
 
-/* 两列网格布局 */
+/* 两列布局工具类 */
 .grid-two-columns {
     grid-template-columns: 1fr 1fr; /* 两列等分布局：适用于桌面端的双列展示场景 */
+    align-items: stretch; /* 拉伸所有网格项以填充容器高度，确保两列高度一致 */
 }
 
 /* -----------------------------------------------------------------------------
@@ -694,6 +695,7 @@ footer p {
 
 /* 14. 联系信息框样式
  * 策略：清晰的视觉边界，层次分明的信息展示
+ * 实现：使用 Flexbox 布局，通过文本区域的 margin-bottom: auto 将图片推到底部
  * -------------------------------------------------------------------------- */
 .contact-info-box {
     background-color: #f9f9f9;      /* 浅灰背景：区分于主内容区 */
@@ -701,20 +703,25 @@ footer p {
     border-radius: 8px;             /* 圆角 8px：柔和的视觉感受 */
     padding: 30px;                  /* 内边距 30px：为联系信息提供充足的呼吸空间 */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    /* [微妙阴影] 2px 模糊，8px 扩散，5% 透明度，营造微妙的层次感 */
-    
-    /* [关键修改] 移除高度限制，允许自适应伸缩 */
-    height: auto;                   /* 高度自适应：根据内容自动调整，不强制拉伸 */
-    flex: none;                     /* 禁用弹性增长：防止被父容器拉伸 */
+                                    /* [微妙阴影] 2px 模糊，8px 扩散，5% 透明度，营造微妙的层次感 */
+
 }
+
+/* [关键修改] 移除之前的 *:last-child 规则，改用文本区域的 margin-bottom: auto */
 
 .contact-info-box h3 {
     margin-bottom: 20px;            /* 下边距 20px：标题与内容的舒适距离 */
     color: var(--primary-color);    /* 主色调：强化品牌识别 */
     font-size: 20px;                /* 字号 20px：足够醒目 */
     border-bottom: 2px solid var(--primary-color);
-    /* [强调分割线] 2px 主色调粗分割线，强调区块标题 */
+                                    /* [强调分割线] 2px 主色调粗分割线，强调区块标题 */
     padding-bottom: 10px;           /* 下内边距 10px：分割线与文字的舒适距离 */
+}
+
+/* 联系信息文本区域 - 关键修改 */
+.contact-info-text {
+    /* [关键] 自动下边距：吸收所有剩余空间，将后续元素（图片）推到底部 */
+    margin-bottom: auto;            
 }
 
 .contact-info-box h4 {
@@ -856,4 +863,309 @@ footer p {
     margin-top: 15px;               /* 上边距 15px */
     opacity: 0.7;                   /* 半透明效果 */
     display: none;                  /* 默认隐藏（桌面端不显示） */
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 16.8 联系页面门店图片卡片样式
+ * 功能：为联系页面的公司和门店信息区块中的图片提供统一的视觉样式
+ * 规范：卡片式设计，包含图片和说明文字，支持悬停效果
+ * -------------------------------------------------------------------------- */
+
+/* 联系页面门店图片容器 */
+.contact-store-image {
+    border-radius: 8px;             /* 圆角 8px */
+    overflow: hidden;               /* 隐藏超出边界的内容 */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+                                    /* 轻微阴影 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                    /* 平滑过渡效果 */
+    background-color: var(--white); /* 白色背景 */
+
+}
+
+/* 联系页面门店图片卡片悬停效果 */
+.contact-store-image:hover {
+    transform: translateY(-5px);    /* 向上移动 5px */
+    box-shadow: 0 6px 20px rgba(0, 86, 179, 0.15);
+                                    /* 增强阴影并带品牌色 */
+}
+
+/* 门店照片图片样式 */
+.store-photo-img {
+    width: 100%;                    /* 占满卡片宽度 */
+    height: 180px;                  /* 固定高度 180px */
+    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
+    background-position: center;    /* 背景位置：居中显示 */
+    background-repeat: no-repeat;   /* 不重复平铺 */
+}
+
+/* 门店照片说明文字 */
+.store-photo-caption {
+    padding: 10px 14px;             /* 内边距：上下 10px，左右 14px */
+    text-align: center;             /* 文字居中 */
+    font-size: 13px;                /* 字号 13px */
+    color: #666;                    /* 灰色文字 */
+    font-weight: 500;               /* 中等字重 */
+    background-color: var(--white); /* 白色背景 */
+}
+
+/* 门店信息项（用于分隔多个门店） */
+.store-info-item {
+    margin-bottom: 25px;            /* 下边距 25px */
+}
+
+.store-info-item:last-child {
+    margin-bottom: 0;               /* 最后一个元素移除下边距 */
+}
+
+
+/* -----------------------------------------------------------------------------
+ * 17. 首页优化样式
+ * 功能：增强首页视觉效果、用户体验和交互反馈
+ * 包括：Hero 区域增强、关于我们特色展示、产品卡片优化
+ * -------------------------------------------------------------------------- */
+
+/* ==================== Hero 区域增强 ==================== */
+
+/* Hero 标题优化 */
+.hero-title {
+    font-size: 36px;                /* 增大字号至 36px，增强视觉冲击力 */
+    font-weight: 700;               /* 加粗字重，更醒目 */
+    margin-bottom: 16px;            /* 减小下边距至 16px，紧凑布局 */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+                                    /* 文字阴影：增强在渐变背景上的可读性 */
+    animation: fadeInUp 0.8s ease-out;
+                                    /* 淡入向上动画：页面加载时从下方淡入并上移 */
+}
+
+/* Hero 副标题优化 */
+.hero-subtitle {
+    font-size: 20px;                /* 增大字号至 20px */
+    margin-bottom: 30px;            /* 下边距 30px */
+    opacity: 0.95;                  /* 轻微透明度，营造层次感 */
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+                                    /* 文字阴影：增强可读性 */
+    animation: fadeInUp 1s ease-out 0.2s both;
+                                    /* 延迟 0.2 秒执行相同动画 */
+}
+
+/* Hero 按钮组容器 */
+.hero-buttons {
+    display: flex;                  /* Flexbox 布局：横向排列按钮 */
+    gap: 15px;                      /* 按钮间距 15px */
+    justify-content: center;        /* 居中对齐 */
+    flex-wrap: wrap;                /* 允许换行：小屏幕自动换行 */
+    animation: fadeInUp 1.2s ease-out 0.4s both;
+                                    /* 延迟 0.4 秒执行动画 */
+}
+
+/* 大按钮样式 - 用于 Hero 区域 */
+.btn-large {
+    padding: 14px 35px;             /* 增大内边距：上下 14px，左右 35px */
+    font-size: 18px;                /* 增大字号至 18px */
+    border-radius: 8px;             /* 增大圆角至 8px，更现代 */
+    transition: all 0.3s ease;      /* 全属性过渡：包含 transform、background 等 */
+    position: relative;             /* 相对定位：为伪元素定位做准备 */
+    overflow: hidden;               /* 隐藏溢出：配合悬停效果 */
+}
+
+/* 轮廓按钮样式 - 次要行动按钮 */
+.btn-outline {
+    background: transparent;        /* 透明背景 */
+    border: 2px solid var(--white); /* 白色边框：2px */
+    color: var(--white);            /* 白色文字 */
+    box-shadow: none;               /* 无阴影 */
+}
+
+.btn-outline:hover {
+    background: var(--white);       /* 悬停时白色背景 */
+    color: var(--primary-color);    /* 品牌蓝文字 */
+    transform: translateY(-3px);    /* 上移 3px */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+                                    /* 白色光晕阴影 */
+}
+
+/* 主要按钮悬停增强 */
+.btn-primary:hover {
+    transform: translateY(-3px);    /* 上移 3px */
+    box-shadow: 0 8px 25px rgba(0, 86, 179, 0.5);
+                                    /* 增强阴影效果 */
+}
+
+/* 按钮点击效果 */
+.btn:active {
+    transform: translateY(-1px);    /* 点击时轻微上移 */
+}
+
+/* 淡入向上关键帧动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;                 /* 起始状态：完全透明 */
+        transform: translateY(30px); /* 起始位置：向下偏移 30px */
+    }
+    to {
+        opacity: 1;                 /* 结束状态：完全不透明 */
+        transform: translateY(0);   /* 结束位置：原始位置 */
+    }
+}
+
+/* ==================== 关于我们区域优化 ==================== */
+
+/* 关于我们区块增加间距 */
+.about-section {
+    padding: 60px 20px;             /* 增大上下内边距至 60px */
+}
+
+/* 关于我们内容区域 */
+.about-content {
+    max-width: 900px;               /* 限制最大宽度至 900px，提升阅读体验 */
+    margin: 0 auto;                 /* 水平居中 */
+}
+
+/* 关于我们介绍文字 */
+.about-intro {
+    font-size: 18px;                /* 增大字号至 18px */
+    line-height: 1.8;               /* 增大行高至 1.8，提升可读性 */
+    color: #444;                    /* 深灰色文字 */
+    margin-bottom: 50px;            /* 下边距 50px，与优势展示区分隔 */
+}
+
+/* 核心优势展示网格 */
+.about-features {
+    display: grid;                  /* Grid 布局 */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                                    /* 自适应列数：每列最小 200px */
+    gap: 25px;                      /* 间距 25px */
+    margin-bottom: 40px;            /* 下边距 40px */
+}
+
+/* 单个优势项 */
+.feature-item {
+    text-align: center;             /* 文字居中 */
+    padding: 25px 20px;             /* 内边距：上下 25px，左右 20px */
+    background: var(--white);       /* 白色背景 */
+    border-radius: 10px;            /* 圆角 10px */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+                                    /* 轻微阴影 */
+    transition: all 0.3s ease;      /* 全属性过渡 */
+    border: 1px solid rgba(0, 86, 179, 0.1);
+                                    /* 淡蓝色边框 */
+}
+
+/* 优势项悬停效果 */
+.feature-item:hover {
+    transform: translateY(-8px);    /* 上移 8px */
+    box-shadow: 0 12px 30px rgba(0, 86, 179, 0.15);
+                                    /* 增强阴影并带品牌色 */
+    border-color: rgba(0, 86, 179, 0.3);
+                                    /* 加深边框颜色 */
+}
+
+/* 优势图标 */
+.feature-icon {
+    font-size: 48px;                /* 大图标：48px */
+    margin-bottom: 15px;            /* 下边距 15px */
+    display: block;                 /* 块级显示 */
+}
+
+/* 优势标题 */
+.feature-item h3 {
+    font-size: 20px;                /* 字号 20px */
+    color: var(--primary-color);    /* 品牌蓝 */
+    margin-bottom: 10px;            /* 下边距 10px */
+    font-weight: 600;               /* 半粗体 */
+}
+
+/* 优势描述 */
+.feature-item p {
+    font-size: 15px;                /* 字号 15px */
+    color: #666;                    /* 浅灰色 */
+    line-height: 1.6;               /* 行高 1.6 */
+}
+
+/* ==================== 产品系列区域优化 ==================== */
+
+/* 产品区块增加间距 */
+.products-section {
+    padding: 60px 20px;             /* 增大上下内边距至 60px */
+}
+
+/* 章节副标题 */
+.section-subtitle {
+    text-align: center;             /* 居中对齐 */
+    font-size: 16px;                /* 字号 16px */
+    color: #666;                    /* 浅灰色 */
+    margin-top: -25px;              /* 负边距：向上拉近与主标题的距离 */
+    margin-bottom: 40px;            /* 下边距 40px */
+    max-width: 700px;               /* 限制最大宽度 */
+    margin-left: auto;              /* 水平居中 */
+    margin-right: auto;             /* 水平居中 */
+}
+
+/* 产品卡片增强 */
+.card-product {
+    border: 1px solid rgba(0, 86, 179, 0.15);
+                                    /* 淡蓝色边框 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                                    /* 轻微阴影 */
+}
+
+/* 产品卡片悬停增强 */
+.card-product:hover {
+    transform: translateY(-8px);    /* 上移 8px */
+    box-shadow: 0 15px 35px rgba(0, 86, 179, 0.15);
+                                    /* 更强的阴影并带品牌色 */
+    border-color: rgba(0, 86, 179, 0.3);
+                                    /* 加深边框颜色 */
+}
+
+/* 产品图片增强 */
+.card-product .card-image {
+    height: 220px;                  /* 增加图片高度至 220px */
+    transition: transform 0.4s ease;
+                                    /* 图片缩放过渡 */
+}
+
+.card-product:hover .card-image {
+    transform: scale(1.05);         /* 悬停时图片放大 5% */
+}
+
+/* 产品卡片内容区 */
+.card-product .card-content {
+    padding: 25px;                  /* 增大内边距至 25px */
+}
+
+/* 产品卡片标题 */
+.card-product .card-content h3 {
+    font-size: 22px;                /* 增大字号至 22px */
+    margin-bottom: 12px;            /* 减小下边距至 12px */
+}
+
+/* 产品卡片描述 */
+.card-product .card-content p {
+    font-size: 15px;                /* 字号 15px */
+    line-height: 1.7;               /* 行高 1.7 */
+    color: #555;                    /* 稍深的灰色 */
+    margin-bottom: 15px;            /* 下边距 15px */
+}
+
+/* 了解更多链接 */
+.card-more {
+    display: inline-block;          /* 行内块级 */
+    color: var(--primary-color);    /* 品牌蓝 */
+    font-weight: 600;               /* 半粗体 */
+    font-size: 15px;                /* 字号 15px */
+    transition: all 0.3s ease;      /* 全属性过渡 */
+}
+
+.card-more:hover {
+    color: #004494;                 /* 悬停时更深的蓝色 */
+    transform: translateX(5px);     /* 向右移动 5px，箭头效果 */
+}
+
+/* 产品底部行动按钮区域 */
+.products-cta {
+    text-align: center;             /* 居中对齐 */
+    margin-top: 50px;               /* 上边距 50px */
 }

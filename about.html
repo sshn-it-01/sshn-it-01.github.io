@@ -168,6 +168,29 @@
     </section>
 
     <!-- =========================================================================
+         [灯箱功能] 图片放大查看模态框（复用到所有页面）
+         功能：点击图片时弹出，全屏显示放大图片
+         关闭方式：点击右上角×按钮、点击图片外部区域或按 ESC 键
+         ========================================================================= -->
+    <div id="image-modal" class="image-modal" aria-hidden="true" role="dialog" 
+         aria-label="图片放大查看">
+        <!-- 模态框内容容器 -->
+        <div class="modal-content">
+            <!-- 关闭按钮：右上角 × 符号 -->
+            <span class="modal-close" id="modal-close">&times;</span>
+            
+            <!-- 图片容器：居中显示放大的门店/公司照片 -->
+            <div class="modal-image-container">
+                <!-- 高清图片：通过 JS 动态加载对应的图片源 -->
+                <img id="modal-image" class="modal-image" src="" alt="高清图片">
+            </div>
+            
+            <!-- 图片说明文字：显示店铺名称或场景说明 -->
+            <p id="modal-caption" class="modal-caption"></p>
+        </div>
+    </div>
+
+    <!-- =========================================================================
          页脚区域
          功能：显示版权信息、备案号、快速导航和联系方式
          布局：Sticky Footer，始终贴合页面底部

@@ -925,9 +925,93 @@ footer p {
     margin-bottom: 0;               /* 最后一个元素移除下边距 */
 }
 
+/* [灯箱功能] 灯箱/模态框容器 - 用于放大显示门店图片 */
+.image-modal {
+    display: none;                  /* 默认隐藏：不显示，通过 JS 控制显示（保持简单，由 JS 切换为 flex） */
+    position: fixed;                /* 固定定位：相对于浏览器窗口，不随滚动条移动 */
+    z-index: 9999;                  /* 最高层级：确保在所有内容之上 */
+    left: 0;                        /* 左边缘对齐 */
+    top: 0;                         /* 上边缘对齐 */
+    width: 100%;                    /* 占满整个视口宽度 */
+    height: 100%;                   /* 占满整个视口高度 */
+    background-color: rgba(0, 0, 0, 0.9);
+                                    /* 黑色半透明背景：90% 不透明度，营造聚焦效果 */
+    backdrop-filter: blur(5px);     /* 背景模糊：5px 模糊半径，提升视觉层次感 */
+}
 
-/* -----------------------------------------------------------------------------
- * 17. 首页优化样式
+/* [灯箱功能] 灯箱内容容器 - 居中显示放大图片 */
+.modal-content {
+    position: relative;             /* 相对定位：为子元素提供定位参考 */
+    margin: auto;                   /* 自动居中：水平和垂直居中 */
+    display: flex;                  /* Flex 布局：便于内部元素排列 */
+    flex-direction: column;         /* 纵向排列：图片在上，说明文字在下 */
+    justify-content: center;        /* 垂直居中 */
+    align-items: center;            /* 水平居中 */
+    max-width: 90%;                 /* 最大宽度：占视口 90%，留出边距 */
+    padding: 60px 20px 20px;        /* 内边距：顶部 60px（为关闭按钮留空间），左右和下各 20px */
+}
+
+/* [灯箱功能] 关闭按钮 - 右上角 × 符号 */
+.modal-close {
+    position: absolute;             /* 绝对定位：相对于 modal-content */
+    top: 10px;                      /* 顶部距离 10px：从内容区内部开始计算，确保可见 */
+    right: 10px;                    /* 右侧距离 10px：从内容区右边缘向内 10px */
+    color: #fff;                    /* 白色：在深色背景上清晰可见 */
+    font-size: 36px;                /* 字号 36px：足够大，易于点击 */
+    font-weight: bold;              /* 加粗 */
+    cursor: pointer;                /* 手型光标：提示可点击 */
+    transition: color 0.3s ease;    /* 过渡效果：颜色变化平滑 */
+    line-height: 1;                 /* 行高 1：防止文字上下多余空间 */
+    z-index: 10000;                 /* 更高一层：确保在所有内容之上，包括图片 */
+    background-color: rgba(0, 0, 0, 0.5);
+                                    /* 半透明黑色背景：增强按钮对比度，更易识别 */
+    width: 44px;                    /* 固定宽度 44px：便于手指点击（移动端友好） */
+    height: 44px;                   /* 固定高度 44px：正方形按钮 */
+    border-radius: 50%;             /* 圆形背景：美观且明确指示可点击区域 */
+    display: flex;                  /* Flex 布局：用于居中 × 符号 */
+    justify-content: center;        /* 水平居中 × 符号 */
+    align-items: center;            /* 垂直居中 × 符号 */
+}
+
+/* [灯箱功能] 关闭按钮悬停效果 */
+.modal-close:hover {
+    color: var(--primary-color);    /* 变为主题蓝色：提供视觉反馈 */
+}
+
+/* [灯箱功能] 灯箱图片容器 */
+.modal-image-container {
+    display: flex;                  /* Flex 布局 */
+    justify-content: center;        /* 水平居中 */
+    align-items: center;            /* 垂直居中 */
+    max-width: 100%;                /* 最大宽度限制 */
+    max-height: calc(100vh - 120px);
+                                    /* 最大高度：视口高度减去标题和按钮的空间 */
+}
+
+/* [灯箱功能] 灯箱中显示的图片 */
+.modal-image {
+    max-width: 100%;                /* 最大宽度：不超过容器 */
+    max-height: calc(100vh - 120px);
+                                    /* 最大高度：视口高度减去标题和按钮的空间 */
+    object-fit: contain;            /* 保持宽高比完整显示，不裁剪 */
+    border-radius: 4px;             /* 圆角 4px：柔和边角 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                                    /* 阴影：增强立体感 */
+}
+
+/* [灯箱功能] 灯箱图片说明文字 */
+.modal-caption {
+    margin-top: 15px;               /* 上边距 15px：与图片间隔 */
+    color: #fff;                    /* 白色文字 */
+    font-size: 16px;                /* 字号 16px */
+    text-align: center;             /* 居中对齐 */
+    padding: 10px 20px;             /* 内边距：上下 10px，左右 20px */
+    background-color: rgba(0, 0, 0, 0.6);
+                                    /* 半透明黑色背景：突出文字 */
+    border-radius: 4px;             /* 圆角 4px */
+}
+
+/* 17. 首页优化样式
  * 功能：增强首页视觉效果、用户体验和交互反馈
  * 包括：Hero 区域增强、关于我们特色展示、产品卡片优化
  * -------------------------------------------------------------------------- */

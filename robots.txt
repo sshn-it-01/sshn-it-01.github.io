@@ -1,0 +1,278 @@
+# =========================================================================
+# 华南森孚贸易有限公司 - robots.txt
+# =========================================================================
+# 文件说明：配置搜索引擎爬虫和 AI 大模型的访问权限
+# 位置：网站根目录（https://hnshenfu.com/robots.txt）
+# 更新时间：2026-03-08
+# 覆盖平台：
+#   - 国际搜索引擎：Google、Bing、Yahoo
+#   - 国内搜索引擎：百度、必应中国、360、搜狗
+#   - AI 大模型：ChatGPT、Claude、Gemini、文心一言等 15+ 平台
+# =========================================================================
+
+# 默认规则：允许所有爬虫访问整个网站
+User-agent: *
+Allow: /
+
+# 禁止访问的敏感路径（如有需要可取消注释）
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /temp/
+
+# 爬虫抓取延迟设置，减轻服务器压力
+Crawl-delay: 1
+
+# =========================================================================
+# 国际搜索引擎爬虫配置
+# =========================================================================
+
+# Google 爬虫（包含多个子爬虫）
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Google 图片爬虫
+User-agent: Googlebot-Image
+Allow: /
+
+# Google 移动端爬虫
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bing 搜索引擎
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo 搜索引擎
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# =========================================================================
+# 国内搜索引擎爬虫配置
+# =========================================================================
+
+# 百度搜索引擎
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+# 百度移动端爬虫
+User-agent: Baiduspider-mobile
+Allow: /
+
+# 必应中国
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+# 360 搜索引擎
+User-agent: 360Spider
+Allow: /
+
+# 360 移动端爬虫
+User-agent: Mirobot
+Allow: /
+
+# 搜狗搜索引擎
+User-agent: Sogou web spider
+Allow: /
+
+# 搜狗移动端爬虫
+User-agent: Sogou mobile spider
+Allow: /
+
+# 有道搜索
+User-agent: YoudaoBot
+Allow: /
+
+# 宜搜搜索
+User-agent: yisouspider
+Allow: /
+
+# =========================================================================
+# AI 大模型爬虫配置（重点优化）
+# =========================================================================
+
+# --- 国际 AI 平台 ---
+
+# ChatGPT (OpenAI)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+# Claude (Anthropic)
+User-agent: anthropic-ai
+Allow: /
+
+# Gemini (Google)
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI (Facebook)
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawl（开源数据集）
+User-agent: CCBot
+Allow: /
+
+# 字节系国际爬虫（TikTok 等）
+User-agent: Bytespider
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+# Amazon Alexa
+User-agent: Amazonbot
+Allow: /
+
+# --- 国内 AI 平台（重点支持）---
+
+# 百度文心一言
+User-agent: Ernie-Bot
+Allow: /
+
+# 阿里通义千问
+User-agent: Tongyi-Qianwen
+Allow: /
+
+# 腾讯元宝（混元大模型）
+User-agent: HunYuan
+Allow: /
+
+# 字节豆包
+User-agent: Doubao
+Allow: /
+
+# 阿里夸克
+User-agent: Quark
+Allow: /
+
+# 月之暗面 Kimi
+User-agent: Kimi
+Allow: /
+
+# MiniMax 海螺 AI
+User-agent: MiniMax
+Allow: /
+
+# 科大讯飞星火
+User-agent: Spark
+Allow: /
+
+# 360 智脑
+User-agent: 360Spider-Bot
+Allow: /
+
+# 搜狗 AI
+User-agent: Sogou-Bot
+Allow: /
+
+# 华为盘古
+User-agent: Pangu-Bot
+Allow: /
+
+# 小红书
+User-agent: XiaomiBot
+Allow: /
+
+# 抖音
+User-agent: ToutiaoBot
+Allow: /
+
+# =========================================================================
+# 社交媒体平台爬虫
+# =========================================================================
+
+# Twitter/X
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Pinterest
+User-agent: Pinterest
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+
+# =========================================================================
+# SEO 工具爬虫
+# =========================================================================
+
+# Ahrefs SEO 工具
+User-agent: AhrefsBot
+Allow: /
+
+# SEMrush
+User-agent: SemrushBot
+Allow: /
+
+# Majestic SEO
+User-agent: MJ12bot
+Allow: /
+
+# Moz
+User-agent: rogerbot
+Allow: /
+
+# Screaming Frog
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+# =========================================================================
+# 其他有益爬虫
+# =========================================================================
+
+# Archive.org 网页存档
+User-agent: ia_archiver
+Allow: /
+
+# DuckDuckGo 隐私搜索引擎
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex 俄罗斯搜索引擎
+User-agent: Yandex
+Allow: /
+
+# Naver 韩国搜索引擎
+User-agent: Yeti
+Allow: /
+
+# Seznam 捷克搜索引擎
+User-agent: SeznamBot
+Allow: /
+
+# =========================================================================
+# 网站地图位置声明
+# =========================================================================
+# 告诉爬虫我们的 sitemap.xml 位置，帮助更快索引整个网站
+Sitemap: https://hnshenfu.com/sitemap.xml
+
+# =========================================================================
+# AI 大模型专用信息文档
+# =========================================================================
+# 为 AI 大模型提供结构化的企业信息，提升 AI 检索准确性
+# 包含：公司简介、产品线、服务行业、FAQ、联系方式等
+Llms-txt: https://hnshenfu.com/llms.txt

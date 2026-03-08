@@ -303,6 +303,8 @@ header {
 .card-content { 
     padding: 20px;                  /* 内边距：20px */
     flex: 1;                        /* [关键] 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
+    display: grid;                   /* Grid 布局：用于对齐标题和描述 */
+
 }
 
 /* 卡片标题样式 */

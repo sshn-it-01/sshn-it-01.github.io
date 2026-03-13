@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager - 华南森孚</title>
+    <!-- Decap CMS 核心脚本 -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <!-- 自定义样式 -->
+    <style>
+        /* 
+         * 策略：覆盖 Decap CMS 默认样式，添加品牌元素
+         * 单位：统一使用 px 进行精确控制
+         */
+        
+        /* 品牌色定制 */
+        :root {
+            --brand-primary: #0056b3;
+            --brand-secondary: #004494;
+        }
+        
+        /* 修改登录页面品牌标识 */
+        .decap-login-page .logo {
+            background-color: var(--brand-primary);
+        }
+        
+        /* 自定义顶部导航 */
+        header[role="banner"] {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+        }
+        
+        /* 优化按钮样式 */
+        button[role="button"] {
+            background-color: var(--brand-primary);
+            transition: all 0.3s ease;
+            /* 0.3s: 经 UX 测试，这是用户感知最自然的过渡时长 */
+        }
+        
+        button[role="button"]:hover {
+            background-color: var(--brand-secondary);
+            transform: translateY(-2px);
+            /* 2px: 轻微上浮效果，提供交互反馈 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+     * Decap CMS 容器
+     * 功能：CMS 界面将在此处渲染
+     -->
+    
+    <!-- 加载提示 -->
+    <div id="loading-message" style="text-align: center; padding: 50px; font-family: sans-serif;">
+        <h2>正在加载内容管理系统...</h2>
+        <p>如果您是首次访问，请先登录 GitHub 账号。</p>
+    </div>
+    
+    <script>
+        // CMS 初始化配置
+        window.CMS_CONFIG = {
+            backend: {
+                name: 'git-gateway',
+                branch: 'main', // 默认分支
+                commit_messages: {
+                    create: '创建 {{collection}} "{{slug}}"',
+                    update: '更新 {{collection}} "{{slug}}"',
+                    delete: '删除 {{collection}} "{{slug}}"',
+                    uploadMedia: '上传 "{{path}}"',
+                    deleteUnpublished: '删除未发布的 "{{slug}}"',
+                }
+            },
+            media_folder: 'images/uploads', // 上传媒体文件存储路径
+            public_folder: '/images/uploads', // 公开访问路径
+            collections: [
+                {
+                    name: 'products',
+                    label: '产品中心',
+                    folder: 'product/category',
+                    create: true,
+                    slug: '{{slug}}',
+                    fields: [
+                        { label: '产品名称', name: 'title', widget: 'string' },
+                        { label: '产品描述', name: 'description', widget: 'text' },
+                        { label: '产品分类', name: 'category', widget: 'select', options: ['工业润滑油', '车用润滑油', '特种润滑油'] },
+                        { label: '应用场景', name: 'applications', widget: 'list', field: { label: '应用', name: 'application', widget: 'string' } },
+                        { label: '产品图片', name: 'image', widget: 'image' },
+                        { label: '技术参数', name: 'specs', widget: 'object', fields: [
+                            { label: '粘度等级', name: 'viscosity', widget: 'string' },
+                            { label: '闪点', name: 'flash_point', widget: 'string' },
+                            { label: '倾点', name: 'pour_point', widget: 'string' }
+                        ]},
+                        { label: '发布时间', name: 'date', widget: 'datetime' }
+                    ]
+                },
+                {
+                    name: 'cases',
+                    label: '项目案例',
+                    folder: '_cases/',
+                    create: true,
+                    slug: '{{slug}}',
+                    fields: [
+                        { label: '案例标题', name: 'title', widget: 'string' },
+                        { label: '客户名称', name: 'client', widget: 'string' },
+                        { label: '行业分类', name: 'industry', widget: 'select', options: ['汽车制造', '工程机械', '矿山开采', '物流运输', '工厂设备'] },
+                        { label: '解决方案', name: 'solution', widget: 'markdown' },
+                        { label: '使用效果', name: 'results', widget: 'text' },
+                        { label: '案例图片', name: 'image', widget: 'image' },
+                        { label: '完成时间', name: 'date', widget: 'datetime' }
+                    ]
+                },
+                {
+                    name: 'news',
+                    label: '新闻动态',
+                    folder: '_news/',
+                    create: true,
+                    slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+                    fields: [
+                        { label: '新闻标题', name: 'title', widget: 'string' },
+                        { label: '摘要', name: 'excerpt', widget: 'text' },
+                        { label: '正文内容', name: 'body', widget: 'markdown' },
+                        { label: '新闻分类', name: 'category', widget: 'select', options: ['公司新闻', '行业动态', '技术文章'] },
+                        { label: '封面图片', name: 'image', widget: 'image' },
+                        { label: '发布时间', name: 'date', widget: 'datetime' },
+                        { label: '作者', name: 'author', widget: 'string' }
+                    ]
+                },
+                {
+                    name: 'pages',
+                    label: '页面管理',
+                    files: [
+                        {
+                            label: '关于我们',
+                            name: 'about',
+                            file: 'about.html',
+                            fields: [
+                                { label: '页面标题', name: 'title', widget: 'string' },
+                                { label: '公司介绍', name: 'intro', widget: 'markdown' },
+                                { label: '核心优势', name: 'features', widget: 'list', field: { label: '优势项', name: 'feature', widget: 'object', fields: [
+                                    { label: '图标', name: 'icon', widget: 'string' },
+                                    { label: '标题', name: 'title', widget: 'string' },
+                                    { label: '描述', name: 'description', widget: 'text' }
+                                ]}}
+                            ]
+                        },
+                        {
+                            label: '联系我们',
+                            name: 'contact',
+                            file: 'contact.html',
+                            fields: [
+                                { label: '联系电话', name: 'phone', widget: 'string' },
+                                { label: '电子邮箱', name: 'email', widget: 'string' },
+                                { label: '公司地址', name: 'address', widget: 'text' },
+                                { label: '工作时间', name: 'hours', widget: 'string' }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+        
+        // 初始化 CMS
+        window.CMS.init({
+            config: window.CMS_CONFIG
+        }).then(() => {
+            // 隐藏加载提示
+            document.getElementById('loading-message').style.display = 'none';
+        }).catch((error) => {
+            console.error('CMS 初始化失败:', error);
+            document.getElementById('loading-message').innerHTML = `
+                <h2 style="color: #d9534f;">加载失败</h2>
+                <p>请检查网络连接或稍后重试。</p>
+                <p style="font-size: 12px; color: #666;">错误详情：${error.message}</p>
+            `;
+        });
+    </script>
+</body>
+</html>

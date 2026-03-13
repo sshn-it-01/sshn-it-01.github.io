@@ -167,54 +167,10 @@ cypress/videos/
 cypress/screenshots/
 
 # =========================================================================
-# 七、IDE 和编辑器配置（选择性忽略）
+# 七、文档和日志文件（选择性忽略）
 # =========================================================================
 
-# =========================================================================
-# 八、Decap CMS 相关（新增 - 2026-03-13）
-# =========================================================================
-
-# CMS 生成的内容目录（需要保留，但初始可以为空）
-_cases/
-_news/
-
-# 上传的媒体文件（建议纳入版本控制）
-# images/uploads/* 
-# 注： Uncomment 此行如果希望忽略上传的图片文件
-
-# CMS 缓存和本地配置
-.admin-cache/
-*.cms-cache
-
-# 本地测试服务器日志
-*.log
-server-log.txt
-
-# =========================================================================
-# 八、文档和日志文件（重点 - 仅保留 README.md）
-# =========================================================================
-
-# 所有 Markdown 文档都忽略，仅保留 README.md
-*.md
-!README.md
-
-# 明确忽略其他所有 .md 文件（包括子目录）
-**/*.md
-!**/README.md
-
-# 文档目录（全部忽略）
-SEO_AI_Guides/
-*_GUIDE.md
-*_CHECKLIST.md
-*_SUMMARY.md
-*_REFERENCE.md
-CMS_*.md
-DECAP_*.md
-DEPLOYMENT_*.md
-GITHUB_*.md
-README_*.md
-
-# 日志文件
+# 本地开发日志
 *.log
 server-log.txt
 debug.log
@@ -229,15 +185,43 @@ debug.log
 .port.lock
 
 # =========================================================================
+# 八、Decap CMS 相关（新增 - 2026-03-13）
+# =========================================================================
+
+# CMS 生成的内容目录（需要保留，但初始可以为空）
+_cases/
+_news/
+
+# 上传的媒体文件（建议纳入版本控制）
+# images/uploads/* 
+# 注：Uncomment 此行如果希望忽略上传的图片文件
+
+# CMS 缓存和本地配置
+.admin-cache/
+*.cms-cache
+
+# =========================================================================
 # 九、特殊规则说明
 # =========================================================================
 
-# 忽略所有 .txt 文件，但保留 SEO 重要文件
+# 忽略所有 .txt 文件，但保留重要文件
 *.txt
 !llms.txt
 !robots.txt
 
-# 忽略所有 JSON 文件，但保留 package.json
+# 忽略所有 .md 文件，但保留 README 和项目相关文档
+*.md
+!README.md
+README_DECAP_CMS.md
+CMS_DEPLOYMENT_CHECKLIST.md
+DEPLOYMENT_SUCCESS.md
+GITHUB_PAGES_FILE_CHECK.md
+DECAP_CMS_LOCAL_USAGE.md
+CMS_LOCAL_QUICK_START.md
+AI_*.md
+SEO_*.md
+
+# 忽略所有 JSON 文件，但保留必要配置
 *.json
 !package.json
 !*.example.json
@@ -254,33 +238,49 @@ debug.log
 .stylelintrc
 browserslistrc
 
-# 2. Shell 脚本（除非必要）
-*.sh
-!deploy-cms.sh  # 保留必要的部署脚本
+# 2. 开发和部署脚本（除非必要）
+# deploy-cms.sh  # 保留：自动化部署脚本
+# *.sh           # 其他 shell 脚本
 
-# 3. Netlify 配置（不使用线上版）
-netlify.toml
+# 3. 未使用的资源文件
+*.psd          # Photoshop 源文件
+*.ai           # Illustrator 源文件
+*.sketch       # Sketch 源文件
+*.xd           # Adobe XD 源文件
 
-# 4. 未使用的资源文件
-# *.psd          # Photoshop 源文件
-# *.ai           # Illustrator 源文件
-# *.sketch       # Sketch 源文件
-# *.xd           # Adobe XD 源文件
+# 4. 大型二进制文件（使用 Git LFS 管理）
+*.zip
+*.rar
+*.tar.gz
 
-# 5. 大型二进制文件（使用 Git LFS 管理）
-# *.zip
-# *.rar
-# *.tar.gz
-
-# 6. 本地测试和调试文件
+# 5. 本地测试和调试文件
 localhost/
 127.0.0.1/
 *.local.html
 
-# 7. 临时导出文件
+# 6. 临时导出文件
 exports/
 temp/
 tmp/
+
+# 忽略所有 .txt 文件，但保留重要文件
+*.txt
+!llms.txt
+!robots.txt
+
+# 忽略所有 .md 文件，但保留 README 和 CMS 相关文档
+*.md
+!README.md
+!README_DECAP_CMS.md
+!CMS_DEPLOYMENT_CHECKLIST.md
+!AI_*.md
+!SEO_*.md
+DO-NOT-UPLOAD/
+
+# 忽略所有 JSON 文件，但保留示例配置
+*.json
+!package.json
+!*.example.json
 
 # =========================================================================
 # 使用说明

@@ -106,11 +106,51 @@ XML 结构说明：
     <!-- 液压油产品详情页：工业润滑油系列 -->
     <url>
         <loc>https://hnshenfu.com/product/category/hydraulic-oil.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-13</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
     </url>
     
+    <!-- 齿轮油产品详情页：工业齿轮润滑油系列（待开发） -->
+    <!--
+    <url>
+        <loc>https://hnshenfu.com/product/category/gear-oil.html</loc>
+        <lastmod>2026-03-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    -->
+    
+    <!-- 发动机油产品详情页：车用润滑油系列（待开发） -->
+    <!--
+    <url>
+        <loc>https://hnshenfu.com/product/category/engine-oil.html</loc>
+        <lastmod>2026-03-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    -->
+    
+    <!-- 变速箱油产品详情页：车用传动系统润滑油（待开发） -->
+    <!--
+    <url>
+        <loc>https://hnshenfu.com/product/category/transmission-oil.html</loc>
+        <lastmod>2026-03-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    -->
+    
+    <!-- 润滑脂产品详情页：工业及车用润滑脂系列（待开发） -->
+    <!--
+    <url>
+        <loc>https://hnshenfu.com/product/category/grease.html</loc>
+        <lastmod>2026-03-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    -->
+
     <!-- =========================================================================
          预留未来页面（可根据实际发展添加）
          ========================================================================= -->

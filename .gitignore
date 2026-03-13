@@ -191,26 +191,96 @@ _news/
 server-log.txt
 
 # =========================================================================
+# 八、文档和日志文件（重点 - 仅保留 README.md）
+# =========================================================================
+
+# 所有 Markdown 文档都忽略，仅保留 README.md
+*.md
+!README.md
+
+# 明确忽略其他所有 .md 文件（包括子目录）
+**/*.md
+!**/README.md
+
+# 文档目录（全部忽略）
+SEO_AI_Guides/
+*_GUIDE.md
+*_CHECKLIST.md
+*_SUMMARY.md
+*_REFERENCE.md
+CMS_*.md
+DECAP_*.md
+DEPLOYMENT_*.md
+GITHUB_*.md
+README_*.md
+
+# 日志文件
+*.log
+server-log.txt
+debug.log
+
+# 临时备份文件
+*.bak
+*.backup
+*.old
+
+# 本地服务器 PID 文件
+*.pid
+.port.lock
+
+# =========================================================================
 # 九、特殊规则说明
 # =========================================================================
 
-# 忽略所有 .txt 文件，但保留重要文件
+# 忽略所有 .txt 文件，但保留 SEO 重要文件
 *.txt
 !llms.txt
 !robots.txt
 
-# 忽略所有 .md 文件，但保留 README 和 CMS 相关文档
-*.md
-!README.md
-!README_DECAP_CMS.md
-!CMS_DEPLOYMENT_CHECKLIST.md
-!AI_*.md
-!SEO_*.md
-
-# 忽略所有 JSON 文件，但保留示例配置
+# 忽略所有 JSON 文件，但保留 package.json
 *.json
 !package.json
 !*.example.json
+
+# =========================================================================
+# 十、公开仓库特别注意事项 ⚠️
+# =========================================================================
+# 本项目是公开的 GitHub Pages，以下内容不应上传：
+
+# 1. 本地开发工具和配置
+.editorconfig
+.eslintrc.*
+.prettierrc
+.stylelintrc
+browserslistrc
+
+# 2. Shell 脚本（除非必要）
+*.sh
+!deploy-cms.sh  # 保留必要的部署脚本
+
+# 3. Netlify 配置（不使用线上版）
+netlify.toml
+
+# 4. 未使用的资源文件
+# *.psd          # Photoshop 源文件
+# *.ai           # Illustrator 源文件
+# *.sketch       # Sketch 源文件
+# *.xd           # Adobe XD 源文件
+
+# 5. 大型二进制文件（使用 Git LFS 管理）
+# *.zip
+# *.rar
+# *.tar.gz
+
+# 6. 本地测试和调试文件
+localhost/
+127.0.0.1/
+*.local.html
+
+# 7. 临时导出文件
+exports/
+temp/
+tmp/
 
 # =========================================================================
 # 使用说明

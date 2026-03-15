@@ -287,16 +287,22 @@ header {
 /* 咨询卡片特殊样式 - 用于引导用户联系 */
 .card-consultation {
     border: 1px solid var(--primary-color);  /* [强调] 蓝色边框突出显示 */
+    cursor: pointer;                    /* 鼠标悬停时显示手型指针 */
 }
 
 .card-consultation .card-content h3 {
     color: #004494;                 /* 更深的蓝色标题，强调重要性 */
     font-weight: 600;               /* 加粗字重，增强视觉冲击力 */
+    font-size: 30px;              
 }
 
 .card-consultation .card-content p {
-    font-size: 15px;                /* 稍小的字号 */
+    font-size: 20px;                /* 稍小的字号 */
     line-height: 1.7;               /* 稍大的行高，提升可读性 */
+}
+
+.card-consultation .card-content a {
+    font-size: 30px;    
 }
 
 /* 卡片内容区域 */
@@ -304,7 +310,7 @@ header {
     padding: 20px;                  /* 内边距：20px */
     flex: 1;                        /* [关键] 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
     display: grid;                   /* Grid 布局：用于对齐标题和描述 */
-
+    font-size: 20px;
 }
 
 /* 卡片标题样式 */
@@ -701,7 +707,7 @@ footer p {
 .contact-info-box h3 {
     margin-bottom: 20px;            /* 下边距 20px：标题与内容的舒适距离 */
     color: var(--primary-color);    /* 主色调：强化品牌识别 */
-    font-size: 20px;                /* 字号 20px：足够醒目 */
+    font-size: 22px;                /* 字号 20px：足够醒目 */
     border-bottom: 2px solid var(--primary-color);
                                     /* [强调分割线] 2px 主色调粗分割线，强调区块标题 */
     padding-bottom: 10px;           /* 下内边距 10px：分割线与文字的舒适距离 */
@@ -715,13 +721,13 @@ footer p {
 
 .contact-info-box h4 {
     margin-bottom: 15px;            /* 下边距 15px：副标题与内容的连接 */
-    font-size: 18px;                /* 字号 18px：略小于 h3，建立清晰的层级 */
+    font-size: 20px;                /* 字号 18px：略小于 h3，建立清晰的层级 */
     color: #333;                    /* 深色文字：保证良好的可读性 */
 }
 
 .contact-info-box p {
     margin-bottom: 12px;            /* 下边距 12px：段落之间的舒适距离 */
-    font-size: 15px;                /* 字号 15px：介于标准和大号之间，舒适的阅读体验 */
+    font-size: 18px;                /* 字号 15px：介于标准和大号之间，舒适的阅读体验 */
     line-height: 1.6;               /* 行高 1.6：提升文字可读性 */
 }
 

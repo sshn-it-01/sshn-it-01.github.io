@@ -34,7 +34,7 @@
 /* 产品卡片图片容器 - 用于包裹产品图片 */
 .product-card-image {
     width: 100%;                    /* 宽度：占满卡片容器 */
-    height: 380px;                  /* 高度：380px，提供足够的产品展示空间 */
+    height: 180px;                  /* 高度：380px，提供足够的产品展示空间 */
     background-size: cover;         /* 背景尺寸：覆盖整个容器 */
     background-position: center;    /* 背景位置：居中 */
     background-repeat: no-repeat;   /* 不重复平铺 */
@@ -103,7 +103,7 @@
 
 /* 没找到想要的产品的卡片背景 */
 .card-img-aviation {
-    background-image: url('/images/products/aviation.webp');
+    background-image: url('../images/help-desks.webp');
 }
 
 /* -----------------------------------------------------------------------------

@@ -1,0 +1,387 @@
+/* 
+ * =============================================================================
+ * 华南森孚贸易有限公司 - 产品详情页样式文件
+ * =============================================================================
+ * 文件说明：专门为液压油等产品详情页提供样式支持
+ * 适用范围：/product/hydraulic/*.html 等产品详情页面
+ * 单位策略：布局/间距使用 rem，边框等特殊情况使用 px
+ * =============================================================================
+ */
+
+/* -----------------------------------------------------------------------------
+ * 1. 产品详情主体布局
+ * 功能：产品图片和产品信息的左右分栏布局
+ * -------------------------------------------------------------------------- */
+
+/* 产品详情区块容器 - 图片与信息左右排列 */
+.product-detail-section {
+    display: grid;                      /* Grid 布局 */
+    grid-template-columns: 1fr 1.5fr;   /* 两列布局：图片占 1 份，信息占 1.5 份 */
+    gap: 40px;                          /* 间距：40px，确保图片与内容有足够距离 */
+    margin: 40px 0;                     /* 上下边距：40px，与其他内容区分 */
+    align-items: start;                 /* 顶部对齐：防止子元素被拉伸 */
+}
+
+/* 产品图片容器 */
+.product-image-container {
+    position: relative;                 /* 相对定位：用于内部元素定位 */
+    width: 100%;                        /* 宽度：占满父容器 */
+    height: 400px;                      /* 高度：固定 400px，提供充足展示空间 */
+    border-radius: 8px;                 /* 圆角：8px，柔和边界 */
+    overflow: hidden;                   /* 溢出隐藏：防止图片超出圆角 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* 阴影：增加层次感 */
+}
+
+/* 产品详情图片 - 背景图显示 */
+.product-detail-image {
+    width: 100%;                        /* 宽度：占满容器 */
+    height: 100%;                       /* 高度：占满容器 */
+    background-size: cover;             /* 背景尺寸：覆盖整个容器 */
+    background-position: center;        /* 背景位置：居中 */
+    background-repeat: no-repeat;       /* 不重复平铺 */
+}
+
+/* 产品信息区域 */
+.product-info {
+    padding: 20px 0;                    /* 内边距：上下 20px，左右 0 */
+}
+
+.product-info h3 {
+    font-size: 24px;                    /* 字号：24px */
+    color: var(--primary-color);        /* 颜色：品牌蓝 */
+    margin-bottom: 20px;                /* 下边距：20px */
+    font-weight: 600;                   /* 字重：600，加粗 */
+}
+
+.product-info p {
+    font-size: 16px;                    /* 字号：16px */
+    line-height: 1.8;                   /* 行高：1.8 倍，提升可读性 */
+    color: #333;                        /* 颜色：深灰色 */
+    margin-bottom: 15px;                /* 下边距：15px */
+}
+
+/* -----------------------------------------------------------------------------
+ * 2. 产品特性列表
+ * 功能：展示产品特点的列表样式
+ * -------------------------------------------------------------------------- */
+
+/* 特性列表 */
+.feature-list {
+    list-style: none;                   /* 移除默认列表样式 */
+    padding: 0;                         /* 移除内边距 */
+    margin: 20px 0;                     /* 上下边距：20px */
+}
+
+.feature-list li {
+    font-size: 16px;                    /* 字号：16px */
+    line-height: 1.8;                   /* 行高：1.8 倍 */
+    color: #333;                        /* 颜色：深灰色 */
+    margin-bottom: 12px;                /* 下边距：12px */
+    padding-left: 10px;                 /* 左内边距：10px */
+}
+
+.feature-list strong {
+    color: var(--primary-color);        /* 强调文字：品牌蓝色 */
+    font-weight: 600;                   /* 字重：600，加粗 */
+}
+
+/* 应用列表 */
+.application-list {
+    list-style: none;                   /* 移除默认列表样式 */
+    padding: 0;                         /* 移除内边距 */
+    margin: 20px 0;                     /* 上下边距：20px */
+}
+
+.application-list li {
+    font-size: 16px;                    /* 字号：16px */
+    line-height: 1.8;                   /* 行高：1.8 倍 */
+    color: #333;                        /* 颜色：深灰色 */
+    margin-bottom: 10px;                /* 下边距：10px */
+    padding-left: 10px;                 /* 左内边距：10px */
+}
+
+/* -----------------------------------------------------------------------------
+ * 3. 产品规格表格
+ * 功能：以表格形式展示产品详细规格参数
+ * -------------------------------------------------------------------------- */
+
+/* 规格表格容器 */
+.product-specs-table {
+    margin: 60px 0;                     /* 上下边距：60px，与其他内容充分分隔 */
+    background: #fff;                   /* 背景色：白色 */
+    border-radius: 8px;                 /* 圆角：8px */
+    padding: 30px;                      /* 内边距：30px */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 阴影：轻微阴影增加层次 */
+}
+
+.product-specs-table h3 {
+    font-size: 24px;                    /* 字号：24px */
+    color: var(--primary-color);        /* 颜色：品牌蓝 */
+    margin-bottom: 25px;                /* 下边距：25px */
+    font-weight: 600;                   /* 字重：600，加粗 */
+    text-align: center;                 /* 文字居中 */
+}
+
+/* 规格表格 */
+.product-specs-table table {
+    width: 100%;                        /* 宽度：占满容器 */
+    border-collapse: collapse;          /* 边框合并：单元格共享边框 */
+    font-size: 14px;                    /* 字号：14px */
+}
+
+.product-specs-table thead tr {
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+                                    /* 表头背景：渐变蓝色 */
+    color: white;                       /* 表头文字：白色 */
+}
+
+.product-specs-table th {
+    padding: 15px 10px;                 /* 内边距：上下 15px，左右 10px */
+    text-align: left;                   /* 文字左对齐 */
+    font-weight: 600;                   /* 字重：600，加粗 */
+    border: 1px solid #004494;          /* [例外] 边框 1px：深蓝色，确保表头清晰 */
+}
+
+.product-specs-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;   /* [例外] 底边框 1px：浅灰色，分隔各行 */
+    transition: background-color 0.3s;  /* 过渡动画：背景色变化 0.3 秒 */
+}
+
+/* 表格行悬停效果 */
+.product-specs-table tbody tr:hover {
+    background-color: #f5f9ff;          /* 悬停背景：浅蓝色 */
+}
+
+.product-specs-table td {
+    padding: 12px 10px;                 /* 内边距：上下 12px，左右 10px */
+    color: #333;                        /* 颜色：深灰色 */
+    border: 1px solid #e0e0e0;          /* [例外] 边框 1px：浅灰色 */
+}
+
+/* 响应式：小屏幕时表格可横向滚动 */
+@media (max-width: 768px) {
+    .product-specs-table {
+        overflow-x: auto;               /* 横向滚动 */
+        -webkit-overflow-scrolling: touch;  /* iOS 平滑滚动 */
+    }
+    
+    .product-specs-table table {
+        min-width: 800px;               /* 最小宽度：确保表格内容完整显示 */
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * 4. 应用领域展示区（增强版）
+ * 功能：展示产品应用场景，带图标和描述
+ * -------------------------------------------------------------------------- */
+
+/* 应用领域区块 */
+.application-section {
+    margin-top: 60px;                   /* 上边距：60px */
+    background-color: #f9f9f9;          /* 背景色：浅灰色 */
+    padding: 40px 20px;                 /* 内边距：上下 40px，左右 20px */
+    border-radius: 8px;                 /* 圆角：8px */
+}
+
+/* 居中标题 */
+.section-title-center {
+    text-align: center;                 /* 文字居中 */
+    margin-bottom: 40px;                /* 下边距：40px */
+    font-size: 28px;                    /* 字号：28px */
+    color: var(--primary-color);        /* 颜色：品牌蓝 */
+    font-weight: 600;                   /* 字重：600，加粗 */
+}
+
+/* 应用网格布局 */
+.application-grid {
+    display: grid;                      /* Grid 布局 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                                    /* 自适应列数：最小 250px */
+    gap: 30px;                          /* 间距：30px */
+    max-width: 1200px;                  /* 最大宽度：1200px */
+    margin: 0 auto;                     /* 水平居中 */
+}
+
+/* 单个应用区域 */
+.application-area {
+    text-align: center;                 /* 文字居中 */
+    padding: 30px 20px;                 /* 内边距：上下 30px，左右 20px */
+    background: white;                  /* 背景色：白色 */
+    border-radius: 8px;                 /* 圆角：8px */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 阴影：轻微阴影 */
+    transition: transform 0.3s, box-shadow 0.3s;
+                                    /* 过渡动画：变形和阴影 0.3 秒 */
+}
+
+/* 应用卡片悬停效果 */
+.application-area:hover {
+    transform: translateY(-5px);        /* 向上移动 5px */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);  /* 加深阴影 */
+}
+
+/* 应用图标 */
+.application-icon {
+    font-size: 48px;                    /* 图标大小：48px */
+    margin-bottom: 15px;                /* 下边距：15px */
+}
+
+/* 应用标题 */
+.application-title {
+    font-size: 20px;                    /* 字号：20px */
+    color: var(--primary-color);        /* 颜色：品牌蓝 */
+    margin-bottom: 10px;                /* 下边距：10px */
+    font-weight: 600;                   /* 字重：600，加粗 */
+}
+
+/* 应用描述 */
+.application-desc {
+    font-size: 15px;                    /* 字号：15px */
+    color: #666;                        /* 颜色：中灰色 */
+    line-height: 1.6;                   /* 行高：1.6 倍 */
+}
+
+/* -----------------------------------------------------------------------------
+ * 5. 性能对比表格（合成油专用）
+ * 功能：展示合成油与矿物油的性能对比
+ * -------------------------------------------------------------------------- */
+
+/* 优势展示区 */
+.advantages-section {
+    margin: 60px 0;                     /* 上下边距：60px */
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+                                    /* 背景：浅蓝色渐变 */
+    padding: 40px 20px;                 /* 内边距：上下 40px，左右 20px */
+    border-radius: 8px;                 /* 圆角：8px */
+    border: 2px solid var(--primary-color);
+                                    /* [例外] 边框 2px：蓝色，突出显示此区域 */
+}
+
+/* 对比表格容器 */
+.comparison-table {
+    max-width: 900px;                   /* 最大宽度：900px */
+    margin: 30px auto;                  /* 水平居中，上下边距 30px */
+    overflow-x: auto;                   /* 横向滚动：适配小屏幕 */
+}
+
+.comparison-table table {
+    width: 100%;                        /* 宽度：占满容器 */
+    border-collapse: collapse;          /* 边框合并 */
+    font-size: 15px;                    /* 字号：15px */
+}
+
+.comparison-table thead tr {
+    background: var(--primary-color);   /* 表头背景：品牌蓝 */
+    color: white;                       /* 表头文字：白色 */
+}
+
+.comparison-table th {
+    padding: 15px;                      /* 内边距：15px */
+    text-align: left;                   /* 文字左对齐 */
+    font-weight: 600;                   /* 字重：600，加粗 */
+    border: 1px solid var(--primary-color);
+                                    /* [例外] 边框 1px：蓝色 */
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid #ddd;      /* [例外] 底边框 1px：浅灰色 */
+}
+
+.comparison-table tbody tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.5);
+                                    /* 偶数行背景：半透明白色 */
+}
+
+.comparison-table td {
+    padding: 12px 15px;                 /* 内边距：上下 12px，左右 15px */
+    border: 1px solid #ddd;             /* [例外] 边框 1px：浅灰色 */
+}
+
+/* -----------------------------------------------------------------------------
+ * 6. 联系 CTA 区域（增强版）
+ * 功能：引导用户联系的行动号召区域
+ * -------------------------------------------------------------------------- */
+
+/* 联系 CTA */
+.contact-cta {
+    margin-top: 60px;                   /* 上边距：60px */
+    text-align: center;                 /* 文字居中 */
+    background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+                                    /* 背景：蓝色渐变 */
+    color: white;                       /* 文字颜色：白色 */
+    padding: 50px 30px;                 /* 内边距：上下 50px，左右 30px */
+    border-radius: 8px;                 /* 圆角：8px */
+    box-shadow: 0 8px 20px rgba(0,86,179,0.3);
+                                    /* 阴影：蓝色阴影增加深度 */
+}
+
+.contact-cta h3 {
+    font-size: 28px;                    /* 字号：28px */
+    margin-bottom: 15px;                /* 下边距：15px */
+    font-weight: 600;                   /* 字重：600，加粗 */
+}
+
+.contact-cta p {
+    font-size: 17px;                    /* 字号：17px */
+    margin-bottom: 25px;                /* 下边距：25px */
+    opacity: 0.95;                      /* 透明度：95%，柔和一点 */
+}
+
+/* -----------------------------------------------------------------------------
+ * 7. 响应式适配
+ * 功能：平板和手机端的适配规则
+ * -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .product-detail-section {
+        grid-template-columns: 1fr;     /* 单列布局 */
+        gap: 30px;                      /* 间距：30px */
+    }
+    
+    .product-image-container {
+        height: 350px;                  /* 高度：350px */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detail-section {
+        margin: 30px 0;                 /* 上下边距：30px */
+    }
+    
+    .product-image-container {
+        height: 300px;                  /* 高度：300px */
+    }
+    
+    .product-info h3 {
+        font-size: 22px;                /* 字号：22px */
+    }
+    
+    .feature-list li,
+    .application-list li {
+        font-size: 15px;                /* 字号：15px */
+    }
+    
+    .product-specs-table {
+        padding: 20px;                  /* 内边距：20px */
+    }
+    
+    .section-title-center {
+        font-size: 24px;                /* 字号：24px */
+    }
+    
+    .application-grid {
+        grid-template-columns: 1fr;     /* 单列布局 */
+        gap: 20px;                      /* 间距：20px */
+    }
+    
+    .contact-cta {
+        padding: 40px 20px;             /* 内边距：40px 20px */
+    }
+    
+    .contact-cta h3 {
+        font-size: 24px;                /* 字号：24px */
+    }
+    
+    .contact-cta p {
+        font-size: 16px;                /* 字号：16px */
+    }
+}

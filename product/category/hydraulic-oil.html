@@ -7,13 +7,7 @@
   1. 导航栏 - 固定在顶部
   2. 面包屑导航 - 显示页面层级关系
   3. 产品介绍 - 产品系列概述
-  4. 产品列表 - 6 种液压油产品卡片展示
-     - HM 抗磨液压油
-     - HV 低温液压油
-     - HG 液压导轨油
-     - 无灰液压油
-     - 水 - 乙二醇难燃液压油
-     - 航空液压油
+  4. 产品列表 - 液压油产品卡片展示
   5. 应用领域 - 使用图标展示四大应用场景
   6. 联系 CTA - 引导用户咨询
   7. 页脚版权信息
@@ -33,7 +27,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                             <!-- 视口设置：响应式关键，确保在移动设备上正确缩放 -->
     <title>液压油 - 华南森孚</title>
-                            <!-- 页面标题：包含产品名称，利于 SEO -->
+                            <!-- 页面标题：包含产品名称和系列，利于 SEO -->
+    <meta name="description" content="专业供应美孚液压油系列: DTE®20UT 长效液压油、DTE®10 超凡液压油、力图 H(Nuto H) 通用液压油。高性能抗磨液压油，适用于注塑机、压铸机、工程机械等液压系统。">
+    <meta name="keywords" content="液压油,美孚液压油,DTE20,DTE10,力图 H,Nuto H,抗磨液压油，工业润滑油，佛山润滑油，液压系统润滑">
+    <meta name="author" content="佛山市华南森孚贸易有限公司">
     
     <!-- 网站图标（Favicon）：显示在浏览器标签页标题前 -->
     <link rel="icon" href="../../images/hn-logo_bg-white.webp" type="image/webp">
@@ -44,6 +41,70 @@
     <link rel="stylesheet" href="../../css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询：所有断点适配规则（必须放在最后） -->
     <script src="../../js/main.js" defer></script>
                             <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
+
+    
+    <!-- 结构化数据：产品列表 Schema，帮助搜索引擎理解产品信息 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "液压油系列产品",
+        "description": "美孚液压油系列 - DTE20 长效液压油、DTE10 常规液压油、力图 H 通用液压油",
+        "brand": {
+            "@type": "Brand",
+            "name": "Mobil 美孚",
+            "alternateName": "美孚"
+        },
+        "seller": {
+            "@type": "Organization",
+            "name": "佛山市华南森孚贸易有限公司",
+            "url": "https://hnshenfu.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "佛山市三水区西南街健力宝北路10号",
+                "addressLocality": "佛山市",
+                "addressProvince": "广东省"
+            },
+            "telephone": "0757-87722666"
+        },
+        "numberOfItems": 6,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Product",
+                    "name": "美孚 DTE®20UT 长效液压油系列",
+                    "description": "高性能抗磨液压油，适用于高压、高输出泵的液压系统",
+                    "brand": "Mobil",
+                    "category": "工业润滑油 > 液压油"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Product",
+                    "name": "美孚 DTE®10 超凡系列",
+                    "description": "为现代高压工业和移动设备的液压系统设计的高性能抗磨液压油",
+                    "brand": "Mobil",
+                    "category": "工业润滑油 > 液压油"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@type": "Product",
+                    "name": "美孚力图 H(Nuto H) 系列",
+                    "description": "通用型液压油，适用于各种工业液压系统",
+                    "brand": "Mobil",
+                    "category": "工业润滑油 > 液压油"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>  <!-- 页面主体内容开始 -->
@@ -102,7 +163,7 @@
         <div class="product-intro">
             <p>
                 我们的液压油系列产品采用先进配方，具有优异的抗氧化、抗磨损和防锈性能，
-                广泛应用于各类液压系统，为设备提供持久可靠的润滑保护。
+                广泛应用于注塑机、压铸机、工程机械、机床等各类液压系统，为设备提供持久可靠的润滑保护，显著提高生产效率。
             </p>
         </div>
 
@@ -110,90 +171,51 @@
         <div class="grid">
             
             <!-- 产品 1 -->
-            <a href="http://mobil.martech-global.com/product/view?id=125" class="card-link">
+            <a href="../hydraulic/dte-20ut.html" class="card-link">
                 <div class="card">
                     <!-- 产品图片：使用 CSS 背景图实现 -->
                     <div class="product-card-image card-img-hydraulic-1"></div>
                     <!-- 卡片内容区域 -->
                     <div class="card-content">
-                        <h3>美孚DTE®20UT长效液压油系列</h3>
+                        <h3>美孚DTE®20UT 长效液压油系列</h3>
                         <p>高性能抗磨液压油，该系列产品满足使用高压、高输出泵的液压系统，以及其他液压元件如紧密间隙伺服阀和数控机床的严苛需求。</p>
-                        <!-- 产品规格参数 -->
-                        <div class="product-specs">
-                            <p><strong>包装型号：</strong>21UT、22UT、24UT、25UT、26UT、27UT</p>
-                            <p><strong>粘度等级：</strong>ISO 10、22、32、46、68、100</p>
-                            <p><strong>包装规格：</strong>18L</p>
-                        </div>
+
                     </div>
                 </div>
             </a>
 
             <!-- 产品 2 -->
-            <a href="http://mobil.martech-global.com/product/view?id=22" class="card-link">
+            <a href="../hydraulic/dte-10.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
-                        <h3>美孚DTE® 10 超凡系列</h3>
+                        <h3>美孚DTE®10 超凡系列</h3>
                         <p>专门为满足现代高压工业和移动设备的液压系统需求所设计的高性能抗磨液压油。</p>
-                        <div class="product-specs">
-                            <p><strong>包装型号：</strong>15、22、32、46、68、100、150</p>
-                            <p><strong>粘度等级：</strong>ISO 15、22、32、46、68、100、150</p>
-                            <p><strong>包装规格：</strong>170L、200L</p>
-                        </div>
                     </div>
                 </div>
             </a>
 
-            <div class="card">
-                <div class="product-card-image card-img-hydraulic-3"></div>
-                <div class="card-content">
-                    <h3>产品名称</h3>
-                    <p>产品描述。</p>
-                    <div class="product-specs">
-                        <p><strong>粘度等级：</strong>32、46、68</p>
-                        <p><strong>包装规格：</strong>170L、200L</p>
+            <a href="../hydraulic/nuto-h.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-3"></div>
+                    <div class="card-content">
+                        <h3>美孚力图 H(Nuto H) 系列</h3>
+                        <p>通用型液压油，适用于各种工业液压系统，提供良好的防锈、防腐蚀和抗泡沫性能，经济实用。</p>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <!-- 产品 4：无灰液压油 -->
-            <div class="card">
-                <div class="product-card-image card-img-hydraulic-4"></div>
-                <div class="card-content">
-                    <h3>产品名称</h3>
-                    <p>产品描述。</p>
-                    <div class="product-specs">
-                        <p><strong>粘度等级：</strong>32、46、68</p>
-                        <p><strong>包装规格：</strong>170L、200L</p>
+            <a href="../hydraulic/shc.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-4"></div>
+                    <div class="card-content">
+                        <h3>美孚SHC™合成液压油</h3>
+                        <p>全合成高性能液压油，专为极端工况设计，提供卓越的高温稳定性和低温流动性，显著延长油品使用寿命。</p>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <!-- 产品 5：水 - 乙二醇难燃液压油 -->
-            <div class="card">
-                <div class="product-card-image card-img-hydraulic-5"></div>
-                <div class="card-content">
-                    <h3>产品名称</h3>
-                    <p>产品描述。</p>
-                    <div class="product-specs">
-                        <p><strong>粘度等级：</strong>46、68</p>
-                        <p><strong>包装规格：</strong>170L、200L</p>
-                    </div>
-                </div>
-            </div>
 
-            <!-- 产品 6：航空液压油 -->
-            <div class="card">
-                <div class="product-card-image card-img-hydraulic-6"></div>
-                <div class="card-content">
-                    <h3>产品名称</h3>
-                    <p>产品描述。</p>
-                    <div class="product-specs">
-                        <p><strong>粘度等级：</strong>10、15</p>
-                        <p><strong>包装规格：</strong>170L、200L</p>
-                    </div>
-                </div>
-            </div>
 
             <!-- 咨询卡片：没找到想要的产品 -->
             <!-- 
@@ -202,7 +224,7 @@
                 样式：使用 card-consultation 类定义特殊样式
                 交互：通过 onclick 事件实现页面跳转，设置 cursor: pointer 提升用户体验，避免了使用有冲突的card-link样式
             -->
-            <div class="card card-consultation" onclick="window.location.href='../../contact.html'" style="cursor: pointer;">
+            <div class="card card-consultation" onclick="window.location.href='../../contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
                     <h3>没找到想要的产品？</h3>

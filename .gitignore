@@ -3,7 +3,8 @@
 # =========================================================================
 # 文件说明：配置 Git 版本控制中需要忽略的文件和目录
 # 位置：网站根目录（.gitignore）
-# 更新时间：2026-03-06
+# 更新时间：2026-03-15
+# 用途：仅上传可公开用于 GitHub Pages 的静态网站文件
 # 
 # 语法规则：
 #   #  - 注释行，用于说明
@@ -13,248 +14,103 @@
 #   !  - 否定，表示不忽略
 # =========================================================================
 
-# =========================================================================
-# 一、Node.js 依赖和包管理（必须忽略）
-# =========================================================================
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
+
 
 # =========================================================================
-# 二、操作系统临时文件（必须忽略）
+# 敏感信息和配置文件（禁止上传）
 # =========================================================================
 
-# macOS 系统文件
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# Windows 系统文件
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# Linux 系统文件
-.directory
-.cache/
-@eaDir/
-
-# 编辑器临时文件
-*~
-*.swp
-*.swo
-\#*\#
-
-# =========================================================================
-# 三、代码编辑器和 IDE 配置（建议忽略）
-# =========================================================================
-
-# VS Code
-.vscode/
-*.code-workspace
-.history/
-
-# Lingma
-.lingma/
-
-# IntelliJ IDEA
-.idea/
-
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# Atom
-*.atom/
-
-# Vim
-*.vim*
-
-# Eclipse
-.classpath
-.project
-.settings/
-
-# Visual Studio
-.vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# =========================================================================
-# 四、构建输出和编译产物（必须忽略）
-# =========================================================================
-dist/
-build/
-.next/
-out/
-*.log
-
-# TypeScript 编译输出
-*.tsbuildinfo
-*.js.map
-*.d.ts
-
-# Webpack
-webpack-stats.json
-webpack.bundle.json
-
-# Parcel
-.parcel-cache/
-
-# Rollup
-.rollup.cache/
-
-# Vite
-vite.config.ts.timestamp-*
-
-# =========================================================================
-# 五、环境变量和敏感配置（必须忽略）
-# =========================================================================
+# 环境变量和密钥文件
 .env
 .env.local
-.env.development
-.env.test
-.env.production
 .env.*.local
-
-# 密钥和证书
-*.pem
 *.key
-*.crt
+*.pem
+*.cert
 *.p12
 *.pfx
 
-# 配置文件（保留示例）
+# 密码和凭证文件
+*password*
+*credential*
+*secret*
+*.credentials
+
+# 数据库文件
+*.sql
+*.db
+*.sqlite
+*.mdb
+
+# 服务器配置文件
+.htaccess
+nginx.conf
+apache.conf
+
+# API 密钥和配置文件（如果存在）
+api_key.txt
 config.json
-!config.example.json
-!config.template.json
+settings.json
+
+
 
 # =========================================================================
-# 六、测试相关（建议忽略）
+# 开发工具和依赖（无需上传）
 # =========================================================================
 
-# 测试覆盖率
-coverage/
-.nyc_output/
-jest-coverage/
+# Node.js 依赖包
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
 
-# Playwright 浏览器自动化
-playwright-report/
-test-results/
-playwright/.cache/
+# IDE 和编辑器配置
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
 
-# 测试截图（但保留 images 目录）
-!images/**
-# *.png
-# *.jpg
-# *.jpeg
-# *.gif
+# 灵码配置目录（本地开发工具）
+.lingma/
 
-# Jest
-jest-snapshots/
 
-# Mocha
-mochawesome-report/
-
-# Cypress
-cypress/videos/
-cypress/screenshots/
 
 # =========================================================================
-# 七、文档和日志（选择性忽略）
+# 临时文件和缓存（无需上传）
 # =========================================================================
 
-# 自动生成的文档
-CHANGELOG.md
-HISTORY.md
-API.md
-
-# 项目特定文档（如不需要公开）
-DOMESTIC_AI_OPTIMIZATION.md
-AI_OPTIMIZATION_GUIDE.md
-AI_DEPLOYMENT_CHECKLIST.md
-README_AI_OPTIMIZATION.md
-README_AI_OPTIMIZATION_ENHANCED.md
-
-# SEO 文档
-SEO_AI_Guides/
-SEO_GUIDE.md
-
-# 发布配置
-.releaserc
-.release.json
-
-# 日志文件
-logs/
+# 系统临时文件
+*.tmp
+*.temp
+*.cache
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+
+# 操作系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+
+
 
 # =========================================================================
-# 八、本项目的例外规则（重要：不忽略的核心文件）
+# 允许上传的文件类型（GitHub Pages 所需）
+# =========================================================================
+# ✅ HTML 文件：*.html
+# ✅ CSS 样式：*.css
+# ✅ JavaScript: *.js
+# ✅ 图片资源：*.jpg, *.png, *.webp, *.svg, *.gif, *.ico
+# ✅ 文档文件：README.md, LICENSE
+# ✅ SEO 配置：robots.txt, sitemap.xml, llms.txt
+# ✅ 字体文件：*.woff, *.woff2, *.ttf, *.eot
+# ✅ package.json（用于记录项目信息）
+#
+# ❌ 不上传：敏感配置、依赖包、源文件、临时文件
 # =========================================================================
 
-# 不要忽略入口文件
-!index.html
-!main.js
-!app.js
-!main.css
-!style.css
 
-# 不要忽略必要的 CSS文件
-!css/style.css
-!css/images.css
-!css/mobile.css
-
-# 不要忽略必要的 JS 文件
-!js/main.js
-
-# 不要忽略 HTML文件
-!*.html
-
-# 不要忽略 AI 优化核心文件（必须保留）
-!robots.txt
-!sitemap.xml
-!llms.txt
-
-# 不要忽略 README
-!README.md
-
-# 不要忽略 package.json
-!package.json
-
-# 不要忽略配置文件
-!config.json
-!config.example.json
-!package.json
-!tsconfig.json
-!jsconfig.json
-
-# =========================================================================
-# 九、特殊规则说明
-# =========================================================================
-
-# 忽略所有 .txt 文件，但保留重要文件
-*.txt
-!llms.txt
-!robots.txt
-
-# 忽略所有 .md 文件，但保留 README
-*.md
-!README.md
-
-# 忽略所有 JSON 文件，但保留示例配置
-*.json
-!package.json
-!*.example.json
 
 # =========================================================================
 # 使用说明
@@ -273,10 +129,10 @@ pnpm-debug.log*
 # =========================================================================
 # 最佳实践建议
 # =========================================================================
-# 1. 只提交源代码和必要配置
-# 2. 不提交编译产物和依赖包
-# 3. 不提交敏感信息和密钥
-# 4. 不提交大型二进制文件（使用 Git LFS）
-# 5. 定期清理无用的临时文件
+# 1. 只提交源代码和必要配置（HTML/CSS/JS/图片/文档）
+# 2. 不提交编译产物和依赖包（node_modules）
+# 3. 不提交敏感信息和密钥（.env, *.key, *.pem）
+# 4. 不提交本地开发工具配置（.lingma/, .idea/, .vscode/）
+# 5. 定期清理无用的临时文件（*.tmp, *.log）
 # 6. 团队协作前统一 .gitignore 配置
 # =========================================================================

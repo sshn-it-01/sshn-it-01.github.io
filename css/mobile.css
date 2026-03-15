@@ -162,13 +162,13 @@
     
     /* 优势标题在平板设备的适配 */
     .feature-item h3 {
-        font-size: 18px;            /* 字号 */
+        font-size: 20px;            /* 字号 */
         margin-bottom: 8px;         /* 下边距 */
     }
     
     /* 优势描述在平板设备的适配 */
     .feature-item p {
-        font-size: 14px;            /* 字号 */
+        font-size: 16px;            /* 字号 */
         line-height: 1.6;           /* 行高 */
     }
 
@@ -176,6 +176,18 @@
     .contact-info-box {
         padding: 20px;              /* 减小内边距：20px */
         flex: none;                 /* 禁用弹性增长 */
+    }
+
+    .contact-info-box h3 {
+        font-size: 18px;            /* 缩小标题：18px */
+    }
+
+    .contact-info-box h4 {
+        font-size: 18px;            /* 缩小副标题：16px */
+    }
+
+    .contact-info-box p {
+        font-size: 16px;            /* 缩小文字：14px */
     }
 }
 
@@ -335,11 +347,11 @@
     }
 
     .contact-info-box h4 {
-        font-size: 16px;            /* 缩小副标题：16px */
+        font-size: 18px;            /* 缩小副标题：16px */
     }
 
     .contact-info-box p {
-        font-size: 14px;            /* 缩小文字：14px */
+        font-size: 16px;            /* 缩小文字：14px */
     }
     
     /* 联系页面门店图片卡片在移动端的适配 */    
@@ -535,17 +547,17 @@
     
     /* 产品卡片内容区在移动端的适配 */
     .card-product .card-content {
-        padding: 18px;              /* 减小内边距 */
+        padding: 20px;              /* 减小内边距 */
     }
     
     /* 产品卡片标题在移动端的适配 */
     .card-product .card-content h3 {
-        font-size: 18px;            /* 缩小字号 */
+        font-size: 20px;            /* 缩小字号 */
     }
     
     /* 产品卡片描述在移动端的适配 */
     .card-product .card-content p {
-        font-size: 14px;            /* 缩小字号 */
+        font-size: 18px;            /* 缩小字号 */
         line-height: 1.6;           /* 调整行高 */
     }
     

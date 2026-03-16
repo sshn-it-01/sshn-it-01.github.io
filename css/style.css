@@ -255,13 +255,14 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                                     /* [智能响应式策略] 自适应填充列数，每列最小 300px，最大等分剩余空间 */
     gap: 30px;                      /* 间距：网格项之间 30px */
-    align-items: start;             /* [关键修改] 顶部对齐：防止子元素被强制拉伸产生空白 */
+    align-items: stretch;           /* 伸展对齐：让每行网格项在同一行内保持高度一致，避免不对齐 */
 }
 
 /* 卡片链接包装器 - 使整个卡片可点击 */
 .card-link {
     display: flex;                  /* Flexbox 布局：使卡片能够自适应高度 */
     height: 100%;                   /* 高度：占满父容器，确保与网格项同高 */
+    align-items: stretch;           /* 伸展对齐：确保链接容器内的卡片填满可用高度，保持等高 */
 }
 
 
@@ -276,6 +277,7 @@ header {
     flex-direction: column;         /* 主轴方向：垂直排列，图片在上内容在下 */
     height: 100%;                   /* 高度：占满父容器，确保所有卡片等高 */
     width: 100%;                    /* 宽度：占满父容器，确保所有卡片等宽 */
+    min-height: 0;                  /* 允许在 flex/grid 容器内正确收缩，避免内容溢出推动高度 */
 }
 
 /* 卡片悬停效果 */
@@ -293,7 +295,6 @@ header {
 .card-consultation .card-content h3 {
     color: #004494;                 /* 更深的蓝色标题，强调重要性 */
     font-weight: 600;               /* 加粗字重，增强视觉冲击力 */
-    font-size: 30px;              
 }
 
 .card-consultation .card-content p {
@@ -301,17 +302,18 @@ header {
     line-height: 1.7;               /* 稍大的行高，提升可读性 */
 }
 
-.card-consultation .card-content a {
-    font-size: 30px;    
-}
-
 /* 卡片内容区域 */
 .card-content { 
     padding: 20px;                  /* 内边距：20px */
     flex: 1;                        /* [关键] 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
-    display: grid;                   /* Grid 布局：用于对齐标题和描述 */
+    display: grid;                  /* Grid 布局：用于对齐标题和描述 */
     font-size: 20px;
+    min-height: 0;                  /* 允许在伸展容器中正确收缩 */
+    overflow: auto;                 /* 当内容过多时在卡片内部滚动，保证卡片外部高度不变 */
 }
+
+/* 产品卡片顶部装饰/图片区域：固定高度并不收缩，避免被内容拉长 */
+
 
 /* 卡片标题样式 */
 .card-content h3 {

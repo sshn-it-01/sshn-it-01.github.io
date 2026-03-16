@@ -600,4 +600,26 @@
         max-height: calc(100vh - 100px);
                                     /* 最大高度：视口高度减去关闭按钮和说明文字的空间 */
     }
+    
+    /* [幻灯片灯箱] 幻灯片灯箱模态框适配 */
+    .slideshow-modal-content {
+        padding: 50px 10px 10px;    /* 减小内边距：顶部 50px，左右和下各 10px */
+    }
+    
+    /* [幻灯片灯箱] 幻灯片灯箱图片适配 */
+    .slideshow-modal-image {
+        max-width: 95%;             /* 移动端最大宽度：95% */
+        max-height: calc(100vh - 80px);
+                                    /* 移动端最大高度：视口高度减去 80px */
+    }
+    
+    /* [幻灯片灯箱] 幻灯片灯箱关闭按钮适配 */
+    .slideshow-modal-close {
+        top: 10px;                  /* 移动端顶部距离：10px */
+        right: 10px;                /* 移动端右侧距离：10px */
+        font-size: 32px;            /* 移动端字号：32px */
+        width: 45px;                /* 移动端宽度：45px */
+        height: 45px;               /* 移动端高度：45px */
+        line-height: 45px;          /* 移动端行高：45px */
+    }
 }

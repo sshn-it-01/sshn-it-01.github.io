@@ -311,6 +311,113 @@ function showSlides(n, index) {
     slides[n - 1].style.display = "block";
 }
 
+/* -----------------------------------------------------------------------------
+ * 功能 5: 幻灯片灯箱功能
+ * 作用：点击幻灯片图片时全屏查看，支持关闭操作
+ * 触发条件：用户点击幻灯片中的图片
+ * -------------------------------------------------------------------------- */
+
+/**
+ * 打开幻灯片灯箱模态框
+ * @param {HTMLElement} element - 被点击的图片元素
+ * @description 从 CSS 背景图中提取 URL，显示在灯箱中
+ */
+function openSlideshowModal(element) {
+    // 获取模态框元素
+    const modal = document.getElementById('slideshow-modal');
+    const modalImg = document.getElementById('modal-img');
+    
+    if (!modal || !modalImg) {
+        console.error('Slideshow modal elements not found!');
+        return; // 元素不存在则退出
+    }
+    
+    // 获取图片源：从 CSS 背景图中提取 URL
+    const bgImage = window.getComputedStyle(element).backgroundImage;
+    // 格式：url("path/to/image.jpg")
+    
+    // 清理 URL：移除 url("") 包装
+    const imageSrc = bgImage.slice(5, -2);
+    // slice(5, -2): 从第 6 个字符开始到倒数第 3 个字符结束
+    
+    // 设置模态框图片
+    modalImg.src = imageSrc;
+    
+    // 显示模态框
+    modal.style.display = 'flex';
+    
+    // 阻止背景滚动
+    document.body.style.overflow = 'hidden';
+    
+    console.log('Slideshow modal opened with image:', imageSrc);
+}
+
+/**
+ * 关闭幻灯片灯箱模态框
+ * @description 隐藏模态框，恢复页面状态
+ */
+function closeSlideshowModal() {
+    const modal = document.getElementById('slideshow-modal');
+    
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+        
+        console.log('Slideshow modal closed');
+    }
+}
+
+/**
+ * 初始化幻灯片灯箱事件
+ * @description 使用事件委托为所有幻灯片图片绑定点击事件
+ */
+function initSlideshowModal() {
+    const modal = document.getElementById('slideshow-modal');
+    const closeBtn = document.querySelector('.slideshow-modal-close');
+    
+    if (!modal || !closeBtn) {
+        console.log('Slideshow modal elements not found, skipping initialization');
+        return;
+    }
+    
+    /**
+     * [事件委托] 为幻灯片容器绑定点击事件
+     * 原理：利用事件冒泡，在容器层统一处理所有图片的点击
+     * 优势：无需为每张图片单独绑定事件，减少内存占用
+     */
+    const slideshowContainers = document.querySelectorAll('.slideshow-container');
+    slideshowContainers.forEach(container => {
+        container.addEventListener('click', function(e) {
+            // 查找被点击的元素是否是幻灯片图片
+            const imageElement = e.target.closest('.slideshow-image');
+            
+            // 如果点击的是图片且不是编号文本
+            if (imageElement && !e.target.classList.contains('numbertext')) {
+                openSlideshowModal(imageElement);
+            }
+        });
+    });
+    
+    // 点击关闭按钮
+    closeBtn.addEventListener('click', function() {
+        closeSlideshowModal();
+    });
+    
+    // 点击模态框背景区域
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal || e.target.classList.contains('slideshow-modal-content')) {
+            closeSlideshowModal();
+        }
+    });
+    
+    // 按下 ESC 键关闭
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
+            closeSlideshowModal();
+        }
+    });
+}
+
 // [页面加载后执行] DOMContentLoaded 事件监听
 document.addEventListener('DOMContentLoaded', () => {
     // 当 HTML 文档完全加载并解析完成后执行（不等待图片、样式表等资源）
@@ -326,4 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     initSlideshow();
     // 初始化幻灯片功能（在产品详情页生效）
+    
+    initSlideshowModal();
+    // 初始化幻灯片灯箱功能（在产品详情页生效）
 });

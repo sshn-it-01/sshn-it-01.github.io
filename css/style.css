@@ -301,11 +301,17 @@ header {
 .card-consultation .card-content h3 {
     color: #004494;                 /* 更深的蓝色标题，强调重要性 */
     font-weight: 600;               /* 加粗字重，增强视觉冲击力 */
+    font-size: 22px;
 }
 
 .card-consultation .card-content p {
-    font-size: 20px;                /* 稍小的字号 */
+    font-size: 22px;                /* 稍小的字号 */
     line-height: 1.7;               /* 稍大的行高，提升可读性 */
+}
+
+.card-consultation .btn{
+font-size: 18px;
+text-align: left;
 }
 
 /* 卡片内容区域 */
@@ -583,7 +589,7 @@ footer p {
 }
 
 .product-specs p {
-    font-size: 14px;                /* 字号 14px：规格参数使用较小字号，作为辅助信息 */
+    font-size: 18px;                /* 字号 14px：规格参数使用较小字号，作为辅助信息 */
     color: #666;                    /* 灰色文字：降低视觉权重 */
     margin-bottom: 5px;             /* 下边距 5px：规格项之间的紧凑排列 */
 }

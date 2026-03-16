@@ -263,6 +263,12 @@ header {
     display: flex;                  /* Flexbox 布局：使卡片能够自适应高度 */
     height: 100%;                   /* 高度：占满父容器，确保与网格项同高 */
     align-items: stretch;           /* 伸展对齐：确保链接容器内的卡片填满可用高度，保持等高 */
+    min-height: 0;                  /* 允许在 grid 中正确收缩，避免内容推动行高 */
+}
+
+/* 确保网格的直接子元素在伸展时可收缩（解决内部 overflow 导致的高度异常） */
+.grid > * {
+    min-height: 0;
 }
 
 
@@ -306,7 +312,8 @@ header {
 .card-content { 
     padding: 20px;                  /* 内边距：20px */
     flex: 1;                        /* [关键] 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
-    display: grid;                  /* Grid 布局：用于对齐标题和描述 */
+    display: flex;                  /* 改为 Flex 布局：让内部元素垂直排列并可控制伸缩 */
+    flex-direction: column;         /* 垂直排列：标题、描述、规格从上到下 */
     font-size: 20px;
     min-height: 0;                  /* 允许在伸展容器中正确收缩 */
     overflow: auto;                 /* 当内容过多时在卡片内部滚动，保证卡片外部高度不变 */
@@ -326,6 +333,9 @@ header {
 .card-content p {
     color: #666;                    /* 颜色：浅灰色 */
     line-height: 1.6;               /* 行高：1.6 倍 */
+    /* 关键：允许主描述段落填充剩余空间，将 .product-specs 推到底部以保持分割线对齐 */
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 /* -----------------------------------------------------------------------------
@@ -568,6 +578,8 @@ footer p {
     margin-top: 15px;               /* 上边距 15px：与上方介绍内容的连接 */
     padding-top: 15px;              /* 上内边距 15px：通过留白创建视觉分隔 */
     border-top: 1px solid #eee;     /* [例外] 顶部边框 1px：浅灰色分割线，区分不同信息区块 */
+    max-height: 160px;               /* 最大高度 160px：避免内容过多导致页面滚动 */
+    overflow: auto;                 /* 滚动：当内容超出最大高度时，允许用户滚动查看 */
 }
 
 .product-specs p {

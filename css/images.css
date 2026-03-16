@@ -25,7 +25,7 @@
 /* 产品卡片图片容器统一样式 */
 .card-image {
     width: 100%;                    /* 宽度：占满卡片 */
-    height: 200px;                  /* 高度：固定 200px */
+    height: 160px;                  /* 高度：固定 200px */
     background-size: cover;         /* 背景尺寸：覆盖整个容器 */
     background-position: center;    /* 背景位置：居中 */
     background-repeat: no-repeat;   /* 不重复平铺 */

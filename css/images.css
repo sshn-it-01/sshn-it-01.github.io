@@ -112,30 +112,65 @@
  * 规范：装饰性图片，使用 CSS 背景图实现，便于统一控制
  * -------------------------------------------------------------------------- */
 
-/* 美孚DTE®20UT长效液压油 */
+/* 美孚 DTE®20UT 长效液压油 */
 .card-img-hydraulic-1 {
     background-image: url('../../images/products/mobil_dte-25-ut.webp');
 }
 
-/* 美孚DTE® 10 超凡系列 */
+/* 美孚 DTE® 10 超凡系列 */
 .card-img-hydraulic-2 {
     background-image: url('../../images/products/mobil_dte-25-ut.webp');
 }
 
+/* 美孚力图 H(Nuto H) 系列 */
 .card-img-hydraulic-3 {
     background-image: url('../../images/products/mobil_dte-25-ut.webp');
 }
 
+/* 美孚 SHC 系列 */
 .card-img-hydraulic-4 {
     background-image: url('../../images/products/mobil_dte-25-ut.webp');
 }
 
+/* 液压油应用场景 - 工业 */
 .card-img-hydraulic-5 {
     background-image: url('../../images/products/mobil_dte-25-ut.webp');
 }
 
+/* 液压油应用场景 - 移动设备 */
 .card-img-hydraulic-6 {
     background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+/* -----------------------------------------------------------------------------
+ * 4.5 幻灯片通用图片占位图
+ * 功能：为产品详情页幻灯片提供通用图片资源
+ * 说明：实际使用时应替换为真实的产品图片
+ * -------------------------------------------------------------------------- */
+
+/* 工业应用场景图片 */
+.application-industrial {
+    background-image: url('../../images/gallary/hnsf_warehouse_01.webp');
+}
+
+/* 产品特性详情图片 */
+.feature-detail {
+    background-image: url('../../images/gallary/hnsf_jianbei_01.webp');
+}
+
+/* 18L 包装展示图片 */
+.packaging-18L {
+    background-image: url('../../images/products/mobil_dte-25-ut.webp');
+}
+
+/* 技术认证图片 */
+.certification {
+    background-image: url('../../images/gallary/hnsf_guanghai_01.webp');
+}
+
+/* 客户案例图片 */
+.customer-case {
+    background-image: url('../../images/gallary/hnsf_warehouse_01.webp');
 }
 
 /* -----------------------------------------------------------------------------

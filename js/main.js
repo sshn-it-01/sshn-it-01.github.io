@@ -241,6 +241,76 @@ function initImageModal() {
     }
 }
 
+/**
+ * 全局幻灯片索引数组
+ * @description 存储每个幻灯片的当前图片序号
+ * 使用数组而非单一变量，支持一个页面多个独立幻灯片
+ */
+let slideIndex = [];
+
+/**
+ * 初始化所有幻灯片组件
+ * @description 查找页面所有幻灯片，初始化索引，显示第一张图片
+ */
+function initSlideshow() {
+    // 获取所有幻灯片容器
+    const slideshowContainers = document.querySelectorAll('.slideshow-container');
+    
+    // 遍历每个幻灯片容器，初始化
+    slideshowContainers.forEach((container, containerIndex) => {
+        // 初始化该幻灯片的索引为 1（第一张）
+        slideIndex[containerIndex] = 1;
+        
+        // 显示该幻灯片的第一张图片
+        showSlides(1, containerIndex);
+    });
+}
+
+/**
+ * 相对切换图片（上一张/下一张）
+ * @param {number} n - 相对偏移量（-1 表示上一张，1 表示下一张）
+ * @param {number} index - 幻灯片容器索引（支持多幻灯片）
+ */
+function plusSlides(n, index) {
+    // 调用核心函数，传入当前索引 + 偏移量
+    showSlides(slideIndex[index] += n, index);
+}
+
+/**
+ * 核心函数：显示指定序号的图片
+ * @param {number} n - 要显示的图片序号（从 1 开始）
+ * @param {number} index - 幻灯片容器索引（支持多幻灯片）
+ */
+function showSlides(n, index) {
+    let i;
+    
+    // 获取当前幻灯片容器的所有相关元素
+    const container = document.querySelectorAll('.slideshow-container')[index];
+    if (!container) return; // 容器不存在则退出
+    
+    const slides = container.querySelectorAll('.mySlides');
+    
+    // 如果图片序号超出总数，回到第一张（循环）
+    if (n > slides.length) {
+        slideIndex[index] = 1;
+        n = 1;
+    }
+    
+    // 如果图片序号小于 1，跳到最后一张（循环）
+    if (n < 1) {
+        slideIndex[index] = slides.length;
+        n = slides.length;
+    }
+    
+    // 隐藏所有图片（移除 display 属性）
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    
+    // 显示目标图片（设置为 block）
+    slides[n - 1].style.display = "block";
+}
+
 // [页面加载后执行] DOMContentLoaded 事件监听
 document.addEventListener('DOMContentLoaded', () => {
     // 当 HTML 文档完全加载并解析完成后执行（不等待图片、样式表等资源）
@@ -253,4 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     initImageModal();
     // 初始化图片灯箱功能（仅在联系页面生效）
+    
+    initSlideshow();
+    // 初始化幻灯片功能（在产品详情页生效）
 });

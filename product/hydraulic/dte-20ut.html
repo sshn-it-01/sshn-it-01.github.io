@@ -35,10 +35,9 @@
     <!-- 引入外部资源 -->
     <link rel="stylesheet" href="../../../css/style.css">  <!-- 主样式表：布局和组件样式 -->
     <link rel="stylesheet" href="../../../css/images.css">  <!-- 图片资源样式：所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="../../../css/product-detail.css">  <!-- 产品详情页专用样式 -->
     <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询：所有断点适配规则（必须放在最后） -->
     <script src="../../../js/main.js" defer></script>
-                            <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
+                            <!-- JavaScript 文件：包含所有交互功能（移动端菜单、灯箱、幻灯片） -->
 
     <!-- 结构化数据：产品 Schema -->
     <script type="application/ld+json">
@@ -121,10 +120,75 @@
         </div>
 
         <div class="product-detail-section">
+            
+            <!-- 左侧：图片幻灯片区域 -->
             <div class="product-image-container">
-                <div class="product-detail-image card-img-hydraulic-1"></div>
+                
+                <!-- =====================================================================
+                     幻灯片容器
+                     功能：可左右切换的产品图片轮播，支持箭头点击和圆点导航
+                     参考：https://www.w3schools.com/howto/howto_js_slideshow.asp
+                     ========================================================================= -->
+                <div class="slideshow-container">
+                    
+                    <!-- 幻灯片 1：产品主图 -->
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image card-img-hydraulic-1"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 2：应用场景 -->
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <!-- 使用背景图方式加载产品应用场景图片 -->
+                            <div class="slideshow-image application-industrial"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 3：产品特性 -->
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image feature-detail"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 4：包装展示 -->
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image packaging-18L"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 5：技术认证 -->
+                    <div class="mySlides">
+                        <div class="numbertext">5 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image certification"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 6：客户案例 -->
+                    <div class="mySlides">
+                        <div class="numbertext">6 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image customer-case"></div>
+                        </div>
+                    </div>
+
+                    <!-- 左右箭头按钮：点击切换上一张/下一张 -->
+                    <a class="prev" onclick="plusSlides(-1, 0)">❮</a>
+                    <a class="next" onclick="plusSlides(1, 0)">❯</a>
+                    
+                </div>
+
             </div>
 
+            <!-- 右侧：产品文字描述区域 -->
             <div class="product-info">
                 <h3>产品简介</h3>
                 <p>

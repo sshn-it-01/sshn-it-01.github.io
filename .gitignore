@@ -29,6 +29,19 @@
 *.secret
 credentials.json
 
+# 图片处理工具（本地使用）
+COVERT_TO_WEBP/
+convert_to_webp.py
+metadata_manager.py
+metadata_writer.py
+workflow.sh
+quick-convert.sh
+install-dependencies.sh
+test_convert.py
+requirements.txt
+*_webp/
+*_tagged/
+
 # -----------------------------------------------------------------------------
 # 2. 开发工具与 IDE 配置（无需上传）
 # -----------------------------------------------------------------------------

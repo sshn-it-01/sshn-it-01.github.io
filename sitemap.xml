@@ -5,7 +5,7 @@
 =============================================================================
 文件说明：向搜索引擎提供网站所有页面的完整列表，帮助爬虫更高效地索引
 位置：网站根目录（https://hnshenfu.com/sitemap.xml）
-更新时间：2026-03-08
+更新时间：2026-03-18
 更新频率：每次添加/修改页面后同步更新
 
 XML 结构说明：
@@ -34,7 +34,7 @@ XML 结构说明：
     <!-- 首页：公司主页面，最重要 -->
     <url>
         <loc>https://hnshenfu.com/index.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -42,7 +42,7 @@ XML 结构说明：
     <!-- AI 大模型优化文件：为 ChatGPT、Claude 等提供结构化企业信息 -->
     <url>
         <loc>https://hnshenfu.com/llms.txt</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -50,7 +50,7 @@ XML 结构说明：
     <!-- SEO 配置文件：搜索引擎爬虫规则 -->
     <url>
         <loc>https://hnshenfu.com/robots.txt</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -58,7 +58,7 @@ XML 结构说明：
     <!-- XML 网站地图：帮助搜索引擎爬虫抓取 -->
     <url>
         <loc>https://hnshenfu.com/sitemap.xml</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -70,7 +70,7 @@ XML 结构说明：
     <!-- 公司介绍页：展示企业实力和文化 -->
     <url>
         <loc>https://hnshenfu.com/about.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -78,7 +78,7 @@ XML 结构说明：
     <!-- 产品展示页：所有产品分类总览 -->
     <url>
         <loc>https://hnshenfu.com/products.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -86,7 +86,7 @@ XML 结构说明：
     <!-- 项目案例页：增强客户信任度 -->
     <url>
         <loc>https://hnshenfu.com/cases.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -94,7 +94,7 @@ XML 结构说明：
     <!-- 联系方式页：促进客户转化 -->
     <url>
         <loc>https://hnshenfu.com/contact.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -106,7 +106,39 @@ XML 结构说明：
     <!-- 液压油产品详情页：工业润滑油系列 -->
     <url>
         <loc>https://hnshenfu.com/product/category/hydraulic-oil.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- DTE®10 超凡液压油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/product/hydraulic/dte-10.html</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- DTE®20UT 长效液压油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/product/hydraulic/dte-20ut.html</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Nuto H(力图 H) 通用液压油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/product/hydraulic/nuto-h.html</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- SHC 合成液压油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/product/hydraulic/shc.html</loc>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -119,7 +151,7 @@ XML 结构说明：
     <!--
     <url>
         <loc>https://hnshenfu.com/product/category/gear-oil.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -129,7 +161,7 @@ XML 结构说明：
     <!--
     <url>
         <loc>https://hnshenfu.com/product/category/bearing-oil.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -139,7 +171,7 @@ XML 结构说明：
     <!--
     <url>
         <loc>https://hnshenfu.com/product/category/engine-oil.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -149,7 +181,7 @@ XML 结构说明：
     <!--
     <url>
         <loc>https://hnshenfu.com/news.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
@@ -159,7 +191,7 @@ XML 结构说明：
     <!--
     <url>
         <loc>https://hnshenfu.com/support.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -169,7 +201,7 @@ XML 结构说明：
     <!--
     <url>
         <loc>https://hnshenfu.com/faq.html</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

@@ -323,7 +323,6 @@ header {
 }
 
 .collapsible-content {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     /* max-height: 2000px; */
     opacity: 1;

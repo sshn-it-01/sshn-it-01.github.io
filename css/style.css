@@ -242,6 +242,99 @@ header {
     font-size: 32px;                /* 字号：32px */
     color: white;                   /* 白色文字：与背景形成强烈对比 */
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
+                                    /* 渐变背景：从品牌蓝到深蓝，增强视觉层次 */
+    padding: 15px 30px;             /* 内边距：上下 15px，左右 30px */
+    border-radius: 8px;             /* 圆角：8px，与卡片风格统一 */
+    box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+                                    /* 阴影：蓝色投影，增强悬浮感 */
+}
+
+/* =========================================================================
+ * 第 16 节 可折叠章节标题功能
+ * 功能：支持点击展开/收起章节内容，优化长页面浏览体验
+ * ========================================================================= */
+
+/* 可折叠标题容器 */
+.collapsible-header {
+    margin-bottom: 15px;
+}
+
+/* 可折叠标题样式 */
+.collapsible-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.collapsible-title:hover {
+    background: linear-gradient(135deg, #004494 0%, #00337a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 86, 179, 0.4);
+}
+
+.title-text {
+    flex: 1;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-right: 12px;
+}
+
+.collapsible-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 15px;
+}
+
+.collapsible-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.collapsible-btn:active {
+    transform: scale(0.95);
+}
+
+.arrow {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.collapsible-btn.collapsed .arrow {
+    transform: rotate(-180deg);
+}
+
+.collapsible-content {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    max-height: 2000px;
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.collapsible-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    transform: scaleY(0);
+    margin-top: -30px;
 }
 
 /* -----------------------------------------------------------------------------

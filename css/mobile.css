@@ -276,6 +276,26 @@
         font-size: 24px;            /* 缩小标题：24px */
         margin-bottom: 30px;        /* 减小下边距：30px */
     }
+    
+    /* 可折叠标题在移动端的适配 */
+    .collapsible-title {
+        padding: 10px 15px;         /* 移动端减小内边距 */
+        margin-bottom: 10px;        /* 减小下边距：10px */
+    }
+    
+    .title-text {
+        font-size: 18px;            /* 移动端缩小文字 */
+    }
+    
+    .collapsible-btn {
+        width: 32px;                /* 移动端缩小按钮 */
+        height: 32px;               /* 移动端缩小按钮 */
+        margin-left: 10px;          /* 减小左边距 */
+    }
+    
+    .arrow {
+        font-size: 14px;            /* 移动端缩小箭头 */
+    }
 
     /* 内容容器适配 - 移动端 */
     .container {

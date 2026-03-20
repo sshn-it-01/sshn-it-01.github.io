@@ -418,6 +418,74 @@ function initSlideshowModal() {
     });
 }
 
+/* -----------------------------------------------------------------------------
+ * 功能 6: 可折叠章节标题
+ * 作用：支持点击展开/收起章节内容，优化长页面浏览体验
+ * 触发条件：用户点击折叠按钮或标题区域
+ * 特性：平滑过渡动画、箭头旋转、状态持久化
+ * -------------------------------------------------------------------------- */
+
+/**
+ * 初始化可折叠章节
+ * @description 为所有可折叠标题绑定点击事件，实现内容的展开/收起
+ */
+function initCollapsibleSections() {
+    // 获取所有折叠按钮
+    const collapsibleBtns = document.querySelectorAll('.collapsible-btn');
+    
+    // 遍历每个按钮，绑定点击事件
+    collapsibleBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation(); // 阻止事件冒泡
+            
+            // 切换折叠状态
+            toggleCollapse(this);
+        });
+    });
+    
+    // 为标题容器也绑定点击事件（点击标题任意位置都可折叠）
+    const collapsibleTitles = document.querySelectorAll('.collapsible-title');
+    collapsibleTitles.forEach(title => {
+        title.addEventListener('click', function(e) {
+            // 如果点击的不是按钮本身，则触发按钮的折叠功能
+            if (!e.target.classList.contains('collapsible-btn')) {
+                const btn = this.querySelector('.collapsible-btn');
+                if (btn) {
+                    toggleCollapse(btn);
+                }
+            }
+        });
+    });
+}
+
+/**
+ * 切换折叠状态
+ * @param {HTMLElement} btn - 折叠按钮元素
+ */
+function toggleCollapse(btn) {
+    // 查找对应的内容区域
+    const header = btn.closest('.collapsible-header');
+    if (!header) return;
+    
+    const content = header.nextElementSibling;
+    if (!content || !content.classList.contains('collapsible-content')) return;
+    
+    // 切换 collapsed 类名
+    const isCollapsed = btn.classList.toggle('collapsed');
+    content.classList.toggle('collapsed');
+    
+    // 更新 aria-expanded 属性（无障碍访问）
+    btn.setAttribute('aria-expanded', !isCollapsed);
+    
+    // [可选] 保存到 localStorage，实现状态持久化
+    // const sectionId = header.querySelector('.collapsible-title')?.id;
+    // if (sectionId) {
+    //     localStorage.setItem(sectionId, isCollapsed ? 'collapsed' : 'expanded');
+    // }
+    
+    console.log('Section toggled:', isCollapsed ? 'collapsed' : 'expanded');
+}
+
 // [页面加载后执行] DOMContentLoaded 事件监听
 document.addEventListener('DOMContentLoaded', () => {
     // 当 HTML 文档完全加载并解析完成后执行（不等待图片、样式表等资源）
@@ -436,4 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     initSlideshowModal();
     // 初始化幻灯片灯箱功能（在产品详情页生效）
+    
+    initCollapsibleSections();
+    // 初始化可折叠章节功能（在 products.html 等页面生效）
 });

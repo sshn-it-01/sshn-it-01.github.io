@@ -303,6 +303,12 @@
         width: 100%;                /* 占满全宽 */
     }
 
+    /* [关键修复] 移动端移除可折叠内容的 max-height 限制，确保所有卡片正常显示 */
+    .collapsible-content {
+        /* max-height: none !important;  移除最大高度限制 */
+        overflow: visible !important; /* 允许内容溢出显示 */
+    }
+
     /* 网格布局强制单列 - 移动端 */
     .grid {
         grid-template-columns: 1fr !important;  /* 单列布局 */

@@ -325,7 +325,7 @@ header {
 .collapsible-content {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    max-height: 2000px;
+    /* max-height: 2000px; */
     opacity: 1;
     transform: scaleY(1);
 }
@@ -415,7 +415,6 @@ text-align: left;
     flex-direction: column;         /* 垂直排列：标题、描述、规格从上到下 */
     font-size: 20px;
     min-height: 0;                  /* 允许在伸展容器中正确收缩 */
-    overflow: auto;                 /* 当内容过多时在卡片内部滚动，保证卡片外部高度不变 */
 }
 
 /* 产品卡片顶部装饰/图片区域：固定高度并不收缩，避免被内容拉长 */

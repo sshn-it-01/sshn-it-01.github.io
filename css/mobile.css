@@ -560,7 +560,7 @@
     
     /* 章节副标题在移动端的适配 */
     .section-subtitle {
-        font-size: 14px;            /* 缩小字号 */
+        font-size: 18px;            /* 缩小字号 */
         margin-top: -20px;          /* 调整负边距 */
         margin-bottom: 30px;        /* 减小下边距 */
         padding: 0 10px;            /* 添加水平内边距 */
@@ -578,7 +578,7 @@
     
     /* 产品卡片标题在移动端的适配 */
     .card-product .card-content h3 {
-        font-size: 20px;            /* 缩小字号 */
+        font-size: 22px;            /* 缩小字号 */
     }
     
     /* 产品卡片描述在移动端的适配 */

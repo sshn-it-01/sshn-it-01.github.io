@@ -1232,6 +1232,14 @@ footer p {
     margin: 0 auto;                 /* 水平居中 */
 }
 
+/* 产品区块增加间距 */
+.products-section {
+    padding: 60px 20px;             /* 增大上下内边距至 60px */
+    max-width: 1400px;              /* [布局优化] 增加最大宽度至 1400px，让卡片有更宽的展示空间，避免显得太瘦 */
+    margin: 0 auto;                 /* 水平居中 */
+}
+
+
 /* 关于我们介绍文字 */
 .about-intro {
     font-size: 18px;                /* 增大字号至 18px */
@@ -1303,7 +1311,7 @@ footer p {
 /* 章节副标题 */
 .section-subtitle {
     text-align: center;             /* 居中对齐 */
-    font-size: 16px;                /* 字号 16px */
+    font-size: 18px;                /* 字号 16px */
     color: #666;                    /* 浅灰色 */
     margin-top: -25px;              /* 负边距:向上拉近与主标题的距离 */
     margin-bottom: 40px;            /* 下边距 40px */
@@ -1347,13 +1355,13 @@ footer p {
 
 /* 产品卡片标题 */
 .card-product .card-content h3 {
-    font-size: 22px;                /* 增大字号至 22px */
+    font-size: 25px;                /* 增大字号至 22px */
     margin-bottom: 12px;            /* 减小下边距至 12px */
 }
 
 /* 产品卡片描述 */
 .card-product .card-content p {
-    font-size: 15px;                /* 字号 15px */
+    font-size: 18px;                /* 字号 15px */
     line-height: 1.7;               /* 行高 1.7 */
     color: #555;                    /* 稍深的灰色 */
     margin-bottom: 15px;            /* 下边距 15px */

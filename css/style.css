@@ -2,62 +2,62 @@
  * =============================================================================
  * 华南森孚贸易有限公司 - 全局样式文件
  * =============================================================================
- * 文件说明：本项目的主样式表，包含所有页面的视觉样式定义
- * 命名规范：BEM 命名法（Block Element Modifier）
- * 单位策略：布局/间距/字体统一使用 px，确保精确控制
- * 响应式断点：768px（移动设备与桌面设备的分界点）
+ * 文件说明:本项目的主样式表,包含所有页面的视觉样式定义
+ * 命名规范:BEM 命名法(Block Element Modifier)
+ * 单位策略:布局/间距/字体统一使用 px,确保精确控制
+ * 响应式断点:768px(移动设备与桌面设备的分界点)
  * =============================================================================
  */
 
 /* -----------------------------------------------------------------------------
  * 1. 全局重置与基础变量
- * 功能：定义 CSS 自定义属性（变量）和全局样式重置
+ * 功能:定义 CSS 自定义属性(变量)和全局样式重置
  * -------------------------------------------------------------------------- */
 
 /* 全局滚动行为 - 实现平滑滚动效果 */
 html {
-    scroll-behavior: smooth;        /* 平滑滚动：点击锚点链接时缓慢滚动到目标位置，提升用户体验 */
+    scroll-behavior: smooth;        /* 平滑滚动:点击锚点链接时缓慢滚动到目标位置,提升用户体验 */
 }
 
 /* 带 ID 的 section 元素 - 用于锚点跳转定位 */
 section[id] {
-    scroll-margin-top: 80px;        /* [关键] 滚动上边距 80px：防止被固定导航栏遮挡标题内容，值为导航栏高度 +10px */
+    scroll-margin-top: 80px;        /* [关键] 滚动上边距 80px:防止被固定导航栏遮挡标题内容,值为导航栏高度 +10px */
 }
 
 :root {
     /* 颜色变量 - 用于保持全站色彩一致性 */
-    --primary-color: #0056b3;      /* 主色调：深蓝色，用于品牌色、按钮、链接等 */
-    --secondary-color: #f4f4f4;    /* 辅助色：浅灰色，用于背景区域 */
-    --text-color: #333;            /* 主文字颜色：深灰色，保证阅读舒适度 */
-    --white: #ffffff;              /* 白色：用于背景或反白文字 */
+    --primary-color: #0056b3;      /* 主色调:深蓝色,用于品牌色、按钮、链接等 */
+    --secondary-color: #f4f4f4;    /* 辅助色:浅灰色,用于背景区域 */
+    --text-color: #333;            /* 主文字颜色:深灰色,保证阅读舒适度 */
+    --white: #ffffff;              /* 白色:用于背景或反白文字 */
     
     /* 布局变量 */
-    --max-width: 1200px;           /* 页面最大宽度：限制内容区域的最大宽度，适配大屏设备 */
+    --max-width: 1200px;           /* 页面最大宽度:限制内容区域的最大宽度,适配大屏设备 */
 }
 
 /* 全局选择器重置 - 移除浏览器默认样式 */
 * {
     margin: 0;                      /* 移除所有元素的外边距 */
     padding: 0;                     /* 移除所有元素的内边距 */
-    box-sizing: border-box;         /* 边框盒模型：元素的总宽度包含 padding 和 border，便于尺寸计算 */
+    box-sizing: border-box;         /* 边框盒模型:元素的总宽度包含 padding 和 border,便于尺寸计算 */
 }
 
 /* Body 基础样式 - 整个页面的容器 */
 body {
     font-family: 'Alibaba PuHuiTi', '阿里巴巴普惠体', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-                                    /* 字体栈：优先使用阿里巴巴普惠体，逐级降级，确保中文显示效果 */
-    line-height: 1.6;               /* 行高：1.6 倍字号，提升文字可读性的最佳实践值 */
-    color: var(--text-color);       /* 文字颜色：使用定义的深灰色 */
-    background-color: var(--white); /* 背景色：白色 */
-    min-height: 100vh;              /* 最小高度：100% 视口高度，实现 Sticky Footer 的关键 */
-    display: flex;                  /* Flexbox 布局：启用弹性盒子 */
-    flex-direction: column;         /* 主轴方向：垂直排列子元素（header、main、footer） */
-    overflow-x: hidden;             /* [响应式防护] 隐藏水平溢出：防止小屏幕出现横向滚动条 */
+                                    /* 字体栈:优先使用阿里巴巴普惠体,逐级降级,确保中文显示效果 */
+    line-height: 1.6;               /* 行高:1.6 倍字号,提升文字可读性的最佳实践值 */
+    color: var(--text-color);       /* 文字颜色:使用定义的深灰色 */
+    background-color: var(--white); /* 背景色:白色 */
+    min-height: 100vh;              /* 最小高度:100% 视口高度,实现 Sticky Footer 的关键 */
+    display: flex;                  /* Flexbox 布局:启用弹性盒子 */
+    flex-direction: column;         /* 主轴方向:垂直排列子元素(header、main、footer) */
+    overflow-x: hidden;             /* [响应式防护] 隐藏水平溢出:防止小屏幕出现横向滚动条 */
 }
 
 /* 链接样式 - 全局统一的超链接样式 */
 a { 
-    text-decoration: none;          /* 移除下划线，保持简洁 */
+    text-decoration: none;          /* 移除下划线,保持简洁 */
     color: inherit;                 /* 继承父元素的文字颜色 */
 }
 
@@ -68,49 +68,49 @@ ul {
 
 /* 图片样式 - 响应式图片处理 */
 img { 
-    max-width: 100%;                /* 最大宽度：不超过父容器宽度，实现响应式缩放 */
-    display: block;                 /* 块级显示：消除图片底部的空隙 */
+    max-width: 100%;                /* 最大宽度:不超过父容器宽度,实现响应式缩放 */
+    display: block;                 /* 块级显示:消除图片底部的空隙 */
 }
 
 /* -----------------------------------------------------------------------------
  * 2. 导航栏组件
- * 功能：顶部固定导航栏，包含 Logo、菜单链接和移动端汉堡菜单
- * 响应式：在 768px 以下切换为移动端汉堡菜单
+ * 功能:顶部固定导航栏,包含 Logo、菜单链接和移动端汉堡菜单
+ * 响应式:在 768px 以下切换为移动端汉堡菜单
  * -------------------------------------------------------------------------- */
 
 /* 导航栏容器 - 固定在页面顶部 */
 header {
-    background: var(--white);       /* 背景色：白色 */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* 阴影：底部轻微阴影，增加层次感 */
-    position: sticky;               /* 粘性定位：滚动时保持在顶部 */
-    top: 0;                         /* 粘性位置：距离顶部 0px */
-    z-index: 1000;                  /* [关键] 层级 1000：确保在最上层，避免被其他内容遮挡 */
+    background: var(--white);       /* 背景色:白色 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* 阴影:底部轻微阴影,增加层次感 */
+    position: sticky;               /* 粘性定位:滚动时保持在顶部 */
+    top: 0;                         /* 粘性位置:距离顶部 0px */
+    z-index: 1000;                  /* [关键] 层级 1000:确保在最上层,避免被其他内容遮挡 */
 }
 
 /* 导航栏内部容器 - 控制最大宽度和居中 */
 .nav-container {
-    max-width: var(--max-width);    /* 最大宽度：1200px */
+    max-width: var(--max-width);    /* 最大宽度:1200px */
     margin: 0 auto;                 /* 水平居中 */
-    display: flex;                  /* Flexbox 布局：横向排列 Logo 和菜单 */
-    justify-content: space-between; /* 主轴分布：两端对齐 */
-    align-items: center;            /* 交叉轴对齐：垂直居中 */
-    padding: 16px 20px;             /* 内边距：上下 16px，左右 20px */
-    width: 100%;                    /* 宽度：占满父容器 */
+    display: flex;                  /* Flexbox 布局:横向排列 Logo 和菜单 */
+    justify-content: space-between; /* 主轴分布:两端对齐 */
+    align-items: center;            /* 交叉轴对齐:垂直居中 */
+    padding: 16px 20px;             /* 内边距:上下 16px,左右 20px */
+    width: 100%;                    /* 宽度:占满父容器 */
 }
 
 /* Logo 区域 - 包含图形 Logo 和文字 Logo */
 .logo {
-    display: flex;                  /* Flexbox 布局：横向排列图形和文字 */
+    display: flex;                  /* Flexbox 布局:横向排列图形和文字 */
     align-items: center;            /* 垂直居中对齐 */
-    gap: 10px;                      /* 间距：图形和文字之间 10px */
-    font-size: 24px;                /* 字号：24px */
-    font-weight: bold;              /* 字重：加粗 */
-    color: var(--primary-color);    /* 颜色：品牌蓝色 */
-    flex-shrink: 0;                 /* 不收缩：防止在小屏幕被压缩 */
+    gap: 10px;                      /* 间距:图形和文字之间 10px */
+    font-size: 24px;                /* 字号:24px */
+    font-weight: bold;              /* 字重:加粗 */
+    color: var(--primary-color);    /* 颜色:品牌蓝色 */
+    flex-shrink: 0;                 /* 不收缩:防止在小屏幕被压缩 */
 }
 
 /* 图形 Logo - 公司图标 */
-/* .logo-icon样式， logo图片定义在 images.css 中 */
+/* .logo-icon样式, logo图片定义在 images.css 中 */
 
 /* Logo 链接样式 */
 .logo a {
@@ -119,65 +119,65 @@ header {
 }
 
 .logo a:hover {
-    opacity: 0.8;                   /* 悬停效果：透明度降低到 80%，提供交互反馈 */
+    opacity: 0.8;                   /* 悬停效果:透明度降低到 80%,提供交互反馈 */
 }
 
 /* 文字 Logo - 公司名称 */
 .logo-text {
-    white-space: nowrap;            /* 不换行：保持单行显示 */
+    white-space: nowrap;            /* 不换行:保持单行显示 */
 }
 
 /* 导航链接列表 */
 .nav-links {
-    display: flex;                  /* Flexbox 布局：横向排列菜单项 */
-    gap: 20px;                      /* 间距：菜单项之间 20px */
+    display: flex;                  /* Flexbox 布局:横向排列菜单项 */
+    gap: 20px;                      /* 间距:菜单项之间 20px */
 }
 
 /* 导航链接单项 */
 .nav-links a {
-    font-weight: 500;               /* 字重：中等粗细 */
-    transition: color 0.3s;         /* 过渡动画：颜色变化 0.3 秒，营造平滑效果 */
+    font-weight: 500;               /* 字重:中等粗细 */
+    transition: color 0.3s;         /* 过渡动画:颜色变化 0.3 秒,营造平滑效果 */
 }
 
 /* 导航链接悬停和激活状态 */
 .nav-links a:hover, .nav-links a.active {
-    color: var(--primary-color);    /* 颜色：变为品牌蓝色 */
+    color: var(--primary-color);    /* 颜色:变为品牌蓝色 */
 }
 
-/* 移动端菜单按钮（汉堡菜单）- 默认隐藏 */
+/* 移动端菜单按钮(汉堡菜单)- 默认隐藏 */
 .menu-toggle {
-    display: none;                  /* 默认隐藏：桌面端不显示 */
-    font-size: 24px;                /* 字号：24px */
-    cursor: pointer;                /* 鼠标样式：手型光标，提示可点击 */
+    display: none;                  /* 默认隐藏:桌面端不显示 */
+    font-size: 24px;                /* 字号:24px */
+    cursor: pointer;                /* 鼠标样式:手型光标,提示可点击 */
 }
 
 /* -----------------------------------------------------------------------------
  * 3. 通用布局组件
- * 功能：页面主体内容容器、Hero 区域、按钮等通用组件
+ * 功能:页面主体内容容器、Hero 区域、按钮等通用组件
  * -------------------------------------------------------------------------- */
 
 /* 内容容器 - 限制内容宽度并居中 */
 .container {
-    max-width: var(--max-width);    /* 最大宽度：1200px */
+    max-width: var(--max-width);    /* 最大宽度:1200px */
     margin: 0 auto;                 /* 水平居中 */
-    padding: 40px 20px;             /* 内边距：上下 40px，左右 20px */
-    width: 100%;                    /* 宽度：占满父容器，防止溢出 */
+    padding: 40px 20px;             /* 内边距:上下 40px,左右 20px */
+    width: 100%;                    /* 宽度:占满父容器,防止溢出 */
 }
 
 /* 区域间距 - 用于 section 之间的垂直分隔 */
 .section-spacing {
-    margin-bottom: 10px;            /* 下边距：60px，创建舒适的区域间隔 */
+    margin-bottom: 10px;            /* 下边距:60px,创建舒适的区域间隔 */
 }
 
 /* Hero 区域 - 页面顶部的横幅展示区 */
 .hero {
-    background-color: var(--primary-color);  /* 背景色：品牌蓝（当前未使用背景图） */
-    color: var(--white);            /* 文字颜色：白色 */
-    text-align: center;             /* 文字对齐：居中 */
-    padding: 100px 20px;            /* 内边距：上下 100px，左右 20px */
-    /* Hero 区域背景效果：
-     * - 使用线性渐变创建半透明黑色遮罩层，增强文字可读性
-     * - 渐变从 rgba(0,0,0,0.6) 到 rgba(0,0,0,0.6)，形成均匀的 60% 透明度黑色遮罩
+    background-color: var(--primary-color);  /* 背景色:品牌蓝(当前未使用背景图) */
+    color: var(--white);            /* 文字颜色:白色 */
+    text-align: center;             /* 文字对齐:居中 */
+    padding: 100px 20px;            /* 内边距:上下 100px,左右 20px */
+    /* Hero 区域背景效果:
+     * - 使用线性渐变创建半透明黑色遮罩层,增强文字可读性
+     * - 渐变从 rgba(0,0,0,0.6) 到 rgba(0,0,0,0.6),形成均匀的 60% 透明度黑色遮罩
      * - 背景图覆盖整个区域并保持居中显示
      */
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
@@ -185,7 +185,7 @@ header {
     background-position: center;
 
 
-/* Hero 区域背景（备用，如需添加背景图可在此定义） */
+/* Hero 区域背景(备用,如需添加背景图可在此定义) */
 /* .hero {
     background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/hero-bg.jpg');
 } */
@@ -193,65 +193,65 @@ header {
 
 /* Hero 标题 */
 .hero h1 { 
-    font-size: 28px;                /* 字号：28px */
-    margin-bottom: 20px;            /* 下边距：20px */
+    font-size: 28px;                /* 字号:28px */
+    margin-bottom: 20px;            /* 下边距:20px */
 }
 
 /* 按钮组件 - 主要行动按钮 */
 .btn {
-    display: inline-block;          /* 行内块级：可设置宽高但保持在行内 */
-    background: var(--primary-color);  /* 背景色：品牌蓝 */
-    color: var(--white);            /* 文字颜色：白色 */
-    padding: 10px 25px;             /* 内边距：上下 10px，左右 25px */
-    border-radius: 5px;             /* 圆角：5px */
-    margin-top: 20px;               /* 上边距：20px */
-    transition: background 0.3s;    /* 过渡动画：背景色 0.3 秒 */
+    display: inline-block;          /* 行内块级:可设置宽高但保持在行内 */
+    background: var(--primary-color);  /* 背景色:品牌蓝 */
+    color: var(--white);            /* 文字颜色:白色 */
+    padding: 10px 25px;             /* 内边距:上下 10px,左右 25px */
+    border-radius: 5px;             /* 圆角:5px */
+    margin-top: 20px;               /* 上边距:20px */
+    transition: background 0.3s;    /* 过渡动画:背景色 0.3 秒 */
 }
 
 /* 按钮悬停状态 */
 .btn:hover { 
-    background: #004494;            /* 悬停背景：更深的蓝色，提供视觉反馈 */
+    background: #004494;            /* 悬停背景:更深的蓝色,提供视觉反馈 */
 }
 
 /* 主要按钮样式 - 用于强调重要操作 */
 .btn-primary {
     background: var(--primary-color);  /* 品牌蓝背景 */
     box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
-                                    /* 阴影效果：营造悬浮感 */
+                                    /* 阴影效果:营造悬浮感 */
 }
 
 .btn-primary:hover {
     background: #004494;            /* 悬停时更深的蓝色 */
-    transform: translateY(-2px);    /* 轻微上移，增强交互反馈 */
+    transform: translateY(-2px);    /* 轻微上移,增强交互反馈 */
     box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
                                     /* 悬停时增强阴影 */
 }
 
 /* 章节标题 - 各板块的标题样式 */
 .section-title {
-    text-align: center;             /* 文字对齐：居中 */
-    margin-bottom: 40px;            /* 下边距：40px */
-    font-size: 32px;                /* 字号：32px */
-    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    text-align: center;             /* 文字对齐:居中 */
+    margin-bottom: 40px;            /* 下边距:40px */
+    font-size: 32px;                /* 字号:32px */
+    color: var(--primary-color);    /* 颜色:品牌蓝 */
 }
 
 /* 带横幅背景的标题 - 用于突出显示重要区域标题 */
 .section-title-banner {
-    text-align: center;             /* 文字对齐：居中 */
-    margin-bottom: 40px;            /* 下边距：40px */
-    font-size: 32px;                /* 字号：32px */
-    color: white;                   /* 白色文字：与背景形成强烈对比 */
+    text-align: center;             /* 文字对齐:居中 */
+    margin-bottom: 40px;            /* 下边距:40px */
+    font-size: 32px;                /* 字号:32px */
+    color: white;                   /* 白色文字:与背景形成强烈对比 */
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
-                                    /* 渐变背景：从品牌蓝到深蓝，增强视觉层次 */
-    padding: 15px 30px;             /* 内边距：上下 15px，左右 30px */
-    border-radius: 8px;             /* 圆角：8px，与卡片风格统一 */
+                                    /* 渐变背景:从品牌蓝到深蓝,增强视觉层次 */
+    padding: 15px 30px;             /* 内边距:上下 15px,左右 30px */
+    border-radius: 8px;             /* 圆角:8px,与卡片风格统一 */
     box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
-                                    /* 阴影：蓝色投影，增强悬浮感 */
+                                    /* 阴影:蓝色投影,增强悬浮感 */
 }
 
 /* =========================================================================
  * 第 16 节 可折叠章节标题功能
- * 功能：支持点击展开/收起章节内容，优化长页面浏览体验
+ * 功能:支持点击展开/收起章节内容,优化长页面浏览体验
  * ========================================================================= */
 
 /* 可折叠标题容器 */
@@ -339,27 +339,27 @@ header {
 
 /* -----------------------------------------------------------------------------
  * 4. 网格布局系统
- * 功能：用于产品展示、案例展示等需要网格排列的场景
+ * 功能:用于产品展示、案例展示等需要网格排列的场景
  * -------------------------------------------------------------------------- */
 
 /* 网格容器 - 自动适应列数 */
 .grid {
-    display: grid;                  /* Grid 布局：启用网格系统 */
+    display: grid;                  /* Grid 布局:启用网格系统 */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                                    /* [智能响应式策略] 自适应填充列数，每列最小 300px，最大等分剩余空间 */
-    gap: 30px;                      /* 间距：网格项之间 30px */
-    align-items: stretch;           /* 伸展对齐：让每行网格项在同一行内保持高度一致，避免不对齐 */
+                                    /* [智能响应式策略] 自适应填充列数,每列最小 300px,最大等分剩余空间 */
+    gap: 30px;                      /* 间距:网格项之间 30px */
+    align-items: stretch;           /* 伸展对齐:让每行网格项在同一行内保持高度一致,避免不对齐 */
 }
 
 /* 卡片链接包装器 - 使整个卡片可点击 */
 .card-link {
-    display: flex;                  /* Flexbox 布局：使卡片能够自适应高度 */
-    height: 100%;                   /* 高度：占满父容器，确保与网格项同高 */
-    align-items: stretch;           /* 伸展对齐：确保链接容器内的卡片填满可用高度，保持等高 */
-    min-height: 0;                  /* 允许在 grid 中正确收缩，避免内容推动行高 */
+    display: flex;                  /* Flexbox 布局:使卡片能够自适应高度 */
+    height: 100%;                   /* 高度:占满父容器,确保与网格项同高 */
+    align-items: stretch;           /* 伸展对齐:确保链接容器内的卡片填满可用高度,保持等高 */
+    min-height: 0;                  /* 允许在 grid 中正确收缩,避免内容推动行高 */
 }
 
-/* 确保网格的直接子元素在伸展时可收缩（解决内部 overflow 导致的高度异常） */
+/* 确保网格的直接子元素在伸展时可收缩(解决内部 overflow 导致的高度异常) */
 .grid > * {
     min-height: 0;
 }
@@ -367,22 +367,22 @@ header {
 
 /* 卡片组件 - 产品/案例展示卡片 */
 .card {
-    background: var(--white);       /* 背景色：白色 */
-    border: 1px solid #ddd;         /* [例外] 边框 1px：浅灰色实线，防止小屏缩放时边框消失 */
-    border-radius: 8px;             /* 圆角：8px */
-    overflow: hidden;               /* 溢出隐藏：防止内容超出圆角 */
-    transition: transform 0.3s;     /* 过渡动画：变形 0.3 秒 */
-    display: flex;                  /* Flexbox 布局：内部使用弹性布局 */
-    flex-direction: column;         /* 主轴方向：垂直排列，图片在上内容在下 */
-    height: 100%;                   /* 高度：占满父容器，确保所有卡片等高 */
-    width: 100%;                    /* 宽度：占满父容器，确保所有卡片等宽 */
-    min-height: 0;                  /* 允许在 flex/grid 容器内正确收缩，避免内容溢出推动高度 */
+    background: var(--white);       /* 背景色:白色 */
+    border: 1px solid #ddd;         /* [例外] 边框 1px:浅灰色实线,防止小屏缩放时边框消失 */
+    border-radius: 8px;             /* 圆角:8px */
+    overflow: hidden;               /* 溢出隐藏:防止内容超出圆角 */
+    transition: transform 0.3s;     /* 过渡动画:变形 0.3 秒 */
+    display: flex;                  /* Flexbox 布局:内部使用弹性布局 */
+    flex-direction: column;         /* 主轴方向:垂直排列,图片在上内容在下 */
+    height: 100%;                   /* 高度:占满父容器,确保所有卡片等高 */
+    width: 100%;                    /* 宽度:占满父容器,确保所有卡片等宽 */
+    min-height: 0;                  /* 允许在 flex/grid 容器内正确收缩,避免内容溢出推动高度 */
 }
 
 /* 卡片悬停效果 */
 .card:hover { 
     transform: translateY(-5px);    /* 向上移动 5px */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);  /* 阴影：增加深度感 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);  /* 阴影:增加深度感 */
 }
 
 /* 咨询卡片特殊样式 - 用于引导用户联系 */
@@ -392,14 +392,14 @@ header {
 }
 
 .card-consultation .card-content h3 {
-    color: #004494;                 /* 更深的蓝色标题，强调重要性 */
-    font-weight: 600;               /* 加粗字重，增强视觉冲击力 */
+    color: #004494;                 /* 更深的蓝色标题,强调重要性 */
+    font-weight: 600;               /* 加粗字重,增强视觉冲击力 */
     font-size: 22px;
 }
 
 .card-consultation .card-content p {
     font-size: 22px;                /* 稍小的字号 */
-    line-height: 1.7;               /* 稍大的行高，提升可读性 */
+    line-height: 1.7;               /* 稍大的行高,提升可读性 */
 }
 
 .card-consultation .btn{
@@ -409,93 +409,93 @@ text-align: left;
 
 /* 卡片内容区域 */
 .card-content { 
-    padding: 20px;                  /* 内边距：20px */
-    flex: 1;                        /* [关键] 弹性增长：占据剩余空间，确保文字多的卡片也能对齐 */
-    display: flex;                  /* 改为 Flex 布局：让内部元素垂直排列并可控制伸缩 */
-    flex-direction: column;         /* 垂直排列：标题、描述、规格从上到下 */
+    padding: 20px;                  /* 内边距:20px */
+    flex: 1;                        /* [关键] 弹性增长:占据剩余空间,确保文字多的卡片也能对齐 */
+    display: flex;                  /* 改为 Flex 布局:让内部元素垂直排列并可控制伸缩 */
+    flex-direction: column;         /* 垂直排列:标题、描述、规格从上到下 */
     font-size: 20px;
     min-height: 0;                  /* 允许在伸展容器中正确收缩 */
 }
 
-/* 产品卡片顶部装饰/图片区域：固定高度并不收缩，避免被内容拉长 */
+/* 产品卡片顶部装饰/图片区域:固定高度并不收缩,避免被内容拉长 */
 
 
 /* 卡片标题样式 */
 .card-content h3 {
-    margin-bottom: 15px;            /* 下边距：15px */
-    font-size: 20px;                /* 字号：20px */
-    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    margin-bottom: 15px;            /* 下边距:15px */
+    font-size: 24px;                /* 字号:20px */
+    color: var(--primary-color);    /* 颜色:品牌蓝 */
 }
 
 /* 卡片描述文字 */
 .card-content p {
-    color: #666;                    /* 颜色：浅灰色 */
-    line-height: 1.6;               /* 行高：1.6 倍 */
-    /* 关键：允许主描述段落填充剩余空间，将 .product-specs 推到底部以保持分割线对齐 */
+    color: #666;                    /* 颜色:浅灰色 */
+    line-height: 1.6;               /* 行高:1.6 倍 */
+    /* 关键:允许主描述段落填充剩余空间,将 .product-specs 推到底部以保持分割线对齐 */
     flex: 1 1 auto;
     min-height: 0;
 }
 
 /* -----------------------------------------------------------------------------
- * 5. 产品卡片背景图样式（已移至 images.css）
- * 功能：为不同产品分类定义背景图片（使用 CSS 背景图而非<img>标签）
- * 规范：遵循图片资源管理规范，装饰性图片使用 CSS 背景
- * 注：所有图片路径已统一移至 images.css 管理
+ * 5. 产品卡片背景图样式(已移至 images.css)
+ * 功能:为不同产品分类定义背景图片(使用 CSS 背景图而非<img>标签)
+ * 规范:遵循图片资源管理规范,装饰性图片使用 CSS 背景
+ * 注:所有图片路径已统一移至 images.css 管理
  * -------------------------------------------------------------------------- */
 
 /* -----------------------------------------------------------------------------
  * 6. 表单组件
- * 功能：联系表单、留言表单等输入控件样式
+ * 功能:联系表单、留言表单等输入控件样式
  * -------------------------------------------------------------------------- */
 
 /* 表单分组 - 每个表单项的容器 */
 .form-group { 
-    margin-bottom: 20px;            /* 下边距：20px，分隔各表单项 */
+    margin-bottom: 20px;            /* 下边距:20px,分隔各表单项 */
 }
 
 /* 表单标签 */
 .form-group label { 
-    display: block;                 /* 块级显示：独占一行 */
-    margin-bottom: 5px;             /* 下边距：5px */
+    display: block;                 /* 块级显示:独占一行 */
+    margin-bottom: 5px;             /* 下边距:5px */
 }
 
 /* 表单输入框和文本域 */
 .form-group input, .form-group textarea {
-    width: 100%;                    /* 宽度：占满父容器 */
-    padding: 10px;                  /* 内边距：10px */
-    border: 1px solid #ddd;         /* [例外] 边框 1px：浅灰色，防止小屏缩放时边框消失 */
-    border-radius: 4px;             /* 圆角：4px */
+    width: 100%;                    /* 宽度:占满父容器 */
+    padding: 10px;                  /* 内边距:10px */
+    border: 1px solid #ddd;         /* [例外] 边框 1px:浅灰色,防止小屏缩放时边框消失 */
+    border-radius: 4px;             /* 圆角:4px */
 }
 
 /* -----------------------------------------------------------------------------
  * 7. 页脚组件
- * 功能：页面底部版权信息区域，使用 Sticky Footer 布局
+ * 功能:页面底部版权信息区域,使用 Sticky Footer 布局
  * -------------------------------------------------------------------------- */
 
 footer {
-    background: #333;               /* 背景色：深灰色 */
-    color: var(--white);            /* 文字颜色：白色 */
-    text-align: center;             /* 文字对齐：居中 */
-    padding: 40px 20px 20px;        /* 内边距：顶部 40px（容纳导航栏），底部和两侧 20px */
-    margin-top: auto;               /* [关键] 上边距：auto，Flexbox 中自动推到容器底部，实现 Sticky Footer */
+    background: #333;               /* 背景色:深灰色 */
+    color: var(--white);            /* 文字颜色:白色 */
+    text-align: center;             /* 文字对齐:居中 */
+    padding: 40px 20px 20px;        /* 内边距:顶部 40px(容纳导航栏),底部和两侧 20px */
+    margin-top: auto;               /* [关键] 上边距:auto,Flexbox 中自动推到容器底部,实现 Sticky Footer */
 }
 
 /* 页脚内容区 - 包含导航栏和联系方式 */
 .footer-content {
-    max-width: var(--max-width);    /* 最大宽度：1200px */
-    margin: 0 auto 30px;            /* 水平居中，底部间距 30px */
-    display: grid;                  /* 网格布局：多列显示 */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 自适应列宽，最小 250px */
-    gap: 30px;                      /* 网格间距：30px */
+    max-width: var(--max-width);    /* 最大宽度:1200px */
+    margin: 0 auto 30px;            /* 水平居中,底部间距 30px */
+    display: grid;                  /* 网格布局:多列显示 */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 自适应列宽,最小 250px */
+    gap: 30px;                      /* 网格间距:30px */
     text-align: left;               /* 文字左对齐 */
 }
 
 /* 页脚区块标题 */
 .footer-section h4 {
-    font-size: 18px;                /* 字号：18px */
-    margin-bottom: 15px;            /* 底部间距：15px */
-    color: var(--white);            /* 颜色：白色 */
-    font-weight: 600;               /* 字重：600，加粗 */
+    font-size: 18px;                /* 字号:18px */
+    margin-bottom: 15px;            /* 底部间距:15px */
+    color: var(--white);            /* 颜色:白色 */
+    font-weight: 600;               /* 字重:600,加粗 */
 }
 
 /* 页脚导航链接列表 */
@@ -506,20 +506,20 @@ footer {
 
 /* 页脚导航链接项 */
 .footer-links li {
-    margin-bottom: 10px;            /* 底部间距：10px */
+    margin-bottom: 10px;            /* 底部间距:10px */
 }
 
 /* 页脚导航链接 */
 .footer-links a {
-    color: #ccc;                    /* 颜色：浅灰色 */
-    transition: all 0.3s ease;      /* 过渡效果：0.3 秒，平滑 */
-    line-height: 1.6;               /* 行高：1.6 倍 */
+    color: #ccc;                    /* 颜色:浅灰色 */
+    transition: all 0.3s ease;      /* 过渡效果:0.3 秒,平滑 */
+    line-height: 1.6;               /* 行高:1.6 倍 */
 }
 
 /* 页脚导航链接悬停效果 */
 .footer-links a:hover {
-    color: var(--primary-color);    /* 悬停颜色：品牌蓝色 */
-    transform: translateX(5px);     /* 悬停位移：右移 5px，提供视觉反馈 */
+    color: var(--primary-color);    /* 悬停颜色:品牌蓝色 */
+    transform: translateX(5px);     /* 悬停位移:右移 5px,提供视觉反馈 */
 }
 
 /* 页脚联系方式列表 */
@@ -530,356 +530,356 @@ footer {
 
 /* 页脚联系方式项 */
 .footer-contact li {
-    margin-bottom: 12px;            /* 底部间距：12px */
-    color: #ccc;                    /* 颜色：浅灰色 */
-    line-height: 1.6;               /* 行高：1.6 倍 */
-    display: flex;                  /* Flexbox 布局：图标和文字横向排列 */
-    align-items: flex-start;        /* 交叉轴对齐：顶部对齐 */
+    margin-bottom: 12px;            /* 底部间距:12px */
+    color: #ccc;                    /* 颜色:浅灰色 */
+    line-height: 1.6;               /* 行高:1.6 倍 */
+    display: flex;                  /* Flexbox 布局:图标和文字横向排列 */
+    align-items: flex-start;        /* 交叉轴对齐:顶部对齐 */
 }
 
 /* 页脚联系方式图标 */
 .footer-contact li strong {
-    color: var(--white);            /* 颜色：白色 */
-    margin-right: 8px;              /* 右侧间距：8px */
-    flex-shrink: 0;                 /* 不收缩：保持固定宽度 */
+    color: var(--white);            /* 颜色:白色 */
+    margin-right: 8px;              /* 右侧间距:8px */
+    flex-shrink: 0;                 /* 不收缩:保持固定宽度 */
 }
 
 /* 页脚二维码容器 - 小型化自适应显示 */
 .footer-qr-codes {
-    display: flex;                  /* Flexbox 布局：二维码水平排列 */
-    gap: 15px;                      /* 间距：15px，紧凑排列 */
+    display: flex;                  /* Flexbox 布局:二维码水平排列 */
+    gap: 15px;                      /* 间距:15px,紧凑排列 */
     justify-content: flex-start;    /* 左对齐 */
-    margin-top: 10px;               /* 上边距：10px */
+    margin-top: 10px;               /* 上边距:10px */
 }
 
 /* 页脚二维码图片 - 小尺寸自适应 */
 .footer-qr-image {
-    width: 80px;                    /* 宽度：80px，小尺寸节省空间 */
-    height: 80px;                   /* 高度：80px，正方形比例 */
-    border: 1px solid rgba(255,255,255,0.2); /* 边框：白色半透明 */
-    border-radius: 4px;             /* 圆角：4px，柔和边界 */
-    padding: 5px;                   /* 内边距：5px */
-    background-color: #fff;         /* 白色背景：确保扫码识别率 */
-    background-size: contain;       /* 背景尺寸：包含模式，完整显示 */
-    background-position: center;    /* 背景位置：居中 */
+    width: 80px;                    /* 宽度:80px,小尺寸节省空间 */
+    height: 80px;                   /* 高度:80px,正方形比例 */
+    border: 1px solid rgba(255,255,255,0.2); /* 边框:白色半透明 */
+    border-radius: 4px;             /* 圆角:4px,柔和边界 */
+    padding: 5px;                   /* 内边距:5px */
+    background-color: #fff;         /* 白色背景:确保扫码识别率 */
+    background-size: contain;       /* 背景尺寸:包含模式,完整显示 */
+    background-position: center;    /* 背景位置:居中 */
     background-repeat: no-repeat;   /* 不重复平铺 */
-    transition: transform 0.3s ease; /* 过渡动画：0.3 秒 */
+    transition: transform 0.3s ease; /* 过渡动画:0.3 秒 */
 }
 
 /* 页脚二维码悬停效果 */
 .footer-qr-image:hover {
-    transform: scale(1.1);          /* 悬停放大：1.1 倍 */
+    transform: scale(1.1);          /* 悬停放大:1.1 倍 */
     box-shadow: 0 4px 12px rgba(255,255,255,0.2); /* 悬停阴影 */
 }
 
 /* 页脚二维码说明文字 */
 .footer-qr-text {
-    color: #999;                    /* 颜色：中灰色 */
-    font-size: 13px;                /* 字号：13px */
-    line-height: 1.6;               /* 行高：1.6 倍 */
-    margin-top: 8px;                /* 上边距：8px */
+    color: #999;                    /* 颜色:中灰色 */
+    font-size: 13px;                /* 字号:13px */
+    line-height: 1.6;               /* 行高:1.6 倍 */
+    margin-top: 8px;                /* 上边距:8px */
 }
 
 /* 页脚分隔线 */
 .footer-divider {
     border: none;                   /* 移除默认边框 */
-    height: 2px;                    /* 高度：2px */
-    background-color: rgba(255,255,255,0.1); /* 背景色：白色 10% 透明度 */
-    margin: 20px auto;              /* 间距：上下 20px，水平居中 */
-    max-width: var(--max-width);    /* 最大宽度：1200px */
+    height: 2px;                    /* 高度:2px */
+    background-color: rgba(255,255,255,0.1); /* 背景色:白色 10% 透明度 */
+    margin: 20px auto;              /* 间距:上下 20px,水平居中 */
+    max-width: var(--max-width);    /* 最大宽度:1200px */
 }
 
 /* 页脚段落 - 版权信息和备案号 */
 footer p {
-    word-wrap: break-word;          /* 允许单词内换行：防止长文本在小屏幕溢出 */
-    white-space: normal;            /* 正常换行：允许在空格处换行 */
-    color: #999;                    /* 颜色：中灰色，区别于上方的白色 */
-    font-size: 14px;                /* 字号：14px */
-    line-height: 1.8;               /* 行高：1.8 倍，增加可读性 */
+    word-wrap: break-word;          /* 允许单词内换行:防止长文本在小屏幕溢出 */
+    white-space: normal;            /* 正常换行:允许在空格处换行 */
+    color: #999;                    /* 颜色:中灰色,区别于上方的白色 */
+    font-size: 14px;                /* 字号:14px */
+    line-height: 1.8;               /* 行高:1.8 倍,增加可读性 */
 }
 
 /* -----------------------------------------------------------------------------
  * 8. 通用内容区域样式
- * 策略：提供可复用的布局类和视觉样式类
+ * 策略:提供可复用的布局类和视觉样式类
  * -------------------------------------------------------------------------- */
 
 /* 最大宽度内容容器 */
 .content-max-width {
-    max-width: 800px;               /* [可读性优化] 限制最大宽度 800px：适合阅读的最佳行宽，避免文字过长导致视线疲劳 */
-    margin: 0 auto;                 /* 水平居中：左右自动分配剩余空间 */
+    max-width: 800px;               /* [可读性优化] 限制最大宽度 800px:适合阅读的最佳行宽,避免文字过长导致视线疲劳 */
+    margin: 0 auto;                 /* 水平居中:左右自动分配剩余空间 */
 }
 
 /* 内容章节标题 */
 .content-section-title {
-    margin-top: 30px;               /* 上边距 30px：与上方内容保持充足距离，标识新章节开始 */
+    margin-top: 30px;               /* 上边距 30px:与上方内容保持充足距离,标识新章节开始 */
 }
 
 /* 内容列表 */
 .content-list {
-    list-style: disc;               /* 圆点项目符号：传统的中英文列表样式 */
-    padding-left: 20px;             /* 左内边距 20px：为项目符号留出空间，防止文字贴边 */
-    margin-top: 15px;               /* 上边距 15px：与上方标题保持适当距离 */
+    list-style: disc;               /* 圆点项目符号:传统的中英文列表样式 */
+    padding-left: 20px;             /* 左内边距 20px:为项目符号留出空间,防止文字贴边 */
+    margin-top: 15px;               /* 上边距 15px:与上方标题保持适当距离 */
 }
 
 /* 文字居中对齐工具类 */
 .text-center {
-    text-align: center;             /* 居中对齐：用于标题、按钮等需要水平居中的元素 */
+    text-align: center;             /* 居中对齐:用于标题、按钮等需要水平居中的元素 */
 }
 
 /* 灰色背景工具类 */
 .bg-gray {
-    background-color: #f9f9f9;      /* 浅灰背景：区分不同内容区块，增加视觉层次 */
+    background-color: #f9f9f9;      /* 浅灰背景:区分不同内容区块,增加视觉层次 */
 }
 
 /* 两列布局工具类 */
 .grid-two-columns {
-    grid-template-columns: 1fr 1fr; /* 两列等分布局：适用于桌面端的双列展示场景 */
-    align-items: stretch; /* 拉伸所有网格项以填充容器高度，确保两列高度一致 */
+    grid-template-columns: 1fr 1fr; /* 两列等分布局:适用于桌面端的双列展示场景 */
+    align-items: stretch; /* 拉伸所有网格项以填充容器高度,确保两列高度一致 */
 }
 
 /* -----------------------------------------------------------------------------
  * 9. 面包屑导航样式
- * 策略：清晰的层级指引，帮助用户了解当前位置
+ * 策略:清晰的层级指引,帮助用户了解当前位置
  * -------------------------------------------------------------------------- */
 .breadcrumb {
-    margin-bottom: 20px;            /* 下边距 20px：与下方主内容保持适当距离 */
-    font-size: 14px;                /* 字号 14px：略小于正文，作为辅助信息不喧宾夺主 */
-    color: #666;                    /* 灰色文字：辅助信息的视觉权重降低 */
+    margin-bottom: 20px;            /* 下边距 20px:与下方主内容保持适当距离 */
+    font-size: 14px;                /* 字号 14px:略小于正文,作为辅助信息不喧宾夺主 */
+    color: #666;                    /* 灰色文字:辅助信息的视觉权重降低 */
 }
 
 .breadcrumb a {
-    color: #666;                    /* 灰色链接：未访问状态与当前层级保持一致 */
-    text-decoration: none;          /* 移除下划线：保持简洁 */
+    color: #666;                    /* 灰色链接:未访问状态与当前层级保持一致 */
+    text-decoration: none;          /* 移除下划线:保持简洁 */
 }
 
 .breadcrumb-current {
-    color: var(--primary-color);    /* [高亮] 主色调：突出显示当前页面层级 */
+    color: var(--primary-color);    /* [高亮] 主色调:突出显示当前页面层级 */
 }
 
 /* -----------------------------------------------------------------------------
  * 10. 产品介绍区域样式
- * 策略：居中展示产品核心信息，营造专业、聚焦的视觉效果
+ * 策略:居中展示产品核心信息,营造专业、聚焦的视觉效果
  * -------------------------------------------------------------------------- */
 .product-intro {
-    max-width: 800px;               /* [可读性优化] 限制最大宽度 800px：适合阅读的最佳行宽 */
-    margin: 0 auto 40px;            /* 水平居中 + 下边距 40px：与下方内容保持充足距离 */
-    text-align: center;             /* 文字居中：营造正式、聚焦的视觉效果 */
+    max-width: 800px;               /* [可读性优化] 限制最大宽度 800px:适合阅读的最佳行宽 */
+    margin: 0 auto 40px;            /* 水平居中 + 下边距 40px:与下方内容保持充足距离 */
+    text-align: center;             /* 文字居中:营造正式、聚焦的视觉效果 */
 }
 
 .product-intro p {
-    font-size: 16px;                /* 字号 16px：标准正文字号，舒适的阅读体验 */
-    line-height: 1.8;               /* 行高 1.8：宽松的行间距，提升可读性 */
+    font-size: 16px;                /* 字号 16px:标准正文字号,舒适的阅读体验 */
+    line-height: 1.8;               /* 行高 1.8:宽松的行间距,提升可读性 */
 }
 
 /* 产品规格样式 */
 .product-specs {
-    margin-top: 15px;               /* 上边距 15px：与上方介绍内容的连接 */
-    padding-top: 15px;              /* 上内边距 15px：通过留白创建视觉分隔 */
-    border-top: 1px solid #eee;     /* [例外] 顶部边框 1px：浅灰色分割线，区分不同信息区块 */
-    max-height: 160px;               /* 最大高度 160px：避免内容过多导致页面滚动 */
-    overflow: auto;                 /* 滚动：当内容超出最大高度时，允许用户滚动查看 */
+    margin-top: 15px;               /* 上边距 15px:与上方介绍内容的连接 */
+    padding-top: 15px;              /* 上内边距 15px:通过留白创建视觉分隔 */
+    border-top: 1px solid #eee;     /* [例外] 顶部边框 1px:浅灰色分割线,区分不同信息区块 */
+    max-height: 160px;               /* 最大高度 160px:避免内容过多导致页面滚动 */
+    overflow: auto;                 /* 滚动:当内容超出最大高度时,允许用户滚动查看 */
 }
 
 .product-specs p {
-    font-size: 18px;                /* 字号 14px：规格参数使用较小字号，作为辅助信息 */
-    color: #666;                    /* 灰色文字：降低视觉权重 */
-    margin-bottom: 5px;             /* 下边距 5px：规格项之间的紧凑排列 */
+    font-size: 18px;                /* 字号 14px:规格参数使用较小字号,作为辅助信息 */
+    color: #666;                    /* 灰色文字:降低视觉权重 */
+    margin-bottom: 5px;             /* 下边距 5px:规格项之间的紧凑排列 */
 }
 
 .product-specs strong {
-    color: #333;                    /* 深色强调：参数名称使用较深颜色，便于快速扫描 */
+    color: #333;                    /* 深色强调:参数名称使用较深颜色,便于快速扫描 */
 }
 
 /* 11. 应用领域展示区域
- * 策略：通过图标和文字结合，直观展示产品的应用场景
+ * 策略:通过图标和文字结合,直观展示产品的应用场景
  * -------------------------------------------------------------------------- */
 .application-section {
-    margin-top: 60px;               /* 上边距 60px：与上方内容保持较大距离，标识重要板块 */
-    background-color: #f9f9f9;      /* 浅灰背景：区分不同内容区块 */
-    padding: 40px 20px;             /* 内边距：上下 40px 营造呼吸感，左右 20px */
-    border-radius: 8px;             /* 圆角 8px：柔和的视觉边界 */
+    margin-top: 60px;               /* 上边距 60px:与上方内容保持较大距离,标识重要板块 */
+    background-color: #f9f9f9;      /* 浅灰背景:区分不同内容区块 */
+    padding: 40px 20px;             /* 内边距:上下 40px 营造呼吸感,左右 20px */
+    border-radius: 8px;             /* 圆角 8px:柔和的视觉边界 */
 }
 
 .application-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* [智能响应式策略] 最小 250px 一列，自适应屏幕宽度 */
-    gap: 20px;                      /* 间距 20px：应用卡片之间的舒适距离 */
+    /* [智能响应式策略] 最小 250px 一列,自适应屏幕宽度 */
+    gap: 20px;                      /* 间距 20px:应用卡片之间的舒适距离 */
 }
 
 .application-area {
-    text-align: center;             /* 居中对齐：图标和文字垂直居中排列 */
-    padding: 20px;                  /* 内边距 20px：为每个应用区域提供呼吸空间 */
+    text-align: center;             /* 居中对齐:图标和文字垂直居中排列 */
+    padding: 20px;                  /* 内边距 20px:为每个应用区域提供呼吸空间 */
 }
 
 .application-icon {
-    font-size: 40px;                /* 图标大小 40px：足够醒目，吸引注意力 */
-    margin-bottom: 10px;            /* 下边距 10px：图标与标题的紧密连接 */
+    font-size: 40px;                /* 图标大小 40px:足够醒目,吸引注意力 */
+    margin-bottom: 10px;            /* 下边距 10px:图标与标题的紧密连接 */
 }
 
 .application-title {
-    margin-bottom: 10px;            /* 下边距 10px：标题与描述的舒适距离 */
+    margin-bottom: 10px;            /* 下边距 10px:标题与描述的舒适距离 */
 }
 
 .application-desc {
-    font-size: 14px;                /* 字号 14px：描述文字使用较小字号 */
-    color: #666;                    /* 灰色文字：辅助信息的视觉权重降低 */
+    font-size: 14px;                /* 字号 14px:描述文字使用较小字号 */
+    color: #666;                    /* 灰色文字:辅助信息的视觉权重降低 */
 }
 
-/* 12. 联系 CTA 区域（Call To Action）
- * 策略：醒目的渐变背景，强烈的行动号召，促进用户转化
+/* 12. 联系 CTA 区域(Call To Action)
+ * 策略:醒目的渐变背景,强烈的行动号召,促进用户转化
  * -------------------------------------------------------------------------- */
 .contact-cta {
-    margin-top: 30px;               /* 上边距 30px：与上方内容保持较大距离，突出重要性 */
+    margin-top: 30px;               /* 上边距 30px:与上方内容保持较大距离,突出重要性 */
     margin-bottom: 10px;            /* 下边距 15px */
-    text-align: center;             /* 文字居中：营造聚焦的视觉效果 */
+    text-align: center;             /* 文字居中:营造聚焦的视觉效果 */
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
-    /* [渐变策略] 135 度对角线渐变，从主色调到更深的蓝色，营造深度和动感 */
-    color: white;                   /* 白色文字：与深蓝背景形成高对比度 */
-    padding: 40px 20px;             /* 内边距：上下 40px 营造宏大感，左右 20px */
-    border-radius: 8px;             /* 圆角 8px：柔和的视觉边界 */
+    /* [渐变策略] 135 度对角线渐变,从主色调到更深的蓝色,营造深度和动感 */
+    color: white;                   /* 白色文字:与深蓝背景形成高对比度 */
+    padding: 40px 20px;             /* 内边距:上下 40px 营造宏大感,左右 20px */
+    border-radius: 8px;             /* 圆角 8px:柔和的视觉边界 */
 }
 
 .contact-cta h3 {
-    margin-bottom: 15px;            /* 下边距 15px：标题与段落的舒适距离 */
-    font-size: 24px;                /* 字号 24px：足够醒目，吸引用户注意 */
+    margin-bottom: 15px;            /* 下边距 15px:标题与段落的舒适距离 */
+    font-size: 24px;                /* 字号 24px:足够醒目,吸引用户注意 */
 }
 
 .contact-cta p {
-    margin-bottom: 25px;            /* 下边距 25px：段落与按钮的舒适距离 */
-    font-size: 16px;                /* 字号 16px：标准正文字号，易于阅读 */
+    margin-bottom: 25px;            /* 下边距 25px:段落与按钮的舒适距离 */
+    font-size: 16px;                /* 字号 16px:标准正文字号,易于阅读 */
 }
 
 .contact-cta .btn {
-    background-color: white;        /* [对比策略] 白色按钮：与深蓝背景形成强烈对比，吸引点击 */
-    color: var(--primary-color);    /* 主色调文字：与品牌色保持一致 */
+    background-color: white;        /* [对比策略] 白色按钮:与深蓝背景形成强烈对比,吸引点击 */
+    color: var(--primary-color);    /* 主色调文字:与品牌色保持一致 */
 }
 
 /* 13. 二维码展示样式
- * 策略：清晰的二维码展示，悬停交互反馈，便于用户扫码
- *       注：二维码图片使用CSS背景图实现，遵循图片资源管理规范
+ * 策略:清晰的二维码展示,悬停交互反馈,便于用户扫码
+ *       注:二维码图片使用CSS背景图实现,遵循图片资源管理规范
  * -------------------------------------------------------------------------- */
 .qr-codes {
-    display: flex;                  /* Flexbox 布局：二维码水平排列 */
-    gap: 30px;                      /* 间距 30px：二维码之间的舒适距离，避免拥挤 */
-    justify-content: center;        /* 水平居中：在容器内居中显示 */
-    align-items: center;            /* 垂直居中：确保对齐一致 */
-    margin-top: 20px;               /* 上边距 20px：与上方内容的连接 */
+    display: flex;                  /* Flexbox 布局:二维码水平排列 */
+    gap: 30px;                      /* 间距 30px:二维码之间的舒适距离,避免拥挤 */
+    justify-content: center;        /* 水平居中:在容器内居中显示 */
+    align-items: center;            /* 垂直居中:确保对齐一致 */
+    margin-top: 20px;               /* 上边距 20px:与上方内容的连接 */
 }
 
 .qr-code-item {
-    text-align: center;             /* 居中对齐：图片和文字垂直居中排列 */
+    text-align: center;             /* 居中对齐:图片和文字垂直居中排列 */
 }
 
 /* 二维码图片容器 - 使用背景图显示 */
 .qr-code-image {
-    width: 200px;                   /* 宽度 200px：适合扫码的最佳尺寸 */
-    height: 200px;                  /* 高度 200px：正方形比例，保持二维码完整性 */
-    border: 1px solid #ddd;         /* [例外] 边框 1px：浅灰色边框，清晰的视觉边界 */
-    border-radius: 8px;             /* 圆角 8px：柔和的视觉感受 */
-    padding: 10px;                  /* 内边距 10px：二维码与边框的呼吸空间 */
-    background-color: #fff;         /* 白色背景：确保扫码识别率 */
-    background-size: contain;       /* 背景尺寸：包含模式，确保二维码完整显示 */
-    background-position: center;    /* 背景位置：居中 */
+    width: 200px;                   /* 宽度 200px:适合扫码的最佳尺寸 */
+    height: 200px;                  /* 高度 200px:正方形比例,保持二维码完整性 */
+    border: 1px solid #ddd;         /* [例外] 边框 1px:浅灰色边框,清晰的视觉边界 */
+    border-radius: 8px;             /* 圆角 8px:柔和的视觉感受 */
+    padding: 10px;                  /* 内边距 10px:二维码与边框的呼吸空间 */
+    background-color: #fff;         /* 白色背景:确保扫码识别率 */
+    background-size: contain;       /* 背景尺寸:包含模式,确保二维码完整显示 */
+    background-position: center;    /* 背景位置:居中 */
     background-repeat: no-repeat;   /* 不重复平铺 */
     transition: transform 0.3s, box-shadow 0.3s;
-                                    /* 过渡动画 0.3s：悬停效果平滑自然 */
+                                    /* 过渡动画 0.3s:悬停效果平滑自然 */
     margin: 0 auto;                 /* 水平居中 */
 }
 
 .qr-code-image:hover {
-    transform: translateY(-5px);    /* 悬停上移 5px：营造轻微悬浮感，提示可互动 */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);     /* 阴影效果：5px 模糊，15px 扩散，营造深度感 */
+    transform: translateY(-5px);    /* 悬停上移 5px:营造轻微悬浮感,提示可互动 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);     /* 阴影效果:5px 模糊,15px 扩散,营造深度感 */
 }
 
 /* 二维码功能图片 - 仅用于占位和无障碍访问 */
 
 .qr-code-item p {
-    margin-top: 15px;               /* 上边距 15px：图片与说明文字的连接 */
-    font-size: 16px;                /* 字号 16px：标准正文字号 */
-    color: var(--text-color);       /* 主文字颜色：保证良好的可读性 */
-    font-weight: 500;               /* 中等字重：清晰的辨识度 */
+    margin-top: 15px;               /* 上边距 15px:图片与说明文字的连接 */
+    font-size: 16px;                /* 字号 16px:标准正文字号 */
+    color: var(--text-color);       /* 主文字颜色:保证良好的可读性 */
+    font-weight: 500;               /* 中等字重:清晰的辨识度 */
 }
 
 /* 14. 联系信息框样式
- * 策略：清晰的视觉边界，层次分明的信息展示
- * 实现：使用 Flexbox 布局，通过文本区域的 margin-bottom: auto 将图片推到底部
+ * 策略:清晰的视觉边界,层次分明的信息展示
+ * 实现:使用 Flexbox 布局,通过文本区域的 margin-bottom: auto 将图片推到底部
  * -------------------------------------------------------------------------- */
 .contact-info-box {
-    background-color: #f9f9f9;      /* 浅灰背景：区分于主内容区 */
-    border: 1px solid #e0e0e0;      /* [例外] 边框 1px：浅灰色边框，清晰的视觉边界 */
-    border-radius: 8px;             /* 圆角 8px：柔和的视觉感受 */
-    padding: 30px;                  /* 内边距 30px：为联系信息提供充足的呼吸空间 */
+    background-color: #f9f9f9;      /* 浅灰背景:区分于主内容区 */
+    border: 1px solid #e0e0e0;      /* [例外] 边框 1px:浅灰色边框,清晰的视觉边界 */
+    border-radius: 8px;             /* 圆角 8px:柔和的视觉感受 */
+    padding: 30px;                  /* 内边距 30px:为联系信息提供充足的呼吸空间 */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-                                    /* [微妙阴影] 2px 模糊，8px 扩散，5% 透明度，营造微妙的层次感 */
+                                    /* [微妙阴影] 2px 模糊,8px 扩散,5% 透明度,营造微妙的层次感 */
 
 }
 
-/* [关键修改] 移除之前的 *:last-child 规则，改用文本区域的 margin-bottom: auto */
+/* [关键修改] 移除之前的 *:last-child 规则,改用文本区域的 margin-bottom: auto */
 
 .contact-info-box h3 {
-    margin-bottom: 20px;            /* 下边距 20px：标题与内容的舒适距离 */
-    color: var(--primary-color);    /* 主色调：强化品牌识别 */
-    font-size: 22px;                /* 字号 20px：足够醒目 */
+    margin-bottom: 20px;            /* 下边距 20px:标题与内容的舒适距离 */
+    color: var(--primary-color);    /* 主色调:强化品牌识别 */
+    font-size: 22px;                /* 字号 20px:足够醒目 */
     border-bottom: 2px solid var(--primary-color);
-                                    /* [强调分割线] 2px 主色调粗分割线，强调区块标题 */
-    padding-bottom: 10px;           /* 下内边距 10px：分割线与文字的舒适距离 */
+                                    /* [强调分割线] 2px 主色调粗分割线,强调区块标题 */
+    padding-bottom: 10px;           /* 下内边距 10px:分割线与文字的舒适距离 */
 }
 
 /* 联系信息文本区域 - 关键修改 */
 .contact-info-text {
-    /* [关键] 自动下边距：吸收所有剩余空间，将后续元素（图片）推到底部 */
+    /* [关键] 自动下边距:吸收所有剩余空间,将后续元素(图片)推到底部 */
     margin-bottom: auto;            
 }
 
 .contact-info-box h4 {
-    margin-bottom: 15px;            /* 下边距 15px：副标题与内容的连接 */
-    font-size: 20px;                /* 字号 18px：略小于 h3，建立清晰的层级 */
-    color: #333;                    /* 深色文字：保证良好的可读性 */
+    margin-bottom: 15px;            /* 下边距 15px:副标题与内容的连接 */
+    font-size: 20px;                /* 字号 18px:略小于 h3,建立清晰的层级 */
+    color: #333;                    /* 深色文字:保证良好的可读性 */
 }
 
 .contact-info-box p {
-    margin-bottom: 12px;            /* 下边距 12px：段落之间的舒适距离 */
-    font-size: 18px;                /* 字号 15px：介于标准和大号之间，舒适的阅读体验 */
-    line-height: 1.6;               /* 行高 1.6：提升文字可读性 */
+    margin-bottom: 12px;            /* 下边距 12px:段落之间的舒适距离 */
+    font-size: 18px;                /* 字号 15px:介于标准和大号之间,舒适的阅读体验 */
+    line-height: 1.6;               /* 行高 1.6:提升文字可读性 */
 }
 
 .contact-info-box strong {
-    color: var(--primary-color);    /* 主色调强调：突出重要信息标签 */
-    margin-right: 5px;              /* 右边距 5px：标签与内容的间隔 */
+    color: var(--primary-color);    /* 主色调强调:突出重要信息标签 */
+    margin-right: 5px;              /* 右边距 5px:标签与内容的间隔 */
 }
 
 /* 15. 可点击链接样式
- * 功能：地址、电话等可点击链接的统一样式
+ * 功能:地址、电话等可点击链接的统一样式
  * -------------------------------------------------------------------------- */
 
 /* 地址链接 */
 .address-link {
-    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    color: var(--primary-color);    /* 颜色:品牌蓝 */
     text-decoration: none;          /* 移除下划线 */
     border-bottom: 1px dashed var(--primary-color);
-                                    /* [可点击提示] 1px 蓝色虚线，提示可点击 */
+                                    /* [可点击提示] 1px 蓝色虚线,提示可点击 */
 }
 
 .address-link:hover {
-    color: #004494;                 /* 悬停颜色：更深的蓝色 */
+    color: #004494;                 /* 悬停颜色:更深的蓝色 */
     border-bottom-color: #004494;   /* 悬停边框颜色 */
     background-color: rgba(0, 86, 179, 0.05);
-                                    /* 悬停背景：极淡的蓝色，提供交互反馈 */
+                                    /* 悬停背景:极淡的蓝色,提供交互反馈 */
 }
 
 /* 电话链接 */
 .phone-link {
-    color: var(--primary-color);    /* 颜色：品牌蓝 */
+    color: var(--primary-color);    /* 颜色:品牌蓝 */
     text-decoration: none;          /* 移除下划线 */
     border-bottom: 1px dashed var(--primary-color);
-                                    /* [可点击提示] 1px 蓝色虚线，提示可点击 */
+                                    /* [可点击提示] 1px 蓝色虚线,提示可点击 */
 }
 
 .phone-link:hover {
-    color: #004494;                 /* 悬停颜色：更深的蓝色 */
+    color: #004494;                 /* 悬停颜色:更深的蓝色 */
     border-bottom-color: #004494;   /* 悬停边框颜色 */
     background-color: rgba(0, 86, 179, 0.05);
-                                    /* 悬停背景：极淡的蓝色，提供交互反馈 */
+                                    /* 悬停背景:极淡的蓝色,提供交互反馈 */
 }
 
 
@@ -887,34 +887,34 @@ footer p {
 
 /* -----------------------------------------------------------------------------
  * 16. 公司图片展示区域样式
- * 功能：为公司风采照片提供美观的横向滚动布局和卡片样式
- * 策略：响应式横向滚动布局，大屏幕显示多张图片，小屏幕可左右滑动浏览
+ * 功能:为公司风采照片提供美观的横向滚动布局和卡片样式
+ * 策略:响应式横向滚动布局,大屏幕显示多张图片,小屏幕可左右滑动浏览
  * -------------------------------------------------------------------------- */
 
 /* 横向滚动容器 - Flexbox 布局 */
 .company-gallery-scroll {
     display: flex;                  /* 启用 Flexbox 布局 */
-    flex-wrap: nowrap;              /* [关键] 不换行：所有卡片在一行内排列 */
+    flex-wrap: nowrap;              /* [关键] 不换行:所有卡片在一行内排列 */
     overflow-x: auto;               /* [关键] 允许横向滚动 */
-    gap: 20px;                      /* 卡片间距 20px：保证图片之间的呼吸空间 */
-    margin-top: 30px;               /* 上边距 30px：与标题保持适当距离 */
-    padding-bottom: 10px;           /* 底部内边距 10px：为滚动条预留空间 */
-    scroll-snap-type: x proximity;  /* [优化] 滚动捕捉：提升滚动体验 */
+    gap: 20px;                      /* 卡片间距 20px:保证图片之间的呼吸空间 */
+    margin-top: 30px;               /* 上边距 30px:与标题保持适当距离 */
+    padding-bottom: 10px;           /* 底部内边距 10px:为滚动条预留空间 */
+    scroll-snap-type: x proximity;  /* [优化] 滚动捕捉:提升滚动体验 */
     -webkit-overflow-scrolling: touch;  /* [移动端优化] iOS 设备平滑滚动 */
 }
 
-/* 隐藏滚动条但保留滚动功能（美化效果） */
+/* 隐藏滚动条但保留滚动功能(美化效果) */
 .company-gallery-scroll::-webkit-scrollbar {
     height: 6px;                    /* 滚动条高度 6px */
 }
 
 .company-gallery-scroll::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1); /* 轨道背景：浅灰色 */
+    background: rgba(0, 0, 0, 0.1); /* 轨道背景:浅灰色 */
     border-radius: 3px;             /* 圆角 3px */
 }
 
 .company-gallery-scroll::-webkit-scrollbar-thumb {
-    background: rgba(0, 86, 179, 0.5);  /* 滚动块颜色：半透明品牌色 */
+    background: rgba(0, 86, 179, 0.5);  /* 滚动块颜色:半透明品牌色 */
     border-radius: 3px;             /* 圆角 3px */
 }
 
@@ -925,48 +925,48 @@ footer p {
 /* 单张照片卡片 */
 .company-photo-card {
     flex: 0 0 auto;                 /* [关键] 不收缩、不增长、自动基础宽度 */
-    width: 300px;                   /* 固定宽度 300px：确保统一尺寸 */
+    width: 300px;                   /* 固定宽度 300px:确保统一尺寸 */
     background-color: var(--white); /* 白色背景 */
-    border-radius: 8px;             /* 圆角 8px：柔和边界 */
-    overflow: hidden;               /* 隐藏超出边界的内容，确保图片圆角效果 */
+    border-radius: 8px;             /* 圆角 8px:柔和边界 */
+    overflow: hidden;               /* 隐藏超出边界的内容,确保图片圆角效果 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* 轻微阴影增强层次感 */
     transition: transform 0.3s ease, box-shadow 0.3s ease;  /* 平滑过渡效果 */
-    display: flex;                  /* 弹性布局：垂直排列图片和说明文字 */
+    display: flex;                  /* 弹性布局:垂直排列图片和说明文字 */
     flex-direction: column;         /* 垂直方向排列 */
     scroll-snap-align: start;       /* [优化] 滚动捕捉对齐起点 */
 }
 
 /* 照片卡片悬停效果 */
 .company-photo-card:hover {
-    transform: translateY(-5px);    /* 向上移动 5px：营造浮起效果 */
+    transform: translateY(-5px);    /* 向上移动 5px:营造浮起效果 */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);  /* 阴影加深增强立体感 */
 }
 
 /* 照片图片样式 */
 .company-photo-img {
     width: 100%;                    /* 占满卡片宽度 */
-    height: 200px;                  /* 固定高度 200px：确保统一性 */
-    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
-    background-position: center;    /* 背景位置：居中显示 */
+    height: 200px;                  /* 固定高度 200px:确保统一性 */
+    background-size: cover;         /* 背景尺寸:覆盖整个容器 */
+    background-position: center;    /* 背景位置:居中显示 */
     background-repeat: no-repeat;   /* 不重复平铺 */
-    cursor: pointer;                /* [交互优化] 鼠标变为手型，提示可点击 */
+    cursor: pointer;                /* [交互优化] 鼠标变为手型,提示可点击 */
     transition: transform 0.3s ease, filter 0.3s ease;
                                     /* [灯箱功能] 添加过渡效果 */
 }
 
 /* [灯箱功能] 公司照片悬停效果 - 提示可点击放大 */
 .company-photo-img:hover {
-    transform: scale(1.05);         /* 轻微放大 5%，提供视觉反馈 */
-    filter: brightness(1.1);        /* 亮度提升 10%，增强对比 */
+    transform: scale(1.05);         /* 轻微放大 5%,提供视觉反馈 */
+    filter: brightness(1.1);        /* 亮度提升 10%,增强对比 */
 }
 
 /* 照片说明文字 */
 .company-photo-caption {
-    padding: 12px 16px;             /* 内边距：上下 12px，左右 16px */
+    padding: 12px 16px;             /* 内边距:上下 12px,左右 16px */
     text-align: center;             /* 文字居中 */
     font-size: 14px;                /* 字号 14px */
     color: var(--text-color);       /* 深灰色文字 */
-    font-weight: 500;               /* 中等字重：清晰易读 */
+    font-weight: 500;               /* 中等字重:清晰易读 */
     background-color: var(--white); /* 白色背景 */
     flex: 1;                        /* 自动填充剩余空间 */
 }
@@ -978,14 +978,14 @@ footer p {
     color: #666;                    /* 灰色文字 */
     margin-top: 15px;               /* 上边距 15px */
     opacity: 0.7;                   /* 半透明效果 */
-    display: none;                  /* 默认隐藏（桌面端不显示） */
+    display: none;                  /* 默认隐藏(桌面端不显示) */
 }
 
 
 /* -----------------------------------------------------------------------------
  * 16.8 联系页面门店图片卡片样式
- * 功能：为联系页面的公司和门店信息区块中的图片提供统一的视觉样式
- * 规范：卡片式设计，包含图片和说明文字，支持悬停效果
+ * 功能:为联系页面的公司和门店信息区块中的图片提供统一的视觉样式
+ * 规范:卡片式设计,包含图片和说明文字,支持悬停效果
  * -------------------------------------------------------------------------- */
 
 /* 联系页面门店图片容器 */
@@ -1011,23 +1011,23 @@ footer p {
 .store-photo-img {
     width: 100%;                    /* 占满卡片宽度 */
     height: 180px;                  /* 固定高度 180px */
-    background-size: cover;         /* 背景尺寸：覆盖整个容器 */
-    background-position: center;    /* 背景位置：居中显示 */
+    background-size: cover;         /* 背景尺寸:覆盖整个容器 */
+    background-position: center;    /* 背景位置:居中显示 */
     background-repeat: no-repeat;   /* 不重复平铺 */
-    cursor: pointer;                /* [交互优化] 鼠标变为手型，提示可点击 */
+    cursor: pointer;                /* [交互优化] 鼠标变为手型,提示可点击 */
     transition: transform 0.3s ease, filter 0.3s ease;
                                     /* [灯箱功能] 添加过渡效果 */
 }
 
 /* [灯箱功能] 门店照片悬停效果 - 提示可点击放大 */
 .store-photo-img:hover {
-    transform: scale(1.05);         /* 轻微放大 5%，提供视觉反馈 */
-    filter: brightness(1.1);        /* 亮度提升 10%，增强对比 */
+    transform: scale(1.05);         /* 轻微放大 5%,提供视觉反馈 */
+    filter: brightness(1.1);        /* 亮度提升 10%,增强对比 */
 }
 
 /* 门店照片说明文字 */
 .store-photo-caption {
-    padding: 10px 14px;             /* 内边距：上下 10px，左右 14px */
+    padding: 10px 14px;             /* 内边距:上下 10px,左右 14px */
     text-align: center;             /* 文字居中 */
     font-size: 13px;                /* 字号 13px */
     color: #666;                    /* 灰色文字 */
@@ -1035,7 +1035,7 @@ footer p {
     background-color: var(--white); /* 白色背景 */
 }
 
-/* 门店信息项（用于分隔多个门店） */
+/* 门店信息项(用于分隔多个门店) */
 .store-info-item {
     margin-bottom: 25px;            /* 下边距 25px */
 }
@@ -1046,55 +1046,55 @@ footer p {
 
 /* [灯箱功能] 灯箱/模态框容器 - 用于放大显示门店图片 */
 .image-modal {
-    display: none;                  /* 默认隐藏：不显示，通过 JS 控制显示（保持简单，由 JS 切换为 flex） */
-    position: fixed;                /* 固定定位：相对于浏览器窗口，不随滚动条移动 */
-    z-index: 9999;                  /* 最高层级：确保在所有内容之上 */
+    display: none;                  /* 默认隐藏:不显示,通过 JS 控制显示(保持简单,由 JS 切换为 flex) */
+    position: fixed;                /* 固定定位:相对于浏览器窗口,不随滚动条移动 */
+    z-index: 9999;                  /* 最高层级:确保在所有内容之上 */
     left: 0;                        /* 左边缘对齐 */
     top: 0;                         /* 上边缘对齐 */
     width: 100%;                    /* 占满整个视口宽度 */
     height: 100%;                   /* 占满整个视口高度 */
     background-color: rgba(0, 0, 0, 0.9);
-                                    /* 黑色半透明背景：90% 不透明度，营造聚焦效果 */
-    backdrop-filter: blur(5px);     /* 背景模糊：5px 模糊半径，提升视觉层次感 */
+                                    /* 黑色半透明背景:90% 不透明度,营造聚焦效果 */
+    backdrop-filter: blur(5px);     /* 背景模糊:5px 模糊半径,提升视觉层次感 */
 }
 
 /* [灯箱功能] 灯箱内容容器 - 居中显示放大图片 */
 .modal-content {
-    position: relative;             /* 相对定位：为子元素提供定位参考 */
-    margin: auto;                   /* 自动居中：水平和垂直居中 */
-    display: flex;                  /* Flex 布局：便于内部元素排列 */
-    flex-direction: column;         /* 纵向排列：图片在上，说明文字在下 */
+    position: relative;             /* 相对定位:为子元素提供定位参考 */
+    margin: auto;                   /* 自动居中:水平和垂直居中 */
+    display: flex;                  /* Flex 布局:便于内部元素排列 */
+    flex-direction: column;         /* 纵向排列:图片在上,说明文字在下 */
     justify-content: center;        /* 垂直居中 */
     align-items: center;            /* 水平居中 */
-    max-width: 90%;                 /* 最大宽度：占视口 90%，留出边距 */
-    padding: 60px 20px 20px;        /* 内边距：顶部 60px（为关闭按钮留空间），左右和下各 20px */
+    max-width: 90%;                 /* 最大宽度:占视口 90%,留出边距 */
+    padding: 60px 20px 20px;        /* 内边距:顶部 60px(为关闭按钮留空间),左右和下各 20px */
 }
 
 /* [灯箱功能] 关闭按钮 - 右上角 × 符号 */
 .modal-close {
-    position: absolute;             /* 绝对定位：相对于 modal-content */
-    top: 10px;                      /* 顶部距离 10px：从内容区内部开始计算，确保可见 */
-    right: 10px;                    /* 右侧距离 10px：从内容区右边缘向内 10px */
-    color: #fff;                    /* 白色：在深色背景上清晰可见 */
-    font-size: 36px;                /* 字号 36px：足够大，易于点击 */
+    position: absolute;             /* 绝对定位:相对于 modal-content */
+    top: 10px;                      /* 顶部距离 10px:从内容区内部开始计算,确保可见 */
+    right: 10px;                    /* 右侧距离 10px:从内容区右边缘向内 10px */
+    color: #fff;                    /* 白色:在深色背景上清晰可见 */
+    font-size: 36px;                /* 字号 36px:足够大,易于点击 */
     font-weight: bold;              /* 加粗 */
-    cursor: pointer;                /* 手型光标：提示可点击 */
-    transition: color 0.3s ease;    /* 过渡效果：颜色变化平滑 */
-    line-height: 1;                 /* 行高 1：防止文字上下多余空间 */
-    z-index: 10000;                 /* 更高一层：确保在所有内容之上，包括图片 */
+    cursor: pointer;                /* 手型光标:提示可点击 */
+    transition: color 0.3s ease;    /* 过渡效果:颜色变化平滑 */
+    line-height: 1;                 /* 行高 1:防止文字上下多余空间 */
+    z-index: 10000;                 /* 更高一层:确保在所有内容之上,包括图片 */
     background-color: rgba(0, 0, 0, 0.5);
-                                    /* 半透明黑色背景：增强按钮对比度，更易识别 */
-    width: 44px;                    /* 固定宽度 44px：便于手指点击（移动端友好） */
-    height: 44px;                   /* 固定高度 44px：正方形按钮 */
-    border-radius: 50%;             /* 圆形背景：美观且明确指示可点击区域 */
-    display: flex;                  /* Flex 布局：用于居中 × 符号 */
+                                    /* 半透明黑色背景:增强按钮对比度,更易识别 */
+    width: 44px;                    /* 固定宽度 44px:便于手指点击(移动端友好) */
+    height: 44px;                   /* 固定高度 44px:正方形按钮 */
+    border-radius: 50%;             /* 圆形背景:美观且明确指示可点击区域 */
+    display: flex;                  /* Flex 布局:用于居中 × 符号 */
     justify-content: center;        /* 水平居中 × 符号 */
     align-items: center;            /* 垂直居中 × 符号 */
 }
 
 /* [灯箱功能] 关闭按钮悬停效果 */
 .modal-close:hover {
-    color: var(--primary-color);    /* 变为主题蓝色：提供视觉反馈 */
+    color: var(--primary-color);    /* 变为主题蓝色:提供视觉反馈 */
 }
 
 /* [灯箱功能] 灯箱图片容器 */
@@ -1104,85 +1104,85 @@ footer p {
     align-items: center;            /* 垂直居中 */
     max-width: 100%;                /* 最大宽度限制 */
     max-height: calc(100vh - 120px);
-                                    /* 最大高度：视口高度减去标题和按钮的空间 */
+                                    /* 最大高度:视口高度减去标题和按钮的空间 */
 }
 
 /* [灯箱功能] 灯箱中显示的图片 */
 .modal-image {
-    max-width: 100%;                /* 最大宽度：不超过容器 */
+    max-width: 100%;                /* 最大宽度:不超过容器 */
     max-height: calc(100vh - 120px);
-                                    /* 最大高度：视口高度减去标题和按钮的空间 */
-    object-fit: contain;            /* 保持宽高比完整显示，不裁剪 */
-    border-radius: 4px;             /* 圆角 4px：柔和边角 */
+                                    /* 最大高度:视口高度减去标题和按钮的空间 */
+    object-fit: contain;            /* 保持宽高比完整显示,不裁剪 */
+    border-radius: 4px;             /* 圆角 4px:柔和边角 */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                                    /* 阴影：增强立体感 */
+                                    /* 阴影:增强立体感 */
 }
 
 /* [灯箱功能] 灯箱图片说明文字 */
 .modal-caption {
-    margin-top: 15px;               /* 上边距 15px：与图片间隔 */
+    margin-top: 15px;               /* 上边距 15px:与图片间隔 */
     color: #fff;                    /* 白色文字 */
     font-size: 16px;                /* 字号 16px */
     text-align: center;             /* 居中对齐 */
-    padding: 10px 20px;             /* 内边距：上下 10px，左右 20px */
+    padding: 10px 20px;             /* 内边距:上下 10px,左右 20px */
     background-color: rgba(0, 0, 0, 0.6);
-                                    /* 半透明黑色背景：突出文字 */
+                                    /* 半透明黑色背景:突出文字 */
     border-radius: 4px;             /* 圆角 4px */
 }
 
 /* 17. 首页优化样式
- * 功能：增强首页视觉效果、用户体验和交互反馈
- * 包括：Hero 区域增强、关于我们特色展示、产品卡片优化
+ * 功能:增强首页视觉效果、用户体验和交互反馈
+ * 包括:Hero 区域增强、关于我们特色展示、产品卡片优化
  * -------------------------------------------------------------------------- */
 
 /* ==================== Hero 区域增强 ==================== */
 
 /* Hero 标题优化 */
 .hero-title {
-    font-size: 36px;                /* 增大字号至 36px，增强视觉冲击力 */
-    font-weight: 700;               /* 加粗字重，更醒目 */
-    margin-bottom: 16px;            /* 减小下边距至 16px，紧凑布局 */
+    font-size: 36px;                /* 增大字号至 36px,增强视觉冲击力 */
+    font-weight: 700;               /* 加粗字重,更醒目 */
+    margin-bottom: 16px;            /* 减小下边距至 16px,紧凑布局 */
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-                                    /* 文字阴影：增强在渐变背景上的可读性 */
+                                    /* 文字阴影:增强在渐变背景上的可读性 */
     animation: fadeInUp 0.8s ease-out;
-                                    /* 淡入向上动画：页面加载时从下方淡入并上移 */
+                                    /* 淡入向上动画:页面加载时从下方淡入并上移 */
 }
 
 /* Hero 副标题优化 */
 .hero-subtitle {
     font-size: 20px;                /* 增大字号至 20px */
     margin-bottom: 30px;            /* 下边距 30px */
-    opacity: 0.95;                  /* 轻微透明度，营造层次感 */
+    opacity: 0.95;                  /* 轻微透明度,营造层次感 */
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
-                                    /* 文字阴影：增强可读性 */
+                                    /* 文字阴影:增强可读性 */
     animation: fadeInUp 1s ease-out 0.2s both;
                                     /* 延迟 0.2 秒执行相同动画 */
 }
 
 /* Hero 按钮组容器 */
 .hero-buttons {
-    display: flex;                  /* Flexbox 布局：横向排列按钮 */
+    display: flex;                  /* Flexbox 布局:横向排列按钮 */
     gap: 15px;                      /* 按钮间距 15px */
     justify-content: center;        /* 居中对齐 */
-    flex-wrap: wrap;                /* 允许换行：小屏幕自动换行 */
+    flex-wrap: wrap;                /* 允许换行:小屏幕自动换行 */
     animation: fadeInUp 1.2s ease-out 0.4s both;
                                     /* 延迟 0.4 秒执行动画 */
 }
 
 /* 大按钮样式 - 用于 Hero 区域 */
 .btn-large {
-    padding: 14px 35px;             /* 增大内边距：上下 14px，左右 35px */
+    padding: 14px 35px;             /* 增大内边距:上下 14px,左右 35px */
     font-size: 18px;                /* 增大字号至 18px */
-    border-radius: 8px;             /* 增大圆角至 8px，更现代 */
-    transition: all 0.3s ease;      /* 全属性过渡：包含 transform、background 等 */
-    position: relative;             /* 相对定位：为伪元素定位做准备 */
-    overflow: hidden;               /* 隐藏溢出：配合悬停效果 */
+    border-radius: 8px;             /* 增大圆角至 8px,更现代 */
+    transition: all 0.3s ease;      /* 全属性过渡:包含 transform、background 等 */
+    position: relative;             /* 相对定位:为伪元素定位做准备 */
+    overflow: hidden;               /* 隐藏溢出:配合悬停效果 */
 }
 
 /* 轮廓按钮样式 - 次要行动按钮 */
 .btn-outline {
     background: transparent;        /* 透明背景 */
-    border: 2px solid var(--white); /* 白色边框：2px */
+    border: 2px solid var(--white); /* 白色边框:2px */
     color: var(--white);            /* 白色文字 */
     box-shadow: none;               /* 无阴影 */
 }
@@ -1210,12 +1210,12 @@ footer p {
 /* 淡入向上关键帧动画 */
 @keyframes fadeInUp {
     from {
-        opacity: 0;                 /* 起始状态：完全透明 */
-        transform: translateY(30px); /* 起始位置：向下偏移 30px */
+        opacity: 0;                 /* 起始状态:完全透明 */
+        transform: translateY(30px); /* 起始位置:向下偏移 30px */
     }
     to {
-        opacity: 1;                 /* 结束状态：完全不透明 */
-        transform: translateY(0);   /* 结束位置：原始位置 */
+        opacity: 1;                 /* 结束状态:完全不透明 */
+        transform: translateY(0);   /* 结束位置:原始位置 */
     }
 }
 
@@ -1228,23 +1228,23 @@ footer p {
 
 /* 关于我们内容区域 */
 .about-content {
-    max-width: 900px;               /* 限制最大宽度至 900px，提升阅读体验 */
+    max-width: 900px;               /* 限制最大宽度至 900px,提升阅读体验 */
     margin: 0 auto;                 /* 水平居中 */
 }
 
 /* 关于我们介绍文字 */
 .about-intro {
     font-size: 18px;                /* 增大字号至 18px */
-    line-height: 1.8;               /* 增大行高至 1.8，提升可读性 */
+    line-height: 1.8;               /* 增大行高至 1.8,提升可读性 */
     color: #444;                    /* 深灰色文字 */
-    margin-bottom: 50px;            /* 下边距 50px，与优势展示区分隔 */
+    margin-bottom: 50px;            /* 下边距 50px,与优势展示区分隔 */
 }
 
 /* 核心优势展示网格 */
 .about-features {
     display: grid;                  /* Grid 布局 */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                                    /* 自适应列数：每列最小 200px */
+                                    /* 自适应列数:每列最小 200px */
     gap: 25px;                      /* 间距 25px */
     margin-bottom: 40px;            /* 下边距 40px */
 }
@@ -1252,7 +1252,7 @@ footer p {
 /* 单个优势项 */
 .feature-item {
     text-align: center;             /* 文字居中 */
-    padding: 25px 20px;             /* 内边距：上下 25px，左右 20px */
+    padding: 25px 20px;             /* 内边距:上下 25px,左右 20px */
     background: var(--white);       /* 白色背景 */
     border-radius: 10px;            /* 圆角 10px */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
@@ -1273,7 +1273,7 @@ footer p {
 
 /* 优势图标 */
 .feature-icon {
-    font-size: 48px;                /* 大图标：48px */
+    font-size: 48px;                /* 大图标:48px */
     margin-bottom: 15px;            /* 下边距 15px */
     display: block;                 /* 块级显示 */
 }
@@ -1305,7 +1305,7 @@ footer p {
     text-align: center;             /* 居中对齐 */
     font-size: 16px;                /* 字号 16px */
     color: #666;                    /* 浅灰色 */
-    margin-top: -25px;              /* 负边距：向上拉近与主标题的距离 */
+    margin-top: -25px;              /* 负边距:向上拉近与主标题的距离 */
     margin-bottom: 40px;            /* 下边距 40px */
     max-width: 700px;               /* 限制最大宽度 */
     margin-left: auto;              /* 水平居中 */
@@ -1370,7 +1370,7 @@ footer p {
 
 .card-more:hover {
     color: #004494;                 /* 悬停时更深的蓝色 */
-    transform: translateX(5px);     /* 向右移动 5px，箭头效果 */
+    transform: translateX(5px);     /* 向右移动 5px,箭头效果 */
 }
 
 /* 产品底部行动按钮区域 */
@@ -1382,69 +1382,69 @@ footer p {
  * =============================================================================
  * 华南森孚贸易有限公司 - 图片幻灯片样式文件
  * =============================================================================
- * 文件说明：专门为产品详情页的图片幻灯片提供样式支持
- * 适用范围：/product/hydraulic/*.html 等产品详情页面
- * 单位策略：布局/间距使用 rem，边框等特殊情况使用 px
+ * 文件说明:专门为产品详情页的图片幻灯片提供样式支持
+ * 适用范围:/products/*.html 等产品详情页面
+ * 单位策略:布局/间距使用 rem,边框等特殊情况使用 px
  * =============================================================================
  */
 
 /* -----------------------------------------------------------------------------
  * 19. 图片幻灯片样式
- * 功能：实现产品图片幻灯片的显示和切换效果
+ * 功能:实现产品图片幻灯片的显示和切换效果
  * -------------------------------------------------------------------------- */
 
 /* 幻灯片根容器 */
 .slideshow-container {
-    position: relative;                 /* 相对定位：用于内部绝对定位元素 */
-    width: 100%;                        /* 宽度：占满父容器 */
-    height: 450px;                      /* [例外] 高度：固定 450px，确保图片展示空间充足 */
-    border-radius: 8px;                 /* 圆角：8px，柔和边界 */
-    overflow: hidden;                   /* 溢出隐藏：防止内容超出圆角 */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* 阴影：增加层次感 */
-    background: #f5f5f5;                /* 背景色：浅灰色，加载时不显空白 */
-    cursor: pointer;                    /* 光标：手型，提示可点击 */
+    position: relative;                 /* 相对定位:用于内部绝对定位元素 */
+    width: 100%;                        /* 宽度:占满父容器 */
+    height: 450px;                      /* [例外] 高度:固定 450px,确保图片展示空间充足 */
+    border-radius: 8px;                 /* 圆角:8px,柔和边界 */
+    overflow: hidden;                   /* 溢出隐藏:防止内容超出圆角 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* 阴影:增加层次感 */
+    background: #f5f5f5;                /* 背景色:浅灰色,加载时不显空白 */
+    cursor: pointer;                    /* 光标:手型,提示可点击 */
 }
 
 /* 单张幻灯片容器 */
 .mySlides {
-    display: none;                      /* 默认隐藏：通过 JS 控制显示哪一张 */
-    width: 100%;                        /* 宽度：占满容器 */
-    height: 100%;                       /* 高度：占满容器 */
-    animation: fade 0.6s ease-in-out;   /* 淡入动画：0.6 秒，缓入缓出 */
+    display: none;                      /* 默认隐藏:通过 JS 控制显示哪一张 */
+    width: 100%;                        /* 宽度:占满容器 */
+    height: 100%;                       /* 高度:占满容器 */
+    animation: fade 0.6s ease-in-out;   /* 淡入动画:0.6 秒,缓入缓出 */
 }
 
-/* 图片编号文本（如 "1 / 6"） */
+/* 图片编号文本(如 "1 / 6") */
 .numbertext {
-    position: absolute;                 /* 绝对定位：相对于幻灯片容器 */
-    top: 15px;                          /* [例外] 顶部距离：15px */
-    left: 15px;                         /* [例外] 左侧距离：15px */
-    color: rgba(255,255,255,0.9);       /* 颜色：白色 90% 透明度，确保在任意背景上可见 */
-    font-size: 14px;                    /* 字号：14px */
-    font-weight: 600;                   /* 字重：600，加粗 */
-    padding: 8px 12px;                  /* 内边距：上下 8px，左右 12px */
-    background: rgba(0,0,0,0.4);        /* 背景：黑色半透明，增强对比度 */
-    border-radius: 4px;                 /* 圆角：4px */
-    z-index: 10;                        /* 层级：10，确保在其他元素上方 */
-    pointer-events: none;               /* 禁用鼠标事件：让点击穿透到下层图片 */
+    position: absolute;                 /* 绝对定位:相对于幻灯片容器 */
+    top: 15px;                          /* [例外] 顶部距离:15px */
+    left: 15px;                         /* [例外] 左侧距离:15px */
+    color: rgba(255,255,255,0.9);       /* 颜色:白色 90% 透明度,确保在任意背景上可见 */
+    font-size: 14px;                    /* 字号:14px */
+    font-weight: 600;                   /* 字重:600,加粗 */
+    padding: 8px 12px;                  /* 内边距:上下 8px,左右 12px */
+    background: rgba(0,0,0,0.4);        /* 背景:黑色半透明,增强对比度 */
+    border-radius: 4px;                 /* 圆角:4px */
+    z-index: 10;                        /* 层级:10,确保在其他元素上方 */
+    pointer-events: none;               /* 禁用鼠标事件:让点击穿透到下层图片 */
 }
 
 /* 图片容器 */
 .slideshow-image-wrapper {
-    width: 100%;                        /* 宽度：占满容器 */
-    height: 100%;                       /* 高度：占满容器 */
-    display: flex;                      /* Flex 布局：用于内部图片居中 */
+    width: 100%;                        /* 宽度:占满容器 */
+    height: 100%;                       /* 高度:占满容器 */
+    display: flex;                      /* Flex 布局:用于内部图片居中 */
     align-items: center;                /* 垂直居中 */
     justify-content: center;            /* 水平居中 */
 }
 
-/* 实际图片（背景图方式） */
+/* 实际图片(背景图方式) */
 .slideshow-image {
-    width: 100%;                        /* 宽度：占满容器 */
-    height: 100%;                       /* 高度：占满容器 */
-    background-size: contain;           /* 背景尺寸：完整显示图片 */
-    background-position: center;        /* 背景位置：居中 */
+    width: 100%;                        /* 宽度:占满容器 */
+    height: 100%;                       /* 高度:占满容器 */
+    background-size: contain;           /* 背景尺寸:完整显示图片 */
+    background-position: center;        /* 背景位置:居中 */
     background-repeat: no-repeat;       /* 不重复平铺 */
-    transition: transform 0.3s ease;    /* 过渡动画：缩放效果 0.3 秒 */
+    transition: transform 0.3s ease;    /* 过渡动画:缩放效果 0.3 秒 */
 }
 
 /* 幻灯片悬停效果 */
@@ -1454,452 +1454,452 @@ footer p {
 
 /* -----------------------------------------------------------------------------
  * 2. 左右箭头按钮
- * 功能：点击切换上一张/下一张图片
+ * 功能:点击切换上一张/下一张图片
  * -------------------------------------------------------------------------- */
 
 /* 箭头按钮通用样式 */
 .prev,
 .next {
-    position: absolute;                 /* 绝对定位：相对于幻灯片容器 */
+    position: absolute;                 /* 绝对定位:相对于幻灯片容器 */
     top: 50%;                           /* 垂直居中 */
     transform: translateY(-50%);        /* 垂直居中修正 */
-    width: 45px;                        /* [例外] 宽度：45px，适配触摸操作 */
-    height: 45px;                       /* [例外] 高度：45px */
-    background: rgba(0,0,0,0.3);        /* 背景：黑色半透明 */
-    color: white;                       /* 颜色：白色 */
-    font-size: 24px;                    /* 字号：24px，箭头符号大小 */
-    font-weight: bold;                  /* 字重：加粗 */
-    line-height: 45px;                  /* [例外] 行高：45px，垂直居中文字 */
+    width: 45px;                        /* [例外] 宽度:45px,适配触摸操作 */
+    height: 45px;                       /* [例外] 高度:45px */
+    background: rgba(0,0,0,0.3);        /* 背景:黑色半透明 */
+    color: white;                       /* 颜色:白色 */
+    font-size: 24px;                    /* 字号:24px,箭头符号大小 */
+    font-weight: bold;                  /* 字重:加粗 */
+    line-height: 45px;                  /* [例外] 行高:45px,垂直居中文字 */
     text-align: center;                 /* 文字居中 */
-    border-radius: 50%;                 /* 圆角：50%，圆形按钮 */
-    cursor: pointer;                    /* 光标：手型，提示可点击 */
+    border-radius: 50%;                 /* 圆角:50%,圆形按钮 */
+    cursor: pointer;                    /* 光标:手型,提示可点击 */
     transition: background 0.3s, transform 0.2s;
-                                    /* 过渡动画：背景和变形 */
-    z-index: 10;                        /* 层级：10，确保在图片上方 */
-    user-select: none;                  /* 禁止选中：防止双击选中文字 */
+                                    /* 过渡动画:背景和变形 */
+    z-index: 10;                        /* 层级:10,确保在图片上方 */
+    user-select: none;                  /* 禁止选中:防止双击选中文字 */
 }
 
 /* 左箭头位置 */
 .prev {
-    left: 20px;                         /* [例外] 左侧距离：20px */
+    left: 20px;                         /* [例外] 左侧距离:20px */
 }
 
 /* 右箭头位置 */
 .next {
-    right: 20px;                        /* [例外] 右侧距离：20px */
+    right: 20px;                        /* [例外] 右侧距离:20px */
 }
 
 /* 箭头悬停效果 */
 .prev:hover,
 .next:hover {
-    background: rgba(0,0,0,0.6);        /* 悬停背景：加深黑色 */
+    background: rgba(0,0,0,0.6);        /* 悬停背景:加深黑色 */
     transform: translateY(-50%) scale(1.1);
-                                    /* 悬停变形：放大 1.1 倍 */
+                                    /* 悬停变形:放大 1.1 倍 */
 }
 
 /* 箭头点击效果 */
 .prev:active,
 .next:active {
     transform: translateY(-50%) scale(0.95);
-                                    /* 点击变形：缩小 0.95 倍 */
+                                    /* 点击变形:缩小 0.95 倍 */
 }
 
 /* -----------------------------------------------------------------------------
  * 5. 淡入动画关键帧
- * 功能：实现图片切换时的淡入淡出效果
+ * 功能:实现图片切换时的淡入淡出效果
  * -------------------------------------------------------------------------- */
 
 /* 圆点容器 */
 .dot-container {
     text-align: center;                 /* 文字居中 */
-    padding: 15px 0;                    /* 内边距：上下 15px */
-    background: rgba(0,0,0,0.2);        /* 背景：黑色半透明，与图片区分 */
+    padding: 15px 0;                    /* 内边距:上下 15px */
+    background: rgba(0,0,0,0.2);        /* 背景:黑色半透明,与图片区分 */
     border-top: 1px solid rgba(255,255,255,0.1);
-                                    /* [例外] 顶边框：1px 白色半透明，分隔线 */
+                                    /* [例外] 顶边框:1px 白色半透明,分隔线 */
 }
 
 /* 单个圆点 */
 .dot {
-    display: inline-block;              /* 行内块：支持宽高和边距 */
-    width: 12px;                        /* [例外] 宽度：12px */
-    height: 12px;                       /* [例外] 高度：12px */
-    margin: 0 6px;                      /* [例外] 间距：左右 6px */
-    background: rgba(255,255,255,0.4);  /* 背景：白色半透明 */
-    border-radius: 50%;                 /* 圆角：50%，圆形 */
-    cursor: pointer;                    /* 光标：手型 */
+    display: inline-block;              /* 行内块:支持宽高和边距 */
+    width: 12px;                        /* [例外] 宽度:12px */
+    height: 12px;                       /* [例外] 高度:12px */
+    margin: 0 6px;                      /* [例外] 间距:左右 6px */
+    background: rgba(255,255,255,0.4);  /* 背景:白色半透明 */
+    border-radius: 50%;                 /* 圆角:50%,圆形 */
+    cursor: pointer;                    /* 光标:手型 */
     transition: background 0.3s, transform 0.2s;
-                                    /* 过渡动画：背景和变形 */
+                                    /* 过渡动画:背景和变形 */
 }
 
 /* 圆点悬停效果 */
 .dot:hover {
-    background: rgba(255,255,255,0.7);  /* 悬停背景：增亮白色 */
-    transform: scale(1.2);              /* 悬停变形：放大 1.2 倍 */
+    background: rgba(255,255,255,0.7);  /* 悬停背景:增亮白色 */
+    transform: scale(1.2);              /* 悬停变形:放大 1.2 倍 */
 }
 
-/* 圆点激活状态（当前图片） */
+/* 圆点激活状态(当前图片) */
 .dot.active {
-    background: var(--primary-color);   /* 激活背景：品牌蓝色 */
-    transform: scale(1.3);              /* 激活变形：放大 1.3 倍 */
+    background: var(--primary-color);   /* 激活背景:品牌蓝色 */
+    transform: scale(1.3);              /* 激活变形:放大 1.3 倍 */
     box-shadow: 0 0 8px rgba(0,86,179,0.6);
-                                    /* 阴影：蓝色光晕效果 */
+                                    /* 阴影:蓝色光晕效果 */
 }
 
 /* 箭头点击效果 */
 .prev:active,
 .next:active {
     transform: translateY(-50%) scale(0.95);
-                                    /* 点击变形：缩小 0.95 倍 */
+                                    /* 点击变形:缩小 0.95 倍 */
 }
 
 /* -----------------------------------------------------------------------------
  * 5. 淡入动画关键帧
- * 功能：实现图片切换时的淡入淡出效果
+ * 功能:实现图片切换时的淡入淡出效果
  * -------------------------------------------------------------------------- */
 
 /* 淡入动画定义 */
 @keyframes fade {
     from {
-        opacity: 0;                     /* 起始：完全透明 */
+        opacity: 0;                     /* 起始:完全透明 */
     }
     to {
-        opacity: 1;                     /* 结束：完全不透明 */
+        opacity: 1;                     /* 结束:完全不透明 */
     }
 }
 
 /* -----------------------------------------------------------------------------
  * 20. 幻灯片灯箱功能
- * 功能：全屏查看产品图片的模态框样式
+ * 功能:全屏查看产品图片的模态框样式
  * -------------------------------------------------------------------------- */
 
 /* 灯箱模态框根容器 */
 .slideshow-modal {
-    display: none;                      /* 默认隐藏：通过 JS 控制显示 */
-    position: fixed;                    /* 固定定位：相对于浏览器窗口 */
-    z-index: 10000;                     /* [例外] 层级：10000，确保在最上层 */
+    display: none;                      /* 默认隐藏:通过 JS 控制显示 */
+    position: fixed;                    /* 固定定位:相对于浏览器窗口 */
+    z-index: 10000;                     /* [例外] 层级:10000,确保在最上层 */
     left: 0;                            /* 左对齐 */
     top: 0;                             /* 顶部对齐 */
     width: 100%;                        /* 占满宽度 */
     height: 100%;                       /* 占满高度 */
-    background-color: rgba(0,0,0,0.9);  /* 背景：黑色 90% 透明度，突出图片 */
-    overflow: auto;                     /* 溢出滚动：防止图片过大无法查看 */
-    animation: zoomIn 0.3s ease;        /* 放大动画：0.3 秒 */
+    background-color: rgba(0,0,0,0.9);  /* 背景:黑色 90% 透明度,突出图片 */
+    overflow: auto;                     /* 溢出滚动:防止图片过大无法查看 */
+    animation: zoomIn 0.3s ease;        /* 放大动画:0.3 秒 */
 }
 
 /* 灯箱内容容器 */
 .slideshow-modal-content {
-    position: relative;                 /* 相对定位：用于内部元素定位 */
+    position: relative;                 /* 相对定位:用于内部元素定位 */
     margin: auto;                       /* 自动居中 */
     display: flex;                      /* Flex 布局 */
     align-items: center;                /* 垂直居中 */
     justify-content: center;            /* 水平居中 */
-    width: 100%;                        /* 宽度：占满容器 */
-    height: 100vh;                      /* 高度：100% 视口高度 */
-    padding: 60px 20px 20px;            /* 内边距：顶部 60px（为关闭按钮留空间） */
-    box-sizing: border-box;             /* 盒模型：包含内边距 */
+    width: 100%;                        /* 宽度:占满容器 */
+    height: 100vh;                      /* 高度:100% 视口高度 */
+    padding: 60px 20px 20px;            /* 内边距:顶部 60px(为关闭按钮留空间) */
+    box-sizing: border-box;             /* 盒模型:包含内边距 */
 }
 
 /* 灯箱中的图片 */
 .slideshow-modal-image {
-    max-width: 90%;                     /* 最大宽度：90%，留出边距 */
-    max-height: calc(100vh - 120px);    /* 最大高度：视口高度减去上下边距 */
-    object-fit: contain;                /* 保持比例：完整显示图片 */
-    border-radius: 8px;                 /* 圆角：8px */
+    max-width: 90%;                     /* 最大宽度:90%,留出边距 */
+    max-height: calc(100vh - 120px);    /* 最大高度:视口高度减去上下边距 */
+    object-fit: contain;                /* 保持比例:完整显示图片 */
+    border-radius: 8px;                 /* 圆角:8px */
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
-                                    /* 阴影：黑色阴影增加层次感 */
-    cursor: zoom-out;                   /* 光标：缩小图标，提示可点击关闭 */
+                                    /* 阴影:黑色阴影增加层次感 */
+    cursor: zoom-out;                   /* 光标:缩小图标,提示可点击关闭 */
 }
 
 /* 关闭按钮 */
 .slideshow-modal-close {
     position: absolute;                 /* 绝对定位 */
-    top: 20px;                          /* [例外] 顶部距离：20px */
-    right: 35px;                        /* [例外] 右侧距离：35px */
-    color: #fff;                        /* 颜色：白色 */
-    font-size: 40px;                    /* [例外] 字号：40px，易于点击 */
-    font-weight: bold;                  /* 字重：加粗 */
-    width: 50px;                        /* [例外] 宽度：50px */
-    height: 50px;                       /* [例外] 高度：50px */
-    line-height: 50px;                  /* [例外] 行高：50px，垂直居中 */
+    top: 20px;                          /* [例外] 顶部距离:20px */
+    right: 35px;                        /* [例外] 右侧距离:35px */
+    color: #fff;                        /* 颜色:白色 */
+    font-size: 40px;                    /* [例外] 字号:40px,易于点击 */
+    font-weight: bold;                  /* 字重:加粗 */
+    width: 50px;                        /* [例外] 宽度:50px */
+    height: 50px;                       /* [例外] 高度:50px */
+    line-height: 50px;                  /* [例外] 行高:50px,垂直居中 */
     text-align: center;                 /* 文字居中 */
-    cursor: pointer;                    /* 光标：手型 */
-    z-index: 10001;                     /* [例外] 层级：10001，高于模态框 */
+    cursor: pointer;                    /* 光标:手型 */
+    z-index: 10001;                     /* [例外] 层级:10001,高于模态框 */
     transition: color 0.3s, transform 0.2s;
-                                    /* 过渡动画：颜色和变形 */
-    background: rgba(255,255,255,0.1);  /* 背景：白色半透明圆形 */
+                                    /* 过渡动画:颜色和变形 */
+    background: rgba(255,255,255,0.1);  /* 背景:白色半透明圆形 */
     border-radius: 50%;                 /* 圆形 */
 }
 
 /* 关闭按钮悬停效果 */
 .slideshow-modal-close:hover {
-    color: var(--primary-color);        /* 悬停颜色：品牌蓝色 */
-    transform: scale(1.1);              /* 悬停变形：放大 1.1 倍 */
-    background: rgba(255,255,255,0.2);  /* 悬停背景：增亮 */
+    color: var(--primary-color);        /* 悬停颜色:品牌蓝色 */
+    transform: scale(1.1);              /* 悬停变形:放大 1.1 倍 */
+    background: rgba(255,255,255,0.2);  /* 悬停背景:增亮 */
 }
 
 /* 放大动画 */
 @keyframes zoomIn {
     from {
-        transform: scale(0.8);          /* 起始：80% 大小 */
+        transform: scale(0.8);          /* 起始:80% 大小 */
         opacity: 0;                     /* 完全透明 */
     }
     to {
-        transform: scale(1);            /* 结束：100% 大小 */
+        transform: scale(1);            /* 结束:100% 大小 */
         opacity: 1;                     /* 完全不透明 */
     }
 }
 
 /* -----------------------------------------------------------------------------
- * 21. 响应式适配（产品详情页和幻灯片）
- * 功能：为产品详情页和幻灯片提供响应式规则
+ * 21. 响应式适配(产品详情页和幻灯片)
+ * 功能:为产品详情页和幻灯片提供响应式规则
  * -------------------------------------------------------------------------- */
 
-/* 平板端（宽度 ≤ 1024px） */
+/* 平板端(宽度 ≤ 1024px) */
 @media (max-width: 1024px) {
     .slideshow-container {
-        height: 400px;                  /* 高度：400px */
+        height: 400px;                  /* 高度:400px */
     }
     
     .prev,
     .next {
-        width: 40px;                    /* [例外] 宽度：40px */
-        height: 40px;                   /* [例外] 高度：40px */
-        line-height: 40px;              /* [例外] 行高：40px */
-        font-size: 20px;                /* 字号：20px */
+        width: 40px;                    /* [例外] 宽度:40px */
+        height: 40px;                   /* [例外] 高度:40px */
+        line-height: 40px;              /* [例外] 行高:40px */
+        font-size: 20px;                /* 字号:20px */
     }
 }
 
-/* 移动端（宽度 ≤ 768px） */
+/* 移动端(宽度 ≤ 768px) */
 @media (max-width: 768px) {
     .slideshow-container {
-        height: 300px;                  /* 高度：300px，适配小屏幕 */
-        border-radius: 6px;             /* 圆角：6px */
+        height: 300px;                  /* 高度:300px,适配小屏幕 */
+        border-radius: 6px;             /* 圆角:6px */
     }
     
     .numbertext {
-        top: 10px;                      /* [例外] 顶部距离：10px */
-        left: 10px;                     /* [例外] 左侧距离：10px */
-        font-size: 12px;                /* 字号：12px */
-        padding: 6px 10px;              /* 内边距：上下 6px，左右 10px */
+        top: 10px;                      /* [例外] 顶部距离:10px */
+        left: 10px;                     /* [例外] 左侧距离:10px */
+        font-size: 12px;                /* 字号:12px */
+        padding: 6px 10px;              /* 内边距:上下 6px,左右 10px */
     }
     
     .prev,
     .next {
-        width: 35px;                    /* [例外] 宽度：35px */
-        height: 35px;                   /* [例外] 高度：35px */
-        line-height: 35px;              /* [例外] 行高：35px */
-        font-size: 18px;                /* 字号：18px */
+        width: 35px;                    /* [例外] 宽度:35px */
+        height: 35px;                   /* [例外] 高度:35px */
+        line-height: 35px;              /* [例外] 行高:35px */
+        font-size: 18px;                /* 字号:18px */
     }
     
     .prev {
-        left: 10px;                     /* [例外] 左侧距离：10px */
+        left: 10px;                     /* [例外] 左侧距离:10px */
     }
     
     .next {
-        right: 10px;                    /* [例外] 右侧距离：10px */
+        right: 10px;                    /* [例外] 右侧距离:10px */
     }
     
     .dot {
-        width: 10px;                    /* [例外] 宽度：10px */
-        height: 10px;                   /* [例外] 高度：10px */
-        margin: 0 4px;                  /* [例外] 间距：左右 4px */
+        width: 10px;                    /* [例外] 宽度:10px */
+        height: 10px;                   /* [例外] 高度:10px */
+        margin: 0 4px;                  /* [例外] 间距:左右 4px */
     }
     
     .dot-container {
-        padding: 12px 0;                /* 内边距：上下 12px */
+        padding: 12px 0;                /* 内边距:上下 12px */
     }
 }
 /* 
  * =============================================================================
  * 华南森孚贸易有限公司 - 产品详情页样式文件
  * =============================================================================
- * 文件说明：专门为液压油等产品详情页提供样式支持
- * 适用范围：/product/hydraulic/*.html 等产品详情页面
- * 单位策略：布局/间距使用 rem，边框等特殊情况使用 px
+ * 文件说明:专门为液压油等产品详情页提供样式支持
+ * 适用范围:/products/hydraulic/*.html 等产品详情页面
+ * 单位策略:布局/间距使用 rem,边框等特殊情况使用 px
  * =============================================================================
  */
 
 /* -----------------------------------------------------------------------------
- * 1. 产品详情主体布局（更新版）
- * 功能：产品图片（幻灯片）和产品信息的左右分栏布局
+ * 1. 产品详情主体布局(更新版)
+ * 功能:产品图片(幻灯片)和产品信息的左右分栏布局
  * -------------------------------------------------------------------------- */
 
 /* 产品详情区块容器 - 图片与信息左右排列 */
 .product-detail-section {
     display: grid;                      /* Grid 布局 */
-    grid-template-columns: 1.2fr 1.8fr; /* 两列布局：图片占 1.2 份，信息占 1.8 份 */
-    gap: 40px;                          /* 间距：40px，确保图片与内容有足够距离 */
-    margin: 40px 0;                     /* 上下边距：40px，与其他内容区分 */
-    align-items: start;                 /* 顶部对齐：防止子元素被拉伸 */
+    grid-template-columns: 1.2fr 1.8fr; /* 两列布局:图片占 1.2 份,信息占 1.8 份 */
+    gap: 40px;                          /* 间距:40px,确保图片与内容有足够距离 */
+    margin: 40px 0;                     /* 上下边距:40px,与其他内容区分 */
+    align-items: start;                 /* 顶部对齐:防止子元素被拉伸 */
 }
 
-/* 产品图片容器（幻灯片容器） */
+/* 产品图片容器(幻灯片容器) */
 .product-image-container {
-    position: relative;                 /* 相对定位：用于内部元素定位 */
-    width: 100%;                        /* 宽度：占满父容器 */
+    position: relative;                 /* 相对定位:用于内部元素定位 */
+    width: 100%;                        /* 宽度:占满父容器 */
     /* 高度由幻灯片内部容器控制 */
-    border-radius: 8px;                 /* 圆角：8px，柔和边界 */
-    overflow: hidden;                   /* 溢出隐藏：防止图片超出圆角 */
+    border-radius: 8px;                 /* 圆角:8px,柔和边界 */
+    overflow: hidden;                   /* 溢出隐藏:防止图片超出圆角 */
 }
 
 /* 产品详情图片 - 背景图显示 */
 .product-detail-image {
-    width: 100%;                        /* 宽度：占满容器 */
-    height: 100%;                       /* 高度：占满容器 */
-    background-size: contain;             /* 背景尺寸：覆盖整个容器 */
-    background-position: center;        /* 背景位置：居中 */
+    width: 100%;                        /* 宽度:占满容器 */
+    height: 100%;                       /* 高度:占满容器 */
+    background-size: contain;             /* 背景尺寸:覆盖整个容器 */
+    background-position: center;        /* 背景位置:居中 */
     background-repeat: no-repeat;       /* 不重复平铺 */
 }
 
-/* 产品信息区域（增强版） */
+/* 产品信息区域(增强版) */
 .product-info {
-    padding: 30px;                      /* 内边距：30px，增加呼吸感 */
-    background: #fff;                   /* 背景色：白色，清爽干净 */
-    border-radius: 8px;                 /* 圆角：8px，柔和边界 */
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);  /* 阴影：轻微阴影增加层次 */
-    border: 1px solid #e8e8e8;          /* [例外] 边框 1px：浅灰色，明确边界 */
+    padding: 30px;                      /* 内边距:30px,增加呼吸感 */
+    background: #fff;                   /* 背景色:白色,清爽干净 */
+    border-radius: 8px;                 /* 圆角:8px,柔和边界 */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);  /* 阴影:轻微阴影增加层次 */
+    border: 1px solid #e8e8e8;          /* [例外] 边框 1px:浅灰色,明确边界 */
 }
 
 .product-info h3 {
-    font-size: 26px;                    /* 字号：26px，突出标题 */
-    color: var(--primary-color);        /* 颜色：品牌蓝 */
-    margin-bottom: 25px;                /* 下边距：25px */
-    font-weight: 600;                   /* 字重：600，加粗 */
-    padding-bottom: 15px;               /* [例外] 底内边距：15px */
+    font-size: 26px;                    /* 字号:26px,突出标题 */
+    color: var(--primary-color);        /* 颜色:品牌蓝 */
+    margin-bottom: 25px;                /* 下边距:25px */
+    font-weight: 600;                   /* 字重:600,加粗 */
+    padding-bottom: 15px;               /* [例外] 底内边距:15px */
     border-bottom: 2px solid var(--primary-color);
-                                    /* [例外] 底边框 2px：蓝色，强调标题区域 */
+                                    /* [例外] 底边框 2px:蓝色,强调标题区域 */
 }
 
 .product-info h3:not(:first-child) {
-    margin-top: 35px;                   /* [例外] 上边距：35px，区分不同区块 */
+    margin-top: 35px;                   /* [例外] 上边距:35px,区分不同区块 */
 }
 
 .product-info p {
-    font-size: 16px;                    /* 字号：16px */
-    line-height: 1.8;                   /* 行高：1.8 倍，提升可读性 */
-    color: #333;                        /* 颜色：深灰色 */
-    margin-bottom: 18px;                /* 下边距：18px */
-    text-align: justify;                /* 文字对齐：两端对齐，更整齐 */
+    font-size: 16px;                    /* 字号:16px */
+    line-height: 1.8;                   /* 行高:1.8 倍,提升可读性 */
+    color: #333;                        /* 颜色:深灰色 */
+    margin-bottom: 18px;                /* 下边距:18px */
+    text-align: justify;                /* 文字对齐:两端对齐,更整齐 */
 }
 
 /* -----------------------------------------------------------------------------
  * 2. 产品特性列表
- * 功能：展示产品特点的列表样式
+ * 功能:展示产品特点的列表样式
  * -------------------------------------------------------------------------- */
 
-/* 特性列表（增强版） */
+/* 特性列表(增强版) */
 .feature-list {
     list-style: none;                   /* 移除默认列表样式 */
     padding: 0;                         /* 移除内边距 */
-    margin: 25px 0;                     /* 上下边距：25px */
+    margin: 25px 0;                     /* 上下边距:25px */
 }
 
 .feature-list li {
-    font-size: 16px;                    /* 字号：16px */
-    line-height: 1.8;                   /* 行高：1.8 倍 */
-    color: #333;                        /* 颜色：深灰色 */
-    margin-bottom: 15px;                /* 下边距：15px */
-    padding: 12px 15px;                 /* 内边距：增强卡片感 */
-    background: #f8f9fa;                /* 背景：浅灰色，区分每个特性 */
+    font-size: 16px;                    /* 字号:16px */
+    line-height: 1.8;                   /* 行高:1.8 倍 */
+    color: #333;                        /* 颜色:深灰色 */
+    margin-bottom: 15px;                /* 下边距:15px */
+    padding: 12px 15px;                 /* 内边距:增强卡片感 */
+    background: #f8f9fa;                /* 背景:浅灰色,区分每个特性 */
     border-left: 3px solid var(--primary-color);
-                                    /* [例外] 左边框 3px：蓝色，视觉引导 */
-    border-radius: 4px;                 /* 圆角：4px */
+                                    /* [例外] 左边框 3px:蓝色,视觉引导 */
+    border-radius: 4px;                 /* 圆角:4px */
     transition: background 0.3s, transform 0.2s;
-                                    /* 过渡动画：背景和位移 */
+                                    /* 过渡动画:背景和位移 */
 }
 
 .feature-list li:hover {
-    background: #eef5ff;                /* 悬停背景：浅蓝色 */
-    transform: translateX(5px);         /* 悬停位移：向右 5px */
+    background: #eef5ff;                /* 悬停背景:浅蓝色 */
+    transform: translateX(5px);         /* 悬停位移:向右 5px */
 }
 
 .feature-list strong {
-    color: var(--primary-color);        /* 强调文字：品牌蓝色 */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    color: var(--primary-color);        /* 强调文字:品牌蓝色 */
+    font-weight: 600;                   /* 字重:600,加粗 */
 }
 
-/* 应用列表（增强版） */
+/* 应用列表(增强版) */
 .application-list {
     list-style: none;                   /* 移除默认列表样式 */
     padding: 0;                         /* 移除内边距 */
-    margin: 25px 0;                     /* 上下边距：25px */
+    margin: 25px 0;                     /* 上下边距:25px */
 }
 
 .application-list li {
-    font-size: 16px;                    /* 字号：16px */
-    line-height: 1.8;                   /* 行高：1.8 倍 */
-    color: #333;                        /* 颜色：深灰色 */
-    margin-bottom: 12px;                /* 下边距：12px */
-    padding: 10px 15px;                 /* 内边距：10px 15px */
-    background: #fafafa;                /* 背景：极浅灰色 */
-    border-radius: 4px;                 /* 圆角：4px */
+    font-size: 16px;                    /* 字号:16px */
+    line-height: 1.8;                   /* 行高:1.8 倍 */
+    color: #333;                        /* 颜色:深灰色 */
+    margin-bottom: 12px;                /* 下边距:12px */
+    padding: 10px 15px;                 /* 内边距:10px 15px */
+    background: #fafafa;                /* 背景:极浅灰色 */
+    border-radius: 4px;                 /* 圆角:4px */
     transition: background 0.3s;
-                                    /* 过渡动画：背景 */
+                                    /* 过渡动画:背景 */
 }
 
 .application-list li:hover {
-    background: #f0f0f0;                /* 悬停背景：浅灰色 */
+    background: #f0f0f0;                /* 悬停背景:浅灰色 */
 }
 
 /* -----------------------------------------------------------------------------
  * 3. 产品规格表格
- * 功能：以表格形式展示产品详细规格参数
+ * 功能:以表格形式展示产品详细规格参数
  * -------------------------------------------------------------------------- */
 
 /* 规格表格容器 */
 .product-specs-table {
-    margin: 60px 0;                     /* 上下边距：60px，与其他内容充分分隔 */
-    background: #fff;                   /* 背景色：白色 */
-    border-radius: 8px;                 /* 圆角：8px */
-    padding: 30px;                      /* 内边距：30px */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 阴影：轻微阴影增加层次 */
+    margin: 60px 0;                     /* 上下边距:60px,与其他内容充分分隔 */
+    background: #fff;                   /* 背景色:白色 */
+    border-radius: 8px;                 /* 圆角:8px */
+    padding: 30px;                      /* 内边距:30px */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 阴影:轻微阴影增加层次 */
 }
 
 .product-specs-table h3 {
-    font-size: 24px;                    /* 字号：24px */
-    color: var(--primary-color);        /* 颜色：品牌蓝 */
-    margin-bottom: 25px;                /* 下边距：25px */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    font-size: 24px;                    /* 字号:24px */
+    color: var(--primary-color);        /* 颜色:品牌蓝 */
+    margin-bottom: 25px;                /* 下边距:25px */
+    font-weight: 600;                   /* 字重:600,加粗 */
     text-align: center;                 /* 文字居中 */
 }
 
 /* 规格表格 */
 .product-specs-table table {
-    width: 100%;                        /* 宽度：占满容器 */
-    border-collapse: collapse;          /* 边框合并：单元格共享边框 */
-    font-size: 14px;                    /* 字号：14px */
+    width: 100%;                        /* 宽度:占满容器 */
+    border-collapse: collapse;          /* 边框合并:单元格共享边框 */
+    font-size: 14px;                    /* 字号:14px */
 }
 
 .product-specs-table thead tr {
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
-                                    /* 表头背景：渐变蓝色 */
-    color: white;                       /* 表头文字：白色 */
+                                    /* 表头背景:渐变蓝色 */
+    color: white;                       /* 表头文字:白色 */
 }
 
 .product-specs-table th {
-    padding: 15px 10px;                 /* 内边距：上下 15px，左右 10px */
+    padding: 15px 10px;                 /* 内边距:上下 15px,左右 10px */
     text-align: left;                   /* 文字左对齐 */
-    font-weight: 600;                   /* 字重：600，加粗 */
-    border: 1px solid #004494;          /* [例外] 边框 1px：深蓝色，确保表头清晰 */
+    font-weight: 600;                   /* 字重:600,加粗 */
+    border: 1px solid #004494;          /* [例外] 边框 1px:深蓝色,确保表头清晰 */
 }
 
 .product-specs-table tbody tr {
-    border-bottom: 1px solid #e0e0e0;   /* [例外] 底边框 1px：浅灰色，分隔各行 */
-    transition: background-color 0.3s;  /* 过渡动画：背景色变化 0.3 秒 */
+    border-bottom: 1px solid #e0e0e0;   /* [例外] 底边框 1px:浅灰色,分隔各行 */
+    transition: background-color 0.3s;  /* 过渡动画:背景色变化 0.3 秒 */
 }
 
 /* 表格行悬停效果 */
 .product-specs-table tbody tr:hover {
-    background-color: #f5f9ff;          /* 悬停背景：浅蓝色 */
+    background-color: #f5f9ff;          /* 悬停背景:浅蓝色 */
 }
 
 .product-specs-table td {
-    padding: 12px 10px;                 /* 内边距：上下 12px，左右 10px */
-    color: #333;                        /* 颜色：深灰色 */
-    border: 1px solid #e0e0e0;          /* [例外] 边框 1px：浅灰色 */
+    padding: 12px 10px;                 /* 内边距:上下 12px,左右 10px */
+    color: #333;                        /* 颜色:深灰色 */
+    border: 1px solid #e0e0e0;          /* [例外] 边框 1px:浅灰色 */
 }
 
-/* 响应式：小屏幕时表格可横向滚动 */
+/* 响应式:小屏幕时表格可横向滚动 */
 @media (max-width: 768px) {
     .product-specs-table {
         overflow-x: auto;               /* 横向滚动 */
@@ -1907,51 +1907,51 @@ footer p {
     }
     
     .product-specs-table table {
-        min-width: 800px;               /* 最小宽度：确保表格内容完整显示 */
+        min-width: 800px;               /* 最小宽度:确保表格内容完整显示 */
     }
 }
 
 /* -----------------------------------------------------------------------------
- * 4. 应用领域展示区（增强版）
- * 功能：展示产品应用场景，带图标和描述
+ * 4. 应用领域展示区(增强版)
+ * 功能:展示产品应用场景,带图标和描述
  * -------------------------------------------------------------------------- */
 
 /* 应用领域区块 */
 .application-section {
-    margin-top: 60px;                   /* 上边距：60px */
-    background-color: #f9f9f9;          /* 背景色：浅灰色 */
-    padding: 40px 20px;                 /* 内边距：上下 40px，左右 20px */
-    border-radius: 8px;                 /* 圆角：8px */
+    margin-top: 60px;                   /* 上边距:60px */
+    background-color: #f9f9f9;          /* 背景色:浅灰色 */
+    padding: 40px 20px;                 /* 内边距:上下 40px,左右 20px */
+    border-radius: 8px;                 /* 圆角:8px */
 }
 
 /* 居中标题 */
 .section-title-center {
     text-align: center;                 /* 文字居中 */
-    margin-bottom: 40px;                /* 下边距：40px */
-    font-size: 28px;                    /* 字号：28px */
-    color: var(--primary-color);        /* 颜色：品牌蓝 */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    margin-bottom: 40px;                /* 下边距:40px */
+    font-size: 28px;                    /* 字号:28px */
+    color: var(--primary-color);        /* 颜色:品牌蓝 */
+    font-weight: 600;                   /* 字重:600,加粗 */
 }
 
 /* 应用网格布局 */
 .application-grid {
     display: grid;                      /* Grid 布局 */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                                    /* 自适应列数：最小 250px */
-    gap: 30px;                          /* 间距：30px */
-    max-width: 1200px;                  /* 最大宽度：1200px */
+                                    /* 自适应列数:最小 250px */
+    gap: 30px;                          /* 间距:30px */
+    max-width: 1200px;                  /* 最大宽度:1200px */
     margin: 0 auto;                     /* 水平居中 */
 }
 
 /* 单个应用区域 */
 .application-area {
     text-align: center;                 /* 文字居中 */
-    padding: 30px 20px;                 /* 内边距：上下 30px，左右 20px */
-    background: white;                  /* 背景色：白色 */
-    border-radius: 8px;                 /* 圆角：8px */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 阴影：轻微阴影 */
+    padding: 30px 20px;                 /* 内边距:上下 30px,左右 20px */
+    background: white;                  /* 背景色:白色 */
+    border-radius: 8px;                 /* 圆角:8px */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);  /* 阴影:轻微阴影 */
     transition: transform 0.3s, box-shadow 0.3s;
-                                    /* 过渡动画：变形和阴影 0.3 秒 */
+                                    /* 过渡动画:变形和阴影 0.3 秒 */
 }
 
 /* 应用卡片悬停效果 */
@@ -1962,41 +1962,41 @@ footer p {
 
 /* 应用图标 */
 .application-icon {
-    font-size: 48px;                    /* 图标大小：48px */
-    margin-bottom: 15px;                /* 下边距：15px */
+    font-size: 48px;                    /* 图标大小:48px */
+    margin-bottom: 15px;                /* 下边距:15px */
 }
 
 /* 应用标题 */
 .application-title {
-    font-size: 20px;                    /* 字号：20px */
-    color: var(--primary-color);        /* 颜色：品牌蓝 */
-    margin-bottom: 10px;                /* 下边距：10px */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    font-size: 20px;                    /* 字号:20px */
+    color: var(--primary-color);        /* 颜色:品牌蓝 */
+    margin-bottom: 10px;                /* 下边距:10px */
+    font-weight: 600;                   /* 字重:600,加粗 */
 }
 
 /* 应用描述 */
 .application-desc {
-    font-size: 15px;                    /* 字号：15px */
-    color: #666;                        /* 颜色：中灰色 */
-    line-height: 1.6;                   /* 行高：1.6 倍 */
+    font-size: 15px;                    /* 字号:15px */
+    color: #666;                        /* 颜色:中灰色 */
+    line-height: 1.6;                   /* 行高:1.6 倍 */
 }
 
 /* -----------------------------------------------------------------------------
  * 5. 资料来源区域
- * 功能：展示产品资料来源链接，样式低调且专业
+ * 功能:展示产品资料来源链接,样式低调且专业
  * -------------------------------------------------------------------------- */
 
 /* 资料来源容器 */
 .product-source {
-    margin: 40px 0;                     /* 上下边距：40px，与前后内容区分 */
-    padding: 20px 25px;                 /* 内边距：上下 20px，左右 25px */
-    background-color: #f8f9fa;          /* 背景色：浅灰色，柔和不突兀 */
+    margin: 40px 0;                     /* 上下边距:40px,与前后内容区分 */
+    padding: 20px 25px;                 /* 内边距:上下 20px,左右 25px */
+    background-color: #f8f9fa;          /* 背景色:浅灰色,柔和不突兀 */
     border-left: 3px solid var(--primary-color);
-                                    /* [例外] 左边框 3px：蓝色，增加视觉引导 */
-    border-radius: 4px;                 /* 圆角：4px，柔和边界 */
-    font-size: 14px;                    /* 字号：14px，适中大小 */
-    color: #666;                        /* 颜色：中灰色，低调显示 */
-    line-height: 1.6;                   /* 行高：1.6 倍 */
+                                    /* [例外] 左边框 3px:蓝色,增加视觉引导 */
+    border-radius: 4px;                 /* 圆角:4px,柔和边界 */
+    font-size: 14px;                    /* 字号:14px,适中大小 */
+    color: #666;                        /* 颜色:中灰色,低调显示 */
+    line-height: 1.6;                   /* 行高:1.6 倍 */
 }
 
 .product-source p {
@@ -2004,117 +2004,117 @@ footer p {
 }
 
 .product-source strong {
-    color: #333;                        /* 强调文字：深灰色 */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    color: #333;                        /* 强调文字:深灰色 */
+    font-weight: 600;                   /* 字重:600,加粗 */
 }
 
 .product-source a {
-    color: var(--primary-color);        /* 链接颜色：品牌蓝 */
+    color: var(--primary-color);        /* 链接颜色:品牌蓝 */
     text-decoration: none;              /* 移除下划线 */
-    transition: color 0.3s;             /* 过渡动画：颜色变化 0.3 秒 */
+    transition: color 0.3s;             /* 过渡动画:颜色变化 0.3 秒 */
     word-break: break-all;              /* 允许长链接换行 */
 }
 
 .product-source a:hover {
-    color: #004494;                     /* 悬停颜色：深蓝色 */
-    text-decoration: underline;         /* 悬停下划线：提示可点击 */
+    color: #004494;                     /* 悬停颜色:深蓝色 */
+    text-decoration: underline;         /* 悬停下划线:提示可点击 */
 }
 
 /* -----------------------------------------------------------------------------
- * 6. 性能对比表格（合成油专用）
- * 功能：展示合成油与矿物油的性能对比
+ * 6. 性能对比表格(合成油专用)
+ * 功能:展示合成油与矿物油的性能对比
  * -------------------------------------------------------------------------- */
 
 /* 优势展示区 */
 .advantages-section {
-    margin: 60px 0;                     /* 上下边距：60px */
+    margin: 60px 0;                     /* 上下边距:60px */
     background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-                                    /* 背景：浅蓝色渐变 */
-    padding: 40px 20px;                 /* 内边距：上下 40px，左右 20px */
-    border-radius: 8px;                 /* 圆角：8px */
+                                    /* 背景:浅蓝色渐变 */
+    padding: 40px 20px;                 /* 内边距:上下 40px,左右 20px */
+    border-radius: 8px;                 /* 圆角:8px */
     border: 2px solid var(--primary-color);
-                                    /* [例外] 边框 2px：蓝色，突出显示此区域 */
+                                    /* [例外] 边框 2px:蓝色,突出显示此区域 */
 }
 
 /* 对比表格容器 */
 .comparison-table {
-    max-width: 900px;                   /* 最大宽度：900px */
-    margin: 30px auto;                  /* 水平居中，上下边距 30px */
-    overflow-x: auto;                   /* 横向滚动：适配小屏幕 */
+    max-width: 900px;                   /* 最大宽度:900px */
+    margin: 30px auto;                  /* 水平居中,上下边距 30px */
+    overflow-x: auto;                   /* 横向滚动:适配小屏幕 */
 }
 
 .comparison-table table {
-    width: 100%;                        /* 宽度：占满容器 */
+    width: 100%;                        /* 宽度:占满容器 */
     border-collapse: collapse;          /* 边框合并 */
-    font-size: 15px;                    /* 字号：15px */
+    font-size: 15px;                    /* 字号:15px */
 }
 
 .comparison-table thead tr {
-    background: var(--primary-color);   /* 表头背景：品牌蓝 */
-    color: white;                       /* 表头文字：白色 */
+    background: var(--primary-color);   /* 表头背景:品牌蓝 */
+    color: white;                       /* 表头文字:白色 */
 }
 
 .comparison-table th {
-    padding: 15px;                      /* 内边距：15px */
+    padding: 15px;                      /* 内边距:15px */
     text-align: left;                   /* 文字左对齐 */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    font-weight: 600;                   /* 字重:600,加粗 */
     border: 1px solid var(--primary-color);
-                                    /* [例外] 边框 1px：蓝色 */
+                                    /* [例外] 边框 1px:蓝色 */
 }
 
 .comparison-table tbody tr {
-    border-bottom: 1px solid #ddd;      /* [例外] 底边框 1px：浅灰色 */
+    border-bottom: 1px solid #ddd;      /* [例外] 底边框 1px:浅灰色 */
 }
 
 .comparison-table tbody tr:nth-child(even) {
     background-color: rgba(255,255,255,0.5);
-                                    /* 偶数行背景：半透明白色 */
+                                    /* 偶数行背景:半透明白色 */
 }
 
 .comparison-table td {
-    padding: 12px 15px;                 /* 内边距：上下 12px，左右 15px */
-    border: 1px solid #ddd;             /* [例外] 边框 1px：浅灰色 */
+    padding: 12px 15px;                 /* 内边距:上下 12px,左右 15px */
+    border: 1px solid #ddd;             /* [例外] 边框 1px:浅灰色 */
 }
 
 /* -----------------------------------------------------------------------------
- * 7. 联系 CTA 区域（增强版）
- * 功能：引导用户联系的行动号召区域
+ * 7. 联系 CTA 区域(增强版)
+ * 功能:引导用户联系的行动号召区域
  * -------------------------------------------------------------------------- */
 
 /* 联系 CTA */
 .contact-cta {
-    margin-top: 60px;                   /* 上边距：60px */
+    margin-top: 60px;                   /* 上边距:60px */
     text-align: center;                 /* 文字居中 */
     background: linear-gradient(135deg, #0056b3 0%, #004494 100%);
-                                    /* 背景：蓝色渐变 */
-    color: white;                       /* 文字颜色：白色 */
-    padding: 50px 30px;                 /* 内边距：上下 50px，左右 30px */
-    border-radius: 8px;                 /* 圆角：8px */
+                                    /* 背景:蓝色渐变 */
+    color: white;                       /* 文字颜色:白色 */
+    padding: 50px 30px;                 /* 内边距:上下 50px,左右 30px */
+    border-radius: 8px;                 /* 圆角:8px */
     box-shadow: 0 8px 20px rgba(0,86,179,0.3);
-                                    /* 阴影：蓝色阴影增加深度 */
+                                    /* 阴影:蓝色阴影增加深度 */
 }
 
 .contact-cta h3 {
-    font-size: 28px;                    /* 字号：28px */
-    margin-bottom: 15px;                /* 下边距：15px */
-    font-weight: 600;                   /* 字重：600，加粗 */
+    font-size: 28px;                    /* 字号:28px */
+    margin-bottom: 15px;                /* 下边距:15px */
+    font-weight: 600;                   /* 字重:600,加粗 */
 }
 
 .contact-cta p {
-    font-size: 17px;                    /* 字号：17px */
-    margin-bottom: 25px;                /* 下边距：25px */
-    opacity: 0.95;                      /* 透明度：95%，柔和一点 */
+    font-size: 17px;                    /* 字号:17px */
+    margin-bottom: 25px;                /* 下边距:25px */
+    opacity: 0.95;                      /* 透明度:95%,柔和一点 */
 }
 
 /* -----------------------------------------------------------------------------
  * 8. 响应式适配
- * 功能：平板和手机端的适配规则
+ * 功能:平板和手机端的适配规则
  * -------------------------------------------------------------------------- */
 
 @media (max-width: 1024px) {
     .product-detail-section {
         grid-template-columns: 1fr;     /* 单列布局 */
-        gap: 30px;                      /* 间距：30px */
+        gap: 30px;                      /* 间距:30px */
     }
     
     .product-image-container {
@@ -2122,57 +2122,57 @@ footer p {
     }
     
     .product-info {
-        padding: 25px;                  /* 内边距：25px */
+        padding: 25px;                  /* 内边距:25px */
     }
     
     .product-info h3 {
-        font-size: 24px;                /* 字号：24px */
+        font-size: 24px;                /* 字号:24px */
     }
 }
 
 @media (max-width: 768px) {
     .product-detail-section {
-        margin: 30px 0;                 /* 上下边距：30px */
+        margin: 30px 0;                 /* 上下边距:30px */
     }
     
     .product-info {
-        padding: 20px;                  /* 内边距：20px */
+        padding: 20px;                  /* 内边距:20px */
     }
     
     .product-info h3 {
-        font-size: 22px;                /* 字号：22px */
-        margin-bottom: 20px;            /* 下边距：20px */
-        padding-bottom: 12px;           /* [例外] 底内边距：12px */
+        font-size: 22px;                /* 字号:22px */
+        margin-bottom: 20px;            /* 下边距:20px */
+        padding-bottom: 12px;           /* [例外] 底内边距:12px */
     }
     
     .feature-list li,
     .application-list li {
-        font-size: 15px;                /* 字号：15px */
-        padding: 10px 12px;             /* 内边距：10px 12px */
+        font-size: 15px;                /* 字号:15px */
+        padding: 10px 12px;             /* 内边距:10px 12px */
     }
     
     .product-specs-table {
-        padding: 20px;                  /* 内边距：20px */
+        padding: 20px;                  /* 内边距:20px */
     }
     
     .section-title-center {
-        font-size: 24px;                /* 字号：24px */
+        font-size: 24px;                /* 字号:24px */
     }
     
     .application-grid {
         grid-template-columns: 1fr;     /* 单列布局 */
-        gap: 20px;                      /* 间距：20px */
+        gap: 20px;                      /* 间距:20px */
     }
     
     .contact-cta {
-        padding: 40px 20px;             /* 内边距：40px 20px */
+        padding: 40px 20px;             /* 内边距:40px 20px */
     }
     
     .contact-cta h3 {
-        font-size: 24px;                /* 字号：24px */
+        font-size: 24px;                /* 字号:24px */
     }
     
     .contact-cta p {
-        font-size: 16px;                /* 字号：16px */
+        font-size: 16px;                /* 字号:16px */
     }
 }

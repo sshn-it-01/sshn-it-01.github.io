@@ -1,17 +1,17 @@
 <!-- 
 =============================================================================
-华南森孚贸易有限公司 - 产品展示页（Products）
+华南森孚贸易有限公司 - 产品展示页(Products)
 =============================================================================
-文件说明：展示公司所有产品分类，包括工业润滑油和车用润滑油
-页面结构：
+文件说明:展示公司所有产品分类,包括工业润滑油和车用润滑油
+页面结构:
   1. 导航栏 - 固定在顶部
   2. 工业润滑油系列 - 液压油、齿轮油、轴承油
   3. 车用润滑油系列 - 发动机油、变速箱油、刹车油
   4. 页脚版权信息
-技术规范：
-  - 响应式设计：支持桌面、平板、手机等各种设备
-  - 锚点跳转：通过 URL hash 实现产品分类间快速定位
-  - Sticky Footer：footer 始终贴合页面底部
+技术规范:
+  - 响应式设计:支持桌面、平板、手机等各种设备
+  - 锚点跳转:通过 URL hash 实现产品分类间快速定位
+  - Sticky Footer:footer 始终贴合页面底部
 =============================================================================
 -->
 
@@ -20,48 +20,48 @@
 
 <head>
     <!-- 页面元数据配置 -->
-    <meta charset="UTF-8">  <!-- 字符编码：UTF-8，支持中文显示 -->
+    <meta charset="UTF-8">  <!-- 字符编码:UTF-8,支持中文显示 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <!-- 视口设置：响应式关键，确保在移动设备上正确缩放 -->
+                            <!-- 视口设置:响应式关键,确保在移动设备上正确缩放 -->
     <title>产品展示 - 华南森孚</title>
-                            <!-- 页面标题：包含核心产品和品牌词，提升 SEO 排名 -->
-    <meta name="description" content="华南森孚贸易有限公司专业供应美孚全系列产品：工业润滑油（液压油、齿轮油、导轨油、空压机油、冷冻机油、润滑脂、切削油、汽轮机油）、车用润滑油（汽机油、柴机油、变速箱油、防冻液、刹车油）。产品广泛应用于注塑机、压铸机、工程机械、数控机床、发电机组等设备。提供专业技术支持和润滑解决方案。">
+                            <!-- 页面标题:包含核心产品和品牌词,提升 SEO 排名 -->
+    <meta name="description" content="华南森孚贸易有限公司专业供应美孚全系列产品:工业润滑油(液压油、齿轮油、导轨油、空压机油、冷冻机油、润滑脂、切削油、汽轮机油)、车用润滑油(汽机油、柴机油、变速箱油、防冻液、刹车油)。产品广泛应用于注塑机、压铸机、工程机械、数控机床、发电机组等设备。提供专业技术支持和润滑解决方案。">
     <meta name="keywords" content="美孚润滑油,液压油,齿轮油,导轨油,空压机油,冷冻机油,润滑脂,切削油,汽轮机油,循环机油,主轴油,燃气发动机油,导热油,汽机油,柴机油,重型柴机油,变速箱油,自动波箱油,手动波箱油,防冻液,冷却液,刹车油,制动液,食品级润滑油,高温润滑油,工业润滑油厂家,车用润滑油批发,佛山润滑油供应商,华南森孚,Mobil 美孚,润滑油价格,润滑油技术参数">
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.hnslm.com/products.html">
     
-    <!-- 网站图标（Favicon）：显示在浏览器标签页标题前 -->
+    <!-- 网站图标(Favicon):显示在浏览器标签页标题前 -->
     <link rel="icon" href="images/hn-logo_bg-white.webp" type="image/webp">
     
     <!-- 引入外部资源 -->
-    <link rel="stylesheet" href="css/style.css">  <!-- 主样式表：布局和组件样式 -->
-    <link rel="stylesheet" href="css/images.css">  <!-- 图片资源样式：所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询：所有断点适配规则（必须放在最后） -->
+    <link rel="stylesheet" href="css/style.css">  <!-- 主样式表:布局和组件样式 -->
+    <link rel="stylesheet" href="css/images.css">  <!-- 图片资源样式:所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询:所有断点适配规则(必须放在最后) -->
     <script src="js/main.js" defer></script>
-                            <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
+                            <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
 </head>
 
 <body>  <!-- 页面主体内容开始 -->
 
     <!-- =========================================================================
          头部导航栏区域
-         功能：固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
+         功能:固定在页面顶部,包含 Logo、导航链接和移动端汉堡菜单
          ========================================================================= -->
-    <header>  <!-- 语义化标签：页面头部 -->
-        <div class="nav-container">  <!-- 导航容器：控制最大宽度和居中 -->
+    <header>  <!-- 语义化标签:页面头部 -->
+        <div class="nav-container">  <!-- 导航容器:控制最大宽度和居中 -->
             
-            <!-- Logo 区域：包含图形 Logo 和文字 Logo -->
+            <!-- Logo 区域:包含图形 Logo 和文字 Logo -->
             <div class="logo">
-                <!-- 图形 Logo：点击返回首页，aria-label 提供无障碍访问支持 -->
+                <!-- 图形 Logo:点击返回首页,aria-label 提供无障碍访问支持 -->
                 <a href="index.html" aria-label="公司首页">
                     <span class="logo-icon"></span>  <!-- CSS 背景图显示 Logo -->
                 </a>
-                <!-- 文字 Logo：公司名称，可点击返回首页 -->
+                <!-- 文字 Logo:公司名称,可点击返回首页 -->
                 <a href="index.html" class="logo-text">佛山市华南森孚贸易有限公司</a>
             </div>
             
-            <!-- 移动端汉堡菜单按钮：仅在小屏幕显示 -->
+            <!-- 移动端汉堡菜单按钮:仅在小屏幕显示 -->
             <div class="menu-toggle" id="mobile-menu">☰</div>
             
             <!-- 导航链接列表 -->
@@ -80,31 +80,31 @@
         产品展示
          ========================================================================= -->
     
-    <!-- SEO 结构化数据：产品列表 Schema.org markup -->
+    <!-- SEO 结构化数据:产品列表 Schema.org markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
       "name": "华南森孚润滑油产品系列",
-      "description": "专业供应美孚全系列产品，包括工业润滑油和车用润滑油",
+      "description": "专业供应美孚全系列产品,包括工业润滑油和车用润滑油",
       "numberOfItems": 23,
       "itemListElement": [
         {
           "@type": "Product",
           "name": "齿轮油",
-          "description": "优异的极压抗磨性能，适用于工业齿轮传动系统，重载、高速工况下的理想选择。",
+          "description": "优异的极压抗磨性能,适用于工业齿轮传动系统,重载、高速工况下的理想选择。",
           "category": "工业润滑油"
         },
         {
           "@type": "Product",
           "name": "导热油",
-          "description": "高温热稳定性优异，适用于化工、纺织、印染等行业的工业加热系统。",
+          "description": "高温热稳定性优异,适用于化工、纺织、印染等行业的工业加热系统。",
           "category": "工业润滑油"
         },
         {
           "@type": "Product",
           "name": "液压油",
-          "description": "优异的抗氧化、抗磨损性能，适用于注塑机、压铸机、工程机械等液压系统。",
+          "description": "优异的抗氧化、抗磨损性能,适用于注塑机、压铸机、工程机械等液压系统。",
           "category": "工业润滑油"
         }
       ]
@@ -117,18 +117,18 @@
         <h2 class="section-title">产品系列</h2>
         
         <!-- 章节副标题 -->
-        <p class="section-subtitle">全面覆盖工业与车用润滑需求，提供高性能产品与专业技术支持</p>
+        <p class="section-subtitle">全面覆盖工业与车用润滑需求,提供高性能产品与专业技术支持</p>
 
 
     <!-- =========================================================================
-         工业润滑油系列区域
-         功能：展示工业润滑油分类产品
-         布局：三列网格布局（桌面端），使用卡片组件
-         间距：section-spacing 与其他区域区分
-         锚点：#industrial-lubricants，支持从首页直接跳转到此区域
+         工业润滑油系列区域 - Industrial Lubricants (Ind.Lubes)
+         功能:展示工业润滑油分类产品
+         布局:三列网格布局(桌面端),使用卡片组件
+         间距:section-spacing 与其他区域区分
+         锚点:#industrial-lubricants,支持从首页直接跳转到此区域
          ========================================================================= -->
 
-        <!-- 章节标题（可折叠） -->
+        <!-- 章节标题(可折叠) -->
         <div class="collapsible-header">
             <h2 class="section-title section-title-banner collapsible-title" id="industrial-lubricants-section">
                 <span class="title-text">工业润滑油系列</span>
@@ -138,109 +138,109 @@
             </h2>
         </div>
         
-        <!-- 网格布局容器：自动适应列数 -->
+        <!-- 网格布局容器:自动适应列数 -->
         <div class="grid collapsible-content collapsed">
             
-            <!-- 产品卡片 1：齿轮油 (C - chǐ lún yóu) -->
-            <a href="product/category/gear-oil.html" class="card-link" target="_blank" rel="noopener noreferrer">
+            <!-- 产品卡片 1:齿轮油 (C - chǐ lún yóu) -->
+            <a href="./products/ind-lubes/gear-oil/0-gear-oil.html" class="card-link" target="_blank" rel="noopener noreferrer">
                 <div class="card">
                     <div class="card-content">
                         <h3>齿轮油</h3>
-                        <p>优异的极压抗磨性能，适用于工业齿轮传动系统，重载、高速工况下的理想选择。</p>
+                        <p>优异的极压抗磨性能,适用于工业齿轮传动系统,重载、高速工况下的理想选择。</p>
                     </div>
                 </div>
             </a>
             
-            <!-- 产品卡片 2：导热油 (D - dǎo rè yóu) -->
+            <!-- 产品卡片 2:导热油 (D - dǎo rè yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>导热油</h3>
-                    <p>高温热稳定性优异，适用于化工、纺织、印染等行业的工业加热系统。</p>
+                    <p>高温热稳定性优异,适用于化工、纺织、印染等行业的工业加热系统。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 3：导轨油 (G - dǎo guǐ yóu) -->
+            <!-- 产品卡片 3:导轨油 (G - dǎo guǐ yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>导轨油</h3>
-                    <p>优异的抗磨减摩性能，适用于数控机床、加工中心等精密设备的导轨润滑。</p>
+                    <p>优异的抗磨减摩性能,适用于数控机床、加工中心等精密设备的导轨润滑。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 4：空压机油 (K - kōng yā jī yóu) -->
+            <!-- 产品卡片 4:空压机油 (K - kōng yā jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>空压机油</h3>
-                    <p>优异的抗氧化性能，适用于螺杆式、活塞式等各类空气压缩机。</p>
+                    <p>优异的抗氧化性能,适用于螺杆式、活塞式等各类空气压缩机。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 5：冷冻机油 (L - lěng dòng jī yóu) -->
+            <!-- 产品卡片 5:冷冻机油 (L - lěng dòng jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>冷冻机油</h3>
-                    <p>低温流动性好，与多种制冷剂兼容，适用于冷库、中央空调等制冷设备。</p>
+                    <p>低温流动性好,与多种制冷剂兼容,适用于冷库、中央空调等制冷设备。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 6：润滑脂 (R - rùn huá zhī) -->
+            <!-- 产品卡片 6:润滑脂 (R - rùn huá zhī) -->
             <div class="card">
                 <div class="card-content">
                     <h3>润滑脂</h3>
-                    <p>优异的高温粘附性和防水性能，适用于冶金、矿山、电力等重工业领域的轴承润滑。</p>
+                    <p>优异的高温粘附性和防水性能,适用于冶金、矿山、电力等重工业领域的轴承润滑。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 7：燃气发动机油 (R - rán qì fā dòng jī yóu) -->
+            <!-- 产品卡片 7:燃气发动机油 (R - rán qì fā dòng jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>燃气发动机油</h3>
-                    <p>高温清净性优异，适用于天然气、沼气等燃气发动机。</p>
+                    <p>高温清净性优异,适用于天然气、沼气等燃气发动机。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 8：切削油 (Q - qiē xiāo yóu) -->
+            <!-- 产品卡片 8:切削油 (Q - qiē xiāo yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>切削油</h3>
-                    <p>极压抗磨性能突出，适用于车削、铣削、钻孔等金属加工工艺。</p>
+                    <p>极压抗磨性能突出,适用于车削、铣削、钻孔等金属加工工艺。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 9：汽轮机油/涡轮机油 (Q - qì lún jī yóu) -->
+            <!-- 产品卡片 9:汽轮机油/涡轮机油 (Q - qì lún jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>汽轮机油/涡轮机油</h3>
-                    <p>卓越的防锈防腐性能，适用于蒸汽轮机、燃气轮机和水轮机等发电机组。</p>
+                    <p>卓越的防锈防腐性能,适用于蒸汽轮机、燃气轮机和水轮机等发电机组。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 10：循环机油 (X - xún huán jī yóu) -->
+            <!-- 产品卡片 10:循环机油 (X - xún huán jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>循环机油</h3>
-                    <p>良好的分水性和过滤性能，适用于集中润滑循环系统和液压系统。</p>
+                    <p>良好的分水性和过滤性能,适用于集中润滑循环系统和液压系统。</p>
                 </div>
             </div>
             
-            <!-- 产品卡片 11：液压油 (Y - yè yā yóu) -->
-            <a href="product/category/hydraulic-oil.html" class="card-link" target="_blank" rel="noopener noreferrer">
+            <!-- 产品卡片 11:液压油 (Y - yè yā yóu) -->
+            <a href="./products/ind-lubes/hydraulic-oil/0-hydraulic-oil.html" class="card-link" target="_blank" rel="noopener noreferrer">
                 <div class="card">
-                    <!-- 产品图片：使用 CSS 背景图实现 -->
+                    <!-- 产品图片:使用 CSS 背景图实现 -->
                     <!-- <div class="card-image card-img-hydraulic"></div> -->
                     <!-- 卡片内容区域 -->
                     <div class="card-content">
                         <h3>液压油</h3>
-                        <p>优异的抗氧化、抗磨损性能，适用于注塑机、压铸机、工程机械等液压系统。</p>
+                        <p>优异的抗氧化、抗磨损性能,适用于注塑机、压铸机、工程机械等液压系统。</p>
                     </div>
                 </div>
             </a>
 
-            <!-- 产品卡片 12：主轴油/转子油 (Z - zhǔ zhóu yóu) -->
+            <!-- 产品卡片 12:主轴油/转子油 (Z - zhǔ zhóu yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>主轴油/转子油</h3>
-                    <p>低粘度配方，适用于 CNC 加工中心、精密磨床等高速主轴系统。</p>
+                    <p>低粘度配方,适用于 CNC 加工中心、精密磨床等高速主轴系统。</p>
                 </div>
             </div>
 
@@ -248,65 +248,65 @@
     </section>
 
     <!-- =========================================================================
-         乘用车润滑油系列区域（汽机油）
-         功能：展示乘用车用发动机油及相关养护产品
-         布局：三列网格布局（桌面端），使用卡片组件
-         间距：section-spacing 与其他区域区分
-         锚点：#automotive-lubricants，支持从首页直接跳转到此区域
-         产品分类：按拼音首字母排序（C-F-L-Q-Z）
+         乘用车润滑油系列区域(汽机油)- Passenger Car Lubricants (PCL)
+         功能:展示乘用车用发动机油及相关养护产品
+         布局:三列网格布局(桌面端),使用卡片组件
+         间距:section-spacing 与其他区域区分
+         锚点:#automotive-lubricants,支持从首页直接跳转到此区域
+         产品分类:按拼音首字母排序(C-F-L-Q-Z)
          ========================================================================= -->
     <section class="container section-spacing" id="automotive-lubricants">
-        <!-- 章节标题（可折叠） -->
+        <!-- 章节标题(可折叠) -->
         <div class="collapsible-header">
             <h2 class="section-title section-title-banner collapsible-title" id="automotive-lubricants-section">
-                <span class="title-text">乘用车润滑油系列（汽机油）</span>
+                <span class="title-text">乘用车润滑油系列(汽机油)</span>
                 <button class="collapsible-btn collapsed" aria-label="展开/收起乘用车润滑油系列" aria-expanded="false">
                     <span class="arrow">▼</span>
                 </button>
             </h2>
         </div>
         
-        <!-- 网格布局容器：自动适应列数 -->
+        <!-- 网格布局容器:自动适应列数 -->
         <div class="grid collapsible-content collapsed">
             
-            <!-- 产品卡片 1：齿轮油 (手动波箱油) (C - chǐ lún yóu) -->
+            <!-- 产品卡片 1:齿轮油 (手动波箱油) (C - chǐ lún yóu) -->
             <div class="card">
                 <div class="card-content">
-                    <h3>齿轮油（手动波箱油）</h3>
-                    <p>优异的极压抗磨性能，适用于手动变速箱，确保换挡平顺。</p>
+                    <h3>齿轮油(手动波箱油)</h3>
+                    <p>优异的极压抗磨性能,适用于手动变速箱,确保换挡平顺。</p>
                 </div>
             </div>
             
-            <!-- 产品卡片 2：防冻液 (F - fáng dòng yè) -->
+            <!-- 产品卡片 2:防冻液 (F - fáng dòng yè) -->
             <div class="card">
                 <div class="card-content">
                     <h3>防冻液</h3>
-                    <p>高效防冻、防腐蚀配方，适用于乘用车发动机冷却系统全年保护。</p>
+                    <p>高效防冻、防腐蚀配方,适用于乘用车发动机冷却系统全年保护。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 3：汽机油 (Q - qì jī yóu) -->
+            <!-- 产品卡片 3:汽机油 (Q - qì jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>汽机油</h3>
-                    <p>全合成/半合成配方，适用于各类汽油发动机，提供全方位润滑保护。</p>
+                    <p>全合成/半合成配方,适用于各类汽油发动机,提供全方位润滑保护。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 4：刹车油 (S - shā chē yóu) -->
+            <!-- 产品卡片 4:刹车油 (S - shā chē yóu) -->
             <div class="card">
                 <!-- <div class="card-image card-img-brake"></div> -->
                 <div class="card-content">
                     <h3>刹车油</h3>
-                    <p>高沸点配方，适用于乘用车制动系统，确保行车安全。</p>
+                    <p>高沸点配方,适用于乘用车制动系统,确保行车安全。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 5：自动波箱油 (Z - zì dòng bō xiāng yóu) -->
+            <!-- 产品卡片 5:自动波箱油 (Z - zì dòng bō xiāng yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>自动波箱油</h3>
-                    <p>卓越的摩擦特性，适用于自动变速箱，换挡精准流畅。</p>
+                    <p>卓越的摩擦特性,适用于自动变速箱,换挡精准流畅。</p>
                 </div>
             </div>
             
@@ -315,56 +315,56 @@
 
 
     <!-- =========================================================================
-         商用车润滑油系列区域（柴机油）
-         功能：展示商用车/卡车用柴油发动机油及相关养护产品
-         布局：三列网格布局（桌面端），使用卡片组件
-         间距：section-spacing 与其他区域区分
-         锚点：#commercial-lubricants，支持从首页直接跳转到此区域
-         产品分类：按拼音首字母排序（C-F-R-Z）
+         商用车润滑油系列区域(柴机油)- Commercial Vehicle Lubricants (CVL)
+         功能:展示商用车/卡车用柴油发动机油及相关养护产品
+         布局:三列网格布局(桌面端),使用卡片组件
+         间距:section-spacing 与其他区域区分
+         锚点:#commercial-lubricants,支持从首页直接跳转到此区域
+         产品分类:按拼音首字母排序(C-F-R-Z)
          ========================================================================= -->
     <section class="container section-spacing" id="commercial-lubricants">
-        <!-- 章节标题（可折叠） -->
+        <!-- 章节标题(可折叠) -->
         <div class="collapsible-header">
             <h2 class="section-title section-title-banner collapsible-title" id="commercial-lubricants-section">
-                <span class="title-text">商用车润滑油系列（柴机油）</span>
+                <span class="title-text">商用车润滑油系列(柴机油)</span>
                 <button class="collapsible-btn collapsed" aria-label="展开/收起商用车润滑油系列" aria-expanded="false">
                     <span class="arrow">▼</span>
                 </button>
             </h2>
         </div>
         
-        <!-- 网格布局容器：自动适应列数 -->
+        <!-- 网格布局容器:自动适应列数 -->
         <div class="grid collapsible-content collapsed">
             
-            <!-- 产品卡片 1：齿轮油 (C - chǐ lún yóu) -->
+            <!-- 产品卡片 1:齿轮油 (C - chǐ lún yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>齿轮油</h3>
-                    <p>卓越的极压抗磨性能，适用于商用车驱动桥和变速箱，适应重载、高速工况。</p>
+                    <p>卓越的极压抗磨性能,适用于商用车驱动桥和变速箱,适应重载、高速工况。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 2：防冻液 (F - fáng dòng yè) -->
+            <!-- 产品卡片 2:防冻液 (F - fáng dòng yè) -->
             <div class="card">
                 <div class="card-content">
                     <h3>防冻液</h3>
-                    <p>高效防冻、防腐蚀、防沸配方，适用于柴油发动机冷却系统，适应严苛工况。</p>
+                    <p>高效防冻、防腐蚀、防沸配方,适用于柴油发动机冷却系统,适应严苛工况。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 3：润滑脂 (R - rùn huá zhī) -->
+            <!-- 产品卡片 3:润滑脂 (R - rùn huá zhī) -->
             <div class="card">
                 <div class="card-content">
                     <h3>润滑脂</h3>
-                    <p>优异的高温粘附性和防水性能，适用于商用车轴承、轮毂等部件。</p>
+                    <p>优异的高温粘附性和防水性能,适用于商用车轴承、轮毂等部件。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 4：重型柴机油 (Z - zhòng xíng chái jī yóu) -->
+            <!-- 产品卡片 4:重型柴机油 (Z - zhòng xíng chái jī yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>重型柴机油</h3>
-                    <p>全合成/半合成配方，适用于重型柴油发动机，重载卡车、工程机械的理想选择。</p>
+                    <p>全合成/半合成配方,适用于重型柴油发动机,重载卡车、工程机械的理想选择。</p>
                 </div>
             </div>
             
@@ -372,15 +372,15 @@
     </section>
 
     <!-- =========================================================================
-         特种润滑油系列区域
-         功能：展示特殊工况和行业专用润滑油产品
-         布局：三列网格布局（桌面端），使用卡片组件
-         间距：section-spacing 与其他区域区分
-         锚点：#special-lubricants，支持从首页直接跳转到此区域
-         产品分类：按拼音首字母排序（G-S）
+         特种润滑油系列区域 - Specialty Lubricants (Speci.Lubes)
+         功能:展示特殊工况和行业专用润滑油产品
+         布局:三列网格布局(桌面端),使用卡片组件
+         间距:section-spacing 与其他区域区分
+         锚点:#special-lubricants,支持从首页直接跳转到此区域
+         产品分类:按拼音首字母排序(G-S)
          ========================================================================= -->
     <section class="container section-spacing" id="special-lubricants">
-        <!-- 章节标题（可折叠） -->
+        <!-- 章节标题(可折叠) -->
         <div class="collapsible-header">
             <h2 class="section-title section-title-banner collapsible-title" id="special-lubricants-section">
                 <span class="title-text">特种润滑油系列</span>
@@ -390,22 +390,22 @@
             </h2>
         </div>
         
-        <!-- 网格布局容器：自动适应列数 -->
+        <!-- 网格布局容器:自动适应列数 -->
         <div class="grid collapsible-content collapsed">
             
-            <!-- 产品卡片 1：高温应用 (G - gāo wēn yìng yòng) -->
+            <!-- 产品卡片 1:高温应用 (G - gāo wēn yìng yòng) -->
             <div class="card">
                 <div class="card-content">
                     <h3>高温应用</h3>
-                    <p>卓越的热稳定性和抗氧化性能，适用于高温窑炉、热处理设备等极端高温环境。</p>
+                    <p>卓越的热稳定性和抗氧化性能,适用于高温窑炉、热处理设备等极端高温环境。</p>
                 </div>
             </div>
 
-            <!-- 产品卡片 2：食品级润滑油 (S - shí pǐn jí rùn huá yóu) -->
+            <!-- 产品卡片 2:食品级润滑油 (S - shí pǐn jí rùn huá yóu) -->
             <div class="card">
                 <div class="card-content">
                     <h3>食品级润滑油</h3>
-                    <p>符合 NSF H1 认证标准，无毒无味配方，适用于食品加工、制药等行业。</p>
+                    <p>符合 NSF H1 认证标准,无毒无味配方,适用于食品加工、制药等行业。</p>
                 </div>
             </div>
             
@@ -413,9 +413,9 @@
     </section>
 
     <!-- =========================================================================
-         联系 CTA 区域（Call To Action）
-         功能：引导用户进行技术咨询，促进转化
-         设计：渐变背景突出显示，白色按钮形成强烈对比
+         联系 CTA 区域(Call To Action)
+         功能:引导用户进行技术咨询,促进转化
+         设计:渐变背景突出显示,白色按钮形成强烈对比
          ========================================================================= -->
     <section class="container">
         <div class="contact-cta">
@@ -427,11 +427,11 @@
 
     <!-- =========================================================================
          页脚区域
-         功能：显示版权信息、备案号、快速导航和联系方式
-         布局：Sticky Footer，始终贴合页面底部
+         功能:显示版权信息、备案号、快速导航和联系方式
+         布局:Sticky Footer,始终贴合页面底部
          ========================================================================= -->
     <footer>
-        <!-- 页脚内容区：包含导航链接和联系方式 -->
+        <!-- 页脚内容区:包含导航链接和联系方式 -->
         <div class="footer-content">
             
             <!-- 快速导航区块 -->

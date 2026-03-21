@@ -1,0 +1,358 @@
+<!-- 
+=============================================================================
+华南森孚贸易有限公司 - 美孚优力达 N 系列产品详情页 (Unirex N Series)
+=============================================================================
+文件说明:详细介绍美孚优力达 N 系列产品的特性、规格和应用领域
+产品特点:电机轴承专用润滑脂、长寿命、低噪音
+页面结构:
+  1. 导航栏 - 固定在顶部
+  2. 面包屑导航 - 显示页面层级关系
+  3. 产品介绍 - 产品详细信息
+  4. 产品规格 - 详细参数表格
+  5. 应用领域 - 使用场景展示
+  6. 联系 CTA - 引导用户咨询
+  7. 页脚版权信息
+技术规范:
+  - 响应式设计:支持桌面、平板、手机等各种设备
+  - 相对路径引用:所有资源使用 ../../../相对路径
+  - Sticky Footer:footer 始终贴合页面底部
+=============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>美孚优力达 N 系列 - 华南森孚</title>
+
+    <!-- 描述:用于搜索引擎优化和 SEO,描述产品特征和功能 -->
+    <meta name="description" content="美孚优力达 N 系列是高性能复合锂基润滑脂，专为电机轴承设计。具有长寿命、低噪音、优异的高温性能和抗氧化性能，适用于电机、家用电器电机和小型发电机的终身润滑。">
+    <meta name="keywords" content="美孚优力达 N,Unirex N，电机轴承润滑脂，长寿命润滑脂，低噪音润滑脂，家电电机润滑，工业润滑脂">
+    <meta name="author" content="佛山市华南森孚贸易有限公司">
+    
+    <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
+    
+    <!-- 主样式表:布局和组件样式 -->
+    <link rel="stylesheet" href="../../../css/style.css">
+    <!-- 图片资源样式:所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="../../../css/images.css">
+    <!-- 响应式媒体查询:所有断点适配规则 (必须放在最后) -->
+    <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">
+    <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
+    <script src="../../../js/main.js" defer></script>
+
+    <!-- 结构化数据:产品列表 Schema,帮助搜索引擎理解产品信息 -->
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "美孚优力达 N 系列",
+    "description": "高性能复合锂基润滑脂，专为电机轴承设计，长寿命低噪音",
+    "brand": {
+      "@type": "Brand",
+      "name": "Mobil 美孚"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "佛山市华南森孚贸易有限公司",
+      "url": "https://hnshenfu.com",
+      "telephone": "0757-87722666"
+    },
+    "category": "工业润滑油 > 润滑脂"
+  }
+]
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../../../index.html" aria-label="公司首页">
+                    <span class="logo-icon"></span>
+                </a>
+                <a href="../../../index.html" class="logo-text">佛山市华南森孚贸易有限公司</a>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../../../index.html">首页</a></li>
+                <li><a href="../../../about.html">公司介绍</a></li>
+                <li><a href="../../../products.html" class="active">产品展示</a></li>
+                <li><a href="../../../cases.html">案例资讯</a></li>
+                <li><a href="../../../contact.html">联系方式</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="container">
+        
+        <div class="breadcrumb">
+            <a href="../../../index.html">首页</a> &gt; 
+            <a href="../../../products.html">产品展示</a> &gt; 
+            <a href="./0-greases.html">润滑脂</a> &gt; 
+            <span class="breadcrumb-current">美孚优力达 N 系列</span>
+        </div>
+
+        <h2 class="section-title section-title-banner">美孚优力达 N 系列 (Unirex N Series)</h2>
+        
+        <div class="product-intro">
+            <p>
+                美孚优力达 N 系列是高性能复合锂基润滑脂，专为电机轴承的终身润滑而设计。该系列产品具有长寿命、低噪音、优异的高温稳定性和抗氧化性能，能显著延长电机维护周期，降低运行成本。
+            </p>
+        </div>
+
+        <div class="product-detail-section">
+            <!-- 左侧:图片幻灯片区域 -->
+            <div class="product-image-container">
+                <div class="slideshow-container">
+                    
+                    <!-- 幻灯片 1:产品主图 -->
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image card-img-hydraulic-2"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 2:应用场景 -->
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <!-- 使用背景图方式加载产品应用场景图片 -->
+                            <div class="slideshow-image application-industrial"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 3:产品特性 -->
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image feature-detail"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 4:包装展示 -->
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image packaging-18L"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 5:技术认证 -->
+                    <div class="mySlides">
+                        <div class="numbertext">5 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image certification"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- 幻灯片 6:客户案例 -->
+                    <div class="mySlides">
+                        <div class="numbertext">6 / 6</div>
+                        <div class="slideshow-image-wrapper">
+                            <div class="slideshow-image customer-case"></div>
+                        </div>
+                    </div>
+
+                    <!-- 左右箭头按钮:点击切换上一张/下一张 -->
+                    <a class="prev" onclick="plusSlides(-1, 0)">❮</a>
+                    <a class="next" onclick="plusSlides(1, 0)">❯</a>
+                    
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h3>产品简介</h3>
+                <p>
+                    美孚优力达 N 系列的突出优势:
+                </p>
+                <ul class="feature-list">
+                    <li>✅ <strong>超长使用寿命: </strong>优异的高温氧化稳定性，显著延长润滑脂更换周期</li>
+                    <li>✅ <strong>低噪音运行: </strong>纯净的基础油和特殊添加剂配方，确保电机安静平稳运行</li>
+                    <li>✅ <strong>卓越的高温性能: </strong>滴点高，在高温环境下不易软化流失</li>
+                    <li>✅ <strong>优异的机械稳定性: </strong>长期剪切下保持稳定的稠度，防止泄漏</li>
+                    <li>✅ <strong>良好的低温启动性: </strong>低温扭矩小，便于电机冷态启动</li>
+                    <li>✅ <strong>出色的防锈防腐保护: </strong>有效保护轴承免受腐蚀损害</li>
+                </ul>
+
+                <h3>典型应用</h3>
+                <ul class="application-list">
+                    <li>⚡ 工业电机和发电机轴承</li>
+                    <li>🏠 家用电器电机 (洗衣机、空调风扇、冰箱压缩机)</li>
+                    <li>💨 小型风机和鼓风机轴承</li>
+                    <li>🔧 电动工具轴承</li>
+                    <li>🚗 汽车电机 (雨刮器、座椅调节、天窗)</li>
+                    <li>🎯 精密仪器和办公设备电机</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-specs-table">
+            <h3>产品规格参数</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>包装型号</th>
+                        <th>NLGI 稠度等级</th>
+                        <th>包装规格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Unirex N 2</td>
+                        <td>2</td>
+                        <td rowspan="2">400g 软管/支，18kg 桶</td>
+                    </tr>
+                    <tr>
+                        <td>Unirex N 3</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 数据参考 -->
+        <div class="product-source">
+            <p><strong>详细参考: </strong><a href="https://mobil.martech-global.com/product/category/70" target="_blank" rel="noopener noreferrer">https://mobil.martech-global.com/product/category/70</a></p>
+        </div>
+
+        <div class="advantages-section">
+            <h3 class="section-title-center">为什么选择 Unirex N 系列电机轴承润滑脂？</h3>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>性能指标</th>
+                            <th>Unirex N 系列</th>
+                            <th>普通润滑脂</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>使用寿命 (@120°C)</td>
+                            <td>⭐⭐⭐⭐⭐ ≥50,000 小时</td>
+                            <td>⭐⭐ ≤10,000 小时</td>
+                        </tr>
+                        <tr>
+                            <td>噪音水平</td>
+                            <td>⭐⭐⭐⭐⭐ 极低</td>
+                            <td>⭐⭐⭐ 一般</td>
+                        </tr>
+                        <tr>
+                            <td>滴点</td>
+                            <td>⭐⭐⭐⭐ ≥270°C</td>
+                            <td>⭐⭐ ≈180°C</td>
+                        </tr>
+                        <tr>
+                            <td>氧化安定性 (D942)</td>
+                            <td>⭐⭐⭐⭐⭐ 压降≤5kPa</td>
+                            <td>⭐⭐ 压降≥35kPa</td>
+                        </tr>
+                        <tr>
+                            <td>维护周期</td>
+                            <td>⭐⭐⭐⭐⭐ 终身润滑</td>
+                            <td>⭐⭐ 需定期加注</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <h3>需要专业技术支持？</h3>
+            <p>我们的润滑专家团队将为您提供产品选型、使用指导和技术咨询服务</p>
+            <a href="../../../contact.html" class="btn btn-primary">立即联系我们</a>
+        </div>
+
+    </section>
+
+    <!-- =========================================================================
+         灯箱模态框
+         功能:全屏查看产品图片，支持点击关闭、ESC 关闭
+         ========================================================================= -->
+    <div id="slideshow-modal" class="slideshow-modal">
+        <span class="slideshow-modal-close">&times;</span>
+        <div class="slideshow-modal-content">
+            <img class="slideshow-modal-image" id="modal-img" alt="产品大图">
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul class="footer-links">
+                    <li><a href="../../../index.html">首页</a></li>
+                    <li><a href="../../../about.html">公司介绍</a></li>
+                    <li><a href="../../../products.html">产品展示</a></li>
+                    <li><a href="../../../cases.html">案例资讯</a></li>
+                    <li><a href="../../../contact.html">联系方式</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>产品展示</h4>
+                <ul class="footer-links">
+                    <li><a href="../../../products.html#industrial-lubricants">工业润滑油</a></li>
+                    <li><a href="../../../products.html#automotive-lubricants">乘用车润滑油</a></li>
+                    <li><a href="../../../products.html#commercial-lubricants">商用车润滑油</a></li>
+                    <li><a href="../../../products.html#special-lubricants">特种润滑油</a></li>
+                </ul>
+            </div>
+            
+            
+            <!-- 联系方式区块 -->
+            <div class="footer-section">
+                <h4>联系我们</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <strong>工作时间: </strong>
+                        <span>周一至周日 08:00-18:00</span>
+                    </li>
+                    <li>
+                        <strong>联系电话: </strong>
+                        <span>0757-87722666</span>
+                    </li>
+                    <li>
+                        <strong>地址: </strong>
+                        <span>佛山市三水区西南街健力宝北路 10 号</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>关注我们</h4>
+                <p class="footer-qr-text">
+                    关注我们的微信公众号和小程序<br>
+                    获取最新产品信息和优惠活动
+                </p>
+                <div class="footer-qr-codes">
+                    <div class="footer-qr-image qr-wechat-official" 
+                         aria-label="微信公众号二维码"
+                         title="微信公众号">
+                    </div>
+                    <div class="footer-qr-image qr-wechat-miniprogram" 
+                         aria-label="微信小程序二维码"
+                         title="微信小程序">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <hr class="footer-divider">
+
+        <p>版权所有 &copy; <span id="current-year"></span> 佛山市华南森孚贸易有限公司 粤ICP 备 11099622 号 -2</p>
+    </footer>
+
+</body>
+</html>

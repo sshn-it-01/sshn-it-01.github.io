@@ -1896,11 +1896,6 @@ footer p {
     transition: background-color 0.3s;  /* 过渡动画:背景色变化 0.3 秒 */
 }
 
-/* 表格行悬停效果 */
-.product-specs-table tbody tr:hover {
-    background-color: #f5f9ff;          /* 悬停背景:浅蓝色 */
-}
-
 .product-specs-table td {
     padding: 12px 10px;                 /* 内边距:上下 12px,左右 10px */
     color: #333;                        /* 颜色:深灰色 */

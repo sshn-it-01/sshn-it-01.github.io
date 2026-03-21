@@ -1,64 +1,104 @@
 <!-- 
 =============================================================================
-华南森孚贸易有限公司 - 齿轮油产品详情页(Gear Oil)
+华南森孚贸易有限公司 - 导轨油产品详情页 (Slideway Oil)
+=============================================================================
+文件说明：详细介绍导轨油系列产品，包括产品分类、规格参数和应用领域
+页面结构:
+  1. 导航栏 - 固定在顶部
+  2. 面包屑导航 - 显示页面层级关系
+  3. 产品介绍 - 产品系列概述
+  4. 产品列表 - 产品卡片展示
+  5. 应用领域 - 使用图标展示四大应用场景
+  6. 联系 CTA - 引导用户咨询
+  7. 页脚版权信息
+技术规范:
+  - 响应式设计：支持桌面、平板、手机等各种设备
+  - 相对路径引用：所有资源使用 ../../相对路径
+  - Sticky Footer：footer 始终贴合页面底部
 =============================================================================
 -->
 
+<!-- 声明文档类型为 HTML5 -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<!-- 设置页面语言为简体中文 -->
+<html lang="zh-CN">  
 
 <head>
     <!-- 页面元数据配置 -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>齿轮油 - 华南森孚</title>
 
-    <!-- 页面标题:包含产品名称和系列,利于 SEO -->
-    <meta name="description" content="齿轮油">
-    <meta name="keywords" content="">
+    <!-- 字符编码:UTF-8,支持中文显示 -->
+    <meta charset="UTF-8">
+
+    <!-- 视口设置：响应式关键，确保在移动设备上正确缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 页面标题：包含产品名称和系列，利于 SEO -->
+    <title>导轨油 - 华南森孚</title>
+
+    <!-- 描述：用于搜索引擎优化和 SEO，描述产品特征和功能 -->
+    <meta name="description" content="导轨油具有优异的抗磨性能和粘滑特性，适用于机床导轨润滑系统，有效减少摩擦振动，提高加工精度。">
+    <meta name="keywords" content="导轨油， slideway oil，机床导轨油，导轨润滑油，工业润滑油，华南森孚，美孚，润滑油厂家">
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     
-    <!-- 网站图标(Favicon):显示在浏览器标签页标题前 -->
+    <!-- 网站图标 (Favicon):显示在浏览器标签页标题前 -->
     <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
     
-    <!-- 引入外部资源 -->
+    <!-- 主样式表：布局和组件样式 -->
     <link rel="stylesheet" href="../../../css/style.css">
+    <!-- 图片资源样式：所有图片路径和显示样式 -->
     <link rel="stylesheet" href="../../../css/images.css">
+    <!-- 响应式媒体查询：所有断点适配规则 (必须放在最后) -->
     <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">
-
+    <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
     <script src="../../../js/main.js" defer></script>
     
-    <!-- 结构化数据:产品列表 Schema,帮助搜索引擎理解产品信息 -->
+    <!-- 结构化数据：产品列表 Schema，帮助搜索引擎理解产品信息 -->
     <script type="application/ld+json">
- [
-   { 
-   }
- ]
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "导轨油系列",
+    "description": "导轨油具有优异的抗磨性能和粘滑特性，适用于机床导轨润滑系统，有效减少摩擦振动，提高加工精度。",
+    "category": "工业润滑油",
+    "brand": {
+      "@type": "Brand",
+      "name": "华南森孚"
+    }
+  }
+]
     </script>
 </head>
 
 <!-- 页面主体内容开始 -->
 <body>  
-
     <!-- =========================================================================
          头部导航栏区域
-         功能:固定在页面顶部,包含 Logo、导航链接和移动端汉堡菜单
+         功能：固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
          ========================================================================= -->
     <header>
-        <div class="nav-container">
-            
+        <!-- 导航容器：控制最大宽度和居中 -->
+        <div class="nav-container"> 
+            <!-- Logo 区域：包含图形 Logo 和文字 Logo -->
             <div class="logo">
+                <!-- 图形 Logo:点击返回首页，aria-label 提供无障碍访问支持 -->
                 <a href="../../../index.html" aria-label="公司首页">
-                    <span class="logo-icon"></span>  <!-- CSS 背景图显示 Logo -->
+                    <!-- CSS 背景图显示 Logo -->
+                    <span class="logo-icon"></span>  
                 </a>
+                <!-- 文字 Logo:公司名称，可点击返回首页 -->
                 <a href="../../../index.html" class="logo-text">佛山市华南森孚贸易有限公司</a>
             </div>
             
+            <!-- 移动端汉堡菜单按钮：仅在小屏幕显示 -->
             <div class="menu-toggle" id="mobile-menu">☰</div>
             
+            <!-- 导航链接列表 -->
             <ul class="nav-links" id="nav-links">
                 <li><a href="../../../index.html">首页</a></li>
                 <li><a href="../../../about.html">公司介绍</a></li>
+                <!-- 当前页面添加 active 类高亮显示 -->
                 <li><a href="../../../products.html" class="active">产品展示</a></li>
                 <li><a href="../../../cases.html">案例资讯</a></li>
                 <li><a href="../../../contact.html">联系方式</a></li>
@@ -68,99 +108,68 @@
 
     <!-- =========================================================================
          主要内容区域
+         功能：详细介绍产品线，包含产品列表、技术参数和应用场景
+         布局：包含面包屑导航、产品介绍、产品网格、应用领域、CTA 按钮
          ========================================================================= -->
-    <section class="container">
+    <!-- 内容容器：限制宽度并居中 -->
+    <section class="container">  
         
+        <!-- 面包屑导航：显示页面层级关系，帮助用户定位 -->
         <div class="breadcrumb">
             <a href="../../../index.html">首页</a> &gt; 
-            <a href="../../../products.html">产品展示</a> &gt; 
-            <span class="breadcrumb-current">齿轮油</span>
+            <a href="../../../products.html">产品展示</a> &gt;
+            <!-- 当前页面使用 breadcrumb-current 类高亮显示 -->
+            <span class="breadcrumb-current">导轨油</span>
         </div>
 
         <!-- 章节主标题 -->
-        <h2 class="section-title section-title-banner">齿轮油系列</h2>
+        <h2 class="section-title section-title-banner">导轨油系列</h2>
         
-        <!-- 产品介绍区域 -->
+        <!-- 产品介绍区域：居中布局，限制最大宽度提升可读性 -->
         <div class="product-intro">
             <p>
-                我们的齿轮油系列产品采用先进配方，具有优异的极压抗磨、抗氧化和防锈性能，广泛应用于工业齿轮箱、轴承、压缩机等设备，为各类齿轮传动系统提供持久可靠的润滑保护，显著延长设备使用寿命。
+                导轨油具有优异的抗磨性能和粘滑特性，专为机床导轨润滑系统设计。能有效减少低速运动时的摩擦振动（粘滑现象），提高加工精度，延长导轨使用寿命。
             </p>
         </div>
 
         <!-- 产品网格布局：自动适应列数 -->
         <div class="grid">
-
-            <!-- 产品 1:事必达™ EP 系列 (Cibatrac EP - 字母序 C) -->
-            <a href="./cibatrac-ep.html" class="card-link">
+            
+            <!-- 产品 1:美孚威达™数字系列 -->
+            <a href="./vactra-numbered.html" class="card-link" target="_blank" rel="noopener noreferrer">
                 <div class="card">
-                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="product-card-image card-img-hydraulic-1"></div>
                     <div class="card-content">
-                        <h3>事必达™ EP 系列</h3>
-                        <p>高品质矿物油型极压齿轮油，有效减少油泥形成，延长油品使用寿命</p>
+                        <h3>美孚威达™数字系列</h3>
+                        <p>高品质主轴 - 导轨油，兼具主轴润滑和导轨润滑功能，适用于精密机床的主轴轴承和导轨系统。</p>
                         <div class="product-specs">                        
-                            <p><strong>应用范围：</strong>工业齿轮系统、需要极压保护的润滑设备及长周期运行场景</p>
+                            <p><strong>应用范围：</strong>精密机床主轴、导轨、液压系统</p>
                         </div>
                     </div>
                 </div>
             </a>
 
-            <!-- 产品 2:美孚齿轮油™ 600 XP 系列 (Mobil Gear Oil 600 XP - 字母序 G) -->
-            <a href="./gear-600-xp.html" class="card-link">
+            <!-- 产品 2:美孚威格力® 1400 系列 (V - Vactra) -->
+            <a href="./vactra-1400.html" class="card-link" target="_blank" rel="noopener noreferrer">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
-                        <h3>美孚齿轮油™ 600 XP 系列</h3>
-                        <p>高性能工业齿轮油，出色承受重压力和重负荷，提供卓越的齿轮保护</p>
+                        <h3>美孚威格力® 1400 系列</h3>
+                        <p>超高性能润滑油，专为液压系统和导轨润滑共用同一种油品的机床设计，消除爬行与振动。</p>
                         <div class="product-specs">                        
-                            <p><strong>应用范围：</strong>采用循环式或飞溅式润滑的多种类闭式齿轮传动系统</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 产品 3:美孚格高™ 系列 (Mobil Glygoyle - 字母序 G) -->
-            <a href="./glygoyle.html" class="card-link">
-                <div class="card">
-                    <div class="product-card-image card-img-hydraulic-2"></div>
-                    <div class="card-content">
-                        <h3>美孚格高™ 系列</h3>
-                        <p>合成型多功能润滑油，兼具齿轮、轴承和压缩机润滑，效率卓越</p>
-                        <div class="product-specs">                        
-                            <p><strong>应用范围：</strong>齿轮、轴承、压缩机等多功能润滑需求的工业设备</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 产品 4:美孚SHC® 600 系列 (Mobil SHC 600 - 字母序 S) -->
-            <a href="./shc-600.html" class="card-link">
-                <div class="card">
-                    <div class="product-card-image card-img-hydraulic-2"></div>
-                    <div class="card-content">
-                        <h3>美孚SHC® 600 系列</h3>
-                        <p>性能卓越的合成齿轮与轴承润滑油，提供杰出保护和超长油品寿命</p>
-                        <div class="product-specs">                        
-                            <p><strong>应用范围：</strong>工业齿轮箱、轴承、压缩机等需要高性能润滑的设备</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 产品 5:美孚SHC®齿轮油系列 (Mobil SHC Gear Oil - 字母序 S) -->
-            <a href="./shc-gear.html" class="card-link">
-                <div class="card">
-                    <div class="product-card-image card-img-hydraulic-2"></div>
-                    <div class="card-content">
-                        <h3>美孚SHC®齿轮油系列 (SHC 数字系列)</h3>
-                        <p>全合成工业齿轮油，在严苛条件下提供杰出保护，显著延长换油周期</p>
-                        <div class="product-specs">                        
-                            <p><strong>应用范围：</strong>严苛工况下的工业齿轮传动系统、轴承及需要长换油周期的设备</p>
+                            <p><strong>应用范围：</strong>液压导轨共用系统、高速机床、高精度加工</p>
                         </div>
                     </div>
                 </div>
             </a>
 
             <!-- 咨询卡片：没找到想要的产品 -->
+            <!-- 
+                咨询卡片组件 - 用于引导未找到合适产品的用户联系企业
+                功能：点击卡片跳转到联系页面 (../../../contact.html)
+                样式：使用 card-consultation 类定义特殊样式
+                交互：通过 onclick 事件实现页面跳转，设置 cursor: pointer 提升用户体验，避免了使用有冲突的 card-link 样式
+            -->
             <div class="card card-consultation" onclick="window.location.href='../../../contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
@@ -176,9 +185,11 @@
 
     <!-- =========================================================================
          页脚区域
+         功能：显示版权信息、备案号、快速导航和联系方式
+         布局：Sticky Footer，始终贴合页面底部
          ========================================================================= -->
     <footer>
-        <!-- 页脚内容区:包含导航链接和联系方式 -->
+        <!-- 页脚内容区：包含导航链接和联系方式 -->
         <div class="footer-content">
             
             <!-- 快速导航区块 -->
@@ -251,5 +262,7 @@
         <p>版权所有 &copy; <span id="current-year"></span> 佛山市华南森孚贸易有限公司 粤ICP备11099622号-2</p>
     </footer>
 
-</body> 
-</html>
+<!-- 页面主体结束 -->
+</body>
+<!-- HTML 文档结束 -->
+</html>  

@@ -83,7 +83,7 @@ XML 结构说明:
         <priority>0.9</priority>
     </url>
     
-    <!-- 项目案例页:增强客户信任度 -->
+    <!-- 案例资讯页:增强客户信任度 -->
     <url>
         <loc>https://hnshenfu.com/cases.html</loc>
         <lastmod>2026-03-18</lastmod>
@@ -105,7 +105,7 @@ XML 结构说明:
     
     <!-- 液压油产品详情页:工业润滑油系列 -->
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/0-hydraulic-oil.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/0-hydraulic.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -113,7 +113,7 @@ XML 结构说明:
     
     <!-- DTE®10 超凡液压油产品详情页 -->
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/dte-10.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/dte-10.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -121,7 +121,7 @@ XML 结构说明:
     
     <!-- DTE®20UT 长效液压油产品详情页 -->
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/dte-20ut.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/dte-20ut.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -129,7 +129,7 @@ XML 结构说明:
     
     <!-- Nuto H(力图 H) 通用液压油产品详情页 -->
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/nuto-h.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/nuto-h.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -137,7 +137,7 @@ XML 结构说明:
     
     <!-- SHC 合成液压油产品详情页 -->
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/shc.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/shc.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -150,7 +150,7 @@ XML 结构说明:
     <!-- 示例:齿轮油产品详情页(待开发) -->
     <!--
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/gear-oil.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/gear.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -160,7 +160,7 @@ XML 结构说明:
     <!-- 示例:轴承油产品详情页(待开发) -->
     <!--
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/bearing-oil.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/bearing-oil.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -170,7 +170,7 @@ XML 结构说明:
     <!-- 示例:发动机油产品详情页(待开发) -->
     <!--
     <url>
-        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic-oil/engine-oil.html</loc>
+        <loc>https://hnshenfu.com/products/ind-lubes/hydraulic/engine-oil.html</loc>
         <lastmod>2026-03-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

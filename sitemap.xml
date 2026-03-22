@@ -144,6 +144,66 @@ XML 结构说明:
     </url>
     
     <!-- =========================================================================
+         自动变速箱油 (ATF) 产品系列
+         ========================================================================= -->
+    
+    <!-- 自动变速箱油产品分类页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/0-pcl-atf.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™自动变速箱油 ATF 660 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/mobil-atf-660.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™自动变速箱油 ATF 6HV 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/mobil-atf-6hv.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™自动变速箱油 ATF 8LV 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/mobil-atf-8lv.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™多用途自动变速箱油 ATF D/M Multipurpose 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/mobil-atf-dm-multipurpose.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™无级变速箱油 CVTF 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/mobil-cvtf.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™湿式双离合变速箱油 DCTF 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/pcl/pcl-atf/mobil-dctf.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- =========================================================================
          预留未来页面(可根据实际发展添加)
          ========================================================================= -->
     

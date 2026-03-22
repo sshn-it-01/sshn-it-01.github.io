@@ -1,0 +1,262 @@
+<!-- 
+=============================================================================
+华南森孚贸易有限公司 - 美孚力霸™汽机油系列产品页 (Mobil Special Series)
+=============================================================================
+文件说明：详细介绍美孚力霸™系列矿物油及半合成汽机油产品，包括产品分类、规格参数和应用领域
+页面结构:
+  1. 导航栏 - 固定在顶部
+  2. 面包屑导航 - 显示页面层级关系
+  3. 产品介绍 - 产品系列概述
+  4. 产品列表 - 产品卡片展示
+  5. 联系 CTA - 引导用户咨询
+  6. 页脚版权信息
+技术规范:
+  - 响应式设计：支持桌面、平板、手机等各种设备
+  - 相对路径引用：所有资源使用 ../../../../相对路径
+  - Sticky Footer:footer 始终贴合页面底部
+=============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美孚力霸™汽机油系列 - 华南森孚</title>
+    <meta name="description" content="美孚力霸™系列是高性能矿物油及半合成汽机油，提供合成科技和矿物油两大系列产品，适用于各类汽油发动机，经济实惠，满足日常驾驶的润滑保护需求。">
+    <meta name="keywords" content="美孚力霸，Mobil Special，矿物油机油，半合成机油，汽机油，汽油发动机油，乘用车润滑油，合成科技，经济型机油，佛山润滑油，华南森孚">
+    <meta name="author" content="佛山市华南森孚贸易有限公司">
+    <link rel="icon" href="../../../../images/hn-logo_bg-white.webp" type="image/webp">
+    
+    <!-- 主样式表：布局和组件样式 -->
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <!-- 图片资源样式：所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="../../../../css/images.css">
+    <!-- 响应式媒体查询：所有断点适配规则 (必须放在最后) -->
+    <link rel="stylesheet" href="../../../../css/mobile.css" media="(max-width: 1024px)">
+    <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
+    <script src="../../../../js/main.js" defer></script>
+    
+    <!-- 结构化数据：产品列表 Schema,帮助搜索引擎理解产品信息 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "美孚力霸™系列产品",
+        "description": "美孚力霸™系列 - 合成科技与矿物油配方，经济实惠的汽油发动机润滑油",
+        "brand": {
+            "@type": "Brand",
+            "name": "Mobil 美孚",
+            "alternateName": "美孚"
+        },
+        "seller": {
+            "@type": "Organization",
+            "name": "佛山市华南森孚贸易有限公司",
+            "url": "https://hnshenfu.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "佛山市三水区西南街健力宝北路 10 号",
+                "addressLocality": "佛山市",
+                "addressProvince": "广东省"
+            },
+            "telephone": "0757-87722666"
+        },
+        "numberOfItems": 2,
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Product",
+                    "name": "美孚力霸™合成科技系列",
+                    "description": "半合成配方，提供优于矿物油的保护性能，适合追求性价比的车主",
+                    "brand": "Mobil",
+                    "category": "乘用车润滑油 > 汽机油 > 美孚力霸"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@type": "Product",
+                    "name": "美孚力霸™矿物油系列",
+                    "description": "经济型矿物油配方，为汽油发动机提供基本的润滑保护",
+                    "brand": "Mobil",
+                    "category": "乘用车润滑油 > 汽机油 > 美孚力霸"
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- =========================================================================
+         头部导航栏区域
+         功能：固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
+         ========================================================================= -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../../../../index.html" aria-label="公司首页">
+                    <span class="logo-icon"></span>
+                </a>
+                <a href="../../../../index.html" class="logo-text">佛山市华南森孚贸易有限公司</a>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../../../../index.html">首页</a></li>
+                <li><a href="../../../../about.html">公司介绍</a></li>
+                <li><a href="../../../../products.html" class="active">产品展示</a></li>
+                <li><a href="../../../../cases.html">案例资讯</a></li>
+                <li><a href="../../../../contact.html">联系方式</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         主要内容区域
+         功能：详细介绍美孚力霸™产品线，包含产品列表、技术参数和应用场景
+         ========================================================================= -->
+    <section class="container">
+        
+        <!-- 面包屑导航：显示页面层级关系，帮助用户定位 -->
+        <div class="breadcrumb">
+            <a href="../../../../index.html">首页</a> &gt; 
+            <a href="../../../../products.html">产品展示</a> &gt;
+            <a href="../0-pcl-engine-oil.html">汽机油</a> &gt;
+            <span class="breadcrumb-current">美孚力霸™系列</span>
+        </div>
+
+        <!-- 章节主标题 -->
+        <h2 class="section-title section-title-banner">美孚力霸™系列 (Mobil Special)</h2>
+        
+        <!-- 产品介绍区域：居中布局，限制最大宽度提升可读性 -->
+        <div class="product-intro">
+            <p>
+                美孚力霸™系列是美孚品牌旗下的经济型汽机油产品，包括合成科技系列（半合成）和矿物油系列。该系列产品价格实惠，性能可靠，能够为汽油发动机提供基础的润滑保护。合成科技系列采用半合成配方，在矿物油基础上提升了抗氧化和清洁性能；矿物油系列则是入门级选择，适合预算有限或老旧车型使用。
+            </p>
+        </div>
+
+        <!-- 产品网格布局：自动适应列数 -->
+        <div class="grid">
+            
+            <!-- 产品 1:美孚力霸™合成科技系列 (S - synthetic) -->
+            <a href="./mobil-special-synthetic.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚力霸™合成科技系列</h3>
+                        <p>半合成配方，提供优于矿物油的发动机保护，有效减少积碳和油泥生成，延长引擎使用寿命。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围: </strong>自然吸气发动机、城市 SUV、家用轿车、追求性价比的车主</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 产品 2:美孚力霸™矿物油系列 (K - kuàng wù yóu) -->
+            <a href="./mobil-special-mineral.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚力霸™矿物油系列</h3>
+                        <p>经济型矿物油配方，为发动机提供基础润滑保护，满足一般驾驶条件下的使用需求。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围: </strong>老旧车型、低负荷车辆、短途行驶、预算敏感型用户</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 咨询卡片：没找到想要的产品 -->
+            <div class="card card-consultation" onclick="window.location.href='../../../../contact.html'">
+                <div class="product-card-image card-img-aviation"></div>
+                <div class="card-content">
+                    <h3>没找到想要的产品？</h3>
+                    <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
+                    <a href="../../../../contact.html" class="btn btn-primary">立即咨询</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================================================
+         页脚区域
+         功能：显示版权信息、备案号、快速导航和联系方式
+         布局:Sticky Footer,始终贴合页面底部
+         ========================================================================= -->
+    <footer>
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul class="footer-links">
+                    <li><a href="../../../../index.html">首页</a></li>
+                    <li><a href="../../../../about.html">公司介绍</a></li>
+                    <li><a href="../../../../products.html">产品展示</a></li>
+                    <li><a href="../../../../cases.html">案例资讯</a></li>
+                    <li><a href="../../../../contact.html">联系方式</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>产品展示</h4>
+                <ul class="footer-links">
+                    <li><a href="../../../../products.html#industrial-lubricants">工业润滑油</a></li>
+                    <li><a href="../../../../products.html#automotive-lubricants">乘用车润滑油</a></li>
+                    <li><a href="../../../../products.html#commercial-lubricants">商用车润滑油</a></li>
+                    <li><a href="../../../../products.html#special-lubricants">特种润滑油</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>联系我们</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <strong>工作时间: </strong>
+                        <span>周一至周日 08:00-18:00</span>
+                    </li>
+                    <li>
+                        <strong>联系电话: </strong>
+                        <span>0757-87722666</span>
+                    </li>
+                    <li>
+                        <strong>地址: </strong>
+                        <span>佛山市三水区西南街健力宝北路 10 号</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>关注我们</h4>
+                <p class="footer-qr-text">
+                    关注我们的微信公众号和小程序<br>
+                    获取最新产品信息和优惠活动
+                </p>
+                <div class="footer-qr-codes">
+                    <div class="footer-qr-image qr-wechat-official" 
+                         aria-label="微信公众号二维码"
+                         title="微信公众号">
+                    </div>
+                    <div class="footer-qr-image qr-wechat-miniprogram" 
+                         aria-label="微信小程序二维码"
+                         title="微信小程序">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <hr class="footer-divider">
+
+        <p>版权所有 &copy; <span id="current-year"></span> 佛山市华南森孚贸易有限公司 粤ICP 备 11099622 号 -2</p>
+    </footer>
+
+</body>
+</html>

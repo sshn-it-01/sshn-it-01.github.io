@@ -1865,7 +1865,7 @@ footer p {
 
 .product-specs-table h3 {
     font-size: 24px;                    /* 字号:24px */
-    color: var(--primary-color);        /* 颜色:品牌蓝 */
+    /* color: var(--primary-color);        颜色:品牌蓝 */
     margin-bottom: 25px;                /* 下边距:25px */
     font-weight: 600;                   /* 字重:600,加粗 */
     text-align: center;                 /* 文字居中 */

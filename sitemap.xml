@@ -248,6 +248,42 @@ XML 结构说明:
     </url>
     
     <!-- =========================================================================
+         商用车润滑脂 (CVL Greases) 产品系列
+         ========================================================================= -->
+    
+    <!-- 商用车润滑脂产品分类页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-greases/0-cvl-greases.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚力士™滑脂 EP 2 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-greases/mobilux-ep-2.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚™滑脂 MP 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-greases/mobilgrease-mp.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚润滑脂 XHP™ 222/223 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-greases/mobilgrease-xhp-222-223.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- =========================================================================
          预留未来页面(可根据实际发展添加)
          ========================================================================= -->
     

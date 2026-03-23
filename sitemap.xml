@@ -144,6 +144,74 @@ XML 结构说明:
     </url>
     
     <!-- =========================================================================
+         工业齿轮油 (Gear Oil) 产品系列
+         ========================================================================= -->
+    
+    <!-- 工业齿轮油产品分类页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/0-gear.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚齿轮油™ 600 XP 系列产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/gear-600-xp.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 得威L-CKC工业闭式齿轮油系列产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/deliwei-l-ckc.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 得威L-CKD工业闭式齿轮油系列产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/deliwei-l-ckd.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚格高™ 系列产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/glygoyle.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚SHC® 600 系列产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/shc-600.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚SHC®齿轮油系列 (SHC 数字系列) 产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/shc-gear.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚事必达™ EP 系列产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/ind-lubes/gear/cibatrac-ep.html</loc>
+        <lastmod>2026-03-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- =========================================================================
          自动变速箱油 (ATF) 产品系列
          ========================================================================= -->
     

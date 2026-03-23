@@ -204,6 +204,50 @@ XML 结构说明:
     </url>
     
     <!-- =========================================================================
+         商用车齿轮油 (CVL Gear Oil) 产品系列
+         ========================================================================= -->
+    
+    <!-- 商用车齿轮油产品分类页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-gear/0-cvl-gear.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚路宝™GX 140 齿轮油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-gear/mobilube-gx-140.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚路宝™GX 80W-90 齿轮油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-gear/mobilube-gx-80w90.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚黑霸王™80W-90 齿轮油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-gear/mobil-delvac-80w90.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 美孚黑霸王™85W-140 齿轮油产品详情页 -->
+    <url>
+        <loc>https://hnshenfu.com/products/cvl/cvl-gear/mobil-delvac-85w140.html</loc>
+        <lastmod>2026-03-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- =========================================================================
          预留未来页面(可根据实际发展添加)
          ========================================================================= -->
     

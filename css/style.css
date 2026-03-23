@@ -32,7 +32,7 @@ section[id] {
     --white: #ffffff;              /* 白色:用于背景或反白文字 */
     
     /* 布局变量 */
-    --max-width: 1200px;           /* 页面最大宽度:限制内容区域的最大宽度,适配大屏设备 */
+    --max-width: 1400px;           /* 页面最大宽度:限制内容区域的最大宽度,适配大屏设备 */
 }
 
 /* 全局选择器重置 - 移除浏览器默认样式 */
@@ -345,7 +345,7 @@ header {
 /* 网格容器 - 自动适应列数 */
 .grid {
     display: grid;                  /* Grid 布局:启用网格系统 */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
                                     /* [智能响应式策略] 自适应填充列数,每列最小 300px,最大等分剩余空间 */
     gap: 30px;                      /* 间距:网格项之间 30px */
     align-items: stretch;           /* 伸展对齐:让每行网格项在同一行内保持高度一致,避免不对齐 */
@@ -1235,7 +1235,7 @@ footer p {
 /* 产品区块增加间距 */
 .products-section {
     padding: 60px 20px;             /* 增大上下内边距至 60px */
-    max-width: 1400px;              /* [布局优化] 增加最大宽度至 1400px，让卡片有更宽的展示空间，避免显得太瘦 */
+    max-width: 1450px;              /* [布局优化] 增加最大宽度至 1400px，让卡片有更宽的展示空间，避免显得太瘦 */
     margin: 0 auto;                 /* 水平居中 */
 }
 
@@ -1302,11 +1302,6 @@ footer p {
 }
 
 /* ==================== 产品系列区域优化 ==================== */
-
-/* 产品区块增加间距 */
-.products-section {
-    padding: 60px 20px;             /* 增大上下内边距至 60px */
-}
 
 /* 章节副标题 */
 .section-subtitle {

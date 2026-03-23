@@ -1,0 +1,328 @@
+<!-- 
+=============================================================================
+华南森孚贸易有限公司 - 美孚工程机械专用油系列产品页 (Mobil Construction Equipment Oils)
+=============================================================================
+文件说明：详细介绍美孚工程机械专用油系列产品，包括柴油发动机油和液压油
+页面结构:
+  1. 导航栏 - 固定在顶部
+  2. 面包屑导航 - 显示页面层级关系
+  3. 产品介绍 - 产品系列概述
+  4. 产品列表 - 产品卡片展示
+  5. 联系 CTA - 引导用户咨询
+  6. 页脚版权信息
+技术规范:
+  - 响应式设计：支持桌面、平板、手机等各种设备
+  - 相对路径引用：所有资源使用 ../../../../相对路径
+  - Sticky Footer:footer 始终贴合页面底部
+=============================================================================
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美孚工程机械专用油系列 - 华南森孚</title>
+    <meta name="description" content="华南森孚专业供应美孚工程机械专用润滑油系列，包括美孚黑霸王™工程机械专用发动机油（CK-4/CI-4/CH-4）、美孚力图™工程机械专用液压油、美孚™工程机械专用液压油等，适用于挖掘机、装载机、推土机、起重机等各类工程机械，提供卓越的抗磨保护和液压系统稳定性。">
+    <meta name="keywords" content="美孚工程机械油，工程机械润滑油，挖掘机机油，装载机液压油，美孚黑霸王工程机械油，美孚力图液压油，CK-4,CI-4,CH-4,15W-40,20W-50,ISO VG 46,68,佛山润滑油供应商">
+    <meta name="author" content="佛山市华南森孚贸易有限公司">
+    
+    <link rel="icon" href="../../../../images/hn-logo_bg-white.webp" type="image/webp">
+    
+    <!-- 主样式表：布局和组件样式 -->
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <!-- 图片资源样式：所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="../../../../css/images.css">
+    <!-- 响应式媒体查询：所有断点适配规则 (必须放在最后) -->
+    <link rel="stylesheet" href="../../../../css/mobile.css" media="(max-width: 1024px)">
+    <!-- JavaScript 文件：defer 延迟到 DOM 加载完成后执行 -->
+    <script src="../../../../js/main.js" defer></script>
+    
+    <!-- 结构化数据：产品列表 Schema，帮助搜索引擎理解产品信息 -->
+    <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "美孚黑霸王™工程机械专用发动机油CK-4",
+    "description": "全合成高性能柴油发动机油，API CK-4 级别，适用于国六/国五排放标准工程机械",
+    "brand": {
+      "@type": "Brand",
+      "name": "Mobil 美孚"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "佛山市华南森孚贸易有限公司",
+      "url": "https://hnshenfu.com",
+      "telephone": "0757-87722666"
+    },
+    "category": "商用车润滑油 > 工程机械专用油"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "美孚黑霸王™工程机械专用发动机油 CI-4",
+    "description": "合成科技柴油发动机油，API CI-4 级别，适用于国四/国五排放标准工程机械",
+    "brand": {
+      "@type": "Brand",
+      "name": "Mobil 美孚"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "佛山市华南森孚贸易有限公司",
+      "url": "https://hnshenfu.com",
+      "telephone": "0757-87722666"
+    },
+    "category": "商用车润滑油 > 工程机械专用油"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "美孚黑霸王™工程机械专用发动机油 CH-4",
+    "description": "高性能柴油发动机油，API CH-4 级别，适用于国三/国四排放标准工程机械",
+    "brand": {
+      "@type": "Brand",
+      "name": "Mobil 美孚"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "佛山市华南森孚贸易有限公司",
+      "url": "https://hnshenfu.com",
+      "telephone": "0757-87722666"
+    },
+    "category": "商用车润滑油 > 工程机械专用油"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "美孚力图™工程机械专用高级液压油",
+    "description": "高性能抗磨液压油，ISO VG 46/68，适用于高压液压系统",
+    "brand": {
+      "@type": "Brand",
+      "name": "Mobil 美孚"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "佛山市华南森孚贸易有限公司",
+      "url": "https://hnshenfu.com",
+      "telephone": "0757-87722666"
+    },
+    "category": "工业润滑油 > 液压油"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "美孚™工程机械专用液压油",
+    "description": "优质抗磨液压油，ISO VG 46/68，适用于各类工程机械液压系统",
+    "brand": {
+      "@type": "Brand",
+      "name": "Mobil 美孚"
+    },
+    "seller": {
+      "@type": "Organization",
+      "name": "佛山市华南森孚贸易有限公司",
+      "url": "https://hnshenfu.com",
+      "telephone": "0757-87722666"
+    },
+    "category": "工业润滑油 > 液压油"
+  }
+]
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../../../../index.html" aria-label="公司首页">
+                    <span class="logo-icon"></span>
+                </a>
+                <a href="../../../../index.html" class="logo-text">佛山市华南森孚贸易有限公司</a>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../../../../index.html">首页</a></li>
+                <li><a href="../../../../about.html">公司介绍</a></li>
+                <li><a href="../../../../products.html" class="active">产品展示</a></li>
+                <li><a href="../../../../cases.html">案例资讯</a></li>
+                <li><a href="../../../../contact.html">联系方式</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="container">
+        
+        <div class="breadcrumb">
+            <a href="../../../../index.html">首页</a> &gt; 
+            <a href="../../../../products.html">产品展示</a> &gt; 
+            <a href="../0-cvl-heavy.html">商用车柴机油</a> &gt; 
+            <span class="breadcrumb-current">美孚工程机械专用油系列</span>
+        </div>
+
+        <h2 class="section-title section-title-banner">美孚工程机械专用油系列 (Mobil Construction Equipment Oils)</h2>
+        
+        <div class="product-intro">
+            <p>
+                我们的工程机械专用油系列专为严苛工况下的建筑设备和矿山机械设计，涵盖柴油发动机油和液压油两大产品线。美孚黑霸王™工程机械专用发动机油提供 CK-4/CI-4/CH-4全级别覆盖，适应国三至国六排放标准；美孚力图™和美孚™液压油则提供 ISO VG 46/68多种粘度等级，确保液压系统高效稳定运行。所有产品均具有卓越的抗磨损保护、高温稳定性和污染控制能力，可显著延长设备使用寿命，降低维护成本，是挖掘机、装载机、推土机、起重机等工程机械的理想选择。
+            </p>
+        </div>
+
+        <div class="grid">
+            
+            <!-- 产品 1:美孚黑霸王工程机械专用发动机油CK-4 -->
+            <a href="./mobil-delvac-construction-ck4.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚黑霸王™工程机械专用发动机油CK-4</h3>
+                        <p>全合成高性能柴油机油，API CK-4 级别，国六/国五排放标准，DPF 兼容保护。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围：</strong>适用于配备 DPF 颗粒捕捉器的国六/国五排放标准挖掘机、装载机等现代工程机械</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 产品 2:美孚黑霸王工程机械专用发动机油 CI-4 -->
+            <a href="./mobil-delvac-construction-ci4.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚黑霸王™工程机械专用发动机油 CI-4</h3>
+                        <p>合成科技柴油机油，API CI-4 级别，长换油周期，国四/国五排放标准。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围：</strong>适用于国四/国五排放标准的挖掘机、推土机、压路机等工程机械柴油发动机</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 产品 3:美孚黑霸王工程机械专用发动机油 CH-4 -->
+            <a href="./mobil-delvac-construction-ch4.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚黑霸王™工程机械专用发动机油 CH-4</h3>
+                        <p>高性能柴油机油，经济实用之选，适用于国三/国四排放标准工程机械。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围：</strong>适用于国三/国四排放标准的装载机、平地机、叉车等一般工况工程机械</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 产品 4:美孚力图工程机械专用高级液压油 -->
+            <a href="./mobil-nuto-h-construction.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚力图™工程机械专用高级液压油</h3>
+                        <p>高性能抗磨液压油，ISO VG 46/68，卓越极压保护，高压液压系统首选。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围：</strong>适用于高压柱塞泵、叶片泵的工程机械液压系统，如挖掘机、起重机</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 产品 5:美孚工程机械专用液压油 -->
+            <a href="./mobil-construction-hydraulic.html" class="card-link">
+                <div class="card">
+                    <div class="product-card-image card-img-hydraulic-2"></div>
+                    <div class="card-content">
+                        <h3>美孚™工程机械专用液压油</h3>
+                        <p>优质抗磨液压油，ISO VG 46/68，良好抗氧化性，适用于各类工程机械液压系统。</p>
+                        <div class="product-specs">                        
+                            <p><strong>应用范围：</strong>适用于齿轮泵、螺杆泵的工程机械液压系统，如装载机、推土机</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 咨询卡片：没找到想要的产品 -->
+            <div class="card card-consultation" onclick="window.location.href='../../../../contact.html'">
+                <div class="product-card-image card-img-aviation"></div>
+                <div class="card-content">
+                    <h3>没找到想要的产品？</h3>
+                    <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
+                    <a href="../../../../contact.html" class="btn btn-primary">立即咨询</a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h4>快速导航</h4>
+                <ul class="footer-links">
+                    <li><a href="../../../../index.html">首页</a></li>
+                    <li><a href="../../../../about.html">公司介绍</a></li>
+                    <li><a href="../../../../products.html">产品展示</a></li>
+                    <li><a href="../../../../cases.html">案例资讯</a></li>
+                    <li><a href="../../../../contact.html">联系方式</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>产品展示</h4>
+                <ul class="footer-links">
+                    <li><a href="../../../../products.html#industrial-lubricants">工业润滑油</a></li>
+                    <li><a href="../../../../products.html#automotive-lubricants">乘用车润滑油</a></li>
+                    <li><a href="../../../../products.html#commercial-lubricants">商用车润滑油</a></li>
+                    <li><a href="../../../../products.html#special-lubricants">特种润滑油</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>联系我们</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <strong>工作时间：</strong>
+                        <span>周一至周日 08:00-18:00</span>
+                    </li>
+                    <li>
+                        <strong>联系电话：</strong>
+                        <span>0757-87722666</span>
+                    </li>
+                    <li>
+                        <strong>地址：</strong>
+                        <span>佛山市三水区西南街健力宝北路 10 号</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>关注我们</h4>
+                <p class="footer-qr-text">
+                    关注我们的微信公众号和小程序<br>
+                    获取最新产品信息和优惠活动
+                </p>
+                <div class="footer-qr-codes">
+                    <div class="footer-qr-image qr-wechat-official" 
+                         aria-label="微信公众号二维码"
+                         title="微信公众号">
+                    </div>
+                    <div class="footer-qr-image qr-wechat-miniprogram" 
+                         aria-label="微信小程序二维码"
+                         title="微信小程序">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <hr class="footer-divider">
+
+        <p>版权所有 &copy; <span id="current-year"></span> 佛山市华南森孚贸易有限公司 粤 ICP 备 11099622 号 -2</p>
+    </footer>
+
+</body>
+</html>

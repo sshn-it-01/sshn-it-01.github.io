@@ -68,17 +68,22 @@
 
 /* 工业润滑油卡片背景 */
 .card-img-industrial {
-    background-image: url('/images/products/p_chi-lun-you_01.webp');
+    background-image: url('/images/card-img/unsplash_martin-martz_factory_29PaIGCEq10.webp');
 }
 
 /* 车用润滑油卡片背景 */
 .card-img-automotive {
-    background-image: url('/images/products/p_huan-you_01.webp');
+    background-image: url('/images/card-img/p_huan-you_01.webp');
+}
+
+/* 商用车润滑油卡片背景 */
+.card-img-commercial {
+    background-image: url('/images/card-img/unsplash_green-and-white-vintage-truck-arotxe540N4.webp');
 }
 
 /* 特种润滑油卡片背景 */
 .card-img-special {
-    background-image: url('/images/products/p_zhou-cheng_01.webp');
+    background-image: url('/images/card-img/unsplash_mina-rad_product-line_GiuvVfcNFzY.webp');
 }
 
 /* -----------------------------------------------------------------------------
@@ -88,22 +93,22 @@
 
 /* 液压油分类卡片背景 */
 .card-img-hydraulic {
-    background-image: url('/images/products/p_ye-ya_01.webp');
+    background-image: url('/images/card-img/p_ye-ya_01.webp');
 }
 
 /* 齿轮油分类卡片背景 */
 .card-img-gear {
-    background-image: url('/images/products/p_chi-lun-you_01.webp');
+    background-image: url('/images/card-img/p_chi-lun-you_01.webp');
 }
 
 /* 轴承油分类卡片背景 */
 .card-img-bearing {
-    background-image: url('/images/products/p_zhou-cheng_01.webp');
+    background-image: url('/images/card-img/p_zhou-cheng_01.webp');
 }
 
 /* 没找到想要的产品的卡片背景 */
 .card-img-aviation {
-    background-image: url('/images/help-desks.webp');
+    background-image: url('/images/card-img/help-desks.webp');
 }
 
 /* -----------------------------------------------------------------------------

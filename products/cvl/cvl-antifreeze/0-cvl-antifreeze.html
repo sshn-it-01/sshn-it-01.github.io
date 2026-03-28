@@ -2,7 +2,7 @@
 =============================================================================
 华南森孚贸易有限公司 - 商用车防冻液产品详情页 (CVL Antifreeze Coolant)
 =============================================================================
-文件说明:详细介绍商用车防冻液系列产品，包括产品分类、规格参数和应用领域
+文件说明:详细介绍商用车防冻液系列产品, 包括产品分类、规格参数和应用领域
 页面结构:
   1. 导航栏 - 固定在顶部
   2. 面包屑导航 - 显示页面层级关系
@@ -12,7 +12,7 @@
   6. 页脚版权信息
 技术规范:
   - 响应式设计:支持桌面、平板、手机等各种设备
-  - 相对路径引用:所有资源使用 ../../../相对路径
+  - 绝对路径引用:所有资源使用绝对路径
   - Sticky Footer:footer 始终贴合页面底部
 =============================================================================
 -->
@@ -29,28 +29,28 @@
     <!-- 字符编码:UTF-8,支持中文显示 -->
     <meta charset="UTF-8">
 
-    <!-- 视口设置:响应式关键，确保在移动设备上正确缩放 -->
+    <!-- 视口设置:响应式关键, 确保在移动设备上正确缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 页面标题:包含产品名称和系列，利于 SEO -->
+    <!-- 页面标题:包含产品名称和系列, 利于 SEO -->
     <title>商用车防冻液 - 华南森孚</title>
 
     <!-- 描述:用于搜索引擎优化和 SEO,描述产品特征和功能 -->
-    <meta name="description" content="专业供应美孚黑霸王™防冻液系列：-45°C、-35℃长效防冻冷却液。采用乙烯乙二醇配方，适用于重型柴油、汽油和天然气发动机，提供卓越的防冻、防沸、防腐蚀保护，延长发动机使用寿命。">
-    <meta name="keywords" content="商用车防冻液，美孚黑霸王防冻液，-45°C 防冻液，-35℃防冻液，乙烯乙二醇防冻液，重负荷防冻液，柴油发动机冷却液，佛山润滑油，商用车养护">
+    <meta name="description" content="专业供应美孚黑霸王™防冻液系列：-45°C、-35℃长效防冻冷却液。采用乙烯乙二醇配方, 适用于重型柴油、汽油和天然气发动机, 提供卓越的防冻、防沸、防腐蚀保护, 延长发动机使用寿命。">
+    <meta name="keywords" content="商用车防冻液, 美孚黑霸王防冻液, -45°C 防冻液, -35℃防冻液, 乙烯乙二醇防冻液, 重负荷防冻液, 柴油发动机冷却液, 佛山润滑油, 商用车养护">
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     
     <!-- 网站图标 (Favicon):显示在浏览器标签页标题前 -->
-    <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
+    <link rel="icon" href="/images/hn-logo_bg-white.webp" type="image/webp">
     
     <!-- 主样式表:布局和组件样式 -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- 图片资源样式:所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="../../../css/images.css">
+    <link rel="stylesheet" href="/css/images.css">
     <!-- 响应式媒体查询:所有断点适配规则 (必须放在最后) -->
-    <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">
+    <link rel="stylesheet" href="/css/mobile.css" media="(max-width: 1024px)">
     <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
-    <script src="../../../js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
     
     <!-- 结构化数据:产品列表 Schema,帮助搜索引擎理解产品信息 -->
     <script type="application/ld+json">
@@ -59,7 +59,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚黑霸王™防冻液系列",
-    "description": "乙烯乙二醇防冻液，适用于重型柴油、汽油和天然气发动机，提供 -45°C/-35℃卓越温度保护，延长发动机使用寿命",
+    "description": "乙烯乙二醇防冻液, 适用于重型柴油、汽油和天然气发动机, 提供 -45°C/-35℃卓越温度保护, 延长发动机使用寿命",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -80,23 +80,23 @@
 <body>  
     <!-- =========================================================================
          头部导航栏区域
-         功能:固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
+         功能:固定在页面顶部, 包含 Logo、导航链接和移动端汉堡菜单
          ========================================================================= -->
     <div id="head-nav-container"></div>
 
     <!-- =========================================================================
          主要内容区域
-         功能:详细介绍产品线，包含产品列表、技术参数和应用场景
+         功能:详细介绍产品线, 包含产品列表、技术参数和应用场景
          布局:包含面包屑导航、产品介绍、产品网格、应用领域、CTA 按钮
          ========================================================================= -->
     <!-- 内容容器:限制宽度并居中 -->
     <section class="container">  
         
-        <!-- 面包屑导航:显示页面层级关系，帮助用户定位 -->
+        <!-- 面包屑导航:显示页面层级关系, 帮助用户定位 -->
         <div class="breadcrumb">
-            <a href="../../../index.html">首页</a> &gt; 
-            <a href="../../../products.html">产品展示</a> &gt;
-            <a href="../../../products.html#commercial-lubricants">商用车润滑油</a> &gt;
+            <a href="/index.html">首页</a> &gt; 
+            <a href="/products.html">产品展示</a> &gt;
+            <a href="/products.html#commercial-lubricants">商用车润滑油</a> &gt;
             <!-- 当前页面使用 breadcrumb-current 类高亮显示 -->
             <span class="breadcrumb-current">商用车防冻液</span>
         </div>
@@ -104,23 +104,23 @@
         <!-- 章节主标题 -->
         <h2 class="section-title section-title-banner">商用车防冻冷却液</h2>
         
-        <!-- 产品介绍区域:居中布局，限制最大宽度提升可读性 -->
+        <!-- 产品介绍区域:居中布局, 限制最大宽度提升可读性 -->
         <div class="product-intro">
             <p>
-                我们的防冻液是面向公路、越野、海洋、农用、矿业和建筑设备等重负荷应用的防冻液，采用独特乙烯乙二醇配方，能够帮助延长发动机的使用寿命。
+                我们的防冻液是面向公路、越野、海洋、农用、矿业和建筑设备等重负荷应用的防冻液, 采用独特乙烯乙二醇配方, 能够帮助延长发动机的使用寿命。
             </p>
         </div>
 
         <!-- 产品网格布局:自动适应列数 -->
         <div class="grid">
             
-            <!-- 产品 1:美孚黑霸王™防冻液 -35℃ (按 A-Z 排序，数字在前) -->
-            <a href="./mobil-delvac-antifreeze-35.html" class="card-link">
+            <!-- 产品 1:美孚黑霸王™防冻液 -35℃ (按 A-Z 排序, 数字在前) -->
+            <a href="/products/cvl/cvl-antifreeze/mobil-delvac-antifreeze-35.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚黑霸王™防冻液 -35℃</h3>
-                        <p>乙烯乙二醇防冻液，冰点 -35℃，广泛用于各种重负荷应用。</p>
+                        <p>乙烯乙二醇防冻液, 冰点 -35℃, 广泛用于各种重负荷应用。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>公路、越野、海洋、农用、矿业和建筑设备等重负荷应用</p>
                         </div>
@@ -129,26 +129,26 @@
             </a>
 
             <!-- 产品 2:美孚黑霸王™防冻液 -45°C -->
-            <a href="./mobil-delvac-antifreeze-45.html" class="card-link">
+            <a href="/products/cvl/cvl-antifreeze/mobil-delvac-antifreeze-45.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚黑霸王™防冻液 -45°C</h3>
-                        <p>高性能乙烯乙二醇防冻液，冰点 -45°C，为重型发动机提供卓越保护。</p>
+                        <p>高性能乙烯乙二醇防冻液, 冰点 -45°C, 为重型发动机提供卓越保护。</p>
                         <div class="product-specs">                        
-                            <p><strong>应用范围: </strong>高寒地区重型柴油、汽油和天然气发动机，极寒环境下的重负荷应用</p>
+                            <p><strong>应用范围: </strong>高寒地区重型柴油、汽油和天然气发动机, 极寒环境下的重负荷应用</p>
                         </div>
                     </div>
                 </div>
             </a>
 
             <!-- 咨询卡片:没找到想要的产品 -->
-            <div class="card card-consultation" onclick="window.location.href='../../../contact.html'">
+            <div class="card card-consultation" onclick="window.location.href='/contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
                     <h3>没找到想要的产品？</h3>
                     <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
-                    <a href="../../../contact.html" class="btn btn-primary">立即咨询</a>
+                    <a href="/contact.html" class="btn btn-primary">立即咨询</a>
                 </div>
             </div>
 

@@ -13,7 +13,7 @@
   7. 页脚版权信息
 技术规范:
   - 响应式设计:支持桌面、平板、手机等各种设备
-  - 相对路径引用:所有资源使用 ../../相对路径
+  - 绝对路径引用:所有资源使用绝对路径
   - Sticky Footer:footer 始终贴合页面底部
 =============================================================================
 -->
@@ -33,17 +33,17 @@
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     
     <!-- 网站图标(Favicon):显示在浏览器标签页标题前 -->
-    <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
+    <link rel="icon" href="/images/hn-logo_bg-white.webp" type="image/webp">
     
     <!-- 引入外部资源 -->
-    <link rel="stylesheet" href="../../../css/style.css">  <!-- 主样式表:布局和组件样式 -->
-    <link rel="stylesheet" href="../../../css/images.css">  <!-- 图片资源样式:所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询:所有断点适配规则(必须放在最后) -->
-    <script src="../../../js/main.js" defer></script>
+    <link rel="stylesheet" href="/css/style.css">  <!-- 主样式表:布局和组件样式 -->
+    <link rel="stylesheet" href="/css/images.css">  <!-- 图片资源样式:所有图片路径和显示样式 -->
+    <link rel="stylesheet" href="/css/mobile.css" media="(max-width: 1024px)">  <!-- 响应式媒体查询:所有断点适配规则(必须放在最后) -->
+    <script src="/js/main.js" defer></script>
                             <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
 
     
-    <!-- 结构化数据：产品列表 Schema，帮助搜索引擎理解产品信息 -->
+    <!-- 结构化数据：产品列表 Schema, 帮助搜索引擎理解产品信息 -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -75,7 +75,7 @@
                 "item": {
                     "@type": "Product",
                     "name": "美孚DTE®20UT长效液压油系列",
-                    "description": "高性能抗磨液压油，适用于高压、高输出泵的液压系统",
+                    "description": "高性能抗磨液压油, 适用于高压、高输出泵的液压系统",
                     "brand": "Mobil",
                     "category": "工业润滑油 > 液压油"
                 }
@@ -97,7 +97,7 @@
                 "item": {
                     "@type": "Product",
                     "name": "美孚力图H(Nuto H) 系列",
-                    "description": "通用型液压油，适用于各种工业液压系统",
+                    "description": "通用型液压油, 适用于各种工业液压系统",
                     "brand": "Mobil",
                     "category": "工业润滑油 > 液压油"
                 }
@@ -108,7 +108,7 @@
                 "item": {
                     "@type": "Product",
                     "name": "美孚SHC™ 合成液压油",
-                    "description": "全合成高性能液压油，专为极端工况设计",
+                    "description": "全合成高性能液压油, 专为极端工况设计",
                     "brand": "Mobil",
                     "category": "工业润滑油 > 液压油"
                 }
@@ -119,7 +119,7 @@
                 "item": {
                     "@type": "Product",
                     "name": "卓力 L-HM抗磨液压油系列",
-                    "description": "优异的抗磨性、抗氧化性和防锈防腐蚀性，提供高压型和高压无灰型两种选择（另有普力L-HM 普通型）",
+                    "description": "优异的抗磨性、抗氧化性和防锈防腐蚀性, 提供高压型和高压无灰型两种选择 (另有普力L-HM 普通型) ",
                     "brand": "卓力",
                     "category": "工业润滑油 > 液压油"
                 }
@@ -130,7 +130,7 @@
                 "item": {
                     "@type": "Product",
                     "name": "普力L-HM抗磨液压油系列",
-                    "description": "经济实用型普通液压油，具有良好的抗磨损性能、氧化安定性和防锈防腐蚀性，适用于中低压液压系统",
+                    "description": "经济实用型普通液压油, 具有良好的抗磨损性能、氧化安定性和防锈防腐蚀性, 适用于中低压液压系统",
                     "brand": "普力",
                     "category": "工业润滑油 > 液压油"
                 }
@@ -157,8 +157,8 @@
         
         <!-- 面包屑导航:显示页面层级关系,帮助用户定位 -->
         <div class="breadcrumb">
-            <a href="../../../index.html">首页</a> &gt; 
-            <a href="../../../products.html">产品展示</a> &gt; 
+            <a href="/index.html">首页</a> &gt; 
+            <a href="/products.html">产品展示</a> &gt; 
             <span class="breadcrumb-current">液压油</span>
                 <!-- 当前页面使用 breadcrumb-current 类高亮显示 -->
         </div>
@@ -177,7 +177,7 @@
         <div class="grid">
             
             <!-- 产品 1 -->
-            <a href="./dte-10.html" class="card-link">
+            <a href="/products/ind-lubes/hydraulic/dte-10.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
@@ -191,7 +191,7 @@
             </a>
 
             <!-- 产品 2 -->
-            <a href="./dte-20ut.html" class="card-link">
+            <a href="/products/ind-lubes/hydraulic/dte-20ut.html" class="card-link">
                 <div class="card">
                     <!-- 产品图片:使用 CSS 背景图实现 -->
                     <div class="product-card-image card-img-hydraulic-1"></div>
@@ -207,7 +207,7 @@
             </a>
 
 
-            <a href="./nuto-h.html" class="card-link">
+            <a href="/products/ind-lubes/hydraulic/nuto-h.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-3"></div>
                     <div class="card-content">
@@ -220,12 +220,12 @@
                 </div>
             </a>
 
-            <a href="./shc.html" class="card-link">
+            <a href="/products/ind-lubes/hydraulic/shc.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-4"></div>
                     <div class="card-content">
                         <h3>美孚 SHC™ 合成液压油</h3>
-                        <p>全合成高性能液压油，专为极端工况设计，提供卓越的高温稳定性和低温流动性，显著延长油品使用寿命。</p>
+                        <p>全合成高性能液压油, 专为极端工况设计, 提供卓越的高温稳定性和低温流动性, 显著延长油品使用寿命。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>极端温度工况、海洋船舶、食品加工设备、环保要求严格场所</p>
                         </div>
@@ -234,12 +234,12 @@
             </a>
 
             <!-- 产品 5:卓力 L-HM抗磨液压油系列 (拼音：Zhuó lì - Z) -->
-            <a href="./zhuoli-l-hm.html" class="card-link">
+            <a href="/products/ind-lubes/hydraulic/zhuoli-l-hm.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>长城卓力 L-HM抗磨液压油系列</h3>
-                        <p>优异的抗磨性、抗氧化性和防锈防腐蚀性，提供高压型和高压无灰型两种选择，满足高压液压系统和环保要求严格场所的需求。</p>
+                        <p>优异的抗磨性、抗氧化性和防锈防腐蚀性, 提供高压型和高压无灰型两种选择, 满足高压液压系统和环保要求严格场所的需求。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>高压工业设备、移动液压设备、注塑机械、压铸机械、工程机械、环保要求严格场所</p>
                         </div>
@@ -248,12 +248,12 @@
             </a>
 
             <!-- 产品 6:普力L-HM抗磨液压油系列 (拼音：Pǔ lì - P) -->
-            <a href="./puli-l-hm.html" class="card-link">
+            <a href="/products/ind-lubes/hydraulic/puli-l-hm.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-3"></div>
                     <div class="card-content">
                         <h3>长城普力L-HM抗磨液压油系列</h3>
-                        <p>经济实用型普通液压油，具有良好的抗磨损性能、氧化安定性和防锈防腐蚀性，适用于中低压液压系统，性价比高。</p>
+                        <p>经济实用型普通液压油, 具有良好的抗磨损性能、氧化安定性和防锈防腐蚀性, 适用于中低压液压系统, 性价比高。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>一般工业液压系统、航运设备、移动式机械设备、轻型工程机械、农业机械</p>
                         </div>
@@ -264,16 +264,16 @@
             <!-- 咨询卡片：没找到想要的产品 -->
             <!-- 
                 咨询卡片组件 - 用于引导未找到合适产品的用户联系企业
-                功能:点击卡片跳转到联系页面 (../../../contact.html)
+                功能:点击卡片跳转到联系页面 (/contact.html)
                 样式:使用 card-consultation 类定义特殊样式
                 交互:通过 onclick 事件实现页面跳转,设置 cursor: pointer 提升用户体验,避免了使用有冲突的card-link样式
             -->
-            <div class="card card-consultation" onclick="window.location.href='../../../contact.html'">
+            <div class="card card-consultation" onclick="window.location.href='/contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
                     <h3>没找到想要的产品？</h3>
                     <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
-                    <a href="../../../contact.html" class="btn btn-primary">立即咨询</a>
+                    <a href="/contact.html" class="btn btn-primary">立即咨询</a>
                 </div>
             </div>
 

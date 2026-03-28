@@ -13,7 +13,7 @@
   7. 页脚版权信息
 技术规范:
   - 响应式设计:支持桌面、平板、手机等各种设备
-  - 相对路径引用:所有资源使用 ../../相对路径
+  - 绝对路径引用:所有资源使用绝对路径
   - Sticky Footer:footer 始终贴合页面底部
 =============================================================================
 -->
@@ -37,21 +37,21 @@
     <title>燃气发动机油 - 华南森孚</title>
 
     <!-- 描述:用于搜索引擎优化和 SEO,描述产品特征和功能 -->
-    <meta name="description" content="美孚飞马™系列燃气发动机油，包括飞马 605、飞马 805、飞马 1005 等高性能产品。适用于天然气、沼气、垃圾填埋气等燃料的四冲程燃气发动机，提供卓越的抗氧化、抗硝化性能和热稳定性，延长换油周期，降低维护成本。">
-    <meta name="keywords" content="美孚飞马，燃气发动机油，Mobil Pegasus，飞马 605，飞马 805，飞马 1005，天然气发动机油，沼气发动机油，垃圾填埋气，低灰分机油，四冲程发动机，工业润滑油，佛山润滑油供应商，华南森孚">
+    <meta name="description" content="美孚飞马™系列燃气发动机油, 包括飞马 605、飞马 805、飞马 1005 等高性能产品。适用于天然气、沼气、垃圾填埋气等燃料的四冲程燃气发动机, 提供卓越的抗氧化、抗硝化性能和热稳定性, 延长换油周期, 降低维护成本。">
+    <meta name="keywords" content="美孚飞马, 燃气发动机油, Mobil Pegasus, 飞马 605, 飞马 805, 飞马 1005, 天然气发动机油, 沼气发动机油, 垃圾填埋气, 低灰分机油, 四冲程发动机, 工业润滑油, 佛山润滑油供应商, 华南森孚">
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     
     <!-- 网站图标 (Favicon):显示在浏览器标签页标题前 -->
-    <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
+    <link rel="icon" href="/images/hn-logo_bg-white.webp" type="image/webp">
     
     <!-- 主样式表:布局和组件样式 -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- 图片资源样式:所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="../../../css/images.css">
+    <link rel="stylesheet" href="/css/images.css">
     <!-- 响应式媒体查询:所有断点适配规则 (必须放在最后) -->
-    <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">
+    <link rel="stylesheet" href="/css/mobile.css" media="(max-width: 1024px)">
     <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
-    <script src="../../../js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
     
     <!-- 结构化数据:产品列表 Schema,帮助搜索引擎理解产品信息 -->
     <script type="application/ld+json">
@@ -60,7 +60,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚飞马™ 605",
-    "description": "高性能燃气发动机油，主要用于燃料中含有腐蚀性物质如硫化氢或卤素的现代中速和高速四冲程发动机",
+    "description": "高性能燃气发动机油, 主要用于燃料中含有腐蚀性物质如硫化氢或卤素的现代中速和高速四冲程发动机",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -77,7 +77,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚飞马™ 805",
-    "description": "优质燃气发动机油，为满足当今低排放和高燃料经济性设计的高输出四冲程发动机的严格要求而设计",
+    "description": "优质燃气发动机油, 为满足当今低排放和高燃料经济性设计的高输出四冲程发动机的严格要求而设计",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -94,7 +94,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚飞马™ 1005",
-    "description": "新一代高性能燃气发动机油，旨在为当今高输出、低排放的四冲程燃气发动机提供最高水平的保护",
+    "description": "新一代高性能燃气发动机油, 旨在为当今高输出、低排放的四冲程燃气发动机提供最高水平的保护",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -129,8 +129,8 @@
         
         <!-- 面包屑导航:显示页面层级关系,帮助用户定位 -->
         <div class="breadcrumb">
-            <a href="../../../index.html">首页</a> &gt; 
-            <a href="../../../products.html">产品展示</a> &gt;
+            <a href="/index.html">首页</a> &gt; 
+            <a href="/products.html">产品展示</a> &gt;
             <!-- 当前页面使用 breadcrumb-current 类高亮显示 -->
             <span class="breadcrumb-current">燃气发动机油</span>
         </div>
@@ -138,10 +138,10 @@
         <!-- 章节主标题 -->
         <h2 class="section-title section-title-banner">燃气发动机油系列</h2>
         
-        <!-- 产品介绍区域:居中布局，限制最大宽度提升可读性 -->
+        <!-- 产品介绍区域:居中布局, 限制最大宽度提升可读性 -->
         <div class="product-intro">
             <p>
-                美孚飞马™系列燃气发动机油是高性能润滑产品，专为天然气、沼气、垃圾填埋气等燃料的四冲程燃气发动机设计。具有卓越的氧化稳定性、抗硝化性能和热稳定性，能有效控制积碳和漆膜形成，延长换油周期，降低维护成本，适用于热电联产、石油化工、污水处理等多种应用场景。
+                美孚飞马™系列燃气发动机油是高性能润滑产品, 专为天然气、沼气、垃圾填埋气等燃料的四冲程燃气发动机设计。具有卓越的氧化稳定性、抗硝化性能和热稳定性, 能有效控制积碳和漆膜形成, 延长换油周期, 降低维护成本, 适用于热电联产、石油化工、污水处理等多种应用场景。
             </p>
         </div>
 
@@ -149,12 +149,12 @@
         <div class="grid">
             
             <!-- 产品 1:美孚飞马 605 -->
-            <a href="./mobil-pegasus-605.html" class="card-link">
+            <a href="/products/ind-lubes/gas-engines/mobil-pegasus-605.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚飞马™ 605</h3>
-                        <p>高性能燃气发动机油，适用于燃料中含腐蚀性物质的现代中高速四冲程发动机。</p>
+                        <p>高性能燃气发动机油, 适用于燃料中含腐蚀性物质的现代中高速四冲程发动机。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>含硫化氢、卤素等污染物的燃气环境</p>
                         </div>
@@ -163,12 +163,12 @@
             </a>
 
             <!-- 产品 2:美孚飞马 805 -->
-            <a href="./mobil-pegasus-805.html" class="card-link">
+            <a href="/products/ind-lubes/gas-engines/mobil-pegasus-805.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚飞马™ 805</h3>
-                        <p>优质燃气发动机油，满足低排放、高燃料经济性的高输出四冲程发动机要求。</p>
+                        <p>优质燃气发动机油, 满足低排放、高燃料经济性的高输出四冲程发动机要求。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>高温高负荷工况下的贫燃和化学计量发动机</p>
                         </div>
@@ -177,12 +177,12 @@
             </a>
 
             <!-- 产品 3:美孚飞马 1005 -->
-            <a href="./mobil-pegasus-1005.html" class="card-link">
+            <a href="/products/ind-lubes/gas-engines/mobil-pegasus-1005.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚飞马™ 1005</h3>
-                        <p>新一代高性能燃气发动机油，为高输出、低排放四冲程燃气发动机提供顶级保护。</p>
+                        <p>新一代高性能燃气发动机油, 为高输出、低排放四冲程燃气发动机提供顶级保护。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>新型低排放燃气发动机及热电联产系统</p>
                         </div>
@@ -191,12 +191,12 @@
             </a>
 
             <!-- 咨询卡片:没找到想要的产品 -->
-            <div class="card card-consultation" onclick="window.location.href='../../../contact.html'">
+            <div class="card card-consultation" onclick="window.location.href='/contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
                     <h3>没找到想要的产品？</h3>
                     <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
-                    <a href="../../../contact.html" class="btn btn-primary">立即咨询</a>
+                    <a href="/contact.html" class="btn btn-primary">立即咨询</a>
                 </div>
             </div>
 

@@ -2,7 +2,7 @@
 =============================================================================
 华南森孚贸易有限公司 - 润滑脂产品详情页 (Greases)
 =============================================================================
-文件说明:详细介绍润滑脂系列产品，包括产品分类、规格参数和应用领域
+文件说明:详细介绍润滑脂系列产品, 包括产品分类、规格参数和应用领域
 页面结构:
   1. 导航栏 - 固定在顶部
   2. 面包屑导航 - 显示页面层级关系
@@ -13,7 +13,7 @@
   7. 页脚版权信息
 技术规范:
   - 响应式设计:支持桌面、平板、手机等各种设备
-  - 相对路径引用:所有资源使用 ../../相对路径
+  - 绝对路径引用:所有资源使用绝对路径
   - Sticky Footer:footer 始终贴合页面底部
 =============================================================================
 -->
@@ -30,28 +30,28 @@
     <!-- 字符编码:UTF-8,支持中文显示 -->
     <meta charset="UTF-8">
 
-    <!-- 视口设置:响应式关键，确保在移动设备上正确缩放 -->
+    <!-- 视口设置:响应式关键, 确保在移动设备上正确缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 页面标题:包含产品名称和系列，利于 SEO -->
+    <!-- 页面标题:包含产品名称和系列, 利于 SEO -->
     <title>润滑脂 - 华南森孚</title>
 
     <!-- 描述:用于搜索引擎优化和 SEO,描述产品特征和功能 -->
-    <meta name="description" content="专业供应美孚润滑脂系列：XHP220 系列、力士 EP 系列、宝力达 EM 系列、优力达 N 系列、FM 222 食品级润滑脂。优异的高温粘附性、防水性能和极压抗磨性能，适用于冶金、矿山、电力、食品加工等行业的轴承润滑。">
-    <meta name="keywords" content="润滑脂，美孚润滑脂，XHP220,力士 EP,宝力达 EM,优力达 N,FM222，食品级润滑脂，高温润滑脂，极压润滑脂，工业润滑脂，佛山润滑油">
+    <meta name="description" content="专业供应美孚润滑脂系列：XHP220 系列、力士 EP 系列、宝力达 EM 系列、优力达 N 系列、FM 222 食品级润滑脂。优异的高温粘附性、防水性能和极压抗磨性能, 适用于冶金、矿山、电力、食品加工等行业的轴承润滑。">
+    <meta name="keywords" content="润滑脂, 美孚润滑脂, XHP220,力士 EP,宝力达 EM,优力达 N,FM222, 食品级润滑脂, 高温润滑脂, 极压润滑脂, 工业润滑脂, 佛山润滑油">
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     
     <!-- 网站图标 (Favicon):显示在浏览器标签页标题前 -->
-    <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
+    <link rel="icon" href="/images/hn-logo_bg-white.webp" type="image/webp">
     
     <!-- 主样式表:布局和组件样式 -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- 图片资源样式:所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="../../../css/images.css">
+    <link rel="stylesheet" href="/css/images.css">
     <!-- 响应式媒体查询:所有断点适配规则 (必须放在最后) -->
-    <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">
+    <link rel="stylesheet" href="/css/mobile.css" media="(max-width: 1024px)">
     <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
-    <script src="../../../js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
     
     <!-- 结构化数据:产品列表 Schema,帮助搜索引擎理解产品信息 -->
     <script type="application/ld+json">
@@ -60,7 +60,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚润滑脂系列",
-    "description": "专业供应美孚全系列润滑脂产品，包括 XHP220 系列、力士 EP 系列、宝力达 EM 系列、优力达 N 系列、FM 222 食品级润滑脂",
+    "description": "专业供应美孚全系列润滑脂产品, 包括 XHP220 系列、力士 EP 系列、宝力达 EM 系列、优力达 N 系列、FM 222 食品级润滑脂",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -81,22 +81,22 @@
 <body>  
     <!-- =========================================================================
          头部导航栏区域
-         功能:固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
+         功能:固定在页面顶部, 包含 Logo、导航链接和移动端汉堡菜单
          ========================================================================= -->
     <div id="head-nav-container"></div>
 
     <!-- =========================================================================
          主要内容区域
-         功能:详细介绍润滑脂产品线，包含产品列表、技术参数和应用场景
+         功能:详细介绍润滑脂产品线, 包含产品列表、技术参数和应用场景
          布局:包含面包屑导航、产品介绍、产品网格、应用领域、CTA 按钮
          ========================================================================= -->
     <!-- 内容容器:限制宽度并居中 -->
     <section class="container">  
         
-        <!-- 面包屑导航:显示页面层级关系，帮助用户定位 -->
+        <!-- 面包屑导航:显示页面层级关系, 帮助用户定位 -->
         <div class="breadcrumb">
-            <a href="../../../index.html">首页</a> &gt; 
-            <a href="../../../products.html">产品展示</a> &gt;
+            <a href="/index.html">首页</a> &gt; 
+            <a href="/products.html">产品展示</a> &gt;
             <!-- 当前页面使用 breadcrumb-current 类高亮显示 -->
             <span class="breadcrumb-current">润滑脂</span>
         </div>
@@ -104,10 +104,10 @@
         <!-- 章节主标题 -->
         <h2 class="section-title section-title-banner">润滑脂系列</h2>
         
-        <!-- 产品介绍区域:居中布局，限制最大宽度提升可读性 -->
+        <!-- 产品介绍区域:居中布局, 限制最大宽度提升可读性 -->
         <div class="product-intro">
             <p>
-                我们的润滑脂系列产品具有优异的高温粘附性、防水性能和极压抗磨性能，广泛应用于冶金、矿山、电力、食品加工等行业的轴承、齿轮和其他机械部件的润滑，为严苛工况下的设备提供持久可靠的润滑保护。
+                我们的润滑脂系列产品具有优异的高温粘附性、防水性能和极压抗磨性能, 广泛应用于冶金、矿山、电力、食品加工等行业的轴承、齿轮和其他机械部件的润滑, 为严苛工况下的设备提供持久可靠的润滑保护。
             </p>
         </div>
 
@@ -115,12 +115,12 @@
         <div class="grid">
 
             <!-- 产品 2:美孚宝力达 EM 系列 (拼音: Bǎo lì dá - B) -->
-            <a href="./mobilplex-em.html" class="card-link">
+            <a href="/products/ind-lubes/greases/mobilplex-em.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚宝力达 EM 系列</h3>
-                        <p>多功能复合铝基润滑脂，卓越的水冲洗稳定性和泵送性能</p>
+                        <p>多功能复合铝基润滑脂, 卓越的水冲洗稳定性和泵送性能</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围：</strong>钢铁厂、造纸厂、污水处理设备等潮湿环境</p>
                         </div>
@@ -129,26 +129,26 @@
             </a>
 
             <!-- 产品 3:美孚力富 SHC 系列 (拼音: Lì fù - L) -->
-            <a href="./mobilith-shc.html" class="card-link">
+            <a href="/products/ind-lubes/greases/mobilith-shc.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚力富 SHC 系列</h3>
-                        <p>高性能合成润滑脂，宽广的温度适用范围，卓越的抗磨损保护</p>
+                        <p>高性能合成润滑脂, 宽广的温度适用范围, 卓越的抗磨损保护</p>
                         <div class="product-specs">                        
-                            <p><strong>应用范围：</strong>高温、低温及重载工业轴承，电动马达，集中润滑系统</p>
+                            <p><strong>应用范围：</strong>高温、低温及重载工业轴承, 电动马达, 集中润滑系统</p>
                         </div>
                     </div>
                 </div>
             </a>
 
             <!-- 产品 4:美孚力士滑脂 EP 系列 (拼音: Lì shì - L, 士在富后) -->
-            <a href="./mobilux-ep.html" class="card-link">
+            <a href="/products/ind-lubes/greases/mobilux-ep.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚力士滑脂 EP 系列</h3>
-                        <p>通用型极压润滑脂，优异的防锈防腐性能，适用于多种工业设备</p>
+                        <p>通用型极压润滑脂, 优异的防锈防腐性能, 适用于多种工业设备</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围：</strong>电机轴承、风机、泵类设备的润滑</p>
                         </div>
@@ -157,12 +157,12 @@
             </a>
 
             <!-- 产品 5:美孚润滑脂 FM 系列 (拼音: Rùn huá zhī FM - R) -->
-            <a href="./fm-222.html" class="card-link">
+            <a href="/products/ind-lubes/greases/fm-222.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚润滑脂 FM 系列</h3>
-                        <p>NSF H1 认证食品级润滑脂，无毒无味，适用于食品加工设备</p>
+                        <p>NSF H1 认证食品级润滑脂, 无毒无味, 适用于食品加工设备</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围：</strong>食品加工、制药、饮料生产设备的润滑</p>
                         </div>
@@ -171,12 +171,12 @@
             </a>
 
             <!-- 产品 6:美孚润滑脂 XHP220 系列 (拼音: Rùn huá zhī XHP - R, XHP 在 FM 后) -->
-            <a href="./xhp220.html" class="card-link">
+            <a href="/products/ind-lubes/greases/xhp220.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚润滑脂 XHP220 系列</h3>
-                        <p>高性能复合锂基润滑脂，优异的高温性能和极压保护，适用于重载工业应用</p>
+                        <p>高性能复合锂基润滑脂, 优异的高温性能和极压保护, 适用于重载工业应用</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围：</strong>造纸、采矿、钢铁行业的高温重载轴承</p>
                         </div>
@@ -185,12 +185,12 @@
             </a>
 
             <!-- 产品 7:美孚优力达 N 系列 (拼音: Yōu lì dá - Y) -->
-            <a href="./unirex-n.html" class="card-link">
+            <a href="/products/ind-lubes/greases/unirex-n.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚优力达 N 系列</h3>
-                        <p>高性能复合锂基润滑脂，专为电机轴承设计，长寿命低噪音</p>
+                        <p>高性能复合锂基润滑脂, 专为电机轴承设计, 长寿命低噪音</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围：</strong>电机轴承、家用电器电机、小型发电机</p>
                         </div>
@@ -199,12 +199,12 @@
             </a>
 
             <!-- 产品 1:长城通用锂基润滑脂系列 (拼音：Cháng chéng - C) -->
-            <a href="./changcheng-general-lithium.html" class="card-link">
+            <a href="/products/ind-lubes/greases/changcheng-general-lithium.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>长城通用锂基润滑脂系列</h3>
-                        <p>符合 GB/T 7324 标准，优良的机械安定性和氧化安定性，抗水淋防锈</p>
+                        <p>符合 GB/T 7324 标准, 优良的机械安定性和氧化安定性, 抗水淋防锈</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围：</strong>一般机械设备轴承、潮湿环境、集中润滑系统</p>
                         </div>
@@ -215,16 +215,16 @@
             <!-- 咨询卡片：没找到想要的产品 -->
             <!-- 
                 咨询卡片组件 - 用于引导未找到合适产品的用户联系企业
-                功能：点击卡片跳转到联系页面 (../../../contact.html)
+                功能：点击卡片跳转到联系页面 (/contact.html)
                 样式：使用 card-consultation 类定义特殊样式
-                交互：通过 onclick 事件实现页面跳转，设置 cursor: pointer 提升用户体验，避免了使用有冲突的 card-link 样式
+                交互：通过 onclick 事件实现页面跳转, 设置 cursor: pointer 提升用户体验, 避免了使用有冲突的 card-link 样式
             -->
-            <div class="card card-consultation" onclick="window.location.href='../../../contact.html'">
+            <div class="card card-consultation" onclick="window.location.href='/contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
                     <h3>没找到想要的产品？</h3>
                     <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
-                    <a href="../../../contact.html" class="btn btn-primary">立即咨询</a>
+                    <a href="/contact.html" class="btn btn-primary">立即咨询</a>
                 </div>
             </div>
 

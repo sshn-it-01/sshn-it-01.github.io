@@ -2,7 +2,7 @@
 =============================================================================
 华南森孚贸易有限公司 - 汽轮机油/涡轮机油产品详情页 (Turbine Oil)
 =============================================================================
-文件说明:详细介绍汽轮机油/涡轮机油系列产品，包括产品分类、规格参数和应用领域
+文件说明:详细介绍汽轮机油/涡轮机油系列产品, 包括产品分类、规格参数和应用领域
 页面结构:
   1. 导航栏 - 固定在顶部
   2. 面包屑导航 - 显示页面层级关系
@@ -13,7 +13,7 @@
   7. 页脚版权信息
 技术规范:
   - 响应式设计:支持桌面、平板、手机等各种设备
-  - 相对路径引用:所有资源使用 ../../相对路径
+  - 绝对路径引用:所有资源使用绝对路径
   - Sticky Footer:footer 始终贴合页面底部
 =============================================================================
 -->
@@ -30,28 +30,28 @@
     <!-- 字符编码:UTF-8,支持中文显示 -->
     <meta charset="UTF-8">
 
-    <!-- 视口设置:响应式关键，确保在移动设备上正确缩放 -->
+    <!-- 视口设置:响应式关键, 确保在移动设备上正确缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- 页面标题:包含产品名称和系列，利于 SEO -->
+    <!-- 页面标题:包含产品名称和系列, 利于 SEO -->
     <title>汽轮机油/涡轮机油 - 华南森孚</title>
 
     <!-- 描述:用于搜索引擎优化和 SEO,描述产品特征和功能 -->
-    <meta name="description" content="美孚 DTE™系列汽轮机油是高性能涡轮机油，专为蒸汽轮机、燃气轮机和水轮机等发电设备设计。具有卓越的防锈防腐性能、优异的破乳分水性能和出色的氧化安定性，确保发电机组长期稳定运行，延长换油周期，降低维护成本。">
-    <meta name="keywords" content="美孚汽轮机油，涡轮机油，Mobil DTE，DTE 系列，蒸汽轮机油，燃气轮机油，水轮机油，发电机组润滑油，工业润滑油，佛山润滑油供应商，华南森孚，透平油，循环油">
+    <meta name="description" content="美孚 DTE™系列汽轮机油是高性能涡轮机油, 专为蒸汽轮机、燃气轮机和水轮机等发电设备设计。具有卓越的防锈防腐性能、优异的破乳分水性能和出色的氧化安定性, 确保发电机组长期稳定运行, 延长换油周期, 降低维护成本。">
+    <meta name="keywords" content="美孚汽轮机油, 涡轮机油, Mobil DTE, DTE 系列, 蒸汽轮机油, 燃气轮机油, 水轮机油, 发电机组润滑油, 工业润滑油, 佛山润滑油供应商, 华南森孚, 透平油, 循环油">
     <meta name="author" content="佛山市华南森孚贸易有限公司">
     
     <!-- 网站图标 (Favicon):显示在浏览器标签页标题前 -->
-    <link rel="icon" href="../../../images/hn-logo_bg-white.webp" type="image/webp">
+    <link rel="icon" href="/images/hn-logo_bg-white.webp" type="image/webp">
     
     <!-- 主样式表:布局和组件样式 -->
-    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- 图片资源样式:所有图片路径和显示样式 -->
-    <link rel="stylesheet" href="../../../css/images.css">
+    <link rel="stylesheet" href="/css/images.css">
     <!-- 响应式媒体查询:所有断点适配规则 (必须放在最后) -->
-    <link rel="stylesheet" href="../../../css/mobile.css" media="(max-width: 1024px)">
+    <link rel="stylesheet" href="/css/mobile.css" media="(max-width: 1024px)">
     <!-- JavaScript 文件:defer 延迟到 DOM 加载完成后执行 -->
-    <script src="../../../js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
     
     <!-- 结构化数据:产品列表 Schema,帮助搜索引擎理解产品信息 -->
     <script type="application/ld+json">
@@ -60,7 +60,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚DTE™ 700 系列",
-    "description": "高性能无锌汽轮机油，具有卓越的抗氧化性、防锈防腐性和水分离性，满足主流涡轮机制造商规范",
+    "description": "高性能无锌汽轮机油, 具有卓越的抗氧化性、防锈防腐性和水分离性, 满足主流涡轮机制造商规范",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -77,7 +77,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "美孚DTE™ 800 系列",
-    "description": "高性能汽轮机油，具有卓越的热氧化稳定性、抗磨损保护和抗乳化性，满足主流涡轮机制造商规范",
+    "description": "高性能汽轮机油, 具有卓越的热氧化稳定性、抗磨损保护和抗乳化性, 满足主流涡轮机制造商规范",
     "brand": {
       "@type": "Brand",
       "name": "Mobil 美孚"
@@ -98,22 +98,22 @@
 <body>  
     <!-- =========================================================================
          头部导航栏区域
-         功能:固定在页面顶部，包含 Logo、导航链接和移动端汉堡菜单
+         功能:固定在页面顶部, 包含 Logo、导航链接和移动端汉堡菜单
          ========================================================================= -->
     <div id="head-nav-container"></div>
 
     <!-- =========================================================================
          主要内容区域
-         功能:详细介绍产品线，包含产品列表、技术参数和应用场景
+         功能:详细介绍产品线, 包含产品列表、技术参数和应用场景
          布局:包含面包屑导航、产品介绍、产品网格、应用领域、CTA 按钮
          ========================================================================= -->
     <!-- 内容容器:限制宽度并居中 -->
     <section class="container">  
         
-        <!-- 面包屑导航:显示页面层级关系，帮助用户定位 -->
+        <!-- 面包屑导航:显示页面层级关系, 帮助用户定位 -->
         <div class="breadcrumb">
-            <a href="../../../index.html">首页</a> &gt; 
-            <a href="../../../products.html">产品展示</a> &gt;
+            <a href="/index.html">首页</a> &gt; 
+            <a href="/products.html">产品展示</a> &gt;
             <!-- 当前页面使用 breadcrumb-current 类高亮显示 -->
             <span class="breadcrumb-current">汽轮机油/涡轮机油</span>
         </div>
@@ -121,23 +121,23 @@
         <!-- 章节主标题 -->
         <h2 class="section-title section-title-banner">汽轮机油/涡轮机油系列</h2>
         
-        <!-- 产品介绍区域:居中布局，限制最大宽度提升可读性 -->
+        <!-- 产品介绍区域:居中布局, 限制最大宽度提升可读性 -->
         <div class="product-intro">
             <p>
-                美孚 DTE™系列汽轮机油是高性能涡轮机油，专为蒸汽轮机、燃气轮机和水轮机等发电设备设计。具有卓越的防锈防腐性能、优异的破乳分水性能和出色的氧化安定性，能有效分离水分、防止油品乳化，确保发电机组长期稳定运行，延长换油周期，降低维护成本，适用于电力、石化、造纸等多种行业的涡轮机械润滑系统。
+                美孚 DTE™系列汽轮机油是高性能涡轮机油, 专为蒸汽轮机、燃气轮机和水轮机等发电设备设计。具有卓越的防锈防腐性能、优异的破乳分水性能和出色的氧化安定性, 能有效分离水分、防止油品乳化, 确保发电机组长期稳定运行, 延长换油周期, 降低维护成本, 适用于电力、石化、造纸等多种行业的涡轮机械润滑系统。
             </p>
         </div>
 
         <!-- 产品网格布局:自动适应列数 -->
         <div class="grid">
             
-            <!-- 产品 1:美孚DTE™ 700 系列 (按 A-Z 排序，700 在前) -->
-            <a href="./dte-700-series.html" class="card-link">
+            <!-- 产品 1:美孚DTE™ 700 系列 (按 A-Z 排序, 700 在前) -->
+            <a href="/products/ind-lubes/turbine/dte-700-series.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚DTE™ 700 系列</h3>
-                        <p>高性能无锌汽轮机油，卓越的抗氧化性和水分离性，满足主流涡轮机制造商规范。</p>
+                        <p>高性能无锌汽轮机油, 卓越的抗氧化性和水分离性, 满足主流涡轮机制造商规范。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>蒸汽轮机、燃气轮机、水轮机等发电设备润滑系统</p>
                         </div>
@@ -145,13 +145,13 @@
                 </div>
             </a>
 
-            <!-- 产品 2:美孚DTE™ 800 系列 (按 A-Z 排序，800 在后) -->
-            <a href="./dte-800-series.html" class="card-link">
+            <!-- 产品 2:美孚DTE™ 800 系列 (按 A-Z 排序, 800 在后) -->
+            <a href="/products/ind-lubes/turbine/dte-800-series.html" class="card-link">
                 <div class="card">
                     <div class="product-card-image card-img-hydraulic-2"></div>
                     <div class="card-content">
                         <h3>美孚DTE™ 800 系列</h3>
-                        <p>优越的透平机润滑油，专为严苛工况下的蒸汽、燃气和联合循环透平机设计。</p>
+                        <p>优越的透平机润滑油, 专为严苛工况下的蒸汽、燃气和联合循环透平机设计。</p>
                         <div class="product-specs">                        
                             <p><strong>应用范围: </strong>联合循环发电装置、高输出燃气/蒸汽透平机系统</p>
                         </div>
@@ -160,12 +160,12 @@
             </a>
 
             <!-- 咨询卡片:没找到想要的产品 -->
-            <div class="card card-consultation" onclick="window.location.href='../../../contact.html'">
+            <div class="card card-consultation" onclick="window.location.href='/contact.html'">
                 <div class="product-card-image card-img-aviation"></div>
                 <div class="card-content">
                     <h3>没找到想要的产品？</h3>
                     <p>联系我们！我们的专家团队将为您提供专业的产品推荐和解决方案。</p>
-                    <a href="../../../contact.html" class="btn btn-primary">立即咨询</a>
+                    <a href="/contact.html" class="btn btn-primary">立即咨询</a>
                 </div>
             </div>
 

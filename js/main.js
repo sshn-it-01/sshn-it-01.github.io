@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 当 HTML 文档完全加载并解析完成后执行(不等待图片、样式表等资源)
     
     loadHeadNav().then(() => {
-        // head-nav 插入完成后，初始化依赖导航元素的功能
+        // head-nav 插入完成后, 初始化依赖导航元素的功能
         initMobileMenu();
 
         loadFooter();
@@ -570,5 +570,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
         initCollapsibleSections();
         // 初始化可折叠章节功能(在 products.html 等页面生效)
+        normalizeBreadcrumbLinks();
+        // 优化 breadcrumb 链接 (统一绝对路径)
     });
 });
+
+/**
+ * 规范化面包屑导航链接, 避免相对路径在多层目录下出错
+ */
+function normalizeBreadcrumbLinks() {
+    const breadcrumb = document.querySelector('.breadcrumb');
+    if (!breadcrumb) return;
+
+    breadcrumb.querySelectorAll('a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (!href) return;
+        if (href.startsWith('http') || href.startsWith('//') || href.startsWith('mailto:') || href.startsWith('#')) {
+            return;
+        }
+
+        try {
+            const resolved = new URL(href, window.location.href);
+            a.setAttribute('href', resolved.pathname + resolved.search + resolved.hash);
+        } catch (err) {
+            console.warn('breadcrumb href 解析失败:', href, err);
+        }
+    });
+}

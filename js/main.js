@@ -21,6 +21,68 @@ function updateFooterYear() {
     }
 }
 
+/**
+ * 加载页脚内容
+ * @description 从footer.html文件加载页脚内容并插入到页面中
+ * 实现原理:使用fetch API异步加载HTML内容,插入到#footer-container元素中
+ */
+function loadFooter() {
+    const footerContainer = document.getElementById('footer-container');
+    if (footerContainer) {
+        // 计算与当前页面层级匹配的 footer.html 目标路径
+        // 如 /products/ind-lubes/cutting/mobil-met-420-series.html -> ../../../../footer.html
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        const depth = pathParts.length > 0 ? pathParts.length - 1 : 0;
+        const relativePath = pathParts.length === 0 ? 'footer.html' : '../'.repeat(depth) + 'footer.html';
+
+        fetch(relativePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP status ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                footerContainer.innerHTML = html;
+                // 加载完成后更新年份
+                updateFooterYear();
+            })
+            .catch(error => {
+                console.error('加载页脚失败:', error, '尝试路径:', relativePath);
+            });
+    }
+}
+
+/**
+ * 加载头部导航内容
+ * @description 从head-nav.html文件加载导航内容并插入到页面中
+ */
+function loadHeadNav() {
+    const navContainer = document.getElementById('head-nav-container');
+    if (!navContainer) {
+        return Promise.resolve();
+    }
+
+    // 计算与当前页面层级匹配的 head-nav.html 目标路径
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const depth = pathParts.length > 0 ? pathParts.length - 1 : 0;
+    const relativePath = pathParts.length === 0 ? 'head-nav.html' : '../'.repeat(depth) + 'head-nav.html';
+
+    return fetch(relativePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP status ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            navContainer.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('加载头部导航失败:', error, '尝试路径:', relativePath);
+        });
+}
+
 /* -----------------------------------------------------------------------------
  * 功能 2: 移动端汉堡菜单切换
  * 作用:在小屏幕设备上控制导航菜单的展开/收起
@@ -490,21 +552,23 @@ function toggleCollapse(btn) {
 document.addEventListener('DOMContentLoaded', () => {
     // 当 HTML 文档完全加载并解析完成后执行(不等待图片、样式表等资源)
     
-    updateFooterYear();
-    // 立即更新页脚年份,确保用户看到最新的版权信息
-    
-    initMobileMenu();
-    // 初始化移动端菜单功能,绑定点击事件监听器
-    
-    initImageModal();
-    // 初始化图片灯箱功能(仅在联系页面生效)
-    
-    initSlideshow();
-    // 初始化幻灯片功能(在产品详情页生效)
-    
-    initSlideshowModal();
-    // 初始化幻灯片灯箱功能(在产品详情页生效)
-    
-    initCollapsibleSections();
-    // 初始化可折叠章节功能(在 products.html 等页面生效)
+    loadHeadNav().then(() => {
+        // head-nav 插入完成后，初始化依赖导航元素的功能
+        initMobileMenu();
+
+        loadFooter();
+        // 加载页脚内容并更新年份
+
+        initImageModal();
+        // 初始化图片灯箱功能(仅在联系页面生效)
+
+        initSlideshow();
+        // 初始化幻灯片功能(在产品详情页生效)
+
+        initSlideshowModal();
+        // 初始化幻灯片灯箱功能(在产品详情页生效)
+
+        initCollapsibleSections();
+        // 初始化可折叠章节功能(在 products.html 等页面生效)
+    });
 });

@@ -87,6 +87,13 @@ header {
     z-index: 1000;                  /* [关键] 层级 1000:确保在最上层,避免被其他内容遮挡 */
 }
 
+/* 头部导航容器 - 确保粘性定位生效 */
+#head-nav-container {
+    position: sticky;               /* 粘性定位:确保导航栏随页面滚动跟随 */
+    top: 0;                         /* 粘性位置:距离顶部 0px */
+    z-index: 1000;                  /* [关键] 层级 1000:确保在最上层 */
+}
+
 /* 导航栏内部容器 - 控制最大宽度和居中 */
 .nav-container {
     max-width: var(--max-width);    /* 最大宽度:1200px */

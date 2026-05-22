@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import PropertyCard from '../../components/PropertyCard.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import HeroSecondary from '../../components/HeroSecondary.astro';
+
+// 获取所有zones和lubricants
+const allZones = await getCollection('zones');
+const allLubricants = await getCollection('lubricants');
+
+// 定义zones的显示顺序
+const zoneOrder = [
+  'mobil-lubricants',           // 美孚润滑油
+  'apex-lubricants',            // APEX润滑油
+  'great-wall-lubricants',      // 长城润滑油
+  'industrial-lubricants',      // 工业润滑油
+  'passenger-car-lubricants',   // 乘用车润滑油
+  'commercial-vehicle-lubricants', // 商用车润滑油
+  'specialty-lubricants'        // 特种润滑油
+];
+
+// 按照指定顺序排序zones
+const zones = allZones.sort((a, b) => {
+  const indexA = zoneOrder.indexOf(a.id);
+  const indexB = zoneOrder.indexOf(b.id);
+  // 如果在order数组中找不到, 放到最后
+  if (indexA === -1) return 1;
+  if (indexB === -1) return -1;
+  return indexA - indexB;
+});
+
+// 获取每个zone下的3个推荐产品
+const getZoneProducts = (zoneId: string, zoneTitle: string, limit: number = 3) => {
+  let products;
+  
+  // 根据zone ID判断是按品牌还是按分类筛选
+  if (zoneId === 'mobil-lubricants') {
+    // 美孚润滑油 - 按品牌筛选
+    products = allLubricants.filter(lubricant => lubricant.data.brand === '美孚');
+  } else if (zoneId === 'great-wall-lubricants') {
+    // 长城润滑油 - 按品牌筛选
+    products = allLubricants.filter(lubricant => lubricant.data.brand === '长城');
+  } else if (zoneId === 'apex-lubricants') {
+    // APEX润滑油 - 按品牌筛选
+    products = allLubricants.filter(lubricant => lubricant.data.brand === 'APEX');
+  } else {
+    // 其他分类 - 按category筛选
+    products = allLubricants.filter(lubricant => lubricant.data.category === zoneTitle);
+  }
+  
+  return products.slice(0, limit);
+};
+---
+
+<Layout
+  title="润滑油系列产品 - 华南森孚"
+  description="探索我们的专业润滑油系列产品, 包括工业润滑油、商用车润滑油、乘用车润滑油和特种润滑油。提供高性能产品与专业技术支持。"
+>
+  <!-- Hero Section -->
+  <HeroSecondary 
+    title="润滑油系列产品"
+    subtitle="全面覆盖工业与车用润滑需求, 提供高性能产品与专业技术支持"
+    backgroundImage="/images/common/unsplash_martin-martz_factory_29PaIGCEq10.webp"
+    backgroundStyle="image"
+  />
+
+  <!-- All Zones Section -->
+  {zones.map((zone) => {
+    const zoneProducts = getZoneProducts(zone.id, zone.data.title);
+    return (
+      <section id={zone.id} class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <!-- Zone Header with Image -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12 items-start">
+            <!-- Zone Info -->
+            <div class="space-y-6">
+              <h2 class="text-3xl md:text-4xl font-bold text-primary-dark">
+                {zone.data.title}
+              </h2>
+
+              <p class="text-lg text-neutral-dark leading-relaxed">
+                {zone.data.description}
+              </p>
+
+              <div class="space-y-4">
+                {zone.data.features && zone.data.features.length > 0 && (
+                  <div>
+                    <h3 class="text-xl font-semibold text-primary-dark mb-3">产品特点</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {zone.data.features.map((feature:string) => (
+                        <li class="flex items-center space-x-3">
+                          <div class="w-2 h-2 bg-primary rounded-full"></div>
+                          <span class="text-neutral-dark">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+              </div>
+            </div>
+
+            <!-- Product Image -->
+            <div class="relative rounded-lg overflow-hidden elegant-shadow">
+              <img
+                src={zone.data.image || "/zone-cards/help-desks.webp"}
+                alt={zone.data.title}
+                class="w-full h-[350px] object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <!-- Featured Products in this Zone -->
+          {zoneProducts.length > 0 && (
+            <div class="pt-8">
+              <div class="flex items-center justify-between mb-8">
+                <h3 class="text-2xl font-semibold text-primary-dark">
+                  {zone.data.title} 相关产品
+                </h3>
+                <a
+                  href={`/zones/${zone.id}`}
+                  class="text-primary hover:text-primary-soft transition-colors font-medium flex items-center"
+                >
+                  查看全部产品
+                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {zoneProducts.map((lubricant) => {
+                  // 将lubricant转换为PropertyCard兼容的格式
+                  // PropertyCard.astro
+                  const productData = {
+                    id: lubricant.id,
+                    data: {
+                      id: lubricant.id,
+                      title: lubricant.data.title,
+                      description: lubricant.data.description,
+                      zone: lubricant.data.category,
+                      subcategory: lubricant.data.subCategory,
+                      brand: lubricant.data.brand,
+                      location: {
+                        address: lubricant.data.category
+                      },
+                      image: lubricant.data.image,
+                      status: 'available',
+                      featured: lubricant.data.featured
+                    }
+                  };
+                  return <PropertyCard property={productData} />;
+                })}
+              </div>
+            </div>
+          )}
+
+          {zoneProducts.length === 0 && (
+            <div class="pt-8 text-center">
+              <div class="bg-primary-soft p-8 rounded-lg text-primary-lightest">
+                <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                </svg>
+                <p class="font-medium mb-2">产品详情即将上线</p>
+                <p class="text-sm">{zone.data.title}的详细产品信息将很快推出。</p>
+              </div>
+            </div>
+          )}
+
+          <!-- Divider at the bottom -->
+          <div class="border-t border-primary-faint mt-13"></div>
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="需要技术选型建议？"
+    subtitle="我们的专家团队将为您提供专业的产品选择和解决方案。联系我们获取技术支持和润滑方案咨询。"
+  />
+</Layout>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor: Element) => {
+    anchor.addEventListener('click', (e: Event) => {
+      e.preventDefault();
+      const target = document.querySelector((e.currentTarget as HTMLAnchorElement).getAttribute('href') || '');
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Highlight active zone on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const filterLinks = document.querySelectorAll('a[href^="#"]');
+
+  const observerOptions = {
+    rootMargin: '-100px 0px -70% 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Update active filter link
+        filterLinks.forEach(link => {
+          link.classList.remove('bg-primary', 'text-white');
+          link.classList.add('border-neutral-300', 'text-neutral-dark');
+        });
+
+        const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+        if (activeLink) {
+          activeLink.classList.remove('border-neutral-300', 'text-neutral-dark');
+          activeLink.classList.add('bg-primary', 'text-white');
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>

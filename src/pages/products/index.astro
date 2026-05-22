@@ -1,0 +1,871 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PropertyCard from '../../components/PropertyCard.astro';
+import { getCollection } from 'astro:content';
+import CallToAction from '../../components/CallToAction.astro';
+import HeroSecondary from '../../components/HeroSecondary.astro';
+
+// 从Content Collections获取润滑油产品数据
+const lubricants = await getCollection('lubricants');
+
+// 转换为与PropertyCard兼容的格式(不包含价格)
+const allProducts = lubricants.map((item) => ({
+  id: item.id, // 使用item.id而不是item.slug
+  data: {
+    id: item.id, // 添加id到data对象中以满足ProductData接口要求
+    title: item.data.title,
+    description: item.data.description,
+    currency: 'CNY', // 保留字段但不显示
+    zone: item.data.category,
+    brand: item.data.brand || '', // 品牌
+    subcategory: item.data.subCategory || '',
+    application: item.data.application || [], // 使用场景
+    image: item.data.image,
+    images: item.data.images || [], // 产品图册
+    status: 'available',
+    featured: item.data.featured
+  }
+}));
+
+// Get unique values for filters
+const uniqueZones = [...new Set(allProducts.map(p => p.data.zone))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+
+// Get unique subCategory
+const uniqueSubCategory = [...new Set(allProducts.map(p => p.data.subcategory).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+
+// Get unique brands
+const uniqueBrands = [...new Set(allProducts.map(p => p.data.brand).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+
+// Get unique applications (flatten and deduplicate) - 初始全部场景
+const uniqueApplications = [...new Set(
+  allProducts.flatMap(p => p.data.application).filter(Boolean)
+)].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+
+// Get featured count for display
+const featuredCount = allProducts.filter(p => p.data.featured).length;
+
+// 不再在Astro端做分页,渲染所有产品卡片,由client-side JavaScript控制分页显示
+// const PROPERTIES_PER_PAGE = 9;
+// const currentPage = 1;
+// const totalPages = Math.ceil(allProperties.length / PROPERTIES_PER_PAGE);
+// const startIndex = (currentPage - 1) * PROPERTIES_PER_PAGE;
+// const endIndex = startIndex + PROPERTIES_PER_PAGE;
+// const paginatedProperties = allProperties.slice(startIndex, endIndex);
+
+// 计算分页信息(仅用于初始页面显示)
+const PRODUCTS_PER_PAGE = 6;
+const initialTotalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
+---
+
+<Layout
+  title="所有产品 - 华南森孚"
+  description="浏览我们全面的润滑油系列产品,包括商用车、乘用车、工业和特种润滑油。找到适合您需求的优质润滑解决方案。"
+>
+  <!-- Hero Section -->
+  <HeroSecondary 
+    title="所有润滑产品展示"
+    subtitle="探索我们精心挑选的优质润滑油产品, 涵盖商用车、乘用车、工业和特种应用等领域"
+    backgroundImage="/images/common/hnsf_warehouse_01_banner.webp"
+    backgroundStyle="image"
+  />
+
+  <!-- Advanced Filters Section -->
+  <section class="py-8 bg-white border-b border-primary-faint">
+    <div class="container mx-auto px-4">
+      <!-- Filter Controls -->
+      <div class="bg-primary-soft p-6 rounded-lg mb-6 text-primary-lightest">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-semibold">筛选产品</h2>
+          <div class="flex items-center gap-4">
+            <button id="clear-filters" class="bg-primary-faint text-primary px-4 py-2 rounded-sm border border-primary hover:bg-white hover:text-primary transition-colors text-sm font-medium cursor-pointer">
+              清除所有筛选
+            </button>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-end gap-4">
+          <!-- Category Filter -->
+          <div class="flex-1 min-w-[200px]">
+            <label class="block text-sm font-medium mb-2">主分类</label>
+            <select id="category-filter" class="filter-select">
+              <option value="">全部分类</option>
+              {uniqueZones.map(zone => (
+                <option value={zone}>{zone}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Subcategory Filter -->
+          <div class="flex-1 min-w-[200px]">
+            <label class="block text-sm font-medium mb-2">子分类</label>
+            <select id="subcategory-filter" class="filter-select">
+              <option value="">全部子分类</option>
+              {uniqueSubCategory.map(subcategory => (
+                <option value={subcategory}>{subcategory}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Brand Filter -->
+          <div class="flex-1 min-w-[200px]">
+            <label class="block text-sm font-medium mb-2">品牌</label>
+            <select id="brand-filter" class="filter-select">
+              <option value="">全部品牌</option>
+              {uniqueBrands.map(brand => (
+                <option value={brand}>{brand}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Application Filter -->
+          <div class="flex-1 min-w-[200px]">
+            <label class="block text-sm font-medium mb-2">使用场景</label>
+            <select id="application-filter" class="filter-select">
+              <option value="">全部场景</option>
+              <!-- 使用场景选项将通过JavaScript动态生成 -->
+            </select>
+          </div>
+
+          <!-- Sort Options -->
+          <div class="flex-1 min-w-[200px]">
+            <label class="block text-sm font-medium mb-2">排序方式</label>
+            <select id="sort-select" class="filter-select">
+              <option value="featured">推荐优先</option>
+              <option value="name-asc">名称 A-Z</option>
+              <option value="name-desc">名称 Z-A</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active Filters Display -->
+        <div id="active-filters" class="mt-4 hidden">
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-sm font-medium">当前筛选:</span>
+            <div id="filter-tags" class="flex items-center gap-2 flex-wrap"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Count -->
+      <div class="flex items-center justify-between">
+        <div class="text-neutral-dark">
+          <span id="results-count" class="font-medium">显示 {allProducts.length} 个产品</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-12 bg-primary-faint">
+    <div class="container mx-auto px-4">
+      {allProducts.length > 0 ? (
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {allProducts.map((product) => (
+            <PropertyCard property={product} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <svg class="w-16 h-16 text-primary-pale mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+          </svg>
+          <h3 class="text-xl font-semibold text-primary-dark mb-2">未找到产品</h3>
+          <p class="text-neutral-light mb-6">请尝试调整筛选条件</p>
+          <button class="bg-primary text-white px-6 py-3 rounded-sm hover:bg-primary-soft transition-colors font-medium">
+            清除筛选
+          </button>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Pagination -->
+  {initialTotalPages > 1 && (
+    <section class="py-8 bg-white border-t border-primary-faint">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between">
+          <div class="text-sm text-neutral-light">
+            显示 <span id="pagination-start">1</span>-<span id="pagination-end">{Math.min(PRODUCTS_PER_PAGE, allProducts.length)}</span> 共 <span id="pagination-total">{allProducts.length}</span> 个产品
+          </div>
+
+          <div class="flex items-center space-x-2 overflow-x-auto pb-2" id="pagination-controls">
+            <button id="btn-prev" class="flex-shrink-0 px-2 py-1 sm:px-3 sm:py-1 border border-neutral-300 rounded-md text-neutral-dark hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm">
+              <span class="sm:hidden">‹</span>
+              <span class="hidden sm:inline">上一页</span>
+            </button>
+
+            <div id="page-numbers" class="flex items-center space-x-1 sm:space-x-2">
+              {Array.from({length: initialTotalPages}, (_, i) => i + 1).map(page => (
+                <button 
+                  class={`page-btn flex-shrink-0 px-1.5 py-1 sm:px-3 sm:py-1 border rounded-md text-xs sm:text-sm ${page === 1 ? 'bg-primary text-white border-primary' : 'border-neutral-300 text-neutral-dark hover:border-primary hover:text-primary'}`}
+                  data-page={page}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+
+            <button id="btn-next" class="flex-shrink-0 px-2 py-1 sm:px-3 sm:py-1 border border-neutral-300 rounded-md text-neutral-dark hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed text-sm">
+              <span class="sm:hidden">›</span>
+              <span class="hidden sm:inline">下一页</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <CallToAction
+    title="没有找到合适的产品?"
+    subtitle="让我们的专家团队帮助您找到完美的润滑解决方案。我们拥有丰富的产品线,可满足各种应用需求。"
+  />
+</Layout>
+
+<style>
+  /* 分页栏响应式优化 */
+  @media (max-width: 640px) {
+    #pagination-controls {
+      gap: 0.25rem;
+    }
+    #page-numbers {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+    }
+    #page-numbers::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+  }
+
+  /* Custom Select Styles */
+  .filter-select {
+    width: 100%;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 1px solid #d4d4d4;
+    border-radius: 0.375rem;
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #262626;
+    transition: all 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .filter-select:hover {
+    border-color: #4f5b3c;
+    background-color: #fafafa;
+  }
+
+  .filter-select:focus {
+    outline: none;
+    border-color: #4f5b3c;
+    box-shadow: 0 0 0 2px rgba(79, 91, 60, 0.2);
+    background-color: white;
+  }
+
+  .filter-select option {
+    background-color: white;
+    color: #262626;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .filter-select option:hover,
+  .filter-select option:checked,
+  .filter-select option:focus {
+    background-color: #e8ede1;
+    color: #4f5b3c;
+  }
+
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  .filter-select::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+
+  /* Firefox styling */
+  .filter-select option:active,
+  .filter-select option:focus-visible {
+    background-color: #e8ede1 !important;
+    color: #4f5b3c !important;
+  }
+
+  .filter-select:disabled {
+    background-color: #f5f5f5;
+    color: #a3a3a3;
+    cursor: not-allowed;
+  }
+
+  .filter-select:disabled:hover {
+    border-color: #d4d4d4;
+    background-color: #f5f5f5;
+  }
+
+  /* Ensure proper dropdown arrow in all browsers */
+  .filter-select::-ms-expand {
+    display: none;
+  }
+
+  /* Custom scrollbar for dropdowns in Webkit browsers */
+  .filter-select::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .filter-select::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  .filter-select::-webkit-scrollbar-thumb {
+    background: #96ab7c;
+    border-radius: 4px;
+  }
+
+  .filter-select::-webkit-scrollbar-thumb:hover {
+    background: #7a8c5e;
+  }
+
+  /* Ensure hidden property cards don't affect grid layout */
+  [data-property-slug].hidden {
+    display: none !important;
+  }
+</style>
+
+<script define:vars={{ allProducts: allProducts.map(p => ({
+    ...p.data,
+    slug: p.id
+  })), initialTotalPages: initialTotalPages, uniqueZones: uniqueZones, uniqueBrands: uniqueBrands, uniqueApplications: uniqueApplications }}>
+  // Filter and Sort functionality
+  let allProductsData = allProducts;
+  let filteredProducts = [...allProductsData];
+  let currentPage = 1;
+  const productsPerPage = 6;
+  let totalPages = initialTotalPages;
+
+  // Get filter elements
+  const categoryFilter = document.getElementById('category-filter');
+  const subcategoryFilter = document.getElementById('subcategory-filter');
+  const brandFilter = document.getElementById('brand-filter');
+  const applicationFilter = document.getElementById('application-filter');
+  const sortSelect = document.getElementById('sort-select');
+  const clearFiltersBtn = document.getElementById('clear-filters');
+  const productsGrid = document.getElementById('products-grid');
+  const resultsCount = document.getElementById('results-count');
+  const activeFiltersDiv = document.getElementById('active-filters');
+  const filterTagsDiv = document.getElementById('filter-tags');
+  
+  // Pagination elements
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const pageNumbersContainer = document.getElementById('page-numbers');
+  const paginationStart = document.getElementById('pagination-start');
+  const paginationEnd = document.getElementById('pagination-end');
+  const paginationTotal = document.getElementById('pagination-total');
+
+  // Storage key for session storage
+  const STORAGE_KEY = 'product_filter_state';
+
+  /**
+   * Save current filter state to session storage
+   */
+  function saveFilterState() {
+    const filterState = {
+      category: categoryFilter.value,
+      subcategory: subcategoryFilter.value,
+      brand: brandFilter.value,
+      application: applicationFilter.value,
+      sort: sortSelect.value,
+      page: currentPage,
+      timestamp: Date.now()
+    };
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(filterState));
+  }
+
+  /**
+   * Load filter state from session storage
+   * @returns {Object|null} Filter state or null if not found
+   */
+  function loadFilterState() {
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : null;
+  }
+
+  /**
+   * Clear filter state from session storage
+   */
+  function clearFilterState() {
+    sessionStorage.removeItem(STORAGE_KEY);
+  }
+
+  /**
+   * Check if this is a page refresh (not navigation back)
+   * Uses Performance API to detect reload
+   */
+  function isPageRefresh() {
+    // Check if the page was loaded via reload or direct URL access
+    const perfEntries = performance.getEntriesByType('navigation');
+    if (perfEntries.length > 0) {
+      const navType = perfEntries[0].type;
+      // 'reload' means user refreshed the page
+      // 'navigate' means normal navigation (including back/forward)
+      return navType === 'reload';
+    }
+    // Fallback: check if there's no history state
+    return !performance.navigation || performance.navigation.type === 1;
+  }
+
+  /**
+   * Apply saved filter state to UI
+   * @param {Object} filterState - The filter state to apply
+   */
+  function applySavedFilterState(filterState) {
+    if (!filterState) return;
+
+    // Restore filter values
+    if (filterState.category) categoryFilter.value = filterState.category;
+    if (filterState.subcategory) subcategoryFilter.value = filterState.subcategory;
+    if (filterState.brand) brandFilter.value = filterState.brand;
+    if (filterState.application) applicationFilter.value = filterState.application;
+    if (filterState.sort) sortSelect.value = filterState.sort;
+    
+    // Restore page number (validate it's within range after filtering)
+    if (filterState.page) {
+      // We'll adjust this after applying filters
+      currentPage = filterState.page;
+    }
+  }
+
+  /**
+   * Update application filter options based on other filters
+   * 根据其他筛选项动态更新"使用场景"选项
+   */
+  function updateApplicationOptions() {
+    // 获取当前已选的其他筛选条件
+    const selectedCategory = categoryFilter.value;
+    const selectedSubcategory = subcategoryFilter.value;
+    const selectedBrand = brandFilter.value;
+
+    // 如果没有选择任何筛选条件, 显示全部使用场景
+    if (!selectedCategory && !selectedSubcategory && !selectedBrand) {
+      renderApplicationOptions(uniqueApplications);
+      return;
+    }
+
+    // 根据已选的筛选条件过滤产品
+    let filteredForApps = allProductsData.filter(product => {
+      if (selectedCategory && product.zone !== selectedCategory) {
+        return false;
+      }
+      if (selectedSubcategory && product.subcategory !== selectedSubcategory) {
+        return false;
+      }
+      if (selectedBrand && product.brand !== selectedBrand) {
+        return false;
+      }
+      return true;
+    });
+
+    // 提取这些产品中的所有使用场景
+    const availableApplications = [...new Set(
+      filteredForApps.flatMap(p => p.application).filter(Boolean)
+    )].sort((a, b) => a.localeCompare(b, 'zh-CN'));
+
+    // 保存当前选中的使用场景值
+    const currentApplicationValue = applicationFilter.value;
+
+    // 重新渲染使用场景选项
+    renderApplicationOptions(availableApplications);
+
+    // 如果之前选中的使用场景在新的选项中不存在, 重置为空
+    if (currentApplicationValue && !availableApplications.includes(currentApplicationValue)) {
+      applicationFilter.value = '';
+    } else {
+      applicationFilter.value = currentApplicationValue;
+    }
+  }
+
+  /**
+   * Render application filter options
+   * @param {string[]} applications - 要显示的使用场景列表
+   */
+  function renderApplicationOptions(applications) {
+    // 清空现有选项（保留第一个"全部场景"）
+    while (applicationFilter.options.length > 1) {
+      applicationFilter.remove(1);
+    }
+
+    // 添加新的选项
+    applications.forEach(app => {
+      const option = document.createElement('option');
+      option.value = app;
+      option.textContent = app;
+      applicationFilter.appendChild(option);
+    });
+  }
+
+  function applyFilters() {
+    filteredProducts = allProducts.filter(product => {
+      // Category filter
+      if (categoryFilter.value && product.zone !== categoryFilter.value) {
+        return false;
+      }
+
+      // Subcategory filter
+      if (subcategoryFilter.value && product.subcategory !== subcategoryFilter.value) {
+        return false;
+      }
+
+      // Brand filter
+      if (brandFilter.value && product.brand !== brandFilter.value) {
+        return false;
+      }
+
+      // Application filter
+      if (applicationFilter.value && !product.application.includes(applicationFilter.value)) {
+        return false;
+      }
+
+      return true;
+    });
+
+    applySorting();
+    
+    // Recalculate total pages after filtering
+    totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    
+    // Validate currentPage is within range
+    if (currentPage > totalPages) {
+      currentPage = totalPages > 0 ? totalPages : 1;
+    }
+    
+    renderProducts();
+    updatePagination();
+    updateActiveFilters();
+    
+    // Save filter state to session storage
+    saveFilterState();
+  }
+
+  function applySorting() {
+    const sortBy = sortSelect.value;
+
+    switch(sortBy) {
+      case 'name-asc':
+        filteredProducts.sort((a, b) => {
+          return a.title.localeCompare(b.title, 'zh-CN');
+        });
+        break;
+      case 'name-desc':
+        filteredProducts.sort((a, b) => {
+          return b.title.localeCompare(a.title, 'zh-CN');
+        });
+        break;
+      case 'featured':
+      default:
+        // Featured products first, then by creation date
+        filteredProducts.sort((a, b) => {
+          const featuredA = a.featured ? 1 : 0;
+          const featuredB = b.featured ? 1 : 0;
+          if (featuredB !== featuredA) {
+            return featuredB - featuredA;
+          }
+          // If both are featured or both are not featured, sort by slug (as proxy for date/id)
+          return b.slug.localeCompare(a.slug);
+        });
+        break;
+    }
+  }
+
+  function renderProducts() {
+    // Update results count
+    if (resultsCount) {
+      resultsCount.textContent = `显示 ${filteredProducts.length} 个产品`;
+    }
+
+    // Get all product cards
+    const allProductCards = Array.from(productsGrid.querySelectorAll('[data-property-slug]'));
+
+    if (filteredProducts.length === 0) {
+      // Hide all product cards
+      allProductCards.forEach(card => {
+        card.classList.add('hidden');
+      });
+
+      // Show no results message if it doesn't exist
+      let noResultsMessage = productsGrid.querySelector('.no-results-message');
+      if (!noResultsMessage) {
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.className = 'col-span-full text-center py-12 no-results-message';
+        noResultsDiv.innerHTML = `
+          <svg class="w-16 h-16 text-primary-pale mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+          </svg>
+          <h3 class="text-xl font-semibold text-primary-dark mb-2">未找到产品</h3>
+          <p class="text-neutral-light mb-6">请尝试调整筛选条件</p>
+          <button class="bg-primary text-white px-6 py-3 rounded-sm hover:bg-primary-soft transition-colors font-medium" onclick="clearAllFilters()">
+            清除筛选
+          </button>
+        `;
+        productsGrid.appendChild(noResultsDiv);
+      }
+      return;
+    }
+
+    // Remove no results message if it exists
+    const noResultsMsg = productsGrid.querySelector('.no-results-message');
+    if (noResultsMsg) {
+      noResultsMsg.remove();
+    }
+
+    // Calculate pagination
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
+    // Get slugs of current page products in order
+    const pageSlugs = paginatedProducts.map(p => p.slug);
+
+    // Hide all product cards first
+    allProductCards.forEach(card => {
+      card.classList.add('hidden');
+    });
+
+    // Show only the current page products in the correct order
+    pageSlugs.forEach((slug, index) => {
+      const card = allProductCards.find(c => c.getAttribute('data-property-slug') === slug);
+      if (card) {
+        card.classList.remove('hidden');
+        // Move card to the end of the grid to maintain order
+        productsGrid.appendChild(card);
+      }
+    });
+  }
+
+  function updatePagination() {
+    if (!btnPrev || !btnNext || !pageNumbersContainer) return;
+    
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = Math.min(startIndex + productsPerPage, filteredProducts.length);
+    
+    // Update pagination info
+    if (paginationStart) paginationStart.textContent = filteredProducts.length > 0 ? startIndex + 1 : 0;
+    if (paginationEnd) paginationEnd.textContent = endIndex;
+    if (paginationTotal) paginationTotal.textContent = filteredProducts.length;
+    
+    // Update button states
+    btnPrev.disabled = currentPage === 1;
+    btnNext.disabled = currentPage === totalPages || totalPages === 0;
+    
+    // Rebuild page numbers based on current total pages
+    pageNumbersContainer.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement('button');
+      btn.className = `page-btn flex-shrink-0 px-1.5 py-1 sm:px-3 sm:py-1 border rounded-md text-xs sm:text-sm ${i === currentPage ? 'bg-primary text-white border-primary' : 'border-neutral-300 text-neutral-dark hover:border-primary hover:text-primary'}`;
+      btn.setAttribute('data-page', i);
+      btn.textContent = i;
+      pageNumbersContainer.appendChild(btn);
+    }
+  }
+
+  function goToPage(page) {
+    if (page < 1 || page > totalPages) return;
+    currentPage = page;
+    renderProducts();
+    updatePagination();
+    
+    // Scroll to top of products section
+    productsGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function prevPage() {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  }
+
+  function nextPage() {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  }
+
+  function updateActiveFilters() {
+    const tags = [];
+    
+    if (categoryFilter.value) {
+      tags.push({ label: categoryFilter.value, type: 'category' });
+    }
+    
+    if (subcategoryFilter.value) {
+      tags.push({ label: subcategoryFilter.value, type: 'subcategory' });
+    }
+    
+    if (brandFilter.value) {
+      tags.push({ label: brandFilter.value, type: 'brand' });
+    }
+    
+    if (applicationFilter.value) {
+      tags.push({ label: applicationFilter.value, type: 'application' });
+    }
+    
+    if (tags.length > 0) {
+      activeFiltersDiv.classList.remove('hidden');
+      filterTagsDiv.innerHTML = tags.map(tag => `
+        <span class="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm rounded-full">
+          ${tag.label}
+          <button onclick="removeFilter('${tag.type}')" class="ml-1 hover:text-primary-faint">&times;</button>
+        </span>
+      `).join('');
+    } else {
+      activeFiltersDiv.classList.add('hidden');
+      filterTagsDiv.innerHTML = '';
+    }
+  }
+
+  window.removeFilter = function(type) {
+    switch(type) {
+      case 'category':
+        categoryFilter.value = '';
+        break;
+      case 'subcategory':
+        subcategoryFilter.value = '';
+        break;
+      case 'brand':
+        brandFilter.value = '';
+        break;
+      case 'application':
+        applicationFilter.value = '';
+        break;
+    }
+    applyFilters();
+  };
+
+  function clearAllFilters() {
+    // Reset all filter values
+    categoryFilter.value = '';
+    subcategoryFilter.value = '';
+    brandFilter.value = '';
+    applicationFilter.value = '';
+    sortSelect.value = 'featured';
+
+    // Reset filtered products to all products
+    filteredProducts = [...allProductsData];
+    
+    // Recalculate total pages
+    totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    currentPage = 1;
+
+    // Apply default sorting (featured) and render
+    applySorting();
+    renderProducts();
+    updatePagination();
+    updateActiveFilters();
+    
+    // 重置使用场景选项为全部
+    renderApplicationOptions(uniqueApplications);
+    
+    // Clear filter state from session storage
+    clearFilterState();
+  }
+
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if this is a page refresh
+    const refreshed = isPageRefresh();
+    
+    if (refreshed) {
+      // If page was refreshed, clear the filter state and reset filters
+      clearFilterState();
+      // Initialize application options with all available
+      renderApplicationOptions(uniqueApplications);
+      // Apply initial sorting (featured by default)
+      applySorting();
+      renderProducts();
+      updatePagination();
+    } else {
+      // Try to load saved filter state (for back navigation)
+      const savedState = loadFilterState();
+      
+      if (savedState) {
+        // Apply saved filter state
+        applySavedFilterState(savedState);
+        
+        // 先更新使用场景选项
+        updateApplicationOptions();
+        
+        // Apply filters with restored state
+        applyFilters();
+      } else {
+        // No saved state, use defaults
+        // Initialize application options with all available
+        renderApplicationOptions(uniqueApplications);
+        applySorting();
+        renderProducts();
+        updatePagination();
+      }
+    }
+
+    // Event listeners for filters that affect application options
+    // 当主分类、子分类或品牌改变时, 更新使用场景选项
+    [categoryFilter, subcategoryFilter, brandFilter].forEach(element => {
+      if (element) {
+        element.addEventListener('change', function() {
+          updateApplicationOptions();
+          applyFilters();
+        });
+      }
+    });
+
+    // Event listener for application filter (doesn't trigger update of itself)
+    if (applicationFilter) {
+      applicationFilter.addEventListener('change', applyFilters);
+    }
+
+    // Event listener for sort select
+    if (sortSelect) {
+      sortSelect.addEventListener('change', applyFilters);
+    }
+
+    // Event listener for clear filters button
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener('click', clearAllFilters);
+    }
+    
+    // Event listeners for pagination buttons
+    if (btnPrev) {
+      btnPrev.addEventListener('click', prevPage);
+    }
+    
+    if (btnNext) {
+      btnNext.addEventListener('click', nextPage);
+    }
+    
+    // Event listeners for page number buttons
+    if (pageNumbersContainer) {
+      pageNumbersContainer.addEventListener('click', function(e) {
+        const pageBtn = e.target.closest('.page-btn');
+        if (pageBtn) {
+          const page = parseInt(pageBtn.getAttribute('data-page'));
+          goToPage(page);
+        }
+      });
+    }
+  });
+</script>

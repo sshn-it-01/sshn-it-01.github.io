@@ -1,0 +1,314 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Droplets, Thermometer, Shield, CheckCircle } from '@lucide/astro';
+import CallToAction from '../../components/CallToAction.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import { companyInfo } from '../../data/company';
+
+export async function getStaticPaths() {
+  const lubricants = await getCollection('lubricants');
+  return lubricants.map((item) => ({
+    params: { slug: item.id }, // 使用item.id作为slug
+    props: { product: item }
+  }));
+}
+
+interface Props {
+  product: {
+    id: string; // 使用id而不是slug
+    data: {
+      title: string;
+      description: string;
+      keywords?: string;
+      models?: string;
+      category: string;
+      brand?: string;
+      series?: string;
+      application?: string[];
+      subCategory: string;
+      image: string;
+      images?: string[];
+      featured: boolean;
+      originalFilePath?: string;
+      referenceUrl?: string; // 数据参考链接
+    };
+  };
+}
+
+const { product } = Astro.props;
+
+// 准备图片数据
+const galleryImages = product.data.images 
+  ? product.data.images.map((img: string, index: number) => ({
+      src: img,
+      thumb: img,
+      caption: `${product.data.title} - 图片 ${index + 1}`,
+      alt: `${product.data.title}`
+    }))
+  : [{
+      src: product.data.image,
+      thumb: product.data.image,
+      caption: product.data.title,
+      alt: product.data.title
+    }];
+
+// Get related products (same category, excluding current)
+const allLubricants = await getCollection('lubricants');
+const relatedProducts = allLubricants
+  .filter(p => p.data.category === product.data.category && p.id !== product.id) // 使用id比较
+  .sort(() => Math.random() - 0.5) // 随机打乱顺序
+  .slice(0, 3);
+---
+
+<Layout
+  title={`${product.data.title} - 华南森孚`}
+  description={product.data.description}
+>
+  <!-- Product Hero Section -->
+  <section class="relative h-96 overflow-hidden">
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative container mx-auto px-4 h-full flex items-center">
+      <div class="max-w-2xl">
+        <div class="text-sm text-white/80 mb-2">
+          <p> {product.data.category} > </p>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          {product.data.title}
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-12">
+          <!-- Product Description -->
+          <div>
+            <h2 class="text-2xl font-bold text-primary-dark mb-6">产品详情</h2>
+            <div class="prose prose-lg max-w-none text-neutral-dark">
+              <p class="leading-relaxed">{product.data.description}</p>
+            </div>
+          </div>
+
+          <!-- Product Image Gallery -->
+          <div>
+            <h3 class="text-xl font-semibold text-primary-dark mb-6">产品图片</h3>
+            <ImageGallery images={galleryImages} initialDisplayCount={4} />
+          </div>
+
+          <!-- Additional Details -->
+          <div>
+            <h3 class="text-xl font-semibold text-primary-dark mb-6">产品信息</h3>
+            <div class="bg-primary-soft p-6 rounded-lg space-y-4 text-primary-lightest">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <span class="text-sm font-medium">产品分类:</span>
+                  <span class="ml-2">{product.data.category}</span>
+                </div>
+                {product.data.subCategory && (
+                  <div>
+                    <span class="text-sm font-medium">产品类型:</span>
+                    <span class="ml-2">{product.data.subCategory}</span>
+                  </div>
+                )}
+                {product.data.brand && (
+                  <div>
+                    <span class="text-sm font-medium">品牌:</span>
+                    <span class="ml-2">{product.data.brand}</span>
+                  </div>
+                )}
+                {product.data.series && (
+                  <div>
+                    <span class="text-sm font-medium">系列:</span>
+                    <span class="ml-2">{product.data.series}</span>
+                  </div>
+                )}
+              </div>
+              
+              {/* Application/Usage Scenarios */}
+              {product.data.application && product.data.application.length > 0 && (
+                <div class="pt-4 border-t border-primary-faint">
+                  <span class="text-sm font-medium block mb-2">使用场景:</span>
+                  <div class="flex flex-wrap gap-2">
+                    {product.data.application.map((app: string) => (
+                      <span class="px-3 py-1 bg-white text-primary rounded-full text-sm border border-primary-faint">
+                        {app}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <!-- Models -->
+          {product.data.models && (
+            <div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-6">产品型号</h3>
+              <div class="flex flex-wrap gap-2">
+                {product.data.models.split(',').map((models: string) => (
+                  <span class="px-3 py-1 bg-primary-faint text-primary-dark rounded-full text-sm">
+                    {models.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Keywords/Tags -->
+          {product.data.keywords && (
+            <div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-6">产品标签</h3>
+              <div class="flex flex-wrap gap-2">
+                {product.data.keywords.split(',').map((keyword: string) => (
+                  <span class="px-3 py-1 bg-primary-faint text-primary-dark rounded-full text-sm">
+                    {keyword.trim()}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Related Products -->
+          {relatedProducts.length > 0 && (
+            <div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-6">推荐产品</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedProducts.map((relatedProduct) => (
+                  <div class="bg-white border border-primary-faint rounded-lg overflow-hidden hover:elegant-shadow transition-shadow">
+                    <img
+                      src={relatedProduct.data.image}
+                      alt={relatedProduct.data.title}
+                      class="w-full h-48 object-cover"
+                    />
+                    <div class="p-4">
+                      <h4 class="font-semibold text-primary-dark mb-2">{relatedProduct.data.title}</h4>
+                      <a
+                        href={`/products/${relatedProduct.id}`}
+                        class="text-primary hover:text-primary-soft transition-colors text-sm font-medium"
+                      >
+                        查看详情 →
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Data Reference Section -->
+          <div class="border-t border-primary-faint pt-8 mt-12">
+            <h3 class="text-xl font-semibold text-primary-dark mb-4">数据参考</h3>
+            <div class="bg-primary-soft p-6 rounded-lg space-y-4 text-primary-lightest">
+              <div class="flex items-start space-x-3">
+                <svg class="w-5 h-5 text-primary-lightest flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="text-sm leading-relaxed">
+                  注：以上数据为典型值, 并非所有批次产品的保证指标。实际产品可能略有差异, 具体以出厂检测报告为准。
+                </p>
+              </div>
+              
+              {/* 从markdown内容中提取数据参考链接 */}
+              {product.data.referenceUrl && (
+                <div class="flex items-start space-x-3">
+                  <svg class="w-5 h-5 text-primary-lightest flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <div>
+                    <span class="text-sm font-medium block mb-1">详细参考：
+                    <a 
+                      href={product.data.referenceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-primary-lightest hover:text-accent transition-colors text-sm break-all underline"
+                    >
+                      {product.data.referenceUrl}
+                    </a></span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1">
+          <!-- Sticky Container for Both Cards -->
+          <div class="sticky top-24 space-y-6">
+            <!-- Contact Card (removed price section) -->
+            <div class="bg-white rounded-lg elegant-shadow p-6">
+              <h2 class="text-xl font-semibold text-primary-dark mb-4">产品咨询</h2>
+              <p class="text-sm text-neutral-light mb-6">
+                如需了解更多产品信息、技术参数或获取报价,请联系我们的专业团队。
+              </p>
+              
+              <!-- Contact Button -->
+              <a
+                href="/contact"
+                class="block w-full text-center bg-primary text-white py-3 rounded-sm hover:bg-primary-soft transition-colors font-medium mb-4"
+              >
+                立即咨询
+              </a>
+
+
+
+              <!-- Quick Info -->
+              <div class="mt-6 pt-4 border-t border-primary-faint space-y-2 text-sm">
+                <!-- Phone Number -->
+                <div class="text-center">
+                  <p class="text-sm text-neutral-light mb-2">或直接致电</p>
+                  <a 
+                    href={`tel:${companyInfo.phone}`} 
+                    class="text-3xl font-bold text-primary hover:text-primary-soft transition-colors"
+                  >
+                    {companyInfo.phone}
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- WeChat Mall QR Code Card -->
+            <div class="bg-white rounded-lg elegant-shadow p-6">
+              <h2 class="text-xl font-semibold text-primary-dark mb-4 text-center">在线商城</h2>
+              <p class="text-sm text-neutral-light mb-4 text-center">
+                扫描二维码, 访问我们的微信商城, 随时随地浏览产品、下单购买
+              </p>
+              
+              <!-- QR Code Image -->
+              <div class="flex justify-center mb-4">
+                <img 
+                  src={companyInfo.qrcode.wechatMiniProgram}
+                  alt="在线微信商城二维码"
+                  class="w-48 h-48 object-contain border-2 border-primary-faint rounded-lg p-2"
+                />
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="需要更多产品信息?"
+    subtitle="我们的专业团队随时为您提供详细的产品规格、技术参数和应用建议。"
+  />
+</Layout>
+
+<style>
+  .prose {
+    line-height: 1.7;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+</style>

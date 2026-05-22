@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSecondary from '../components/HeroSecondary.astro';
+import { getCollection } from 'astro:content';
+import CallToAction from '../components/CallToAction.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+import { companyInfo } from '../data/company';
+
+// Get gallery data for company photos
+const galleryItems = await getCollection('gallery');
+
+// Sort by order and convert to ImageGallery format
+const sortedGalleryItems = galleryItems.sort((a, b) => a.data.order - b.data.order);
+
+const galleryImages = sortedGalleryItems.map((item) => ({
+  src: item.data.image,
+  thumb: item.data.thumb || item.data.image,
+  caption: item.data.title,
+  alt: item.data.description || item.data.title
+}));
+---
+
+<Layout
+  title="关于我们 - 华南森孚"
+  description="了解佛山市华南森孚贸易有限公司,成立于 1991 年,专注润滑油行业 30+ 年。提供美孚品牌工业润滑油、车用润滑油等全系列产品,三水区设有三家门店,为您提供专业润滑解决方案。"
+>
+  <!-- Hero Section -->
+  <HeroSecondary
+    title="关于我们"
+    subtitle="三十余年专注润滑解决方案, 华南地区值得信赖的润滑油供应商"
+    height="h-96"
+    alignment="left"
+    backgroundImage="/images/common/unsplash_lotus-design-n-print-OqZKI15yBnM.webp"
+    backgroundStyle="image"
+  />
+
+  <!-- Our Story Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-primary-dark mb-6">公司简介</h2>
+          <div class="space-y-4 text-neutral-dark leading-relaxed">
+            <p>
+              佛山市华南森孚贸易有限公司成立于 1991 年, 是美孚润滑油 (Mobil) 在中国的首批授权经销商。公司深耕润滑行业三十余年, 凭借深厚的历史积淀与卓越的品牌授权,已发展成为华南地区极具影响力的专业润滑油供应商。
+            </p>
+            <p>
+              公司总部位于广东佛山,致力于通过高品质的产品与专业的技术服务, 为汽车制造、工程机械、工厂设备及食品生产等领域提供全方位的润滑解决方案。
+            </p>
+            <p>
+              我们不仅销售产品, 更致力于通过科学的用油方案和技术咨询, 帮助客户优化维护流程,切实降低综合润滑成本。我们的专业团队结合市场经验与对客户需求的深刻理解,为您提供最合适的润滑解决方案。
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <img
+            src="/images/stores/hnsf_jianbei_01.webp"
+            alt="华南森孚健北店"
+            class="rounded-lg elegant-shadow w-full"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-lg elegant-shadow-lg">
+            <div class="text-3xl font-bold mb-2">30+</div>
+            <div class="text-sm">年行业经验</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Values Section -->
+  <section class="py-16 bg-primary-faint">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary-dark mb-4">核心优势</h2>
+        <p class="text-neutral max-w-2xl mx-auto">
+          三大产品线,满足您的全方位润滑需求
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 elegant-shadow">
+            <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+              <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary-dark mb-3">车用润滑油</h3>
+          <p class="text-neutral">
+            涵盖汽油发动机油、柴油发动机油及摩托车机油, 满足各类交通运输工具的润滑需求。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 elegant-shadow">
+            <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary-dark mb-3">工业润滑油</h3>
+          <p class="text-neutral">
+            为工厂机械设备提供高效保护, 延长设备使用寿命, 提升运行效率。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 elegant-shadow">
+            <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.699-3.181a1 1 0 011.772.954L16.804 7.5l3.11 4.044a1 1 0 01-.49 1.54L14.5 14.387V17a1 1 0 01-1 1H6.5a1 1 0 01-1-1v-2.613L.576 13.084a1 1 0 01-.49-1.54L3.2 7.5l-1.624-3.781a1 1 0 011.772-.954L4.047 4.905 8 3.323V3a1 1 0 011-1h1z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary-dark mb-3">特种油品与润滑脂</h3>
+          <p class="text-neutral">
+            针对特殊工况和特定设备, 提供定制化的润滑脂及特种油品解决方案。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 elegant-shadow">
+            <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary-dark mb-3">专业技术服务</h3>
+          <p class="text-neutral">
+            提供科学的用油方案和技术咨询, 帮助客户优化维护流程,降低综合润滑成本。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Gallery Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary-dark mb-4">公司风采</h2>
+        <p class="text-neutral max-w-2xl mx-auto">
+          展示我们的办公环境、仓储设施、资质证书和专业团队
+        </p>
+      </div>
+
+      {galleryImages.length > 0 ? (
+        <ImageGallery images={galleryImages} id="company-gallery" />
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-neutral-light">暂无图片展示</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="需要专业的润滑解决方案？"
+    subtitle="联系我们的专业团队, 获取个性化的产品推荐和技术支持"
+  />
+</Layout>

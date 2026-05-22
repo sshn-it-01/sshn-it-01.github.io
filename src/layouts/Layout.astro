@@ -1,0 +1,214 @@
+---
+import '../styles/global.css'
+import { companyInfo } from '../data/company';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  meta?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+  };
+}
+
+const {
+  title,
+  description = "Discover exclusive products in prime locations",
+  image = "/og-image.jpg",
+  canonical,
+  meta = {}
+} = Astro.props;
+
+// Use meta title if provided, otherwise fall back to title
+const seoTitle = meta.title || title;
+const seoDescription = meta.description || description;
+
+// Generate canonical URL if not provided
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={seoDescription} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/images/common/hn-logo_bg-trans.webp" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>{seoTitle}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Keywords Meta Tag -->
+    {meta.keywords && meta.keywords.length > 0 && (
+      <meta name="keywords" content={meta.keywords.join(', ')} />
+    )}
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seoTitle} />
+    <meta property="og:description" content={seoDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    {image && <meta property="og:image" content={image} />}
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={seoTitle} />
+    <meta property="twitter:description" content={seoDescription} />
+    <meta property="twitter:url" content={canonicalUrl} />
+    {image && <meta property="twitter:image" content={image} />}
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Navigation Header -->
+    <header class="bg-white border-b border-primary-faint sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between gap-2 md:gap-4">
+          <!-- Logo -->
+          <a href="/" class="flex items-center space-x-2 flex-shrink-0 min-w-0">
+            <img src="/images/common/hn-logo_bg-trans.webp" alt="华南森孚Logo" class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
+            <span class="text-lg md:text-lg lg:text-xl font-semibold text-primary whitespace-nowrap truncate">佛山市华南森孚贸易有限公司</span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-8 flex-shrink-0">
+            <a href="/" class="text-neutral-dark hover:text-primary transition-colors">首页</a>
+            <a href="/zones" class="text-neutral-dark hover:text-primary transition-colors">系列产品</a>
+            <a href="/products" class="text-neutral-dark hover:text-primary transition-colors">所有产品</a>
+            <a href="/about" class="text-neutral-dark hover:text-primary transition-colors">公司介绍</a>
+            <a href="/contact" class="font-bold bg-accent text-primary-lightest px-4 py-2 rounded-sm hover:bg-primary transition-colors whitespace-nowrap">
+              服务热线 {companyInfo.phone}
+            </a>
+          </div>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-button" class="lg:hidden p-2 flex-shrink-0">
+            <svg class="w-6 h-6 text-neutral-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden pt-4 pb-2">
+          <div class="flex flex-col space-y-2">
+            <a href="/" class="text-neutral-dark hover:text-primary transition-colors py-2">首页</a>
+            <a href="/zones" class="text-neutral-dark hover:text-primary transition-colors py-2">系列产品</a>
+            <a href="/products" class="text-neutral-dark hover:text-primary transition-colors py-2">所有产品</a>
+            <a href="/about" class="text-neutral-dark hover:text-primary transition-colors py-2">公司介绍</a>
+            <a href="/contact" class="font-bold bg-accent text-primary-lightest px-4 py-2 rounded-sm hover:bg-primary transition-colors whitespace-nowrap">
+              服务热线 {companyInfo.phone}
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-dark text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div class="col-span-1 md:col-span-1">
+            <h3 class="text-white font-semibold mb-4">快速导航</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/" class="text-neutral-light hover:text-primary-pale transition-colors">首页</a></li>
+              <li><a href="/products" class="text-neutral-light hover:text-primary-pale transition-colors">所有产品</a></li>
+              <li><a href="/agents" class="text-neutral-light hover:text-primary-pale transition-colors">专业团队</a></li>
+              <li><a href="/about" class="text-neutral-light hover:text-primary-pale transition-colors">公司介绍</a></li>
+              <li><a href="/contact" class="text-neutral-light hover:text-primary-pale transition-colors">联系方式</a></li>
+            </ul>
+          </div>
+
+          <!-- Product Categories -->
+          <div>
+            <h3 class="text-white font-semibold mb-4">系列产品</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/zones/industrial-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">工业润滑油</a></li>
+              <li><a href="/zones/passenger-car-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">乘用车润滑油</a></li>
+              <li><a href="/zones/commercial-vehicle-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">商用车润滑油</a></li>
+              <li><a href="/zones/specialty-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">特种润滑油</a></li>
+              <li><a href="/zones/mobil-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">美孚润滑油</a></li>
+              <li><a href="/zones/apex-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">APEX阿帕克斯润滑油</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="text-white font-semibold mb-4">联系我们</h3>
+            <ul class="space-y-2 text-sm text-neutral-light">
+              <li>
+                <strong class="text-white">工作时间:</strong>
+                <span>{companyInfo.workHours}</span>
+              </li>
+              <li>
+                <strong class="text-white">联系电话:</strong>
+                <span>{companyInfo.phone}</span>
+              </li>
+              <li>
+                <strong class="text-white">地址:</strong>
+                <span>{companyInfo.address}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Follow Us -->
+          <div>
+            <h3 class="text-white font-semibold mb-4">关注我们</h3>
+            <p class="text-neutral-light text-sm leading-relaxed mb-4">
+              关注我们的微信公众号和小程序<br />
+              获取最新产品信息和优惠活动
+            </p>
+            <div class="flex space-x-4">
+              <img 
+                src={companyInfo.qrcode.wechatOfficial} 
+                alt="微信公众号二维码" 
+                title="微信公众号"
+                class="w-20 h-20 bg-white rounded object-contain"
+                loading="lazy"
+              />
+              <img 
+                src={companyInfo.qrcode.wechatMiniProgram} 
+                alt="微信小程序二维码" 
+                title="微信小程序"
+                class="w-20 h-20 bg-white rounded object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-neutral-700 mt-8 pt-8 text-center text-sm text-neutral-light">
+          <p>版权所有 &copy; <span id="current-year">{new Date().getFullYear()}</span> {companyInfo.name} {companyInfo.icpNumber}</p>
+          <div class="mt-2 space-x-4">
+            <a href="/copyright" class="hover:text-primary-pale transition-colors">版权声明</a>
+            <span>|</span>
+            <a href="/disclaimer" class="hover:text-primary-pale transition-colors">免责声明</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>    

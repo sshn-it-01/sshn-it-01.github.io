@@ -1,0 +1,356 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import PropertyCard from '../../components/PropertyCard.astro';
+import CallToAction from '../../components/CallToAction.astro';
+
+export async function getStaticPaths() {
+  const zones = await getCollection('zones');
+  return zones.map((zone) => ({
+    params: { zone: zone.id },
+    props: { zone }
+  }));
+}
+
+interface Props {
+  zone: CollectionEntry<'zones'>;
+}
+
+const { zone } = Astro.props;
+
+// 获取该分类下的所有润滑油产品
+const allLubricants = await getCollection('lubricants');
+
+// 动态从所有产品中提取唯一品牌列表
+const uniqueBrands = [...new Set(allLubricants.map(l => l.data.brand))];
+
+// 根据zone ID或title智能判断筛选方式
+let zoneProducts;
+
+// 检查当前zone是否对应某个品牌（通过title匹配）
+const matchedBrand = uniqueBrands.find(brand => zone.data.title.includes(brand));
+
+if (matchedBrand) {
+  // 如果zone title包含品牌名, 按品牌筛选
+  zoneProducts = allLubricants.filter(lubricant => lubricant.data.brand === matchedBrand);
+} else {
+  // 否则按category筛选
+  zoneProducts = allLubricants.filter(lubricant => lubricant.data.category === zone.data.title);
+}
+
+// 获取相关推荐分类（排除当前）
+const allZones = await getCollection('zones');
+const relatedZones = allZones.filter(z => z.id !== zone.id).slice(0, 3);
+---
+
+<Layout
+  title={`${zone.data.title} - 华南森孚`}
+  description={`探索${zone.data.title}系列产品。${zone.data.description}`}
+>
+  <!-- Hero Section -->
+  <section class="relative h-96 overflow-hidden">
+    <div class="absolute inset-0 hero-gradient"></div>
+    <div class="relative container mx-auto px-4 h-full flex items-center">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          {zone.data.title}
+        </h1>
+        <p class="text-xl text-white/90">
+          {zone.data.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zone Overview Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Zone Info -->
+        <div>
+          <h2 class="text-3xl font-bold text-primary-dark mb-6">
+            {zone.data.title} 系列
+          </h2>
+
+          <div class="prose prose-lg max-w-none text-neutral-dark mb-8">
+            <p class="leading-relaxed">
+              {zone.data.overview || zone.data.description}
+            </p>
+          </div>
+
+          <!-- Key Features -->
+          {zone.data.features && zone.data.features.length > 0 && (
+            <div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-4">产品特点</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {zone.data.features.map((feature: string) => (
+                  <div class="flex items-center space-x-3">
+                    <div class="w-2 h-2 bg-primary rounded-full"></div>
+                    <span class="text-neutral-dark">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Product Image -->
+        <div class="relative rounded-lg overflow-hidden elegant-shadow">
+          <img
+            src={zone.data.image}
+            alt={zone.data.title}
+            class="w-full h-[400px] object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  {zoneProducts.length > 0 && (
+    <section class="py-16 bg-primary-faint">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">
+            {zone.data.title} 相关产品
+          </h2>
+          <p class="text-neutral max-w-2xl mx-auto">
+            探索我们专业的{zone.data.title}系列产品, 满足您的各种润滑需求
+          </p>
+        </div>
+
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {zoneProducts.map((lubricant, index) => {
+            // 将lubricant转换为PropertyCard兼容的格式
+            const propertyData = {
+              id: lubricant.id,
+              data: {
+                title: lubricant.data.title,
+                description: lubricant.data.description,
+                zone: lubricant.data.category,
+                subcategory: lubricant.data.subCategory,
+                location: {
+                  address: lubricant.data.category
+                },
+                image: lubricant.data.image,
+                status: 'available',
+                featured: lubricant.data.featured
+              }
+            };
+            // 前6个产品默认显示,其余隐藏
+            return (
+              <div class={index >= 6 ? 'product-card hidden' : 'product-card'}>
+                <PropertyCard property={propertyData} />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 操作按钮区域 - 始终显示 */}
+        <div class="flex items-center justify-center gap-4 mt-12">
+          {zoneProducts.length > 6 && (
+            <button 
+              id="show-more-btn"
+              data-total-products={zoneProducts.length}
+              class="bg-primary text-white px-8 py-3 rounded-sm hover:bg-primary-soft transition-colors font-medium cursor-pointer"
+            >
+              查看更多产品
+            </button>
+          )}
+          <a 
+            href="/products"
+            class="bg-white text-primary border-2 border-primary px-8 py-3 rounded-sm hover:bg-primary-faint transition-colors font-medium inline-flex items-center"
+          >
+            所有产品中心
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {zoneProducts.length === 0 && (
+    <section class="py-16 bg-primary-faint">
+      <div class="container mx-auto px-4">
+        <div class="text-center">
+          <div class="bg-white p-12 rounded-lg elegant-shadow max-w-2xl mx-auto">
+            <svg class="w-16 h-16 text-primary-pale mx-auto mb-6" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+            </svg>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4">
+              产品即将上线
+            </h3>
+            <p class="text-neutral-dark mb-8">
+              我们正在精心策划{zone.data.title}系列产品, 敬请期待！
+            </p>
+            <a
+              href="/contact"
+              class="inline-flex items-center bg-primary-soft text-primary-lightest px-6 py-3 rounded-sm hover:bg-primary transition-colors font-medium"
+            >
+              联系我们
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Related Zones Section -->
+  {relatedZones.length > 0 && (
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">
+            相关推荐
+          </h2>
+          <p class="text-neutral max-w-2xl mx-auto">
+            探索更多润滑油系列产品
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {relatedZones.map((relatedZone) => {
+            // 动态从所有产品中提取唯一品牌列表（已在上方定义）
+            // 智能判断该zone是按品牌还是按分类筛选
+            let relatedProductCount;
+            
+            const matchedBrand = uniqueBrands.find(brand => relatedZone.data.title.includes(brand));
+            
+            if (matchedBrand) {
+              // 如果zone title包含品牌名, 按品牌统计
+              relatedProductCount = allLubricants.filter(
+                lubricant => lubricant.data.brand === matchedBrand
+              ).length;
+            } else {
+              // 否则按category统计
+              relatedProductCount = allLubricants.filter(
+                lubricant => lubricant.data.category === relatedZone.data.title
+              ).length;
+            }
+
+            return (
+              <a
+                href={`/zones/${relatedZone.id}`}
+                class="block bg-primary-soft rounded-lg overflow-hidden hover:elegant-shadow-lg transition-shadow"
+              >
+                <div class="relative">
+                  <img
+                    src={relatedZone.data.image}
+                    alt={relatedZone.data.title}
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                  />
+                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <h3 class="text-white text-xl font-semibold">
+                      {relatedZone.data.title}
+                    </h3>
+                    <p class="text-white/80 text-sm">
+                      {relatedProductCount} 个产品
+                    </p>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <p class="text-white text-sm line-clamp-2">
+                    {relatedZone.data.description}
+                  </p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Contact Section -->
+  <CallToAction
+    title={`需要了解${zone.data.title}？`}
+    subtitle={`我们的专业团队将为您提供详细的产品规格、技术参数和应用建议。联系我们获取专业的润滑方案咨询。`}
+  />
+</Layout>
+
+<style>
+  .prose {
+    line-height: 1.7;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 产品卡片过渡动画 */
+  .product-card {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .product-card.hidden {
+    display: none;
+  }
+
+  .product-card.showing {
+    animation: fadeInUp 0.4s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const showMoreBtn = document.getElementById('show-more-btn');
+    
+    if (showMoreBtn) {
+      let visibleCount = 6; // 初始显示数量
+      const totalProducts = parseInt(showMoreBtn.getAttribute('data-total-products')) || 0;
+      
+      showMoreBtn.addEventListener('click', function() {
+        // 获取所有隐藏的产品卡片
+        const hiddenCards = Array.from(document.querySelectorAll('.product-card.hidden'));
+        
+        // 计算这次要显示的数量（最多6个）
+        const cardsToShow = Math.min(6, hiddenCards.length);
+        
+        // 逐个显示产品卡片
+        for (let i = 0; i < cardsToShow; i++) {
+          setTimeout(() => {
+            hiddenCards[i].classList.remove('hidden');
+            hiddenCards[i].classList.add('showing');
+          }, i * 50); // 每个间隔50ms
+        }
+        
+        // 更新可见计数
+        visibleCount += cardsToShow;
+        
+        // 更新按钮文本
+        const remaining = totalProducts - visibleCount;
+        if (remaining > 0) {
+          showMoreBtn.textContent = `查看更多产品 (${remaining})`;
+        } else {
+          // 如果全部显示完毕, 隐藏按钮
+          showMoreBtn.style.display = 'none';
+        }
+      });
+    }
+  });
+</script>

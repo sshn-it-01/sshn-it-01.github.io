@@ -1,0 +1,118 @@
+---
+interface Props {
+  store: {
+    name: string;
+    address: string;
+    phone: string;
+    email?: string;
+    hours: string;
+    services: string[];
+    image?: string;
+    mapLink?: string;
+  };
+}
+
+const { store } = Astro.props;
+---
+
+<div class="bg-white rounded-lg border-2 border-primary-faint hover:border-primary hover:elegant-shadow transition-all duration-300 overflow-hidden">
+  <!-- Store Image -->
+  <div class="relative">
+    {store.image ? (
+      <>
+        <img
+          src={store.image}
+          alt={`${store.name} - 门店实景`}
+          class="w-full h-64 object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 text-white">
+          <h3 class="text-xl font-bold">{store.name}</h3>
+        </div>
+      </>
+    ) : (
+      <div class="bg-primary-faint p-6">
+        <h3 class="text-xl font-bold text-primary-dark">{store.name}</h3>
+      </div>
+    )}
+  </div>
+
+  <!-- Store Info -->
+  <div class="p-6">
+    <!-- Address -->
+    <div class="mb-4">
+      <div class="flex items-start mb-2">
+        <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+        </svg>
+        <div>
+          <span class="text-primary-dark font-medium text-sm">地址:</span>
+          <p class="text-neutral-dark text-sm mt-1 leading-relaxed">{store.address}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="flex items-center mb-4">
+      <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+      </svg>
+      <span class="text-primary-dark font-medium text-sm">电话:</span>
+      <a href={`tel:${store.phone}`} class="ml-2 text-neutral-dark hover:text-primary text-sm">
+        {store.phone}
+      </a>
+    </div>
+
+    <!-- Email -->
+    {store.email ? (
+      <div class="flex items-center mb-4">
+        <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+        <span class="text-primary-dark font-medium text-sm">邮箱:</span>
+        <a href={`mailto:${store.email}`} class="ml-2 text-neutral-dark hover:text-primary text-sm">
+          {store.email}
+        </a>
+      </div>
+    ) : null}
+
+    <!-- Business Hours -->
+    <div class="flex items-center mb-4">
+      <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+      </svg>
+      <span class="text-primary-dark font-medium text-sm">营业时间:</span>
+      <span class="ml-2 text-neutral-dark text-sm">{store.hours}</span>
+    </div>
+
+    <!-- Services -->
+    <div class="mb-6">
+      <div class="flex items-center mb-2">
+        <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        <span class="text-primary-dark font-medium">服务项目:</span>
+      </div>
+      <div class="flex flex-wrap gap-1">
+        {store.services.map((service) => (
+          <span class="px-2 py-1 bg-neutral-100 text-primary-dark text-xs rounded-full">
+            {service}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Navigation Button -->
+    {store.mapLink ? (
+      <a
+        href={store.mapLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block w-full py-3 px-4 bg-primary text-white text-center rounded-sm font-medium transition-colors hover:bg-primary-soft"
+      >
+        查看地图导航
+      </a>
+    ) : null}
+  </div>
+</div>

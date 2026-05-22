@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { companyInfo } from '../data/company';
+
+const pageTitle = '免责声明';
+const pageDescription = `${companyInfo.name}网站免责声明 - 信息仅供参考, 不构成任何承诺或保证。`;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="min-h-screen bg-gradient-to-b from-neutral-light to-white py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- 页面标题 -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-primary-dark mb-4">{pageTitle}</h1>
+        <div class="w-20 h-1 bg-accent-gold mx-auto"></div>
+      </div>
+
+      <!-- 声明内容 -->
+      <div class="bg-white rounded-lg shadow-lg p-8 space-y-6">
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">1. 信息准确性声明</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            本网站 ({companyInfo.name}) 提供的所有信息, 包括但不限于产品规格、技术参数、应用领域、联系方式等内容, 仅供参考之用。我们已尽力确保信息的准确性和时效性, 但不对信息的完整性、准确性或及时性作出任何明示或暗示的保证。
+          </p>
+          <p class="text-neutral-dark leading-relaxed mt-3">
+            产品技术参数可能因生产商更新而有所变化, 具体产品信息请以实际产品说明书或联系我们的销售人员获取最新信息为准。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">2. 非承诺性质</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            网站上展示的任何产品信息、价格、库存状态等均不构成任何形式的要约、承诺或合同条款。所有产品信息可能随时变更, 恕不另行通知。用户在做出采购决策前, 应通过官方渠道进行独立核实并与我们的销售团队确认。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">3. 产品使用建议</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            本网站提供的产品应用建议和技术信息仅供参考。在实际使用润滑油产品前, 建议您: 
+          </p>
+          <ul class="list-disc list-inside text-neutral-dark space-y-2 mt-3 ml-4">
+            <li>仔细阅读产品技术数据表和使用说明</li>
+            <li>根据设备制造商的要求选择适当的产品</li>
+            <li>咨询专业技术人员获取个性化建议</li>
+            <li>在大规模使用前进行小批量测试</li>
+          </ul>
+          <p class="text-neutral-dark leading-relaxed mt-3">
+            {companyInfo.name}不对因不当使用产品而造成的任何损失承担责任。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">4. 用户责任</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            用户在使用本网站信息时, 应自行承担因依赖该等信息而产生的风险。我们建议用户在签订任何采购合同或进行投资决策前, 咨询专业顾问并核实相关信息的真实性。
+          </p>
+          <p class="text-neutral-dark leading-relaxed mt-3">
+            用户应确保按照产品说明和安全规范正确使用润滑油产品, 并采取适当的安全防护措施。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">5. 第三方品牌及链接</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            本网站展示的品牌产品均通过正规渠道采购, 保证产品质量。这些品牌商标归各自品牌所有者所有, 网站使用相关标识仅用于产品展示说明。
+          </p>
+          <p class="text-neutral-dark leading-relaxed mt-3">
+            本网站可能包含指向第三方网站的链接, 这些链接仅为方便用户提供, 我们不对第三方网站的内容、隐私政策或行为承担责任。访问第三方网站的风险由用户自行承担。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">6. 免责范围的修改</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            我们保留随时修改本免责声明的权利, 修改后的声明将在网站上发布后立即生效。用户应定期查阅本页面以了解最新版本的免责声明。
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-dark mb-4">7. 运营主体与联系方式</h2>
+          <p class="text-neutral-dark leading-relaxed">
+            本网站由 <strong>{companyInfo.name}</strong> 运营。如您对本免责声明有任何疑问, 或发现网站信息存在错误, 请通过以下方式联系我们: 
+          </p>
+          <ul class="list-disc list-inside text-neutral-dark space-y-2 mt-3 ml-4">
+            <li>电话: {companyInfo.phone}</li>
+            <li>地址: {companyInfo.address}</li>
+          </ul>
+        </section>
+
+        <div class="pt-6 border-t border-neutral-light">
+          <p class="text-sm text-neutral-medium">
+            © {new Date().getFullYear()} {companyInfo.name}. 保留所有权利。
+          </p>
+          <p class="text-sm text-neutral-medium mt-2">
+            最后更新日期: 2026年5月
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

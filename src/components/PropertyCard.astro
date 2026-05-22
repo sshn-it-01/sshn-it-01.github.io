@@ -1,0 +1,124 @@
+---
+// product Card Component - Modified for Lubricant Products
+// Displays product information in a card format for listing pages
+
+// https://lucide.dev/icons/
+
+import { Droplets, Thermometer, Tag, Award } from '@lucide/astro';
+
+/**
+ * 产品卡片组件的属性接口
+ * @property title - 产品标题
+ * @property description - 产品描述
+ * @property zone - 产品分类（category）, 用于products数据结构
+ * @property category - 主分类, 用于lubricants数据结构
+ * @property subCategory - 子分类（英文标识）, 用于lubricants数据结构
+ * @property image - 产品主图路径
+ * @property images - 产品图册数组
+ * @property featured - 是否为推荐产品
+ */
+interface ProductData {
+  id?: string;
+  title: string;
+  description: string;
+  keywords?: string;
+  category?: string;
+  brand?: string;
+  series?: string;
+  application?: string[];
+  zone?: string;
+  subCategory?: string; // 添加驼峰命名的subCategory字段
+  subcategory?: string; // 保留小写的subcategory字段以兼容旧数据
+  image: string;
+  images?: string[];
+  featured: boolean;
+  originalFilePath?: string;
+  referenceUrl?: string;
+}
+
+/**
+ * 产品卡片组件的属性接口
+ * @property property - 包含id和data的产品对象
+ */
+interface Props {
+  property: {
+    id: string;
+    data: ProductData;
+  };
+}
+
+const { property } = Astro.props;
+
+/**
+ * 获取产品的主分类信息
+ * 兼容products和lubricants两种不同的数据结构
+ * 优先使用zone字段, 其次使用category字段
+ */
+const mainCategory = property.data.zone || property.data.category || '';
+
+/**
+ * 获取产品的子分类信息
+ * 兼容驼峰命名(subCategory)和小写命名(subcategory)
+ * 优先使用subCategory, 其次使用subcategory
+ */
+const subCategory = property.data.subCategory || property.data.subcategory || '';
+
+---
+
+<!-- Product Card Component -->
+<article data-property-slug={property.id} class="bg-white rounded-lg overflow-hidden elegant-shadow hover:elegant-shadow-lg transition-shadow duration-300">
+  <!-- Image Section -->
+  <div class="relative">
+    <img
+      src={property.data.image}
+      alt={property.data.title}
+      class="w-full h-48 md:h-56 object-cover"
+      loading="lazy"
+    />
+
+    <!-- Featured Badge -->
+    {property.data.featured && (
+      <div class="absolute top-3 right-3 bg-accent-soft text-primary px-3 py-1 rounded-full text-xs font-medium">
+        推荐
+      </div>
+    )}
+  </div>
+
+  <!-- Content Section -->
+  <div class="p-4">
+    <!-- Title (Moved to top, removed price display) -->
+    <h3 class="text-lg font-semibold text-neutral-dark mb-2">
+      <a href={`/products/${property.id}`} class="hover:text-primary transition-colors">
+        {property.data.title}
+      </a>
+    </h3>
+
+    <!-- Product Specs - Updated for lubricant products -->
+    <div class="flex items-center justify-between text-sm text-neutral-dark mb-3">
+
+      <div class="flex items-center">
+        <Award class="w-4 h-4 mr-1 text-primary-pale" />
+        <span>{property.data.brand}</span>
+      </div>
+
+      <div class="flex items-center">
+        <Tag class="w-4 h-4 mr-1 text-primary-pale" />
+        <span>{mainCategory}</span>
+      </div>
+
+      <div class="flex items-center">
+        <Droplets class="w-4 h-4 mr-1 text-primary-pale" />
+        <span>{subCategory}</span>
+      </div>
+
+    </div>
+
+    <!-- CTA Button -->
+    <a
+      href={`/products/${property.id}`}
+      class="block w-full text-center bg-primary-soft text-primary-lightest py-2 rounded-sm hover:bg-primary transition-colors"
+    >
+      查看详情
+    </a>
+  </div>
+</article>

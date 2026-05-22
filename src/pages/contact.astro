@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSecondary from '../components/HeroSecondary.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+import WeChatQR from '../components/WeChatQR.astro';
+---
+
+<Layout
+  title="联系我们 - 华南森孚"
+  description="联系佛山市华南森孚贸易有限公司,获取专业润滑油解决方案。电话:0757-87722666。工作时间:周一至周日 08:00-18:00。"
+>
+  <!-- Hero Section -->
+  <HeroSecondary
+    title="联系我们"
+    subtitle="欢迎垂询,我们将竭诚为您服务"
+    height="h-96"
+    alignment="left"
+    backgroundImage="/images/common/unsplash_austin-distel-wawEfYdpkag.webp"
+    backgroundStyle="image"
+  />
+
+  <!-- Map Section (Full Width) -->
+  <section class="py-8 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-primary-dark text-center mb-8">公司位置</h2>
+        <div class="rounded-lg overflow-hidden elegant-shadow relative">
+          <!-- 高德静态地图图片,点击跳转到高德地图 -->
+          <a href="https://surl.amap.com/F52Cjs1ia2W" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="block relative group cursor-pointer">
+            <!-- 静态地图图片 -->
+            <img src="/maps/map_foshan_sanshui.webp"
+              alt="华南森孚健北店位置地图 - 点击查看详细位置"
+              class="w-full h-[400px] object-cover transition-all duration-300"
+            />
+
+          <!-- 自定义标记覆盖层 -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
+            <div class="relative group">
+              <!-- 标记阴影 -->
+              <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-3 bg-black opacity-20 rounded-full blur-sm"></div>
+
+              <!-- 自定义房屋Logo标记 -->
+              <div class="relative bg-primary-700 p-3 rounded-full shadow-lg transform transition-transform group-hover:scale-110">
+                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+              </div>
+
+              <!-- 标记针点 -->
+              <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-700 rotate-45"></div>
+
+              <!-- 悬停标签 -->
+              <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                <p class="text-sm font-semibold text-primary-700">华南森孚健北店</p>
+                <p class="text-xs text-neutral-light">佛山市三水区西南街健力宝北路10号</p>
+                <!-- 小箭头 -->
+                <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+              </div>
+            </div>
+          </div>
+
+            <!-- 悬停提示层 -->
+            <div class="absolute inset-0 bg-primary-dark/0 group-hover:bg-primary-dark/20 transition-all duration-300 flex items-end justify-center pb-8">
+              <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-xl mb-4">
+                <p class="text-primary-dark font-semibold text-lg flex items-center gap-2">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 100-4 3 3 0 000 4z"/>
+                  </svg>
+                  点击查看详细位置
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="mt-4 flex items-center justify-center space-x-6 text-sm text-neutral-light">
+          <div class="flex items-center space-x-2">
+            <svg class="w-4 h-4 text-primary-700" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            <span>佛山市三水区西南街健力宝北路10号</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg class="w-4 h-4 text-primary-700" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+            </svg>
+            <span>周一至周日 08:00-18:00</span>
+          </div>
+        </div>
+        <p class="text-center text-neutral-light mt-4 text-lg">
+          欢迎访问我们的门店,获取专业的润滑油解决方案和服务。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content with QR Codes -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- Two-column layout: Left contact info, Right WeChat QR codes -->
+        <!-- Mobile: vertical stack, Desktop: side by side -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <!-- Left: Contact Information -->
+          <div>
+            <ContactInfo />
+          </div>
+
+          <!-- Right: WeChat QR Codes Section -->
+          <div>
+            <h3 class="text-2xl font-bold text-neutral-dark mb-6 text-center lg:text-left">关注我们</h3>
+            <WeChatQR />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

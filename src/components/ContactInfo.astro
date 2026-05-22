@@ -1,0 +1,93 @@
+---
+// Contact Information Component - 华南森孚贸易有限公司主店信息
+import { companyInfo } from '../data/company';
+---
+
+<!-- 联系信息区域 - 左侧上下分区布局 -->
+<div class="flex flex-col h-full">
+  <!-- 左上区域: 联系电话(突出显示) -->
+  <div class="mb-8 pb-4 border-b-2 border-primary-400">
+    <!-- 联系电话标题(与"关注我们"保持一致) -->
+    <h3 class="text-2xl font-bold text-neutral-dark mb-3">
+      联系电话
+    </h3>
+    <!-- 联系人和号码(大号字体) -->
+    <div class="flex items-baseline gap-4 mb-3">
+      <span class="text-4xl font-bold text-primary-700">
+        {companyInfo.phone}
+      </span>
+    </div>
+  </div>
+
+  <!-- 左下区域: 其他联系信息 -->
+  <div class="flex flex-col gap-6">
+    <!-- 公司名称 -->
+    <div class="flex items-start space-x-4">
+      <!-- 公司图标 -->
+      <div class="w-6 h-6 text-primary-700 flex-shrink-0 mt-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-5a1 1 0 00-1-1H9a1 1 0 00-1 1v5a1 1 0 01-1 1H4a1 1 0 110-2V4z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <!-- 文字内容 -->
+      <div class="flex-1">
+        <h4 class="text-base font-semibold text-neutral-dark mb-2">公司名称</h4>
+        <p class="text-neutral-light leading-relaxed text-base">
+          {companyInfo.name}
+        </p>
+      </div>
+    </div>
+
+    <!-- 办公地址 -->
+    <div class="flex items-start space-x-4">
+      <!-- 位置图标 -->
+      <div class="w-6 h-6 text-primary-700 flex-shrink-0 mt-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <!-- 文字内容 -->
+      <div class="flex-1">
+        <h4 class="text-base font-semibold text-neutral-dark mb-2">办公地址</h4>
+        <p class="text-neutral-light leading-relaxed text-base">
+          {companyInfo.address}
+        </p>
+      </div>
+    </div>
+
+    <!-- 电子邮箱 -->
+    <div class="flex items-start space-x-4">
+      <!-- 图标容器 -->
+      <div class="w-6 h-6 text-primary-700 flex-shrink-0 mt-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+          <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+        </svg>
+      </div>
+      <!-- 文字内容 -->
+      <div class="flex-1">
+        <h4 class="text-base font-semibold text-neutral-dark mb-2">电子邮箱</h4>
+        <a href={`mailto:${companyInfo.email}`} class="text-primary-700 hover:text-primary-900 transition-colors text-base">
+          {companyInfo.email}
+        </a>
+      </div>
+    </div>
+
+    <!-- 办公时间 -->
+    <div class="flex items-start space-x-4">
+      <!-- 图标容器 -->
+      <div class="w-6 h-6 text-primary-700 flex-shrink-0 mt-1">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <!-- 文字内容 -->
+      <div class="flex-1">
+        <h4 class="text-base font-semibold text-neutral-dark mb-2">办公时间</h4>
+        <p class="text-neutral-light leading-relaxed text-base">
+          {companyInfo.workHours}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

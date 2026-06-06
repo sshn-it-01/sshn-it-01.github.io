@@ -9,7 +9,7 @@ export const companyInfo = {
   
   // Contact Info
   phone: '0757-87722666',
-  email: 'info@sshn.com',
+  email: 'hnsh1991@126.com',
   
   // Address
   address: '佛山市三水区西南街健力宝北路10号',

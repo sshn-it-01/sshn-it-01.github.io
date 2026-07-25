@@ -10,6 +10,22 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   integrations: [
-    sitemap()
+    sitemap({
+      filter: (page) => !page.includes('/404'),
+      serialize: (item) => {
+        if (item.url === 'https://www.hnsenfu.com/' || item.url === 'https://www.hnsenfu.com') {
+          item.priority = 1.0;
+        } else if (item.url.includes('/products/')) {
+          item.priority = 0.9;
+        } else if (item.url.includes('/zones/')) {
+          item.priority = 0.8;
+        } else if (item.url.includes('/about') || item.url.includes('/contact') || item.url.includes('/agents')) {
+          item.priority = 0.8;
+        } else {
+          item.priority = 0.7;
+        }
+        return item;
+      }
+    })
   ]
 });

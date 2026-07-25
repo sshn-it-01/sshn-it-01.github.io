@@ -25,6 +25,7 @@ const {
 // Use meta title if provided, otherwise fall back to title
 const seoTitle = meta.title || title;
 const seoDescription = meta.description || description;
+const seoKeywords = meta.keywords?.filter(Boolean).join(', ');
 
 // Generate canonical URL if not provided
 const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
@@ -36,6 +37,9 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <meta charset="UTF-8" />
     <meta name="description" content={seoDescription} />
     <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+    <meta name="author" content={companyInfo.name} />
+    <meta name="theme-color" content="#4f5b3c" />
     <link rel="icon" type="image/svg+xml" href="/images/common/hn-logo_bg-trans.webp" />
     <meta name="generator" content={Astro.generator} />
 
@@ -44,10 +48,13 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <!-- Keywords Meta Tag -->
-    {meta.keywords && meta.keywords.length > 0 && (
-      <meta name="keywords" content={meta.keywords.join(', ')} />
+    {seoKeywords && (
+      <meta name="keywords" content={seoKeywords} />
     )}
 
     <!-- Open Graph / Facebook -->
@@ -55,6 +62,8 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:title" content={seoTitle} />
     <meta property="og:description" content={seoDescription} />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={companyInfo.name} />
+    <meta property="og:locale" content="zh_CN" />
     {image && <meta property="og:image" content={image} />}
 
     <!-- Twitter -->
@@ -63,6 +72,8 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <meta property="twitter:description" content={seoDescription} />
     <meta property="twitter:url" content={canonicalUrl} />
     {image && <meta property="twitter:image" content={image} />}
+
+    <script type="application/ld+json" set:html={`{"@context":"https://schema.org","@type":"Organization","name":"${companyInfo.name}","url":"https://www.hnsenfu.com","logo":"https://www.hnsenfu.com/images/common/hn-logo_bg-trans.webp","telephone":"${companyInfo.phone}","address":{"@type":"PostalAddress","streetAddress":"${companyInfo.address}","addressLocality":"佛山","addressRegion":"广东","postalCode":"528100","addressCountry":"CN"},"sameAs":["https://www.hnsenfu.com"]}`} />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Navigation Header -->

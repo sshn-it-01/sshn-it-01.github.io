@@ -29,17 +29,17 @@ const agentsSchema = z.object({
   'agent-id': z.string(),
   title: z.string(),
   name: z.string(),
-  jobTitle: z.string(), // 职位头衔, 如：销售经理、技术顾问等
+  jobTitle: z.string(), // 职位头衔, 如: 销售经理、技术顾问等
   bio: z.string(), // 个人简介
   email: z.string().optional(),
   phone: z.string().optional(),
   image: z.string(),
-  department: z.string().optional(), // 所属部门, 如：工业润滑油部、车用油部等
-  professionalLevel: z.enum(['junior', 'mid', 'senior', 'expert']).optional(), // 职业级别：初级/中级/高级/专家
-  experience: z.string().optional(), // 工作经验, 如："8年"
-  specialties: z.array(z.string()).optional(), // 专长领域, 如：液压油、齿轮油、润滑脂等
+  department: z.string().optional(), // 所属部门, 如: 工业润滑油部、车用油部等
+  professionalLevel: z.enum(['junior', 'mid', 'senior', 'expert']).optional(), // 职业级别: 初级/中级/高级/专家
+  experience: z.string().optional(), // 工作经验, 如: "8年"
+  specialties: z.array(z.string()).optional(), // 专长领域, 如: 液压油、齿轮油、润滑脂等
   productCategories: z.array(z.string()).optional(), // 负责的产品类别
-  certifications: z.array(z.string()).optional(), // 专业认证, 如：MLA I, MLA II等
+  certifications: z.array(z.string()).optional(), // 专业认证, 如: MLA I, MLA II等
   languages: z.array(z.string()).optional(), // 语言能力
   serviceAreas: z.array(z.string()).optional(), // 服务区域
   achievements: z.array(z.string()).optional() // 主要成就
@@ -79,7 +79,7 @@ const lubricantsSchema = z.object({
   brand: z.string(), // 品牌: 美孚/长城/APEX
   series: z.string().optional(), // 系列
   application: z.array(z.string()).optional(), // 使用场景/应用领域
-  subCategory: z.string().optional(),   // 子分类：细分产品类型或型号系列
+  subCategory: z.string().optional(),   // 子分类: 细分产品类型或型号系列
   image: z.string()
     .transform((val) => val.trim() === '' ? '/images/products/common/default-product-img.webp' : val)
     .default('/images/products/common/default-product-img.webp'), // 产品主图, 空字符串时使用默认图片

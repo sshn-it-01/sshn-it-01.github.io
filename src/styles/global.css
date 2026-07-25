@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Primary - Deep Blue (60%) - 深蓝主色：专业、可靠、科技感 */
+  /* Primary - Deep Blue (60%) - 深蓝主色: 专业、可靠、科技感 */
   --color-primary-50: #e6f0ff;
   --color-primary-100: #cce0ff;
   --color-primary-200: #99c2ff;
@@ -13,7 +13,7 @@
   --color-primary-800: #003366;
   --color-primary-900: #002952;
 
-  /* Accent - Vibrant Orange (10%) - 活力橙点缀色：创新、行动号召 */
+  /* Accent - Vibrant Orange (10%) - 活力橙点缀色: 创新、行动号召 */
   --color-accent-50: #fff5f0;
   --color-accent-100: #ffe8db;
   --color-accent-200: #ffd1b7;
@@ -25,7 +25,7 @@
   --color-accent-800: #994000;
   --color-accent-900: #662b00;
 
-  /* Neutral Gray (30%) - 中性灰辅助色：稳重、清晰、现代 */
+  /* Neutral Gray (30%) - 中性灰辅助色: 稳重、清晰、现代 */
   --color-neutral-50: #f5f7fa;
   --color-neutral-100: #e8ecf1;
   --color-neutral-200: #d1d9e3;

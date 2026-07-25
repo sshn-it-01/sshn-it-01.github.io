@@ -193,7 +193,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
         </div>
 
         <div class="border-t border-neutral-700 mt-8 pt-8 text-center text-sm text-neutral-light">
-          <p>版权所有 &copy; <span id="current-year">{new Date().getFullYear()}</span> {companyInfo.name} {companyInfo.icpNumber}</p>
+          <p>版权所有 &copy; <span id="current-year">{new Date().getFullYear()}</span> {companyInfo.name} <a href={companyInfo.icpURL} target="_blank" rel="noopener noreferrer" class="hover:text-primary-pale transition-colors">{companyInfo.icpNumber}</a></p>
           <div class="mt-2 space-x-4">
             <a href="/copyright" class="hover:text-primary-pale transition-colors">版权声明</a>
             <span>|</span>

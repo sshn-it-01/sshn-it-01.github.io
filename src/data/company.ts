@@ -21,6 +21,7 @@ export const companyInfo = {
   
   // Legal Info
   icpNumber: '粤ICP备11099622号-2',
+  icpURL: 'https://beian.miit.gov.cn/',
   
   // Social Media (QR Codes)
   qrcode: {

@@ -1,0 +1,75 @@
+User-agent: *
+Allow: /
+
+# Prefer broad indexing for search engines
+Allow: /about/
+Allow: /products/
+Allow: /zones/
+Allow: /contact/
+Allow: /agents/
+
+# Allow major search engines and AI crawlers to access and learn from public content
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-image
+Allow: /
+
+User-agent: Baiduspider-news
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+User-agent: 360Spider-Image
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: Sogou News Spider
+Allow: /
+
+User-agent: Sogou+spider
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: DoubaoSpider
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: QianFan
+Allow: /
+
+User-agent: AliyunSecBot
+Allow: /
+
+User-agent: TencentTraveler
+Allow: /
+
+User-agent: MetaGPT
+Allow: /
+
+Sitemap: https://www.hnsenfu.com/sitemap-index.xml

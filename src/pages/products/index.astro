@@ -66,7 +66,8 @@ const initialTotalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
   <HeroSecondary 
     title="所有润滑产品展示"
     subtitle="探索我们精心挑选的优质润滑油产品, 涵盖商用车、乘用车、工业和特种应用等领域"
-    backgroundImage="/images/common/hnsf_warehouse_01_banner.webp"
+    height="h-56"
+    backgroundImage=""
     backgroundStyle="image"
   />
 
@@ -150,7 +151,7 @@ const initialTotalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
       <!-- Results Count -->
       <div class="flex items-center justify-between">
         <div class="text-neutral-dark">
-          <span id="results-count" class="font-medium">显示 {allProducts.length} 个产品</span>
+          <span id="results-count" class="font-medium">显示 {allProducts.length} 个产品系列</span>
         </div>
       </div>
     </div>
@@ -186,7 +187,7 @@ const initialTotalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
       <div class="container mx-auto px-4">
         <div class="flex items-center justify-between">
           <div class="text-sm text-neutral-light">
-            显示 <span id="pagination-start">1</span>-<span id="pagination-end">{Math.min(PRODUCTS_PER_PAGE, allProducts.length)}</span> 共 <span id="pagination-total">{allProducts.length}</span> 个产品
+            显示 <span id="pagination-start">1</span>-<span id="pagination-end">{Math.min(PRODUCTS_PER_PAGE, allProducts.length)}</span> 共 <span id="pagination-total">{allProducts.length}</span> 个产品系列
           </div>
 
           <div class="flex items-center space-x-2 overflow-x-auto pb-2" id="pagination-controls">
@@ -597,7 +598,7 @@ const initialTotalPages = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE);
   function renderProducts() {
     // Update results count
     if (resultsCount) {
-      resultsCount.textContent = `显示 ${filteredProducts.length} 个产品`;
+      resultsCount.textContent = `显示 ${filteredProducts.length} 个产品系列`;
     }
 
     // Get all product cards

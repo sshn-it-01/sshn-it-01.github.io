@@ -278,16 +278,24 @@ const relatedProducts = allLubricants
             <div class="bg-white rounded-lg elegant-shadow p-6">
               <h2 class="text-xl font-semibold text-primary-dark mb-4 text-center">在线商城</h2>
               <p class="text-sm text-neutral-light mb-4 text-center">
-                扫描二维码, 访问我们的微信商城, 随时随地浏览产品、下单购买
+                扫描二维码或点击进入我们的微信商城, 随时随地浏览产品、下单购买
               </p>
               
               <!-- QR Code Image -->
               <div class="flex justify-center mb-4">
-                <img 
-                  src={companyInfo.qrcode.wechatMiniProgram}
-                  alt="在线微信商城二维码"
-                  class="w-48 h-48 object-contain border-2 border-primary-faint rounded-lg p-2"
-                />
+                <a
+                  href="https://s.t9ii.cn/m/kXCW27"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block hover:opacity-90 transition-opacity"
+                  aria-label="点击进入华南森孚微信小程序商城"
+                >
+                  <img 
+                    src={companyInfo.qrcode.wechatMiniProgram}
+                    alt="在线微信商城二维码"
+                    class="w-48 h-48 object-contain border-2 border-primary-faint rounded-lg p-2"
+                  />
+                </a>
               </div>
             
             </div>

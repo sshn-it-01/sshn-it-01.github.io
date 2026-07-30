@@ -73,3 +73,7 @@ User-agent: MetaGPT
 Allow: /
 
 Sitemap: https://www.hnsenfu.com/sitemap-index.xml
+Sitemap: https://www.hnsenfu.com/sitemap-0.xml
+# Discovery paths for LLM/AI indexers
+Sitemap: https://www.hnsenfu.com/llms.txt
+Sitemap: https://www.hnsenfu.com/llms-full.txt

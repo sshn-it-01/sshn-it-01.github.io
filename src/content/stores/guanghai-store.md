@@ -1,7 +1,7 @@
 ---
 store-id: "guanghai-store"
 title: "广海店 - 华南森孚美孚换油中心"
-name: "华南森孚美孚换油中心（广海店）"
+name: "华南森孚美孚换油中心 (广海店)"
 address: "佛山市三水区广海大道西 23 号"
 phone: "0757-87722666"
 email: "hnsh1991@126.com"

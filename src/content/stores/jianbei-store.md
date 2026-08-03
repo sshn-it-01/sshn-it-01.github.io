@@ -1,7 +1,7 @@
 ---
 store-id: "jianbei-store"
 title: "健北店 - 佛山市华南森孚贸易有限公司"
-name: "佛山市华南森孚贸易有限公司（健北店）"
+name: "佛山市华南森孚贸易有限公司 (健北店)"
 address: "佛山市三水区西南街健力宝北路 10 号"
 phone: "0757-87722666"
 email: "hnsh1991@126.com"
@@ -13,7 +13,6 @@ services:
   - "产品购买"
   - "专业咨询"
   - "会员服务"
-  - "物流配送"
 image: "/images/stores/hnsf_jianbei_01.webp"
 mapLink: "https://surl.amap.com/F52Cjs1ia2W"
 featured: true

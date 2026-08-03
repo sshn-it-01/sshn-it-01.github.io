@@ -11,6 +11,7 @@ services:
   - "检修保养"
   - "礼品兑换"
   - "产品购买"
+  - "专业咨询"
   - "会员服务"
 image: "/images/stores/hnsf_guanghai_01.webp"
 mapLink: "https://www.amap.com/search?query=佛山市华南森孚"

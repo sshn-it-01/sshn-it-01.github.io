@@ -12,6 +12,8 @@ services:
   - "礼品兑换"
   - "产品购买"
   - "专业咨询"
+  - "会员服务"
+  - "物流配送"
 image: "/images/stores/hnsf_jianbei_01.webp"
 mapLink: "https://surl.amap.com/F52Cjs1ia2W"
 featured: true

@@ -19,6 +19,6 @@
     "yet-another-react-lightbox": "^3.25.0"
   },
   "overrides": {
-    "vite": "^7"
+    "vite": "^8.0.13"
   }
 }

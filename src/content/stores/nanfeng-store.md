@@ -13,7 +13,11 @@ services:
   - "会员服务"
   - "物流配送"
 image: "/images/products/common/default-product-img.webp"
-mapLink: "https://www.amap.com/search?query=佛山市华南森孚"
+mapLink: "/navigation"
+amapLink: "https://surl.amap.com/24wGW5Eq1N2"
+tencentMapLink: ""
+baiduMapLink: ""
+googleMapLink: ""
 featured: true
 ---
 

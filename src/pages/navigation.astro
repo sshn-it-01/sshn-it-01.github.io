@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSecondary from '../components/HeroSecondary.astro';
+import { getCollection } from 'astro:content';
+
+const stores = await getCollection('stores');
+const featuredStores = stores.filter((store) => store.data.featured);
+---
+
+<Layout
+  title="华南森孚 | 门店地图导航"
+  description="为您提供华南森孚各门店的导航引导入口。"
+  meta={{ keywords: ['地图导航','高德地图','腾讯地图','百度地图','Google地图','门店导航'] }}
+>
+  <HeroSecondary
+    title="地图导航"
+    subtitle="请选择门店, 进入对应门店的地图导航页。"
+    height="h-72"
+    alignment="left"
+    backgroundStyle="gradient"
+  />
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">选择要前往的门店</h2>
+          <p class="text-neutral-dark max-w-2xl mx-auto">
+            选择任一门店卡片, 即可进入对应门店的地图导航页。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredStores.map((store) => (
+            <div class="border border-primary-faint rounded-lg p-6 bg-neutral-50 shadow-sm">
+              <div class="mb-4">
+                <h3 class="text-xl font-semibold text-primary-dark">{store.data.name}</h3>
+                <p class="text-sm text-neutral-dark mt-2">{store.data.address}</p>
+              </div>
+
+              <a
+                href={`/navigation/${store.data['store-id']}`}
+                class="inline-flex items-center justify-center rounded-sm bg-primary px-4 py-3 text-white font-medium transition hover:bg-primary-soft"
+              >
+                进入导航页
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

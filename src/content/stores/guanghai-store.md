@@ -14,7 +14,11 @@ services:
   - "专业咨询"
   - "会员服务"
 image: "/images/stores/hnsf_guanghai_01.webp"
-mapLink: "https://www.amap.com/search?query=佛山市华南森孚"
+mapLink: "/navigation"
+amapLink: "https://surl.amap.com/23XzW6yegtY"
+tencentMapLink: ""
+baiduMapLink: ""
+googleMapLink: "https://maps.app.goo.gl/zgpnTLwQnpq7FXiaA"
 featured: true
 ---
 

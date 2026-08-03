@@ -9,6 +9,11 @@ interface Props {
     services: string[];
     image?: string;
     mapLink?: string;
+    amapLink?: string;
+    tencentMapLink?: string;
+    baiduMapLink?: string;
+    googleMapLink?: string;
+    'store-id'?: string;
   };
 }
 
@@ -104,11 +109,9 @@ const { store } = Astro.props;
     </div>
 
     <!-- Navigation Button -->
-    {store.mapLink ? (
+    {store.mapLink || store.amapLink || store.tencentMapLink || store.baiduMapLink || store.googleMapLink ? (
       <a
-        href={store.mapLink}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={store['store-id'] ? `/navigation/${store['store-id']}` : '/navigation'}
         class="block w-full py-3 px-4 bg-primary text-white text-center rounded-sm font-medium transition-colors hover:bg-primary-soft"
       >
         查看地图导航

@@ -3,6 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import HeroSecondary from '../components/HeroSecondary.astro';
 import ContactInfo from '../components/ContactInfo.astro';
 import WeChatQR from '../components/WeChatQR.astro';
+import { getEntry } from 'astro:content';
+
+const store = await getEntry('stores', 'jianbei-store');
+const storeName = store?.data.name || '华南森孚健北店';
+const storeAddress = store?.data.address || '佛山市三水区西南街健力宝北路10号';
 ---
 
 <Layout
@@ -26,10 +31,8 @@ import WeChatQR from '../components/WeChatQR.astro';
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-bold text-primary-dark text-center mb-8">公司位置</h2>
         <div class="rounded-lg overflow-hidden elegant-shadow relative">
-          <!-- 高德静态地图图片,点击跳转到高德地图 -->
-          <a href="https://surl.amap.com/F52Cjs1ia2W" 
-             target="_blank" 
-             rel="noopener noreferrer" 
+          <!-- 点击进入健北店导航引导页 -->
+          <a href="/navigation/jianbei-store"
              class="block relative group cursor-pointer">
             <!-- 静态地图图片 -->
             <img src="/maps/map_foshan_sanshui.webp"
@@ -55,8 +58,8 @@ import WeChatQR from '../components/WeChatQR.astro';
 
               <!-- 悬停标签 -->
               <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                <p class="text-sm font-semibold text-primary-700">华南森孚健北店</p>
-                <p class="text-xs text-neutral-light">佛山市三水区西南街健力宝北路10号</p>
+                <p class="text-sm font-semibold text-primary-700">{storeName}</p>
+                <p class="text-xs text-neutral-light">{storeAddress}</p>
                 <!-- 小箭头 -->
                 <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
               </div>
@@ -82,13 +85,13 @@ import WeChatQR from '../components/WeChatQR.astro';
             <svg class="w-4 h-4 text-primary-700" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
             </svg>
-            <span>佛山市三水区西南街健力宝北路10号</span>
+            <span>{storeAddress}</span>
           </div>
           <div class="flex items-center space-x-2">
             <svg class="w-4 h-4 text-primary-700" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
             </svg>
-            <span>周一至周日 08:00-18:00</span>
+            <span>{store?.data.hours || '周一至周日 08:00-18:00'}</span>
           </div>
         </div>
         <p class="text-center text-neutral-light mt-4 text-lg">

@@ -55,7 +55,11 @@ const storesSchema = z.object({
   hours: z.string(),
   services: z.array(z.string()),
   image: z.string(),
-  mapLink: z.string(),
+  mapLink: z.string().optional(),
+  amapLink: z.string().optional(),
+  tencentMapLink: z.string().optional(),
+  baiduMapLink: z.string().optional(),
+  googleMapLink: z.string().optional(),
   featured: z.boolean().default(false)
 });
 

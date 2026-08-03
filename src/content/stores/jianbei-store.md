@@ -14,7 +14,11 @@ services:
   - "专业咨询"
   - "会员服务"
 image: "/images/stores/hnsf_jianbei_01.webp"
-mapLink: "https://surl.amap.com/F52Cjs1ia2W"
+mapLink: "/navigation"
+amapLink: "https://surl.amap.com/F52Cjs1ia2W"
+tencentMapLink: ""
+baiduMapLink: "https://j.map.baidu.com/48/9-lJ"
+googleMapLink: "https://maps.app.goo.gl/QwQuP3bb3beZ5BT17"
 featured: true
 ---
 

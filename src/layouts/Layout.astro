@@ -138,6 +138,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
               <li><a href="/agents" class="text-neutral-light hover:text-primary-pale transition-colors">专业团队</a></li>
               <li><a href="/about" class="text-neutral-light hover:text-primary-pale transition-colors">公司介绍</a></li>
               <li><a href="/contact" class="text-neutral-light hover:text-primary-pale transition-colors">联系方式</a></li>
+              <li><a href="/navigation" class="text-neutral-light hover:text-primary-pale transition-colors">门店导航</a></li>
             </ul>
           </div>
 
@@ -159,19 +160,19 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
             <h3 class="text-white font-semibold mb-4">联系我们</h3>
             <ul class="space-y-2 text-sm text-neutral-light">
               <li>
-                <strong class="text-white">工作时间:</strong>
+                <strong class="text-white">工作时间: </strong>
                 <span>{companyInfo.workHours}</span>
               </li>
               <li>
-                <strong class="text-white">联系电话:</strong>
+                <strong class="text-white">联系电话: </strong>
                 <span>{companyInfo.phone}</span>
               </li>
               <li>
-                <strong class="text-white">邮箱:</strong>
+                <strong class="text-white">邮箱: </strong>
                 <span>{companyInfo.email}</span>
               </li>
               <li>
-                <strong class="text-white">地址:</strong>
+                <strong class="text-white">地址: </strong>
                 <span>{companyInfo.address}</span>
               </li>
             </ul>

@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSecondary from '../../components/HeroSecondary.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const stores = await getCollection('stores');
+  return stores.map((store) => ({
+    params: { storeId: store.data['store-id'] },
+    props: { store }
+  }));
+}
+
+const { store } = Astro.props;
+const storeData = store.data;
+
+const mapPlatforms = [
+  {
+    key: 'amap',
+    label: '高德地图',
+    hrefKey: 'amapLink',
+    icon: 'data:image/png;base64,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'
+  },
+  {
+    key: 'tencent',
+    label: '腾讯地图',
+    hrefKey: 'tencentMapLink',
+    icon: 'data:image/png;base64,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'
+  },
+  {
+    key: 'baidu',
+    label: '百度地图',
+    hrefKey: 'baiduMapLink',
+    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFQUlEQVR4AbWXdXfbSBTFtfD3fpGlcJaZmZmZmZmZmbHMzG2YU87GrZO6scNkqOVIGs3MXd3jszpx66jgs3PONUgz73ffmzcGI3fgsGnTVhwVDoeLotH+S3fHYndGYrGHe3p7HzkUcS1jMBZjMjYZRr5RBRy5fPmaIjOTWSOlHNJapzxZABwA4hDlMAZjMSZjL1+zpggeKwfOC12RyK2ulL0AFP6/oVxX9pHFhP2y05Xrun040KE1oBQgJcXXvIYDHUyU1Sbb4L6wNHR3oHA9Mgq5bj3cGbMoyDXroIeHD8aEIpNsg83B/Tkg8Pg4xFdfw6o4CVZRWa7KT4T4+FPosbEDMkIm2UY0Gr2UTbJfeDgM56Zbs7BjivKK9+zrboLa3rFfE2TydBg8JuzUQPjAAOyLLoN1XAlBgeIc+9wLoWO9gSbIJNvgWQXgBNQK7ief7Zs5zRxbPGUlxLvvcS0ChkO2wQ8MACK/TUAnU7BOOi0HxtfuDz/BeezJKU2wJ/TISFAVBNnBBpSCXLaC2fpgZscmlEuXQrz2Jqzicip7r6SC9/0KyXnzWYUCDLD83/3gG7AvvBTKO34qFIKOxSDefBty1hyIZ54nHHp4BM7Dj/kG3I8+AVz30A1wseD+0wDL/v0PUA2NsCpP9iqwzDPwDuTc+RAvvAyrtBI6Hue2+NUSb71ToAEpvQxn0wAF9/c/IafNyJZ38WIaYJkhXn8TVtkJ0PEEfAOc/8tvBW4Bj2BPD8vLjOA88BA/8aCqa6B27IB44202I/TgICsCTEz4BtgXurOzwCbkcGU26PElYFDnmhsgnn0BbED70ithn3422APi1TdA2eddBGbv3PuAX/7CDCgF1b4R1smn+0eOz1Te99yuE0+Famrm2sIN+Mdx3gJWwIdOJc5x/5rm7/0hGgg4kseXBn4Mu198FQQvwIDWgG1DvP1u/u8EHrsXX4a2bc4txECwCXa6eOTxXBNsuvseBEwzAB5gQGstArmTxabc1gF+1vuNV1YJ1d4OKLn37IBcdNZAdyTyiG3bwnEcTJYiSANJF4iLveRoJD//BuwHynzvdZjuCEw5lqOMikNBgrH2jk8m2ca2zs6Hk8mkk0qlkE6nYVkWhNKa4N0TQHceRSY0kpEorDPPAY9cemcLhpwQBp1/9tGwCGNCJSCV0IxNBllkkm3sCIfvtLzhSgmpNJi18GQpYIKSk6Sy1x1PIwkT8RtvR/KqGxAfTcDVNhydgaPMXGkqA6kdKM1qSLjSBZlkG5Fo9FLT1akBG9iWBrYGKJQBUhJICKA2rhH67i/s/OpX1I4psGIZlUCvsxm7neYp1eO0IO7GYMt0imyjqiNc1JaUQ60pIEjtnghxNVAdBxYMAwsHZVbDQF2C9zRMNY4uqxZhqzpQXWb9UENHVZExbdq0o+qHMmvaUlBTwZl9WmbhTUng937gl5jG15Gs+PqPfqAlxTncqiQidlOAgRq1fXz9GrINbxz2+8I1Rc1x2ZsPvnkPAwIKQKcJfBMDvvL0ZRT4ZJem+JrXeA8hE9DQsNQedFt1eQ2EzKq+OcvnFJFtcFRV4chVnV23No+7ff9VwnvG9jRgSgYERkUW8nYEeGuXp+xzzmve+zqWnUsTtmeix25lxn7mofSGvrquVbdWoSr3/yFNsBLcjuaEHNqc0ilLaksDjqUgvohCPBuGeGZnsDiHc7mGa21pWt52pLysh1j2OcunF1VVEZ5/HMZ9Wb45XNQRiWb/nvfEHq7v7n3k5ZbeR55pPDBxLtdwLWOEolsvrepYXsTYZEwG/guuP3xcRvMKGgAAAABJRU5ErkJggg=='
+  },
+  {
+    key: 'google',
+    label: 'Google 地图',
+    hrefKey: 'googleMapLink',
+    icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAClElEQVR4AWJwL/ChKyZJ8eTK29FxDYBa6yEwliiKoujk27Zt27Zt27Zt27Zt27ZtxL7JGZzgNV5XY7CT9qpb9pvFCs7+N6/CjL/NnQp6r8wY+Vb3I0t2930m8wf/kGEjPKXzGD+pODFIUKGpAYKAJz82IrJDoFeTNsXetloY9LDDTlHBhuMDI4C5Z3lJ1oW/JMvyNyUMg8TcancUgue7XyJqFUyz/L2kXvOouCHQq0XFVN5VawnAr42HiQJiSqtgorX3Jebe5WlsBgOqlj1tDtzb9/Zn7Dhdxv1OgLDDFJvu9VnFUOzN5y9qQU4XUK2UAEQAsVqvd90yx9Jqwg4THoy+5QzilNbBgGolZgFEBF+1Gc+ltVjKFU8vh2Jo+16JsmfdHD1Yp+gzgv5Nigf+61xfMLUOxDQEI+/cKVH2LpOo+5Y81YJAUECXfEEIoA5jmIpYtIOTgpAWJBQ0LItf4Lgs4jc7y1VbQUxELMbRIYFICxIKnJFW/FelRjZPCIhYrGN9JPaJLu5aEBMR8tuXWDxOJJWfWzM102HJz3StTSjW8a4S+2SHkDoe1YKep5MMJIT+XU0st69m8cY51RKGcyimIcTSnm3XWwsiIOzj/RRy6lEuWXaj1O8lN0rnUz8b72THvMAAqNl8psGUgND9xxlk/cPiMvJudal+rbWUO9/8YbZzbdeiuCc63ccPYzL9dBZAXmI+PE7xABimCw/mv9RBEp5uxx8GZBIWxPDVAtvMEpj+nGUUqxcLbRhEx5/lSk2s7e2mKmgW5fnTMMiwo+hAhh3IKfc0Fa82LaOC6mrFZ5x6E4W9zhyIuEc6FUQ4FFQQr7nsNhEVvNzpN0GeK10K4pzJ6fDY5SC3J3L5nbd6NrKnYImusD97UAbLAAAAAElFTkSuQmCC',
+  }
+];
+---
+
+<Layout
+  title={`${storeData.name}导航 | 华南森孚门店导航`}
+  description={`为您提供${storeData.name}的地图导航入口, 帮助您快速前往门店。`}
+  meta={{ keywords: ['地图导航','门店导航', storeData.name] }}
+>
+  <HeroSecondary
+    title={storeData.name}
+    subtitle={`地址: ${storeData.address}`}
+    height="h-72"
+    alignment="left"
+    backgroundStyle="gradient"
+  />
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">选择地图应用</h2>
+          <p class="text-neutral-dark">
+            您正在前往 <span class="font-semibold text-primary-dark">{storeData.name}</span> , 点击下方选择适合的地图应用进行导航。
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {mapPlatforms.map((platform) => {
+            const href = storeData[platform.hrefKey as keyof typeof storeData] as string | undefined;
+            if (!href) return null;
+
+            return (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between w-full rounded-lg border border-primary-faint bg-neutral-50 px-5 py-4 text-left transition hover:border-primary hover:shadow-sm"
+              >
+                <span class="flex items-center gap-3">
+                  <span class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full text-lg font-bold text-white">
+                    {platform.icon.startsWith('data:image') ? (
+                      <img src={platform.icon} alt={platform.label} class="h-full w-full object-cover" />
+                    ) : (
+                      platform.icon
+                    )}
+                  </span>
+                  <span>
+                    <span class="block font-semibold text-primary-dark">{platform.label}</span>
+                  </span>
+                </span>
+                <span class="text-primary font-medium">打开</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

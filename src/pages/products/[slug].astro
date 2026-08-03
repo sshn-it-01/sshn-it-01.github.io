@@ -62,9 +62,9 @@ const relatedProducts = allLubricants
 ---
 
 <Layout
-  title={`${product.data.title} | 华南森孚润滑油`}
+  title={`${product.data.title} | 华南森孚`}
   description={`${product.data.description} 华南森孚提供专业润滑油选型与技术支持, 适用于${product.data.application?.join('、') || product.data.category}等工况。`}
-  meta={{ keywords: [product.data.title, product.data.brand || '华南森孚', product.data.category, product.data.subCategory, ...(product.data.application || [])].filter(Boolean) }}
+  meta={{ keywords: [product.data.title, product.data.brand || '华南森孚', '佛山润滑油', product.data.category, product.data.subCategory, ...(product.data.application || [])].filter(Boolean) }}
 >
   <!-- Product Hero Section -->
   <section class="relative h-96 overflow-hidden">
@@ -278,7 +278,7 @@ const relatedProducts = allLubricants
             <div class="bg-white rounded-lg elegant-shadow p-6">
               <h2 class="text-xl font-semibold text-primary-dark mb-4 text-center">在线商城</h2>
               <p class="text-sm text-neutral-light mb-4 text-center">
-                扫描二维码或点击进入我们的微信商城, 随时随地浏览产品、下单购买
+                点击二维码, 访问我们的微信商城, 随时随地浏览产品、下单购买
               </p>
               
               <!-- QR Code Image -->

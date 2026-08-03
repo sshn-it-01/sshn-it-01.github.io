@@ -16,19 +16,65 @@ export interface Props {
 
 const {
   title,
-  description = "Discover exclusive products in prime locations",
-  image = "/og-image.jpg",
+  description = "佛山润滑油供应商与美孚授权经销商, 提供工业润滑油、车用润滑油、特种润滑油与技术支持",
+  image = "/images/common/hn-logo_bg-trans.webp",
   canonical,
   meta = {}
 } = Astro.props;
 
+const defaultKeywords = [
+  '佛山润滑油',
+  '华南森孚润滑油',
+  '美孚授权经销商',
+  '润滑油供应商',
+  '工业润滑油',
+  '车用润滑油',
+  '特种润滑油'
+].join(', ');
+
 // Use meta title if provided, otherwise fall back to title
 const seoTitle = meta.title || title;
 const seoDescription = meta.description || description;
-const seoKeywords = meta.keywords?.filter(Boolean).join(', ');
+const seoKeywords = meta.keywords?.filter(Boolean).join(', ') || defaultKeywords;
 
-// Generate canonical URL if not provided
-const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://www.hnsenfu.com';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+
+const organizationSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://www.hnsenfu.com/#localbusiness',
+  name: companyInfo.name,
+  url: 'https://www.hnsenfu.com',
+  telephone: companyInfo.phone,
+  email: companyInfo.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: companyInfo.address,
+    addressLocality: '佛山',
+    addressRegion: '广东',
+    postalCode: '528100',
+    addressCountry: 'CN'
+  },
+  areaServed: ['佛山', '广东', '中国'],
+  description: '佛山市华南森孚贸易有限公司是佛山本地润滑油供应商, 主营美孚授权产品, 提供工业润滑油、车用润滑油、特种润滑油与技术服务。',
+  keywords: ['佛山润滑油', '华南森孚润滑油', '美孚授权经销商', '润滑油供应商'],
+  sameAs: ['https://www.hnsenfu.com']
+});
+
+const websiteSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: companyInfo.name,
+  url: 'https://www.hnsenfu.com',
+  description: '佛山润滑油供应商与美孚授权经销商网站, 提供润滑油产品、技术方案与联系服务。',
+  inLanguage: 'zh-CN',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://www.hnsenfu.com/products',
+    'query-input': 'required name=search_term'
+  }
+});
 ---
 
 <!doctype html>
@@ -36,10 +82,14 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={seoDescription} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
     <meta name="author" content={companyInfo.name} />
-    <meta name="theme-color" content="#4f5b3c" />
+    <meta name="theme-color" content="#0f3d6d" />
+    <meta name="geo.region" content="CN-GD" />
+    <meta name="geo.placename" content="佛山" />
+    <meta name="geo.position" content="23.16576;112.89828" />
+    <meta name="ICBM" content="23.16576,112.89828" />
     <link rel="icon" type="image/svg+xml" href="/images/common/hn-logo_bg-trans.webp" />
     <meta name="generator" content={Astro.generator} />
 
@@ -49,6 +99,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="zh-CN" href={canonicalUrl} />
+    <link rel="alternate" hreflang="zh-Hans-CN" href={canonicalUrl} />
     <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
@@ -65,6 +116,7 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:site_name" content={companyInfo.name} />
     <meta property="og:locale" content="zh_CN" />
     {image && <meta property="og:image" content={image} />}
+    {image && <meta property="og:image:alt" content={seoTitle} />}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -73,7 +125,8 @@ const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
     <meta property="twitter:url" content={canonicalUrl} />
     {image && <meta property="twitter:image" content={image} />}
 
-    <script type="application/ld+json" set:html={`{"@context":"https://schema.org","@type":"Organization","name":"${companyInfo.name}","url":"https://www.hnsenfu.com","logo":"https://www.hnsenfu.com/images/common/hn-logo_bg-trans.webp","telephone":"${companyInfo.phone}","address":{"@type":"PostalAddress","streetAddress":"${companyInfo.address}","addressLocality":"佛山","addressRegion":"广东","postalCode":"528100","addressCountry":"CN"},"sameAs":["https://www.hnsenfu.com"]}`} />
+    <script type="application/ld+json" set:html={organizationSchema} />
+    <script type="application/ld+json" set:html={websiteSchema} />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Navigation Header -->

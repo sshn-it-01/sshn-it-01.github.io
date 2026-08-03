@@ -17,12 +17,13 @@ interface Props {
   secondaryCtaLink?: string;
 }
 
+const props = Astro.props as Props;
+
 const {
   title,
   subtitle,
   image,
   overlay = true,
-  height = 'large',
   alignment = 'left',
   showCta = true,
   ctaText = "关于我们",
@@ -30,7 +31,9 @@ const {
   showSecondaryCta = false,
   secondaryCtaText = "联系我们",
   secondaryCtaLink = "/contact"
-} = Astro.props;
+} = props;
+
+const height = props.height ?? 'large';
 
 // Height classes
 const heightClasses = {

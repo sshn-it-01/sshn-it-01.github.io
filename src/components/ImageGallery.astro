@@ -12,12 +12,13 @@ interface Props {
   initialDisplayCount?: number; // 初始显示的图片数量, 默认4张
 }
 
-const { images, id = 'gallery-' + Math.random().toString(36).substring(2, 9), initialDisplayCount = 4 } = Astro.props;
+const props = Astro.props as Props;
+const { images, id = 'gallery-' + Math.random().toString(36).substring(2, 9), initialDisplayCount = 4 } = props;
 
 // Convert images to lightbox format
-const lightboxImages = images.map((image, index) => ({
+const lightboxImages = images.map((image) => ({
   src: image.src,
-  alt: image.alt || `Imagen ${index + 1}`,
+  alt: image.alt || `Imagen ${images.indexOf(image) + 1}`,
   caption: image.caption
 }));
 

@@ -95,7 +95,7 @@ const { store } = Astro.props;
         <span class="text-primary-dark font-medium">服务项目:</span>
       </div>
       <div class="flex flex-wrap gap-1">
-        {store.services.map((service) => (
+        {store.services.map((service: string) => (
           <span class="px-2 py-1 bg-neutral-100 text-primary-dark text-xs rounded-full">
             {service}
           </span>

@@ -8,6 +8,8 @@ export interface Props {
   backgroundStyle?: 'image' | 'gradient';
 }
 
+const props = Astro.props as Props;
+
 const {
   title,
   subtitle = "",
@@ -15,7 +17,7 @@ const {
   alignment = "left",
   backgroundImage,
   backgroundStyle = "gradient"
-} = Astro.props;
+} = props;
 
 const alignmentClasses = {
   left: "items-start",

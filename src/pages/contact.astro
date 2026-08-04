@@ -9,8 +9,7 @@ const store = await getEntry('stores', 'jianbei-store');
 const storeName = store?.data.name || '华南森孚健北店';
 const storeAddress = store?.data.address || '佛山市三水区西南街健力宝北路10号';
 
-const mapLink = store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ';
-const mapSrc = `${mapLink}?t=${new Date().getTime()}`;
+const mapSrc = store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ';
 ---
 
 <Layout

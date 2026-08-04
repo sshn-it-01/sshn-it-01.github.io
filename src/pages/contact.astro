@@ -8,6 +8,9 @@ import { getEntry } from 'astro:content';
 const store = await getEntry('stores', 'jianbei-store');
 const storeName = store?.data.name || '华南森孚健北店';
 const storeAddress = store?.data.address || '佛山市三水区西南街健力宝北路10号';
+
+const mapLink = store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ';
+const mapSrc = `${mapLink}?t=${new Date().getTime()}`;
 ---
 
 <Layout
@@ -18,7 +21,7 @@ const storeAddress = store?.data.address || '佛山市三水区西南街健力�
   <!-- Hero Section -->
   <HeroSecondary
     title="联系我们"
-    subtitle="欢迎垂询, 我们将竭诚为您服务"
+    subtitle="欢迎访问我们的门店, 获取专业的润滑油解决方案和服务"
     height="h-56"
     alignment="left"
     backgroundImage=""
@@ -44,14 +47,13 @@ const storeAddress = store?.data.address || '佛山市三水区西南街健力�
         </div>
 
         <div class="rounded-lg overflow-hidden elegant-shadow relative">
-          <iframe
-            title="华南森孚健北店百度地图"
-            src={store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ'}
-            class="w-full h-[400px] border-0"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
+            <iframe
+              title="华南森孚健北店百度地图"
+              src={mapSrc}
+              class="w-full h-[400px] border-0"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
         </div>
 
         <div class="mt-4 flex items-center justify-center space-x-6 text-sm text-neutral-light">
@@ -68,9 +70,6 @@ const storeAddress = store?.data.address || '佛山市三水区西南街健力�
             <span>{store?.data.hours || '周一至周日 08:00-18:00'}</span>
           </div>
         </div>
-        <p class="text-center text-neutral-light mt-4 text-lg">
-          欢迎访问我们的门店, 获取专业的润滑油解决方案和服务。
-        </p>
       </div>
     </div>
   </section>

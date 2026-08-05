@@ -59,6 +59,7 @@ const storesSchema = z.object({
   amapLink: z.string().optional(),
   tencentMapLink: z.string().optional(),
   baiduMapLink: z.string().optional(),
+  baiduMapCardLink: z.string().optional(),
   googleMapLink: z.string().optional(),
   featured: z.boolean().default(false)
 });

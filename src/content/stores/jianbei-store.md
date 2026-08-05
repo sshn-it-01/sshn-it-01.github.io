@@ -17,8 +17,8 @@ image: "/images/stores/hnsf_jianbei_01.webp"
 mapLink: "/navigation"
 amapLink: "https://surl.amap.com/F52Cjs1ia2W"
 tencentMapLink: ""
-#baiduMapLink: "https://j.map.baidu.com/48/9-lJ"
-baiduMapLink: https://api.map.baidu.com/mapcardshow/d79b7da7822ed9ad1d01c9aeca2cbbdb
+baiduMapLink: "https://j.map.baidu.com/48/9-lJ"
+baiduMapCardLink: https://api.map.baidu.com/mapcardshow/d79b7da7822ed9ad1d01c9aeca2cbbdb
 googleMapLink: "https://maps.app.goo.gl/QwQuP3bb3beZ5BT17"
 featured: true
 ---

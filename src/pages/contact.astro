@@ -9,7 +9,7 @@ const store = await getEntry('stores', 'jianbei-store');
 const storeName = store?.data.name || '华南森孚健北店';
 const storeAddress = store?.data.address || '佛山市三水区西南街健力宝北路10号';
 
-const mapSrc = store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ';
+const mapSrc = store?.data.baiduMapCardLink || 'https://j.map.baidu.com/48/9-lJ';
 ---
 
 <Layout
@@ -47,12 +47,38 @@ const mapSrc = store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ';
 
         <div class="rounded-lg overflow-hidden elegant-shadow relative">
             <iframe
+              id="store-map-iframe"
               title="华南森孚健北店百度地图"
               src={mapSrc}
               class="w-full h-[400px] border-0"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
             ></iframe>
+            <!-- 备用层：默认隐藏，仅在浏览器拦截百度地图（如 Firefox 增强型跟踪保护）时自动显示，避免空白 -->
+            <div
+              id="store-map-fallback"
+              class="hidden absolute inset-0 z-10 flex-col items-center justify-center"
+              role="alert"
+            >
+              <img
+                src="/maps/map_foshan_sanshui.webp"
+                alt="华南森孚健北店位置地图"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="relative z-10 flex flex-col items-center gap-3 bg-black/40 px-6 py-5 text-center">
+                <p class="text-sm text-white">当前浏览器设置拦截了地图功能, 请刷新页面重试或选择其他地图导航</p>
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    type="button"
+                    id="store-map-retry"
+                    class="inline-flex items-center gap-1 rounded-full bg-primary-700 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-primary-800"
+                    onclick="location.href=location.pathname+'?force='+Date.now()"
+                  >
+                    刷新页面
+                  </button>
+                </div>
+              </div>
+            </div>
         </div>
 
         <div class="mt-4 flex items-center justify-center space-x-6 text-sm text-neutral-light">
@@ -72,6 +98,38 @@ const mapSrc = store?.data.baiduMapLink || 'https://j.map.baidu.com/48/9-lJ';
       </div>
     </div>
   </section>
+
+  <!-- 百度地图备用层检测：iframe 长时间未加载完成（被跟踪保护拦截）时显示静态位置图，避免空白 -->
+  <script>
+    (function () {
+      const iframe = document.getElementById('store-map-iframe') as HTMLIFrameElement;
+      const fallback = document.getElementById('store-map-fallback') as HTMLElement;
+      if (!iframe || !fallback) return;
+
+      let loaded = false;
+      let timer: ReturnType<typeof setTimeout> | undefined;
+
+      function showFallback() {
+        if (loaded) return;
+        fallback.classList.remove('hidden');
+        fallback.classList.add('flex');
+      }
+
+      function hideFallback() {
+        fallback.classList.add('hidden');
+        fallback.classList.remove('flex');
+      }
+
+      iframe.addEventListener('load', function () {
+        if (iframe.getAttribute('src') === 'about:blank') return;
+        loaded = true;
+        if (timer) clearTimeout(timer);
+        hideFallback();
+      });
+
+      timer = setTimeout(showFallback, 6000);
+    })();
+  </script>
 
   <!-- Contact Content with QR Codes -->
   <section class="py-16 bg-gray-50">

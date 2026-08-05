@@ -18,7 +18,7 @@ const { images, id = 'gallery-' + Math.random().toString(36).substring(2, 9), in
 // Convert images to lightbox format
 const lightboxImages = images.map((image) => ({
   src: image.src,
-  alt: image.alt || `Imagen ${images.indexOf(image) + 1}`,
+  alt: image.alt || `图片 ${images.indexOf(image) + 1}`,
   caption: image.caption
 }));
 
@@ -36,7 +36,7 @@ const hasMoreImages = images.length > initialDisplayCount;
       >
         <img
           src={image.thumb}
-          alt={image.alt || `Imagen ${index + 1}`}
+          alt={image.alt || `图片 ${index + 1}`}
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
@@ -342,7 +342,7 @@ const hasMoreImages = images.length > initialDisplayCount;
 
 <style>
   .gallery-item {
-    /* La imagen ya está posicionada absolutamente */
+    /* 图片已使用绝对定位 */
   }
 
   /* Hide scrollbar for thumbnail strip */

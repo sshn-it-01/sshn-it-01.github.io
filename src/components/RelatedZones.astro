@@ -8,8 +8,8 @@ const { zones } = Astro.props as Props;
 <section class="py-16 bg-white">
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-primary-dark mb-4">Explore Other Premium Zones</h2>
-      <p class="text-neutral max-w-2xl mx-auto">Discover other exclusive neighborhoods with exceptional properties</p>
+      <h2 class="text-3xl font-bold text-primary-dark mb-4">探索更多系列产品</h2>
+      <p class="text-neutral max-w-2xl mx-auto">浏览其他润滑油系列产品, 找到适合您设备需求的润滑解决方案</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -18,8 +18,8 @@ const { zones } = Astro.props as Props;
           <a
             href={`/zones/${relatedZone.id}`}
             class="block cursor-pointer"
-            title={`Explore ${relatedZone.data.title}`}
-            aria-label={`Explore ${relatedZone.data.title}`}
+            title={`了解 ${relatedZone.data.title}`}
+            aria-label={`了解 ${relatedZone.data.title}`}
           >
             <div class="relative overflow-hidden rounded-lg elegant-shadow hover:elegant-shadow-lg transition-all duration-300">
               <img
@@ -38,9 +38,9 @@ const { zones } = Astro.props as Props;
           <a
             href={`/zones/${relatedZone.id}`}
             class="block mt-4 text-center text-primary hover:text-primary-soft transition-colors font-medium"
-            aria-label={`Explore ${relatedZone.data.title}`}
+            aria-label={`了解 ${relatedZone.data.title}`}
           >
-            Explore {relatedZone.data.title} →
+            了解 {relatedZone.data.title} →
           </a>
         </div>
       ))}

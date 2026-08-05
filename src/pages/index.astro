@@ -121,8 +121,11 @@ const availableCategories = [...new Set(allLubricants.map(p => p.data.category))
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {zones.slice(0, 6).map((zone) => (
-          <div class="group cursor-pointer">
-            <div class="relative overflow-hidden rounded-lg elegant-shadow hover:elegant-shadow-lg transition-all duration-300">
+          <a
+            href={`/zones/${zone.id}`}
+            class="group block"
+          >
+            <div class="relative overflow-hidden rounded-lg elegant-shadow group-hover:elegant-shadow-lg transition-all duration-300">
               <img
                 src={zone.data.image}
                 alt={zone.data.title}
@@ -134,13 +137,10 @@ const availableCategories = [...new Set(allLubricants.map(p => p.data.category))
                 <p class="text-white/90 text-sm line-clamp-2">{zone.data.description}</p>
               </div>
             </div>
-            <a
-              href={`/zones/${zone.id}`}
-              class="block mt-4 text-center text-primary hover:text-primary-soft transition-colors font-medium"
-            >
+            <span class="block mt-4 text-center text-primary group-hover:text-primary-soft transition-colors font-medium">
               点击了解更多 →
-            </a>
-          </div>
+            </span>
+          </a>
         ))}
         
       </div>

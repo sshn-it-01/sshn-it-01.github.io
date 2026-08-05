@@ -1,6 +1,10 @@
 ---
 // Contact Information Component - 华南森孚贸易有限公司主店信息
 import { companyInfo } from '../data/company';
+import { getCollection } from 'astro:content';
+
+const agents = await getCollection('agents');
+const engHHQ = agents.find(a => a.data['agent-id'] === 'eng_hhq');
 ---
 
 <!-- 联系信息区域 - 左侧上下分区布局 -->
@@ -17,6 +21,12 @@ import { companyInfo } from '../data/company';
         {companyInfo.phone}
       </span>
     </div>
+    <!-- 何工联系电话 -->
+    <!-- {engHHQ && (
+      <p class="text-3xl text-primary-700 mt-2">
+        {engHHQ.data.name}: {engHHQ.data.phone}
+      </p>
+    )} -->
   </div>
 
   <!-- 左下区域: 其他联系信息 -->

@@ -63,7 +63,7 @@ const relatedProducts = allLubricants
 
 <Layout
   title={`${product.data.title} | 华南森孚`}
-  description={`${product.data.description.substring(0, 120)}——华南森孚提供${product.data.brand || ''}润滑油选型与技术支持, 适用于${product.data.application?.join('、') || product.data.category}等工况。电话: 0757-87722666。`}
+  description={`${product.data.description.substring(0, 120)}——华南森孚提供${product.data.brand || ''}润滑油选型与技术支持, 适用于${product.data.application?.join('、') || product.data.category}等工况。电话: 0757-87722666、13928559916 (何工)。`}
   meta={{ keywords: [product.data.title, product.data.brand || '华南森孚', '佛山润滑油', product.data.category, product.data.subCategory, ...(product.data.application || [])].filter(Boolean) }}
 >
   <!-- Product Hero Section -->

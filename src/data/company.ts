@@ -9,6 +9,7 @@ export const companyInfo = {
   
   // Contact Info
   phone: '0757-87722666',
+  phoneTech: '13928559916 (何工)',
   email: 'hnsh1991@126.com',
   
   // Address

@@ -16,7 +16,7 @@ export interface Props {
 
 const {
   title,
-  description = "佛山市华南森孚贸易有限公司——佛山专业润滑油供应商, 美孚 (Mobil) 首批授权经销商。主营工业润滑油、车用润滑油、特种润滑油, 提供润滑方案设计与技术支持。",
+  description = "佛山市华南森孚贸易有限公司——佛山专业润滑油供应商, 美孚 (Mobil) 首批授权经销商。主营工业润滑油、车用润滑油、特种润滑油, 提供润滑方案设计与技术支持。电话: 0757-87722666、13928559916 (何工)。",
   image = "/images/common/hn-logo_bg-trans.webp",
   canonical,
   meta = {}
@@ -46,8 +46,14 @@ const organizationSchema = JSON.stringify({
   '@id': 'https://www.hnsenfu.com/#localbusiness',
   name: companyInfo.name,
   url: 'https://www.hnsenfu.com',
-  telephone: companyInfo.phone,
+  telephone: [companyInfo.phone, companyInfo.phoneTech],
   email: companyInfo.email,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'technical support',
+    telephone: companyInfo.phoneTech,
+    availableLanguage: ['Chinese']
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: companyInfo.address,

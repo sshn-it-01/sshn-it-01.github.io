@@ -7,32 +7,34 @@
 import { Droplets, Thermometer, Tag, Award } from '@lucide/astro';
 
 /**
- * 产品卡片组件的属性接口
- * @property title - 产品标题
- * @property description - 产品描述
- * @property zone - 产品分类（category）, 用于products数据结构
- * @property category - 主分类, 用于lubricants数据结构
- * @property subCategory - 子分类（英文标识）, 用于lubricants数据结构
- * @property image - 产品主图路径
- * @property images - 产品图册数组
- * @property featured - 是否为推荐产品
+ * 产品卡片数据接口
+ *
+ * 注意：由于调用方来源不同，部分字段存在兼容性别名：
+ * - zone (旧) / category (新)：主分类，优先取 zone，回退 category
+ * - subcategory (旧) / subCategory (新)：子分类，优先取 subCategory，回退 subcategory
  */
 interface ProductData {
   id?: string;
   title: string;
   description: string;
   keywords?: string;
+  /** 主分类（lubricants 标准字段） */
   category?: string;
   brand?: string;
   series?: string;
   application?: string[];
+  /** @deprecated 兼容旧 products 数据，新代码请用 category */
   zone?: string;
-  subCategory?: string; // 添加驼峰命名的subCategory字段
-  subcategory?: string; // 保留小写的subcategory字段以兼容旧数据
+  /** 子分类（lubricants 标准字段，驼峰命名） */
+  subCategory?: string;
+  /** @deprecated 兼容旧映射代码，新代码请用 subCategory */
+  subcategory?: string;
   image: string;
   images?: string[];
   featured: boolean;
+  /** 原始 HTML 文件路径（仅用于数据迁移追溯） */
   originalFilePath?: string;
+  /** 官方技术文档参考链接 */
   referenceUrl?: string;
 }
 
@@ -50,16 +52,12 @@ interface Props {
 const { property } = Astro.props;
 
 /**
- * 获取产品的主分类信息
- * 兼容products和lubricants两种不同的数据结构
- * 优先使用zone字段, 其次使用category字段
+ * 主分类：兼容旧 zone 字段和新 category 字段
  */
 const mainCategory = property.data.zone || property.data.category || '';
 
 /**
- * 获取产品的子分类信息
- * 兼容驼峰命名(subCategory)和小写命名(subcategory)
- * 优先使用subCategory, 其次使用subcategory
+ * 子分类：兼容新 subCategory（驼峰）和旧 subcategory（全小写）
  */
 const subCategory = property.data.subCategory || property.data.subcategory || '';
 

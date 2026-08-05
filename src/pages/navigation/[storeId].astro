@@ -44,8 +44,8 @@ const mapPlatforms = [
 
 <Layout
   title={`${storeData.name}导航 | 华南森孚门店导航`}
-  description={`为您提供${storeData.name}的地图导航入口, 帮助您快速前往门店。`}
-  meta={{ keywords: ['地图导航','门店导航', storeData.name] }}
+  description={`${storeData.name}地图导航——支持高德地图、百度地图、腾讯地图及Google地图一键导航。地址: ${storeData.address}。电话：${storeData.phone}。`}
+  meta={{ keywords: ['地图导航','门店导航', storeData.name, '佛山润滑油门店', '三水润滑油'] }}
 >
   <HeroSecondary
     title={storeData.name}
@@ -59,9 +59,9 @@ const mapPlatforms = [
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-10">
-          <h2 class="text-3xl font-bold text-primary-dark mb-4">选择地图应用</h2>
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">选择地图应用导航</h2>
           <p class="text-neutral-dark">
-            您正在前往 <span class="font-semibold text-primary-dark">{storeData.name}</span> , 点击下方选择适合的地图应用进行导航。
+            前往 <span class="font-semibold text-primary-dark">{storeData.name}</span>, 点击下方选择您常用的地图应用开始导航
           </p>
         </div>
 

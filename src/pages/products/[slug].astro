@@ -63,7 +63,7 @@ const relatedProducts = allLubricants
 
 <Layout
   title={`${product.data.title} | 华南森孚`}
-  description={`${product.data.description} 华南森孚提供专业润滑油选型与技术支持, 适用于${product.data.application?.join('、') || product.data.category}等工况。`}
+  description={`${product.data.description.substring(0, 120)}——华南森孚提供${product.data.brand || ''}润滑油选型与技术支持, 适用于${product.data.application?.join('、') || product.data.category}等工况。电话: 0757-87722666。`}
   meta={{ keywords: [product.data.title, product.data.brand || '华南森孚', '佛山润滑油', product.data.category, product.data.subCategory, ...(product.data.application || [])].filter(Boolean) }}
 >
   <!-- Product Hero Section -->
@@ -253,7 +253,7 @@ const relatedProducts = allLubricants
                 href="/contact"
                 class="block w-full text-center bg-primary text-white py-3 rounded-sm hover:bg-primary-soft transition-colors font-medium mb-4"
               >
-                立即咨询
+                联系我们
               </a>
 
 

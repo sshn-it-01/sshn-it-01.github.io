@@ -45,8 +45,8 @@ const relatedZones = allZones.filter(z => z.id !== zone.id).slice(0, 3);
 
 <Layout
   title={`${zone.data.title} | 华南森孚`}
-  description={`探索${zone.data.title}系列产品, 了解适合工业设备、商用车、乘用车或特种工况的高性能润滑油与专业技术支持。${zone.data.description}`}
-  meta={{ keywords: [zone.data.title, '佛山润滑油', '润滑解决方案', '华南森孚', zone.data.description].filter(Boolean) }}
+  description={`${zone.data.title}——华南森孚专业供应。${zone.data.description.substring(0, 100)}了解产品特点、技术参数与适用工况, 获取润滑方案建议与报价咨询。`}
+  meta={{ keywords: [zone.data.title, '佛山润滑油', '润滑解决方案', '华南森孚'].filter(Boolean) }}
 >
   <!-- Hero Section -->
   <section class="relative h-96 overflow-hidden">

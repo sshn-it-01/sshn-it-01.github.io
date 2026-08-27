@@ -5,11 +5,5 @@
       "destination": "www.hnsenfu.com",
       "statusCode": 301
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/*",
-      "destination": "/404"
-    }
   ]
 }

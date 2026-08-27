@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+Astro.response.status = 404;
+Astro.response.statusText = 'Not Found';
+---
+
+<Layout title="页面不存在" description="您访问的页面不存在，请返回首页继续浏览。" canonical={new URL('/', Astro.site ?? 'www.hnsenfu.com').toString()}>
+  <main class="container mx-auto px-4 py-20">
+    <div class="mx-auto max-w-xl rounded-xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+      <p class="text-sm font-semibold uppercase tracking-[0.35em] text-primary">404</p>
+      <h1 class="mt-4 text-4xl font-bold text-neutral-dark">页面不存在</h1>
+      <p class="mt-4 text-lg text-neutral-medium">
+        您访问的页面或目录没有找到。请检查地址, 或返回首页继续浏览。
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-primary-dark"
+        >
+          返回首页
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center rounded-md border border-primary text-primary px-6 py-3 text-base font-semibold transition-colors hover:bg-primary/5"
+        >
+          联系我们
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "$host",
+      "destination": "$wwwhost",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/*",
+      "destination": "/404"
+    }
+  ]
+}

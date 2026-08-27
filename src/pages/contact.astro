@@ -54,7 +54,7 @@ const mapSrc = store?.data.baiduMapCardLink || 'https://j.map.baidu.com/48/9-lJ'
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
             ></iframe>
-            <!-- 备用层：默认隐藏，仅在浏览器拦截百度地图（如 Firefox 增强型跟踪保护）时自动显示，避免空白 -->
+            <!-- 备用层：默认隐藏, 仅在浏览器拦截百度地图（如 Firefox 增强型跟踪保护）时自动显示, 避免空白 -->
             <div
               id="store-map-fallback"
               class="hidden absolute inset-0 z-10 flex-col items-center justify-center"
@@ -99,7 +99,7 @@ const mapSrc = store?.data.baiduMapCardLink || 'https://j.map.baidu.com/48/9-lJ'
     </div>
   </section>
 
-  <!-- 百度地图备用层检测：iframe 长时间未加载完成（被跟踪保护拦截）时显示静态位置图，避免空白 -->
+  <!-- 百度地图备用层检测：iframe 长时间未加载完成（被跟踪保护拦截）时显示静态位置图, 避免空白 -->
   <script>
     (function () {
       const iframe = document.getElementById('store-map-iframe') as HTMLIFrameElement;

@@ -9,9 +9,9 @@ import { Droplets, Thermometer, Tag, Award } from '@lucide/astro';
 /**
  * 产品卡片数据接口
  *
- * 注意：由于调用方来源不同，部分字段存在兼容性别名：
- * - zone (旧) / category (新)：主分类，优先取 zone，回退 category
- * - subcategory (旧) / subCategory (新)：子分类，优先取 subCategory，回退 subcategory
+ * 注意：由于调用方来源不同, 部分字段存在兼容性别名：
+ * - zone (旧) / category (新)：主分类, 优先取 zone, 回退 category
+ * - subcategory (旧) / subCategory (新)：子分类, 优先取 subCategory, 回退 subcategory
  */
 interface ProductData {
   id?: string;
@@ -23,11 +23,11 @@ interface ProductData {
   brand?: string;
   series?: string;
   application?: string[];
-  /** @deprecated 兼容旧 products 数据，新代码请用 category */
+  /** @deprecated 兼容旧 products 数据, 新代码请用 category */
   zone?: string;
-  /** 子分类（lubricants 标准字段，驼峰命名） */
+  /** 子分类（lubricants 标准字段, 驼峰命名） */
   subCategory?: string;
-  /** @deprecated 兼容旧映射代码，新代码请用 subCategory */
+  /** @deprecated 兼容旧映射代码, 新代码请用 subCategory */
   subcategory?: string;
   image: string;
   images?: string[];

@@ -17,7 +17,7 @@ export interface Props {
 const {
   title,
   description = "佛山市华南森孚贸易有限公司——佛山专业润滑油供应商, 美孚 (Mobil) 首批授权经销商。主营工业润滑油、车用润滑油、特种润滑油, 提供润滑方案设计与技术支持。电话: 0757-87722666、13928559916 (何工)。",
-  image = "/images/common/hn-logo_bg-trans.webp",
+  image = "/images/common/logo/华南_logo_彩色透明_180.png",
   canonical,
   meta = {}
 } = Astro.props;
@@ -39,6 +39,9 @@ const seoKeywords = meta.keywords?.filter(Boolean).join(', ') || defaultKeywords
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://www.hnsenfu.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+// 未覆盖 image prop 时使用默认 logo 图 (180x180 PNG), 便于输出准确的尺寸元数据
+const isLogoImage = Astro.props.image === undefined;
+const logoUrl = `${siteUrl}/images/common/logo/华南_logo_彩色透明_180.png`;
 
 const organizationSchema = JSON.stringify({
   '@context': 'https://schema.org',
@@ -46,6 +49,16 @@ const organizationSchema = JSON.stringify({
   '@id': 'https://www.hnsenfu.com/#localbusiness',
   name: companyInfo.name,
   url: 'https://www.hnsenfu.com',
+  logo: {
+    '@type': 'ImageObject',
+    '@id': 'https://www.hnsenfu.com/#logo',
+    url: logoUrl,
+    contentUrl: logoUrl,
+    width: 180,
+    height: 180,
+    caption: companyInfo.name,
+    inLanguage: 'zh-CN'
+  },
   telephone: [companyInfo.phone, companyInfo.phoneTech],
   email: companyInfo.email,
   contactPoint: {
@@ -96,7 +109,13 @@ const websiteSchema = JSON.stringify({
     <meta name="geo.placename" content="佛山" />
     <meta name="geo.position" content="23.16576;112.89828" />
     <meta name="ICBM" content="23.16576,112.89828" />
-    <link rel="icon" type="image/webp" href="/images/common/hn-logo_bg-trans.webp" />
+    <!-- Favicon / Icons: 多尺寸, 便于不同浏览器/搜索引擎识别 -->
+    <link rel="icon" type="image/x-icon" sizes="48x48" href="/images/common/logo/华南_logo_彩色白底_icon_48.ico" />
+    <link rel="icon" type="image/x-icon" sizes="192x192" href="/images/common/logo/华南_logo_彩色白底_icon_192.ico" />
+    <link rel="icon" type="image/x-icon" sizes="256x256" href="/images/common/logo/华南_logo_彩色白底_icon_256.ico" />
+    <!-- Windows / Bing -->
+    <meta name="msapplication-TileImage" content="/images/common/logo/华南_logo_彩色白底_icon_192.ico" />
+    <meta name="msapplication-TileColor" content="#0f3d6d" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
@@ -123,6 +142,9 @@ const websiteSchema = JSON.stringify({
     <meta property="og:locale" content="zh_CN" />
     {image && <meta property="og:image" content={image} />}
     {image && <meta property="og:image:alt" content={seoTitle} />}
+    {isLogoImage && <meta property="og:image:type" content="image/png" />}
+    {isLogoImage && <meta property="og:image:width" content="180" />}
+    {isLogoImage && <meta property="og:image:height" content="180" />}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -130,6 +152,7 @@ const websiteSchema = JSON.stringify({
     <meta property="twitter:description" content={seoDescription} />
     <meta property="twitter:url" content={canonicalUrl} />
     {image && <meta property="twitter:image" content={image} />}
+    {image && <meta property="twitter:image:alt" content={seoTitle} />}
 
     <script type="application/ld+json" set:html={organizationSchema} />
     <script type="application/ld+json" set:html={websiteSchema} />
@@ -141,7 +164,16 @@ const websiteSchema = JSON.stringify({
         <div class="flex items-center justify-between gap-2 md:gap-4">
           <!-- Logo -->
           <a href="/" class="flex items-center space-x-2 flex-shrink-0 min-w-0">
-            <img src="/images/common/hn-logo_bg-trans.webp" alt="华南森孚Logo" class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0" />
+            <img
+              src="/images/common/logo/华南_logo_彩色透明_180.png"
+              alt="佛山市华南森孚贸易有限公司Logo——佛山专业润滑油供应商、美孚授权经销商"
+              width={180}
+              height={180}
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0"
+            />
             <span class="text-lg md:text-lg lg:text-xl font-semibold text-primary whitespace-nowrap truncate">佛山市华南森孚贸易有限公司</span>
           </a>
 

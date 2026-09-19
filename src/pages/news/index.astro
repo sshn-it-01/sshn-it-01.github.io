@@ -9,9 +9,30 @@ const categoryLabels = {
   knowledge: '知识分享'
 };
 
+const getPublishedTimestamp = (article: (typeof news)[number]) => {
+  const [hours, minutes, seconds] = article.data.publishedTime.split(':').map(Number);
+  return article.data.publishedDate.getTime() + ((hours * 60 * 60) + (minutes * 60) + seconds) * 1000;
+};
+
 const news = (await getCollection('news')).sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+  (a, b) => getPublishedTimestamp(b) - getPublishedTimestamp(a) || b.id.localeCompare(a.id)
 );
+const NEWS_PER_PAGE = 9;
+const totalPages = Math.ceil(news.length / NEWS_PER_PAGE);
+
+const formatPublishedDate = (date: Date) => new Intl.DateTimeFormat('zh-CN', {
+  timeZone: 'Asia/Shanghai',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+}).format(date).replace(/\//g, '-');
+
+const getArticleLink = (article: (typeof news)[number]) => {
+  const externalLink = article.data.redirectToLink
+    ? (article.body || '').trim().match(/^https?:\/\/[^\s]+$/)?.[0]
+    : undefined;
+  return externalLink || `/news/${article.id}`;
+};
 ---
 
 <Layout
@@ -31,23 +52,23 @@ const news = (await getCollection('news')).sort(
     <div class="container mx-auto px-4">
       {news.length > 0 ? (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {news.map((article) => (
-            <article class="bg-white rounded-lg overflow-hidden elegant-shadow hover:elegant-shadow-lg transition-shadow duration-300">
-              <a href={`/news/${article.id}`} class="block overflow-hidden">
+          {news.map((article, index) => (
+            <article data-news-card data-index={index} class:list={["bg-white rounded-lg overflow-hidden elegant-shadow hover:elegant-shadow-lg transition-shadow duration-300", index >= NEWS_PER_PAGE && 'hidden']}>
+              <a href={getArticleLink(article)} class="block overflow-hidden">
                 <img src={article.data.image} alt={article.data.title} class="w-full h-52 object-cover hover:scale-105 transition-transform duration-300" loading="lazy" />
               </a>
               <div class="p-6">
                 <div class="flex items-center justify-between gap-3 mb-3 text-sm">
                   <span class="text-accent font-medium">{categoryLabels[article.data.category]}</span>
-                  <time datetime={article.data.publishedAt.toISOString()} class="text-neutral-light">
-                    {article.data.publishedAt.toLocaleDateString('zh-CN')}
+                  <time datetime={article.data.publishedDate.toISOString()} class="text-neutral-light">
+                    {formatPublishedDate(article.data.publishedDate)}
                   </time>
                 </div>
                 <h2 class="text-xl font-semibold text-primary-dark mb-3 line-clamp-2">
-                  <a href={`/news/${article.id}`} class="hover:text-primary-soft transition-colors">{article.data.title}</a>
+                  <a href={getArticleLink(article)} class="hover:text-primary-soft transition-colors">{article.data.title}</a>
                 </h2>
                 <p class="text-neutral leading-relaxed line-clamp-3">{article.data.summary}</p>
-                <a href={`/news/${article.id}`} class="inline-flex items-center mt-5 text-primary font-medium hover:text-primary-soft transition-colors">
+                <a href={getArticleLink(article)} class="inline-flex items-center mt-5 text-primary font-medium hover:text-primary-soft transition-colors">
                   阅读全文 <span aria-hidden="true" class="ml-2">→</span>
                 </a>
               </div>
@@ -62,4 +83,69 @@ const news = (await getCollection('news')).sort(
       )}
     </div>
   </section>
+
+  {totalPages > 1 && (
+    <section class="py-8 bg-white border-t border-primary-faint">
+      <div class="container mx-auto px-4">
+        <nav aria-label="资讯分页" class="flex items-center justify-center gap-2">
+          <button id="news-prev" type="button" class="px-3 py-2 border border-neutral-300 rounded-sm text-neutral-dark hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            上一页
+          </button>
+          <div id="news-page-numbers" class="flex items-center gap-2">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                type="button"
+                data-news-page={index + 1}
+                aria-label={`第 ${index + 1} 页`}
+                aria-current={index === 0 ? 'page' : undefined}
+                class={`min-w-10 px-3 py-2 border rounded-sm text-sm ${index === 0 ? 'bg-primary text-white border-primary' : 'border-neutral-300 text-neutral-dark hover:border-primary hover:text-primary'}`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+          <button id="news-next" type="button" class="px-3 py-2 border border-neutral-300 rounded-sm text-neutral-dark hover:border-primary hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed" disabled={totalPages <= 1}>
+            下一页
+          </button>
+        </nav>
+      </div>
+    </section>
+  )}
 </Layout>
+
+<script define:vars={{ totalPages, newsPerPage: NEWS_PER_PAGE }}>
+  const cards = Array.from(document.querySelectorAll('[data-news-card]'));
+  const pageButtons = Array.from(document.querySelectorAll('[data-news-page]'));
+  const previousButton = document.querySelector('#news-prev');
+  const nextButton = document.querySelector('#news-next');
+  let currentPage = 1;
+
+  const renderPage = (page) => {
+    currentPage = Math.max(1, Math.min(page, totalPages));
+    const start = (currentPage - 1) * newsPerPage;
+    const end = start + newsPerPage;
+
+    cards.forEach((card, index) => {
+      card.classList.toggle('hidden', index < start || index >= end);
+    });
+
+    pageButtons.forEach((button) => {
+      const isCurrent = Number(button.dataset.newsPage) === currentPage;
+      button.classList.toggle('bg-primary', isCurrent);
+      button.classList.toggle('text-white', isCurrent);
+      button.classList.toggle('border-primary', isCurrent);
+      button.classList.toggle('border-neutral-300', !isCurrent);
+      button.classList.toggle('text-neutral-dark', !isCurrent);
+      button.setAttribute('aria-current', isCurrent ? 'page' : 'false');
+    });
+
+    previousButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === totalPages;
+  };
+
+  pageButtons.forEach((button) => {
+    button.addEventListener('click', () => renderPage(Number(button.dataset.newsPage)));
+  });
+  previousButton?.addEventListener('click', () => renderPage(currentPage - 1));
+  nextButton?.addEventListener('click', () => renderPage(currentPage + 1));
+</script>

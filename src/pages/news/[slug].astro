@@ -11,6 +11,14 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
+const externalLink = article.data.redirectToLink
+  ? (article.body || '').trim().match(/^https?:\/\/[^\s]+$/)?.[0]
+  : undefined;
+
+if (externalLink) {
+  return Astro.redirect(externalLink);
+}
+
 const { Content } = await render(article);
 const categoryLabels = {
   company: '公司动态',
@@ -32,7 +40,7 @@ const description = article.data.meta?.description || article.data.summary;
         <div class="flex flex-wrap items-center gap-3 text-sm text-white/80 mb-5">
           <span>{categoryLabels[article.data.category]}</span>
           <span aria-hidden="true">·</span>
-          <time datetime={article.data.publishedAt.toISOString()}>{article.data.publishedAt.toLocaleDateString('zh-CN')}</time>
+          <time datetime={article.data.publishedDate.toISOString()}>{article.data.publishedDate.toLocaleDateString('zh-CN')}</time>
           {article.data.author && <><span aria-hidden="true">·</span><span>{article.data.author}</span></>}
         </div>
         <h1 class="text-3xl md:text-5xl font-bold leading-tight">{article.data.title}</h1>

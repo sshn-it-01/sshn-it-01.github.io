@@ -79,7 +79,10 @@ const newsSchema = z.object({
   summary: z.string(), // 文章摘要, 用于资讯列表及其它页面调用
   image: z.string().default('/images/common/unsplash_maksym-kaharlytskyi-u13zBF4r56A.webp'), // 文章卡片封面图
   category: z.enum(['company', 'product', 'knowledge']).default('company'),
-  publishedAt: z.coerce.date(),
+  publishedDate: z.coerce.date(),
+  publishedTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d:[0-5]\d$/).default('00:00:00'), // 发布时间, 24小时制 HH:mm:ss
+  'agent-id': z.string().optional(), // 负责撰写或审核文章的人员 ID
+  redirectToLink: z.boolean().default(false), // 正文只有一条链接时是否直接跳转
   author: z.string().optional(),
   featured: z.boolean().default(false),
   meta: z.object({
@@ -87,7 +90,8 @@ const newsSchema = z.object({
     description: z.string().optional(),
     keywords: z.array(z.string()).optional(),
     brand: z.string().optional(), // 关联品牌, 如: 美孚、APEX、华南森孚
-    category: z.string().optional()// 分类: 商用车润滑油/乘用车润滑油/工业润滑油/特种润滑油
+    category: z.string().optional(), // 分类: 商用车润滑油/乘用车润滑油/工业润滑油/特种润滑油
+    recommendedProducts: z.array(z.string()).optional() // 推荐产品 ID 列表
   }).optional()
 });
 

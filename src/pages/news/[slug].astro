@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const news = await getCollection('news');
+  return news.map((article) => ({
+    params: { slug: article.id },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const categoryLabels = {
+  company: '公司动态',
+  product: '产品资讯',
+  knowledge: '知识分享'
+};
+const description = article.data.meta?.description || article.data.summary;
+---
+
+<Layout
+  title={`${article.data.meta?.title || article.data.title} | 华南森孚`}
+  description={description}
+  image={article.data.image}
+  meta={{ keywords: article.data.meta?.keywords || [article.data.title, categoryLabels[article.data.category], '华南森孚'] }}
+>
+  <section class="relative hero-gradient py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-white">
+        <div class="flex flex-wrap items-center gap-3 text-sm text-white/80 mb-5">
+          <span>{categoryLabels[article.data.category]}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={article.data.publishedAt.toISOString()}>{article.data.publishedAt.toLocaleDateString('zh-CN')}</time>
+          {article.data.author && <><span aria-hidden="true">·</span><span>{article.data.author}</span></>}
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight">{article.data.title}</h1>
+        <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-3xl">{article.data.summary}</p>
+      </div>
+    </div>
+  </section>
+
+  <article class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="article-content max-w-4xl mx-auto">
+        <Content />
+      </div>
+
+      <div class="max-w-4xl mx-auto mt-10 pt-8 border-t border-primary-faint">
+        <a href="/news" class="inline-flex items-center text-primary font-medium hover:text-primary-soft transition-colors">
+          <span aria-hidden="true" class="mr-2">←</span> 返回资讯中心
+        </a>
+      </div>
+    </div>
+  </article>
+
+</Layout>

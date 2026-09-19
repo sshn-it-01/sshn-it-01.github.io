@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroSecondary from '../../components/HeroSecondary.astro';
+import { getCollection } from 'astro:content';
+
+const categoryLabels = {
+  company: '公司动态',
+  product: '产品资讯',
+  knowledge: '知识分享'
+};
+
+const news = (await getCollection('news')).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+---
+
+<Layout
+  title="资讯中心 | 华南森孚"
+  description="华南森孚公司新闻、润滑油产品资讯与润滑知识分享。"
+  meta={{ keywords: ['华南森孚资讯', '润滑油知识', '润滑油产品资讯', '公司新闻'] }}
+>
+  <HeroSecondary
+    title="资讯中心"
+    subtitle="了解华南森孚最新动态, 探索产品信息与实用润滑知识"
+    height="h-56"
+    alignment="left"
+    backgroundStyle="gradient"
+  />
+
+  <section class="py-16 bg-primary-faint">
+    <div class="container mx-auto px-4">
+      {news.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {news.map((article) => (
+            <article class="bg-white rounded-lg overflow-hidden elegant-shadow hover:elegant-shadow-lg transition-shadow duration-300">
+              <a href={`/news/${article.id}`} class="block overflow-hidden">
+                <img src={article.data.image} alt={article.data.title} class="w-full h-52 object-cover hover:scale-105 transition-transform duration-300" loading="lazy" />
+              </a>
+              <div class="p-6">
+                <div class="flex items-center justify-between gap-3 mb-3 text-sm">
+                  <span class="text-accent font-medium">{categoryLabels[article.data.category]}</span>
+                  <time datetime={article.data.publishedAt.toISOString()} class="text-neutral-light">
+                    {article.data.publishedAt.toLocaleDateString('zh-CN')}
+                  </time>
+                </div>
+                <h2 class="text-xl font-semibold text-primary-dark mb-3 line-clamp-2">
+                  <a href={`/news/${article.id}`} class="hover:text-primary-soft transition-colors">{article.data.title}</a>
+                </h2>
+                <p class="text-neutral leading-relaxed line-clamp-3">{article.data.summary}</p>
+                <a href={`/news/${article.id}`} class="inline-flex items-center mt-5 text-primary font-medium hover:text-primary-soft transition-colors">
+                  阅读全文 <span aria-hidden="true" class="ml-2">→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16 bg-white rounded-lg">
+          <h2 class="text-2xl font-semibold text-primary-dark mb-3">暂无资讯</h2>
+          <p class="text-neutral">新的文章正在准备中, 敬请关注。</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>

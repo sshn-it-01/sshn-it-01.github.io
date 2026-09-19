@@ -74,6 +74,23 @@ const gallerySchema = z.object({
   featured: z.boolean().default(false)
 });
 
+const newsSchema = z.object({
+  title: z.string(),
+  summary: z.string(), // 文章摘要, 用于资讯列表及其它页面调用
+  image: z.string().default('/images/common/unsplash_maksym-kaharlytskyi-u13zBF4r56A.webp'), // 文章卡片封面图
+  category: z.enum(['company', 'product', 'knowledge']).default('company'),
+  publishedAt: z.coerce.date(),
+  author: z.string().optional(),
+  featured: z.boolean().default(false),
+  meta: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    keywords: z.array(z.string()).optional(),
+    brand: z.string().optional(), // 关联品牌, 如: 美孚、APEX、华南森孚
+    category: z.string().optional()// 分类: 商用车润滑油/乘用车润滑油/工业润滑油/特种润滑油
+  }).optional()
+});
+
 // Lubricants product schema - 润滑油产品schema
 const lubricantsSchema = z.object({
   title: z.string(), // 产品名称
@@ -111,6 +128,10 @@ export const collections = {
   gallery: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/gallery' }),
     schema: gallerySchema
+  }),
+  news: defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
+    schema: newsSchema
   }),
   lubricants: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/lubricants' }),

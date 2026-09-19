@@ -285,6 +285,176 @@
   background-clip: text;
 }
 
+/* Markdown article content. Tailwind Typography is not enabled in this project. */
+.article-content {
+  color: var(--color-neutral-800);
+  font-size: 1.125rem;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.article-content > :first-child {
+  margin-top: 0;
+}
+
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  color: var(--color-primary-800);
+  font-weight: 700;
+  line-height: 1.35;
+  scroll-margin-top: 6rem;
+}
+
+.article-content h2 {
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 2px solid var(--color-primary-100);
+  font-size: 1.75rem;
+}
+
+.article-content h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.4rem;
+}
+
+.article-content h4 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.article-content p {
+  margin: 1.15rem 0;
+}
+
+.article-content a {
+  color: var(--color-primary-700);
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary-300);
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.article-content a:hover {
+  color: var(--color-accent-700);
+  text-decoration-color: var(--color-accent-600);
+}
+
+.article-content ul,
+.article-content ol {
+  margin: 1.15rem 0;
+  padding-left: 1.75rem;
+}
+
+.article-content ul {
+  list-style: disc;
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content li {
+  margin: 0.45rem 0;
+  padding-left: 0.25rem;
+}
+
+.article-content li::marker {
+  color: var(--color-primary-500);
+  font-weight: 700;
+}
+
+.article-content strong {
+  color: var(--color-neutral-900);
+  font-weight: 700;
+}
+
+.article-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--color-accent-600);
+  background: var(--color-neutral-50);
+  color: var(--color-neutral-700);
+}
+
+.article-content blockquote p {
+  margin: 0;
+}
+
+.article-content img {
+  display: block;
+  width: 100%;
+  max-height: 34rem;
+  margin: 2rem auto;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
+}
+
+.article-content figure {
+  margin: 2rem 0;
+}
+
+.article-content figcaption {
+  margin-top: -1.25rem;
+  color: var(--color-neutral-600);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.article-content video,
+.article-content iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem auto;
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+.article-content video {
+  background: var(--color-neutral-900);
+}
+
+.article-content code {
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  background: var(--color-neutral-100);
+  color: var(--color-primary-800);
+  font-size: 0.9em;
+}
+
+.article-content pre {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--color-neutral-900);
+  color: var(--color-neutral-50);
+}
+
+.article-content pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+@media (max-width: 640px) {
+  .article-content {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .article-content h2 {
+    margin-top: 2.25rem;
+    font-size: 1.5rem;
+  }
+
+  .article-content h3 {
+    font-size: 1.25rem;
+  }
+}
+
 body {
   @apply bg-neutral-50;
   font-family: 'Alibaba PuHuiTi', '阿里巴巴普惠体', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;

@@ -32,3 +32,6 @@ raw_source/
 
 # tencent workbuddy
 .codebuddy/
+
+# ignore
+ignore/

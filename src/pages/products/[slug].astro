@@ -53,11 +53,26 @@ const galleryImages = product.data.images
       alt: product.data.title
     }];
 
-// Get related products (same category, excluding current)
-const allLubricants = await getCollection('lubricants');
-const relatedProducts = allLubricants
-  .filter(p => p.data.category === product.data.category && p.id !== product.id) // 使用id比较
-  .sort(() => Math.random() - 0.5) // 随机打乱顺序
+// 推荐文章优先使用文章元数据中的产品关联, 再按品牌和分类补齐
+const allNews = await getCollection('news');
+const recommendedArticles = allNews
+  .filter(article => article.data.meta?.recommendedProducts?.includes(product.id))
+  .concat(
+    allNews
+      .filter(article => article.data.meta?.brand === product.data.brand)
+      .sort(() => Math.random() - 0.5)
+  )
+  .concat(
+    allNews
+      .filter(article => article.data.meta?.category === product.data.category)
+      .sort(() => Math.random() - 0.5)
+  )
+  .concat(
+    allNews
+      .filter(article => article.data.category === 'company' || article.data.meta?.brand === '华南森孚')
+      .sort(() => Math.random() - 0.5)
+  )
+  .filter((article, index, articles) => articles.findIndex(item => item.id === article.id) === index)
   .slice(0, 3);
 ---
 
@@ -161,7 +176,7 @@ const relatedProducts = allLubricants
           )}
 
           <!-- Keywords/Tags -->
-          {product.data.keywords && (
+          <!-- {product.data.keywords && (
             <div>
               <h3 class="text-xl font-semibold text-primary-dark mb-6">产品标签</h3>
               <div class="flex flex-wrap gap-2">
@@ -172,24 +187,24 @@ const relatedProducts = allLubricants
                 ))}
               </div>
             </div>
-          )}
+          )} -->
 
-          <!-- Related Products -->
-          {relatedProducts.length > 0 && (
+          <!-- Recommended Articles -->
+          {recommendedArticles.length > 0 && (
             <div>
-              <h3 class="text-xl font-semibold text-primary-dark mb-6">推荐产品</h3>
+              <h3 class="text-xl font-semibold text-primary-dark mb-6">推荐文章</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {relatedProducts.map((relatedProduct) => (
+                {recommendedArticles.map((article) => (
                   <div class="bg-white border border-primary-faint rounded-lg overflow-hidden hover:elegant-shadow transition-shadow">
                     <img
-                      src={relatedProduct.data.image}
-                      alt={relatedProduct.data.title}
+                      src={article.data.image}
+                      alt={article.data.title}
                       class="w-full h-48 object-cover"
                     />
                     <div class="p-4">
-                      <h4 class="font-semibold text-primary-dark mb-2">{relatedProduct.data.title}</h4>
+                      <h4 class="font-semibold text-primary-dark mb-2">{article.data.title}</h4>
                       <a
-                        href={`/products/${relatedProduct.id}`}
+                        href={`/news/${article.id}`}
                         class="text-primary hover:text-primary-soft transition-colors text-sm font-medium"
                       >
                         查看详情 →

@@ -24,12 +24,24 @@ const {
 
 const defaultKeywords = [
   '佛山润滑油',
+  '佛山润滑油供应商',
   '华南森孚润滑油',
+  '华南森孚',
   '美孚授权经销商',
-  '润滑油供应商',
+  '佛山美孚经销商',
+  '润滑油经销商',
   '工业润滑油',
-  '车用润滑油',
-  '特种润滑油'
+  '液压油',
+  '齿轮油',
+  '发动机油',
+  '润滑脂',
+  '食品级润滑油',
+  '商用车润滑油',
+  '乘用车润滑油',
+  '特种润滑油',
+  '润滑方案',
+  '润滑技术服务',
+  '佛山润滑油厂家'
 ].join(', ');
 
 // Use meta title if provided, otherwise fall back to title
@@ -76,8 +88,8 @@ const organizationSchema = JSON.stringify({
     addressCountry: 'CN'
   },
   areaServed: ['佛山', '广东', '中国'],
-  description: '佛山市华南森孚贸易有限公司成立于1991年, 是佛山本地专业润滑油供应商及美孚 (Mobil) 首批授权经销商。主营工业润滑油、商用车润滑油、乘用车润滑油、特种润滑油及润滑脂, 提供润滑方案设计、技术咨询和及时配送服务, 服务覆盖佛山、广州及华南地区。',
-  keywords: ['佛山润滑油', '华南森孚', '美孚授权经销商', '润滑油供应商', '工业润滑油', '车用润滑油'],
+  description: '佛山市华南森孚贸易有限公司成立于1991年, 是佛山地区专业润滑油供应商与美孚授权经销商。主营工业润滑油、车用润滑油、商用车润滑油、特种润滑油、食品级润滑油和润滑脂, 提供润滑方案设计、技术咨询和及时配送服务, 服务覆盖佛山、广州及华南地区。',
+  keywords: ['佛山润滑油', '华南森孚', '美孚授权经销商', '润滑油供应商', '工业润滑油', '液压油', '齿轮油', '发动机油', '食品级润滑油'],
   sameAs: ['https://www.hnsenfu.com']
 });
 
@@ -86,7 +98,7 @@ const websiteSchema = JSON.stringify({
   '@type': 'WebSite',
   name: companyInfo.name,
   url: 'https://www.hnsenfu.com',
-  description: '华南森孚——佛山专业润滑油供应商与美孚授权经销商官方网站。在线浏览工业润滑油、车用润滑油、特种润滑油产品, 获取润滑方案与技术咨询服务。',
+  description: '华南森孚——佛山专业润滑油供应商与美孚授权经销商官方网站。在线浏览工业润滑油、车用润滑油、商用车润滑油、特种润滑油和食品级润滑油产品, 获取润滑方案与技术咨询服务。',
   inLanguage: 'zh-CN',
   potentialAction: {
     '@type': 'SearchAction',
@@ -105,6 +117,7 @@ const websiteSchema = JSON.stringify({
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
     <meta name="author" content={companyInfo.name} />
     <meta name="theme-color" content="#0f3d6d" />
+    <meta name="classification" content="润滑油, 润滑技术, 工业润滑, 车用润滑" />
     <meta name="geo.region" content="CN-GD" />
     <meta name="geo.placename" content="佛山" />
     <meta name="geo.position" content="23.16576;112.89828" />
@@ -151,6 +164,7 @@ const websiteSchema = JSON.stringify({
     <meta property="twitter:title" content={seoTitle} />
     <meta property="twitter:description" content={seoDescription} />
     <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="article:tag" content="佛山润滑油, 美孚授权经销商, 工业润滑油, 液压油, 齿轮油" />
     {image && <meta property="twitter:image" content={image} />}
     {image && <meta property="twitter:image:alt" content={seoTitle} />}
 

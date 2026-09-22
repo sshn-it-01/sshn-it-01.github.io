@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import HeroSecondary from '../../../components/HeroSecondary.astro';
+import { getCollection } from 'astro:content';
+
+const stores = await getCollection('stores');
+const featuredStores = stores.filter((store) => store.data.featured);
+
+const englishStoreNames: Record<string, string> = {
+  'jianbei-store': 'Huanan Senfu Headquarters (Jianlibao North Road)',
+  'nanfeng-store': 'Huanan Senfu South China Warehouse (Nanfeng)',
+  'guanghai-store': 'Huanan Senfu Mobil Service Center (Guanghai)'
+};
+
+const englishAddresses: Record<string, string> = {
+  'jianbei-store': 'No. 10, Jianlibao North Road, Xinan Street, Sanshui District, Foshan',
+  'nanfeng-store': 'South China Warehouse, C3, Lisha Village, Yundonghai Street, Sanshui District, Foshan',
+  'guanghai-store': 'No. 23 West Guanghai Avenue, Sanshui District, Foshan'
+};
+---
+
+<Layout
+  locale="en-US"
+  title="Store Navigation | Huanan Senfu Lubricants in Foshan"
+  description="Find Huanan Senfu lubricant stores in Foshan and open directions with Amap, Baidu Maps, Tencent Maps or Google Maps."
+  canonical="https://www.hnsenfu.com/en/navigation/"
+  meta={{ keywords: ['Foshan lubricant store', 'Huanan Senfu store navigation', 'lubricant store directions China', 'Mobil service center Foshan'] }}
+>
+  <HeroSecondary
+    title="Store navigation"
+    subtitle="Choose a Huanan Senfu location and open directions with your preferred map app."
+    height="h-72"
+    alignment="left"
+    backgroundStyle="gradient"
+  />
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">Choose a store</h2>
+          <p class="text-neutral-dark max-w-2xl mx-auto">Select a store to view available map apps and directions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {featuredStores.map((store) => {
+            const storeId = store.data['store-id'];
+            return (
+              <div class="border border-primary-faint rounded-lg p-6 bg-neutral-50 shadow-sm">
+                <div class="mb-4">
+                  <h3 class="text-xl font-semibold text-primary-dark">{englishStoreNames[storeId] || store.data.name}</h3>
+                  <p class="text-sm text-neutral-dark mt-2">{englishAddresses[storeId] || store.data.address}</p>
+                </div>
+                <a href={`/en/navigation/${storeId}/`} class="inline-flex items-center justify-center rounded-sm bg-primary px-4 py-3 text-white font-medium transition hover:bg-primary-soft">
+                  Open directions
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

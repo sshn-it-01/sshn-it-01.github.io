@@ -192,15 +192,9 @@ const availableCategories = [...new Set(allLubricants.map(p => p.data.category))
   <!-- Company News Section -->
   <section class="py-16 bg-primary-faint">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">公司资讯</h2>
-          <p class="text-lg text-neutral max-w-2xl">了解华南森孚最新动态, 获取润滑油产品信息与实用知识。</p>
-        </div>
-        <a href="/news" class="inline-flex items-center text-primary font-medium hover:text-primary-soft transition-colors">
-          查看全部资讯
-          <span aria-hidden="true" class="ml-2">→</span>
-        </a>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">公司资讯</h2>
+        <p class="text-lg text-neutral max-w-2xl mx-auto">了解华南森孚最新动态, 获取润滑油产品信息与实用知识。</p>
       </div>
 
       {latestNews.length > 0 ? (
@@ -231,6 +225,15 @@ const availableCategories = [...new Set(allLubricants.map(p => p.data.category))
       ) : (
         <p class="text-center py-12 text-neutral-light">暂无资讯。</p>
       )}
+
+      <div class="text-center mt-12">
+        <a href="/news" class="inline-flex items-center bg-primary-soft text-primary-lightest px-6 py-3 rounded-sm hover:bg-primary transition-colors font-medium">
+          查看全部资讯
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 

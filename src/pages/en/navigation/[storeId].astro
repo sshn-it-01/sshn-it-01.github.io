@@ -1,0 +1,86 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import HeroSecondary from '../../../components/HeroSecondary.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const stores = await getCollection('stores');
+  return stores.map((store) => ({
+    params: { storeId: store.data['store-id'] },
+    props: { store }
+  }));
+}
+
+const { store } = Astro.props;
+const storeData = store.data;
+
+const englishStoreNames: Record<string, string> = {
+  'jianbei-store': 'Huanan Senfu Headquarters (Jianlibao North Road)',
+  'nanfeng-store': 'Huanan Senfu South China Warehouse (Nanfeng)',
+  'guanghai-store': 'Huanan Senfu Mobil Service Center (Guanghai)'
+};
+
+const englishAddresses: Record<string, string> = {
+  'jianbei-store': 'No. 10, Jianlibao North Road, Xinan Street, Sanshui District, Foshan',
+  'nanfeng-store': 'South China Warehouse, C3, Lisha Village, Yundonghai Street, Sanshui District, Foshan',
+  'guanghai-store': 'No. 23 West Guanghai Avenue, Sanshui District, Foshan'
+};
+
+const mapPlatforms = [
+  { label: 'Amap', hrefKey: 'amapLink' },
+  { label: 'Tencent Maps', hrefKey: 'tencentMapLink' },
+  { label: 'Baidu Maps', hrefKey: 'baiduMapLink' },
+  { label: 'Google Maps', hrefKey: 'googleMapLink' }
+];
+
+const storeName = englishStoreNames[storeData['store-id']] || storeData.name;
+const storeAddress = englishAddresses[storeData['store-id']] || storeData.address;
+---
+
+<Layout
+  locale="en-US"
+  title={`${storeName} Directions | Huanan Senfu`}
+  description={`Open map directions to ${storeName} in Foshan with Amap, Baidu Maps, Tencent Maps or Google Maps.`}
+  canonical={`https://www.hnsenfu.com/en/navigation/${storeData['store-id']}/`}
+  meta={{ keywords: ['Foshan store directions', 'Huanan Senfu navigation', storeName, 'lubricant store Foshan'] }}
+>
+  <HeroSecondary
+    title={storeName}
+    subtitle={`Address: ${storeAddress}`}
+    height="h-72"
+    alignment="left"
+    backgroundStyle="gradient"
+  />
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">Choose a map app</h2>
+          <p class="text-neutral-dark">Open directions to <span class="font-semibold text-primary-dark">{storeName}</span> with your preferred map app.</p>
+        </div>
+
+        <div class="space-y-4">
+          {mapPlatforms.map((platform) => {
+            const href = storeData[platform.hrefKey as keyof typeof storeData] as string | undefined;
+            if (!href) return null;
+
+            return (
+              <a href={href} target="_blank" rel="noopener noreferrer" class="flex items-center justify-between w-full rounded-lg border border-primary-faint bg-neutral-50 px-5 py-4 text-left transition hover:border-primary hover:shadow-sm">
+                <span class="flex items-center gap-3">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-primary-700 text-lg font-bold text-white" aria-hidden="true">-&gt;</span>
+                  <span class="block font-semibold text-primary-dark">{platform.label}</span>
+                </span>
+                <span class="text-primary font-medium">Open</span>
+              </a>
+            );
+          })}
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="/en/navigation/" class="text-primary-700 font-semibold hover:text-accent-700">Back to all stores</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

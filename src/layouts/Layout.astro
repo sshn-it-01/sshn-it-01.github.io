@@ -7,6 +7,7 @@ export interface Props {
   description?: string;
   image?: string;
   canonical?: string;
+  locale?: 'zh-CN' | 'en-US';
   meta?: {
     title?: string;
     description?: string;
@@ -19,6 +20,7 @@ const {
   description = "佛山市华南森孚贸易有限公司——佛山专业润滑油供应商, 美孚 (Mobil) 首批授权经销商。主营工业润滑油、车用润滑油、特种润滑油, 提供润滑方案设计与技术支持。电话: 0757-87722666、13928559916 (何工)。",
   image = "/images/common/logo/华南_logo_彩色透明_180.png",
   canonical,
+  locale = 'zh-CN',
   meta = {}
 } = Astro.props;
 
@@ -51,6 +53,10 @@ const seoKeywords = meta.keywords?.filter(Boolean).join(', ') || defaultKeywords
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://www.hnsenfu.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const chineseUrl = locale === 'en-US' ? `${siteUrl}/` : canonicalUrl;
+const englishUrl = locale === 'en-US' ? canonicalUrl : `${siteUrl}/en/`;
+const isEnglish = locale === 'en-US';
+const ogLocale = isEnglish ? 'en_US' : 'zh_CN';
 // 未覆盖 image prop 时使用默认 logo 图 (180x180 PNG), 便于输出准确的尺寸元数据
 const isLogoImage = Astro.props.image === undefined;
 const logoUrl = `${siteUrl}/images/common/logo/华南_logo_彩色透明_180.png`;
@@ -71,12 +77,12 @@ const organizationSchema = JSON.stringify({
     caption: companyInfo.name,
     inLanguage: 'zh-CN'
   },
-  telephone: [companyInfo.phone, companyInfo.phoneTech],
+  telephone: [companyInfo.landline, companyInfo.phone],
   email: companyInfo.email,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'technical support',
-    telephone: companyInfo.phoneTech,
+    telephone: companyInfo.phone,
     availableLanguage: ['Chinese']
   },
   address: {
@@ -109,7 +115,7 @@ const websiteSchema = JSON.stringify({
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={seoDescription} />
@@ -136,8 +142,9 @@ const websiteSchema = JSON.stringify({
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="zh-CN" href={canonicalUrl} />
-    <link rel="alternate" hreflang="zh-Hans-CN" href={canonicalUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={chineseUrl} />
+    <link rel="alternate" hreflang="zh-Hans-CN" href={chineseUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
     <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
     <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
@@ -152,7 +159,7 @@ const websiteSchema = JSON.stringify({
     <meta property="og:description" content={seoDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={companyInfo.name} />
-    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale" content={ogLocale} />
     {image && <meta property="og:image" content={image} />}
     {image && <meta property="og:image:alt" content={seoTitle} />}
     {isLogoImage && <meta property="og:image:type" content="image/png" />}
@@ -177,7 +184,7 @@ const websiteSchema = JSON.stringify({
       <nav class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between gap-2 md:gap-4">
           <!-- Logo -->
-          <a href="/" class="flex items-center space-x-2 flex-shrink-0 min-w-0">
+          <a href={isEnglish ? '/en/' : '/'} class="flex items-center space-x-2 flex-shrink-0 min-w-0">
             <img
               src="/images/common/logo/华南_logo_彩色透明_180.png"
               alt="佛山市华南森孚贸易有限公司Logo——佛山专业润滑油供应商、美孚授权经销商"
@@ -188,18 +195,27 @@ const websiteSchema = JSON.stringify({
               fetchpriority="high"
               class="w-8 h-8 md:w-10 md:h-10 flex-shrink-0"
             />
-            <span class="text-lg md:text-lg lg:text-xl font-semibold text-primary whitespace-nowrap truncate">佛山市华南森孚贸易有限公司</span>
+            <span class={isEnglish ? 'text-sm sm:text-base md:text-lg font-semibold text-primary max-w-[calc(100vw-5rem)] truncate' : 'text-lg md:text-lg lg:text-xl font-semibold text-primary whitespace-nowrap truncate'}>{isEnglish ? companyInfo.nameEn : companyInfo.name}</span>
           </a>
 
           <!-- Desktop Navigation -->
           <div class="hidden lg:flex items-center space-x-8 flex-shrink-0">
-            <a href="/" class="text-neutral-dark hover:text-primary transition-colors">首页</a>
-            <a href="/zones" class="text-neutral-dark hover:text-primary transition-colors">系列产品</a>
-            <a href="/products" class="text-neutral-dark hover:text-primary transition-colors">所有产品</a>
-            <a href="/news" class="text-neutral-dark hover:text-primary transition-colors">资讯中心</a>
-            <a href="/about" class="text-neutral-dark hover:text-primary transition-colors">公司介绍</a>
-            <a href="/contact" class="font-bold bg-accent text-primary-lightest px-4 py-2 rounded-sm hover:bg-primary transition-colors whitespace-nowrap">
-              联系方式 {companyInfo.phone}
+            {isEnglish ? (
+              <>
+                <a href="/en/" class="text-neutral-dark hover:text-primary transition-colors">Home</a>
+                <a href="/en/contact/" class="text-neutral-dark hover:text-primary transition-colors">Contact</a>
+              </>
+            ) : (
+              <>
+                <a href="/" class="text-neutral-dark hover:text-primary transition-colors">首页</a>
+                <a href="/zones" class="text-neutral-dark hover:text-primary transition-colors">系列产品</a>
+                <a href="/products" class="text-neutral-dark hover:text-primary transition-colors">所有产品</a>
+                <a href="/news" class="text-neutral-dark hover:text-primary transition-colors">资讯中心</a>
+                <a href="/about" class="text-neutral-dark hover:text-primary transition-colors">公司介绍</a>
+              </>
+            )}
+            <a href={isEnglish ? '/en/contact/' : '/contact'} class="font-bold bg-accent text-primary-lightest px-4 py-2 rounded-sm hover:bg-primary transition-colors whitespace-nowrap">
+              {isEnglish ? `Contact: ${companyInfo.email}` : `联系方式: ${companyInfo.landline}`}
             </a>
           </div>
 
@@ -214,13 +230,22 @@ const websiteSchema = JSON.stringify({
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="hidden lg:hidden pt-4 pb-2">
           <div class="flex flex-col space-y-2">
-            <a href="/" class="text-neutral-dark hover:text-primary transition-colors py-2">首页</a>
-            <a href="/zones" class="text-neutral-dark hover:text-primary transition-colors py-2">系列产品</a>
-            <a href="/products" class="text-neutral-dark hover:text-primary transition-colors py-2">所有产品</a>
-            <a href="/news" class="text-neutral-dark hover:text-primary transition-colors py-2">资讯中心</a>
-            <a href="/about" class="text-neutral-dark hover:text-primary transition-colors py-2">公司介绍</a>
-            <a href="/contact" class="font-bold bg-accent text-primary-lightest px-4 py-2 rounded-sm hover:bg-primary transition-colors whitespace-nowrap">
-              联系方式 {companyInfo.phone}
+            {isEnglish ? (
+              <>
+                <a href="/en/" class="text-neutral-dark hover:text-primary transition-colors py-2">Home</a>
+                <a href="/en/contact/" class="text-neutral-dark hover:text-primary transition-colors py-2">Contact</a>
+              </>
+            ) : (
+              <>
+                <a href="/" class="text-neutral-dark hover:text-primary transition-colors py-2">首页</a>
+                <a href="/zones" class="text-neutral-dark hover:text-primary transition-colors py-2">系列产品</a>
+                <a href="/products" class="text-neutral-dark hover:text-primary transition-colors py-2">所有产品</a>
+                <a href="/news" class="text-neutral-dark hover:text-primary transition-colors py-2">资讯中心</a>
+                <a href="/about" class="text-neutral-dark hover:text-primary transition-colors py-2">公司介绍</a>
+              </>
+            )}
+            <a href={isEnglish ? '/en/contact/' : '/contact'} class="font-bold bg-accent text-primary-lightest px-4 py-2 rounded-sm hover:bg-primary transition-colors whitespace-nowrap">
+              {isEnglish ? `Contact: ${companyInfo.email}` : `联系方式: ${companyInfo.landline}`}
             </a>
           </div>
         </div>
@@ -235,63 +260,72 @@ const websiteSchema = JSON.stringify({
     <!-- Footer -->
     <footer class="bg-neutral-dark text-white py-12">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class={isEnglish ? 'grid grid-cols-1 md:grid-cols-3 gap-10' : 'grid grid-cols-1 md:grid-cols-4 gap-8'}>
           <!-- Company Info -->
           <div class="col-span-1 md:col-span-1">
-            <h3 class="text-white font-semibold mb-4">快速导航</h3>
+            <h3 class="text-white font-semibold mb-4">{isEnglish ? 'Quick links' : '快速导航'}</h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="/" class="text-neutral-light hover:text-primary-pale transition-colors">首页</a></li>
-              <li><a href="/products" class="text-neutral-light hover:text-primary-pale transition-colors">所有产品</a></li>
-              <li><a href="/news" class="text-neutral-light hover:text-primary-pale transition-colors">资讯中心</a></li>
-              <li><a href="/agents" class="text-neutral-light hover:text-primary-pale transition-colors">专业团队</a></li>
-              <li><a href="/about" class="text-neutral-light hover:text-primary-pale transition-colors">公司介绍</a></li>
-              <li><a href="/contact" class="text-neutral-light hover:text-primary-pale transition-colors">联系方式</a></li>
-              <li><a href="/navigation" class="text-neutral-light hover:text-primary-pale transition-colors">门店导航</a></li>
+              {isEnglish ? (
+                <>
+                  <li><a href="/en/" class="text-neutral-light hover:text-primary-pale transition-colors">Home</a></li>
+                  <li><a href="/en/contact/" class="text-neutral-light hover:text-primary-pale transition-colors">Contact</a></li>
+                </>
+              ) : (
+                <>
+                  <li><a href="/" class="text-neutral-light hover:text-primary-pale transition-colors">首页</a></li>
+                  <li><a href="/products" class="text-neutral-light hover:text-primary-pale transition-colors">所有产品</a></li>
+                  <li><a href="/news" class="text-neutral-light hover:text-primary-pale transition-colors">资讯中心</a></li>
+                  <li><a href="/agents" class="text-neutral-light hover:text-primary-pale transition-colors">专业团队</a></li>
+                  <li><a href="/about" class="text-neutral-light hover:text-primary-pale transition-colors">公司介绍</a></li>
+                  <li><a href="/contact" class="text-neutral-light hover:text-primary-pale transition-colors">联系方式</a></li>
+                  <li><a href="/navigation" class="text-neutral-light hover:text-primary-pale transition-colors">门店导航</a></li>
+                </>
+              )}
             </ul>
           </div>
 
           <!-- Product Categories -->
-          <div>
-            <h3 class="text-white font-semibold mb-4">系列产品</h3>
+          {!isEnglish && <div>
+            <h3 class="text-white font-semibold mb-4">{isEnglish ? 'Product focus' : '系列产品'}</h3>
             <ul class="space-y-2 text-sm">
-              <li><a href="/zones/industrial-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">工业润滑油</a></li>
-              <li><a href="/zones/passenger-car-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">乘用车润滑油</a></li>
-              <li><a href="/zones/commercial-vehicle-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">商用车润滑油</a></li>
-              <li><a href="/zones/specialty-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">特种润滑油</a></li>
-              <li><a href="/zones/mobil-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">美孚润滑油</a></li>
-              <li><a href="/zones/apex-lubricants" class="text-neutral-light hover:text-primary-pale transition-colors">APEX阿帕克斯润滑油</a></li>
+              <li><a href={isEnglish ? '/en/' : '/zones/industrial-lubricants'} class="text-neutral-light hover:text-primary-pale transition-colors">{isEnglish ? 'Industrial lubricants' : '工业润滑油'}</a></li>
+              <li><a href={isEnglish ? '/en/' : '/zones/passenger-car-lubricants'} class="text-neutral-light hover:text-primary-pale transition-colors">{isEnglish ? 'Passenger car lubricants' : '乘用车润滑油'}</a></li>
+              <li><a href={isEnglish ? '/en/' : '/zones/commercial-vehicle-lubricants'} class="text-neutral-light hover:text-primary-pale transition-colors">{isEnglish ? 'Commercial vehicle lubricants' : '商用车润滑油'}</a></li>
+              <li><a href={isEnglish ? '/en/' : '/zones/specialty-lubricants'} class="text-neutral-light hover:text-primary-pale transition-colors">{isEnglish ? 'Specialty lubricants' : '特种润滑油'}</a></li>
+              <li><a href={isEnglish ? '/en/' : '/zones/mobil-lubricants'} class="text-neutral-light hover:text-primary-pale transition-colors">{isEnglish ? 'Mobil lubricants' : '美孚润滑油'}</a></li>
+              <li><a href={isEnglish ? '/en/' : '/zones/apex-lubricants'} class="text-neutral-light hover:text-primary-pale transition-colors">{isEnglish ? 'APEX lubricants' : 'APEX阿帕克斯润滑油'}</a></li>
             </ul>
-          </div>
+          </div>}
 
           <!-- Contact -->
           <div>
-            <h3 class="text-white font-semibold mb-4">联系我们</h3>
+            <h3 class="text-white font-semibold mb-4">{isEnglish ? 'Contact' : '联系我们'}</h3>
             <ul class="space-y-2 text-sm text-neutral-light">
               <li>
-                <strong class="text-white">工作时间: </strong>
-                <span>{companyInfo.workHours}</span>
+                <strong class="text-white">{isEnglish ? 'Hours: ' : '工作时间: '}</strong>
+                <span>{isEnglish ? companyInfo.workHoursEn : companyInfo.workHours}</span>
               </li>
               <li>
-                <strong class="text-white">联系电话: </strong>
-                <span>{companyInfo.phone}</span>
+                <strong class="text-white">{isEnglish ? 'Landline: ' : '联系电话: '}</strong>
+                <span>{isEnglish ? companyInfo.landlineEn : companyInfo.landline}</span>
               </li>
               <li>
-                <strong class="text-white">邮箱: </strong>
+                <strong class="text-white">{isEnglish ? 'Email: ' : '邮箱: '}</strong>
                 <span>{companyInfo.email}</span>
               </li>
               <li>
-                <strong class="text-white">地址: </strong>
-                <span>{companyInfo.address}</span>
+                <strong class="text-white">{isEnglish ? 'Address: ' : '地址: '}</strong>
+                <span>{isEnglish ? `${companyInfo.addressEn}, Foshan, Guangdong` : companyInfo.address}</span>
               </li>
             </ul>
           </div>
 
           <!-- Follow Us -->
           <div>
-            <h3 class="text-white font-semibold mb-4">关注我们</h3>
+            <h3 class="text-white font-semibold mb-4">{isEnglish ? 'Stay connected' : '关注我们'}</h3>
             <p class="text-neutral-light text-sm leading-relaxed mb-4">
-              关注我们的微信公众号和小程序<br />
-              获取最新产品信息和优惠活动
+              {isEnglish ? 'Follow our latest product updates and service news.' : '关注我们的微信公众号和小程序'}
+              {!isEnglish && <><br />获取最新产品信息和优惠活动</>}
             </p>
             <div class="flex space-x-4">
               <a
@@ -299,12 +333,12 @@ const websiteSchema = JSON.stringify({
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex hover:opacity-90 transition-opacity"
-                aria-label="点击查看华南森孚微信公众号"
+                aria-label={isEnglish ? 'Open Huanan Senfu official WeChat account' : '点击查看华南森孚微信公众号'}
               >
                 <img 
                   src={companyInfo.qrcode.wechatOfficial} 
-                  alt="微信公众号二维码" 
-                  title="微信公众号"
+                  alt={isEnglish ? 'QR code for the official Huanan Senfu WeChat account' : '微信公众号二维码'}
+                  title={isEnglish ? 'Official WeChat account' : '微信公众号'}
                   class="w-20 h-20 bg-white rounded object-contain"
                   loading="lazy"
                 />
@@ -314,12 +348,12 @@ const websiteSchema = JSON.stringify({
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex hover:opacity-90 transition-opacity"
-                aria-label="点击进入华南森孚微信小程序商城"
+                aria-label={isEnglish ? 'Open the Huanan Senfu WeChat store' : '点击进入华南森孚微信小程序商城'}
               >
                 <img 
                   src={companyInfo.qrcode.wechatMiniProgram} 
-                  alt="微信小程序二维码" 
-                  title="微信小程序"
+                  alt={isEnglish ? 'QR code for the Huanan Senfu WeChat store' : '微信小程序二维码'}
+                  title={isEnglish ? 'WeChat store' : '微信小程序'}
                   class="w-20 h-20 bg-white rounded object-contain"
                   loading="lazy"
                 />
@@ -329,11 +363,15 @@ const websiteSchema = JSON.stringify({
         </div>
 
         <div class="border-t border-neutral-700 mt-8 pt-8 text-center text-sm text-neutral-light">
-          <p>版权所有 &copy; <span id="current-year">{new Date().getFullYear()}</span> {companyInfo.name} <a href={companyInfo.icpURL} target="_blank" rel="noopener noreferrer" class="hover:text-primary-pale transition-colors">{companyInfo.icpNumber}</a></p>
+          <p>{isEnglish ? 'Copyright' : '版权所有'} &copy; <span id="current-year">{new Date().getFullYear()}</span> {isEnglish ? companyInfo.nameEn : companyInfo.name} {!isEnglish && <a href={companyInfo.icpURL} target="_blank" rel="noopener noreferrer" class="hover:text-primary-pale transition-colors">{companyInfo.icpNumber}</a>}</p>
           <div class="mt-2 space-x-4">
-            <a href="/copyright" class="hover:text-primary-pale transition-colors">版权声明</a>
+            <a href="/" class="hover:text-primary-pale transition-colors" lang="zh-CN">中文</a>
             <span>|</span>
-            <a href="/disclaimer" class="hover:text-primary-pale transition-colors">免责声明</a>
+            <a href="/en/" class="hover:text-primary-pale transition-colors" lang="en">English</a>
+            <span>|</span>
+            <a href={isEnglish ? '/en/' : '/copyright'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Legal notice' : '版权声明'}</a>
+            <span>|</span>
+            <a href={isEnglish ? '/en/' : '/disclaimer'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Disclaimer' : '免责声明'}</a>
           </div>
         </div>
       </div>

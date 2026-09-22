@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { companyInfo } from '../../data/company';
+
+const heroBackgroundImage = '/images/common/unsplash_maksym-kaharlytskyi-u13zBF4r56A.webp';
+---
+
+<Layout
+  locale="en-US"
+  title="Huanan Senfu | Industrial Lubricants and Technical Support in China"
+  description="Foshan Huanan Senfu Trading Co., Ltd. is a professional lubricant supplier and authorized Mobil distributor serving industrial, automotive and specialty lubrication needs in South China."
+  canonical="https://www.hnsenfu.com/en/"
+  meta={{ keywords: ['industrial lubricants China', 'Mobil authorized distributor', 'lubricant supplier Foshan', 'automotive lubricants', 'specialty lubricants'] }}
+>
+  <section class="relative overflow-hidden bg-primary-900 text-white">
+    <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${heroBackgroundImage}')`}></div>
+    <div class="absolute inset-0 bg-primary-900/80"></div>
+    <div class="relative container mx-auto px-4 py-20 md:py-28">
+      <div class="max-w-4xl">
+        <p class="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-accent-300">Foshan Huanan Senfu Trading Co., Ltd.</p>
+        <h1 class="max-w-3xl text-4xl font-bold leading-tight md:text-6xl">Reliable lubrication support for industry and mobility.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-primary-100 md:text-xl">
+          Since 1991, we have helped businesses in Foshan and South China select, source and use quality lubricants with practical technical support.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="/en/contact/" class="inline-flex items-center bg-accent-600 px-6 py-3 font-semibold text-white transition hover:bg-accent-700">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-600">About the company</p>
+          <h2 class="text-3xl font-bold leading-tight text-primary-900 md:text-4xl">A local partner with long-term lubricant expertise.</h2>
+          <p class="mt-6 text-lg leading-relaxed text-neutral-600">
+            Huanan Senfu is based in Foshan, Guangdong, a manufacturing hub in the Greater Bay Area. We combine established supply relationships with responsive local service, helping customers keep equipment, vehicles and production lines running efficiently.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-neutral-600">
+            Our team supports product selection, application guidance, quotation and delivery coordination for customers who need a dependable lubricant partner in China.
+          </p>
+        </div>
+        <div class="border-l-4 border-accent-600 bg-neutral-50 p-8">
+          <p class="text-5xl font-bold text-primary-900">30+</p>
+          <p class="mt-2 text-lg font-semibold text-neutral-800">years serving lubricant customers</p>
+          <p class="mt-6 text-neutral-600">Serving Foshan, Guangzhou and customers across South China.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-neutral-50 py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-600">What we supply</p>
+        <h2 class="text-3xl font-bold text-primary-900 md:text-4xl">Lubrication categories for everyday operations.</h2>
+      </div>
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          ['Industrial lubricants', 'Hydraulic oils, gear oils, circulating oils and compressor lubricants for industrial equipment.'],
+          ['Automotive lubricants', 'Engine oils, transmission fluids, coolants and greases for passenger and commercial vehicles.'],
+          ['Specialty lubricants', 'Food-grade and application-specific lubricants for demanding operating environments.'],
+          ['Mobil products', 'A broad range of Mobil lubricants supplied with product guidance for the right application.'],
+          ['APEX products', 'Selected APEX lubricant solutions for industrial and automotive maintenance needs.'],
+          ['Technical support', 'Practical help with product selection, lubrication planning and ongoing supply.']
+        ].map(([title, description]) => (
+          <article class="border-t-2 border-primary-800 bg-white p-6 shadow-sm">
+            <h3 class="text-xl font-semibold text-primary-900">{title}</h3>
+            <p class="mt-3 leading-relaxed text-neutral-600">{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 md:py-20">
+    <div class="container mx-auto px-4">
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent-600">Service coverage</p>
+          <h2 class="text-3xl font-bold text-primary-900 md:text-4xl">A practical partner for South China operations.</h2>
+          <p class="mt-5 text-lg leading-relaxed text-neutral-600">From Foshan and Guangzhou to customers across South China, we support product sourcing, application guidance and dependable delivery coordination.</p>
+        </div>
+        <div class="border-l-4 border-primary-800 bg-neutral-50 p-8">
+          <p class="text-lg font-semibold text-primary-900">Looking for a dependable lubricant supplier in China?</p>
+          <p class="mt-4 leading-relaxed text-neutral-600">Tell us about your equipment, vehicle fleet or operating conditions. Our team will help you identify a suitable product direction.</p>
+          <a href="/en/contact/" class="mt-6 inline-flex bg-primary-800 px-5 py-3 font-semibold text-white transition hover:bg-primary-700">Start a conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

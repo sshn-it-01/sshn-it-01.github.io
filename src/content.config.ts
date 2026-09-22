@@ -36,7 +36,9 @@ const agentsSchema = z.object({
   image: z.string(),
   department: z.string().optional(), // 所属部门, 如: 工业润滑油部、车用油部等
   professionalLevel: z.enum(['junior', 'mid', 'senior', 'expert']).optional(), // 职业级别: 初级/中级/高级/专家
-  experience: z.string().optional(), // 工作经验, 如: "8年"
+  wechat: z.string().optional(), // 微信号
+  wecom: z.string().optional(), // 企业微信号
+  feishu: z.string().optional(), // 飞书号
   specialties: z.array(z.string()).optional(), // 专长领域, 如: 液压油、齿轮油、润滑脂等
   productCategories: z.array(z.string()).optional(), // 负责的产品类别
   certifications: z.array(z.string()).optional(), // 专业认证, 如: MLA I, MLA II等

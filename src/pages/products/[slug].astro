@@ -218,14 +218,14 @@ const recommendedArticles = allNews
 
           <!-- Data Reference Section -->
           <div class="border-t border-primary-faint pt-8 mt-12">
-            <h3 class="text-xl font-semibold text-primary-dark mb-4">数据参考</h3>
+            <h3 class="text-xl font-semibold text-primary-dark mb-4">信息声明</h3>
             <div class="bg-primary-soft p-6 rounded-lg space-y-4 text-primary-lightest">
               <div class="flex items-start space-x-3">
                 <svg class="w-5 h-5 text-primary-lightest flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p class="text-sm leading-relaxed">
-                  注: 以上数据为典型值, 并非所有批次产品的保证指标。实际产品可能略有差异, 具体以出厂检测报告为准。
+                  本页信息仅供产品识别、选型和咨询参考, 具体以最新版产品技术资料、出厂文件及双方确认信息为准; 典型参数不代表所有批次保证指标, 实际适用性须结合设备要求、材料相容性和现场工况确认。
                 </p>
               </div>
               
@@ -236,7 +236,7 @@ const recommendedArticles = allNews
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                   <div>
-                    <span class="text-sm font-medium block mb-1">详细参考: 
+                    <span class="text-sm font-medium block mb-1">数据来源：
                     <a 
                       href={product.data.referenceUrl}
                       target="_blank"
@@ -317,6 +317,8 @@ const recommendedArticles = allNews
           </div>
         </div>
       </div>
+
+
     </div>
   </section>
 
@@ -335,4 +337,5 @@ const recommendedArticles = allNews
   .prose p {
     margin-bottom: 1.5rem;
   }
+
 </style>

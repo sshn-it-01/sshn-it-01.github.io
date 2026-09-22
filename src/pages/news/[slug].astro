@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
+import CallToAction from '../../components/CallToAction.astro';
 
 export async function getStaticPaths() {
   const news = await getCollection('news');
@@ -43,7 +44,7 @@ const description = article.data.meta?.description || article.data.summary;
           <time datetime={article.data.publishedDate.toISOString()}>{article.data.publishedDate.toLocaleDateString('zh-CN')}</time>
           {article.data.author && <><span aria-hidden="true">·</span><span>{article.data.author}</span></>}
         </div>
-        <h1 class="text-3xl md:text-5xl font-bold leading-tight">{article.data.title}</h1>
+        <p class="text-3xl md:text-5xl font-bold leading-tight">{article.data.title}</p>
         <p class="mt-6 text-lg text-white/85 leading-relaxed max-w-3xl">{article.data.summary}</p>
       </div>
     </div>
@@ -60,7 +61,20 @@ const description = article.data.meta?.description || article.data.summary;
           <span aria-hidden="true" class="mr-2">←</span> 返回资讯中心
         </a>
       </div>
+
+      <aside class="article-disclaimer max-w-4xl mx-auto" role="note" aria-label="免责声明">
+        <small>
+          <strong>信息声明:</strong> 本文仅供一般信息参考, 不构成任何专业建议或产品承诺; 文中内容、数据、图片、商标及引用资料以权利人或正式文件为准, 使用前请自行核实并遵守适用法规及安全要求. 外部链接内容由相关网站负责.
+        </small>
+      </aside>
+
     </div>
   </article>
+
+  <!-- Call to Action -->
+  <CallToAction
+    title="想了解更多产品信息?"
+    subtitle="我们的专业团队随时为您提供详细的产品规格、技术参数和应用建议。"
+  />
 
 </Layout>

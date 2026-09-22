@@ -35,3 +35,7 @@ raw_source/
 
 # ignore
 ignore/
+
+# vscode settings
+.github/instructions/*.md
+.github/prompts/*.md

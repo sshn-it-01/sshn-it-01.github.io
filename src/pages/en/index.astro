@@ -3,6 +3,44 @@ import Layout from '../../layouts/Layout.astro';
 import { companyInfo } from '../../data/company';
 
 const heroBackgroundImage = '/images/common/unsplash_maksym-kaharlytskyi-u13zBF4r56A.webp';
+const lubricationCategories = [
+  {
+    title: 'Industrial lubricants',
+    description: 'Hydraulic oils, gear oils, circulating oils and compressor lubricants for industrial equipment.',
+    image: '/images/common/p_ye-ya_01.webp',
+    alt: 'Mobil hydraulic oil product'
+  },
+  {
+    title: 'Automotive lubricants',
+    description: 'Engine oils, transmission fluids, coolants and greases for passenger and commercial vehicles.',
+    image: '/images/common/unsplash_green-and-white-vintage-truck-arotxe540N4.webp',
+    alt: 'Mobil engine oil product'
+  },
+  {
+    title: 'Specialty lubricants',
+    description: 'Food-grade and application-specific lubricants for demanding operating environments.',
+    image: '/images/common/unsplash_mina-rad_product-line_GiuvVfcNFzY.webp',
+    alt: 'APEX food-grade lubricant product'
+  },
+  {
+    title: 'Mobil lubricants',
+    description: 'A world-leading lubricant brand with a comprehensive range of products for industrial, automotive, and specialty applications.',
+    image: '/images/brands/mobiltmlogo.webp',
+    alt: 'Mobil lubricant product'
+  },
+  {
+    title: 'APEX lubricants',
+    description: 'Food-grade lubricants from French, with complete lubrication solutions for food and pharma processing equipments.',
+    image: '/images/brands/apex_logo.webp',
+    alt: 'APEX specialty lubricant product'
+  },
+  {
+    title: 'Great Wall lubricants',
+    description: 'China Sinopec lubricant, offering a comprehensive product range, excellent value, and localized service.',
+    image: '/images/brands/changcheng_logo.webp',
+    alt: 'Great Wall Lubricants logo'
+  }
+];
 ---
 
 <Layout
@@ -42,10 +80,18 @@ const heroBackgroundImage = '/images/common/unsplash_maksym-kaharlytskyi-u13zBF4
             Our team supports product selection, application guidance, quotation and delivery coordination for customers who need a dependable lubricant partner in China.
           </p>
         </div>
-        <div class="border-l-4 border-accent-600 bg-neutral-50 p-8">
-          <p class="text-5xl font-bold text-primary-900">30+</p>
-          <p class="mt-2 text-lg font-semibold text-neutral-800">years serving lubricant customers</p>
-          <p class="mt-6 text-neutral-600">Serving Foshan, Guangzhou and customers across South China.</p>
+        <div class="space-y-6">
+          <img
+            src="/images/stores/hnsf_jianbei_01.webp"
+            alt="Huanan Senfu Jianbei store"
+            class="h-64 w-full object-cover shadow-sm"
+            loading="lazy"
+          />
+          <div class="border-l-4 border-accent-600 bg-neutral-50 p-8">
+            <p class="text-5xl font-bold text-primary-900">30+</p>
+            <p class="mt-2 text-lg font-semibold text-neutral-800">years serving lubricant customers</p>
+            <p class="mt-6 text-neutral-600">Serving Foshan, Guangzhou and customers across South China.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -58,18 +104,14 @@ const heroBackgroundImage = '/images/common/unsplash_maksym-kaharlytskyi-u13zBF4
         <h2 class="text-3xl font-bold text-primary-900 md:text-4xl">Lubrication categories for everyday operations.</h2>
       </div>
       <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {[
-          ['Industrial lubricants', 'Hydraulic oils, gear oils, circulating oils and compressor lubricants for industrial equipment.'],
-          ['Automotive lubricants', 'Engine oils, transmission fluids, coolants and greases for passenger and commercial vehicles.'],
-          ['Specialty lubricants', 'Food-grade and application-specific lubricants for demanding operating environments.'],
-          ['Mobil products', 'A broad range of Mobil lubricants supplied with product guidance for the right application.'],
-          ['APEX products', 'Selected APEX lubricant solutions for industrial and automotive maintenance needs.'],
-          ['Technical support', 'Practical help with product selection, lubrication planning and ongoing supply.']
-        ].map(([title, description]) => (
-          <article class="border-t-2 border-primary-800 bg-white p-6 shadow-sm">
-            <h3 class="text-xl font-semibold text-primary-900">{title}</h3>
-            <p class="mt-3 leading-relaxed text-neutral-600">{description}</p>
-          </article>
+        {lubricationCategories.map(({ title, description, image, alt }) => (
+          <a href="/products/" class="group block overflow-hidden border-t-2 border-primary-800 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent-600 focus:ring-offset-2">
+            <img src={image} alt={alt} class="h-48 w-full object-cover" loading="lazy" />
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-primary-900 group-hover:text-accent-700">{title}</h3>
+              <p class="mt-3 leading-relaxed text-neutral-600">{description}</p>
+            </div>
+          </a>
         ))}
       </div>
     </div>
@@ -86,7 +128,7 @@ const heroBackgroundImage = '/images/common/unsplash_maksym-kaharlytskyi-u13zBF4
         <div class="border-l-4 border-primary-800 bg-neutral-50 p-8">
           <p class="text-lg font-semibold text-primary-900">Looking for a dependable lubricant supplier in China?</p>
           <p class="mt-4 leading-relaxed text-neutral-600">Tell us about your equipment, vehicle fleet or operating conditions. Our team will help you identify a suitable product direction.</p>
-          <a href="/en/contact/" class="mt-6 inline-flex bg-primary-800 px-5 py-3 font-semibold text-white transition hover:bg-primary-700">Start a conversation</a>
+          <a href="/en/contact/" class="mt-6 inline-flex bg-primary-800 px-5 py-3 font-semibold text-white transition hover:bg-primary-700">Contact us</a>
         </div>
       </div>
     </div>

@@ -68,6 +68,27 @@ pages:
   - url: /news
     title: 华南森孚资讯中心 | 润滑油知识、产品资讯与行业动态
     description: 华南森孚资讯中心提供公司动态、润滑油产品资讯、液压油选型知识、设备维护和润滑技术分享, 帮助客户更好地了解工业润滑、车用润滑和特种润滑油应用。
+  - url: /news/工业液压油选型参考资料完整版
+    title: 工业液压油选型参考资料(完整版): 美孚 9 大系列参数与要点
+    description: 汇总工业液压油选型要点及美孚常见系列参数, 供设备工况和产品匹配参考。
+  - url: /news/抗燃液压油是什么
+    title: 抗燃液压油是什么？磷酸酯型与水-二元醇型怎么选
+    description: 介绍抗燃液压油的常见类型、应用差异和选型注意事项。
+  - url: /news/有锌还是无锌液压油
+    title: 有锌还是无锌液压油？区别、适用场景与选错的代价
+    description: 说明含锌与无锌液压油的差别、适用场景及选型风险。
+  - url: /news/润滑油日常维护知识
+    title: 润滑油日常维护: 让设备保持稳定运行
+    description: 分享润滑油日常检查与维护方法, 帮助设备保持稳定运行。
+  - url: /news/液压油46号和68号怎么选
+    title: 液压油 46 号和 68 号怎么选？ISO VG 黏度等级怎么定
+    description: 介绍液压油 ISO VG 46 与 68 黏度等级的区别及选择思路。
+  - url: /news/液压油多久换一次
+    title: 液压油多久换一次？判断该换油的 4 个信号与延长办法
+    description: 介绍液压油换油判断信号、油液状态检查与延长使用寿命的方法。
+  - url: /news/液压油怎么选
+    title: 液压油怎么选？黏度、添加剂、换油周期一次看懂
+    description: 从黏度、添加剂和换油周期等方面梳理液压油选型要点。
   - url: /zones
     title: 润滑油系列产品分类 | 工业/车用/特种润滑油解决方案
     description: 探索华南森孚提供的工业润滑油、商用车润滑油、乘用车润滑油、特种润滑油与美孚授权产品系列, 提供高性能润滑方案与专业技术支持。
@@ -77,6 +98,24 @@ pages:
   - url: /contact
     title: 联系华南森孚 | 佛山润滑油采购与技术咨询热线
     description: 联系佛山市华南森孚贸易有限公司, 获取工业润滑油、车用润滑油、特种润滑油与技术咨询服务。电话: 0757-87722666, 13928559916 (何工)。
+  - url: /navigation
+    title: 华南森孚门店导航 | 佛山润滑油门店地址与地图路线
+    description: 查看华南森孚佛山门店地址, 并使用高德、百度、腾讯或 Google 地图导航。
+  - url: /copyright
+    title: 版权声明 | 华南森孚
+    description: 华南森孚网站内容、商标及相关资料的版权与使用声明。
+  - url: /disclaimer
+    title: 免责声明 | 华南森孚
+    description: 了解华南森孚网站信息、产品资料和外部链接的免责声明。
+  - url: /en
+    title: Huanan Senfu | Industrial Lubricants and Technical Support in China
+    description: Foshan Huanan Senfu Trading Co., Ltd. supplies industrial, automotive and specialty lubricants with technical support in South China.
+  - url: /en/contact
+    title: Contact Huanan Senfu | Foshan Lubricant Supplier
+    description: Contact Huanan Senfu for lubricant products and technical support in Foshan and South China.
+  - url: /en/navigation
+    title: Store Navigation | Huanan Senfu Lubricants in Foshan
+    description: Find Huanan Senfu lubricant stores in Foshan and open directions with supported map services.
 
 # 额外提示: 
 # 这个文件是给生成式引擎和 LLM 的, 应该优先暴露清晰的地理、业务与主题信息。

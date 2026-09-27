@@ -24,6 +24,12 @@ primary_pages:
   - /agents
   - /contact
   - /news
+  - /navigation
+  - /copyright
+  - /disclaimer
+  - /en
+  - /en/contact
+  - /en/navigation
 
 # 生成式引擎应优先识别: 
 # 1) 这是佛山地区的润滑油供应商;

@@ -221,7 +221,7 @@ const websiteSchema = JSON.stringify({
             {isEnglish ? (
               <>
                 <a href="/en/" class="text-neutral-dark hover:text-primary transition-colors">Home</a>
-                <a href="/en/contact/" class="text-neutral-dark hover:text-primary transition-colors">Contact</a>
+                <a href="/en/contact/" class="text-neutral-dark hover:text-primary transition-colors">Find us</a>
               </>
             ) : (
               <>
@@ -251,7 +251,7 @@ const websiteSchema = JSON.stringify({
             {isEnglish ? (
               <>
                 <a href="/en/" class="text-neutral-dark hover:text-primary transition-colors py-2">Home</a>
-                <a href="/en/contact/" class="text-neutral-dark hover:text-primary transition-colors py-2">Contact</a>
+                <a href="/en/contact/" class="text-neutral-dark hover:text-primary transition-colors py-2">Contacts</a>
               </>
             ) : (
               <>
@@ -287,6 +287,9 @@ const websiteSchema = JSON.stringify({
                 <>
                   <li><a href="/en/" class="text-neutral-light hover:text-primary-pale transition-colors">Home</a></li>
                   <li><a href="/en/contact/" class="text-neutral-light hover:text-primary-pale transition-colors">Contact</a></li>
+                  <li><a href="/products" class="text-neutral-light hover:text-primary-pale transition-colors">所有产品</a></li>
+                  <li><a href="/news" class="text-neutral-light hover:text-primary-pale transition-colors">资讯中心</a></li>
+                  <li><a href="/about" class="text-neutral-light hover:text-primary-pale transition-colors">公司介绍</a></li>
                 </>
               ) : (
                 <>
@@ -387,9 +390,9 @@ const websiteSchema = JSON.stringify({
             <span>|</span>
             <a href="/en/" class="hover:text-primary-pale transition-colors" lang="en" data-language-choice="en">English</a>
             <span>|</span>
-            <a href={isEnglish ? '/en/' : '/copyright'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Legal notice' : '版权声明'}</a>
+            <a href={isEnglish ? '/copyright' : '/copyright'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Legal notice' : '版权声明'}</a>
             <span>|</span>
-            <a href={isEnglish ? '/en/' : '/disclaimer'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Disclaimer' : '免责声明'}</a>
+            <a href={isEnglish ? '/disclaimer' : '/disclaimer'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Disclaimer' : '免责声明'}</a>
           </div>
         </div>
       </div>

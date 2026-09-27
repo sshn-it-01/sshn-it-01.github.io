@@ -7,8 +7,8 @@ const stores = await getCollection('stores');
 const featuredStores = stores.filter((store) => store.data.featured);
 
 const englishStoreNames: Record<string, string> = {
-  'jianbei-store': 'Huanan Senfu Headquarters (Jianlibao North Road)',
-  'nanfeng-store': 'Huanan Senfu South China Warehouse (Nanfeng)',
+  'jianbei-store': 'Huanan Senfu Headquarters (Jianlibao North)',
+  'nanfeng-store': 'Huanan Senfu Warehouse (Nanfeng)',
   'guanghai-store': 'Huanan Senfu Mobil Service Center (Guanghai)'
 };
 
@@ -38,7 +38,7 @@ const englishAddresses: Record<string, string> = {
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-primary-dark mb-4">Choose a store</h2>
+          <h2 class="text-3xl font-bold text-primary-dark mb-4">Find a store</h2>
           <p class="text-neutral-dark max-w-2xl mx-auto">Select a store to view available map apps and directions.</p>
         </div>
 

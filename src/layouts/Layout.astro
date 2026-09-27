@@ -8,6 +8,7 @@ export interface Props {
   image?: string;
   canonical?: string;
   locale?: 'zh-CN' | 'en-US';
+  autoDetectLanguage?: boolean;
   meta?: {
     title?: string;
     description?: string;
@@ -21,6 +22,7 @@ const {
   image = "/images/common/logo/华南_logo_彩色透明_180.png",
   canonical,
   locale = 'zh-CN',
+  autoDetectLanguage = false,
   meta = {}
 } = Astro.props;
 
@@ -177,6 +179,22 @@ const websiteSchema = JSON.stringify({
 
     <script type="application/ld+json" set:html={organizationSchema} />
     <script type="application/ld+json" set:html={websiteSchema} />
+    {autoDetectLanguage && (
+      <script is:inline>
+        try {
+          const savedLanguage = localStorage.getItem('hnsf-language');
+          if (savedLanguage === 'en') {
+            location.replace('/en/');
+          } else if (savedLanguage !== 'zh') {
+            const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+            if (!browserLanguage.toLowerCase().startsWith('zh')) location.replace('/en/');
+          }
+        } catch {
+          const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+          if (!browserLanguage.toLowerCase().startsWith('zh')) location.replace('/en/');
+        }
+      </script>
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Navigation Header -->
@@ -365,9 +383,9 @@ const websiteSchema = JSON.stringify({
         <div class="border-t border-neutral-700 mt-8 pt-8 text-center text-sm text-neutral-light">
           <p>{isEnglish ? 'Copyright' : '版权所有'} &copy; <span id="current-year">{new Date().getFullYear()}</span> {isEnglish ? companyInfo.nameEn : companyInfo.name} {!isEnglish && <a href={companyInfo.icpURL} target="_blank" rel="noopener noreferrer" class="hover:text-primary-pale transition-colors">{companyInfo.icpNumber}</a>}</p>
           <div class="mt-2 space-x-4">
-            <a href="/" class="hover:text-primary-pale transition-colors" lang="zh-CN">中文</a>
+            <a href="/" class="hover:text-primary-pale transition-colors" lang="zh-CN" data-language-choice="zh">中文</a>
             <span>|</span>
-            <a href="/en/" class="hover:text-primary-pale transition-colors" lang="en">English</a>
+            <a href="/en/" class="hover:text-primary-pale transition-colors" lang="en" data-language-choice="en">English</a>
             <span>|</span>
             <a href={isEnglish ? '/en/' : '/copyright'} class="hover:text-primary-pale transition-colors">{isEnglish ? 'Legal notice' : '版权声明'}</a>
             <span>|</span>
@@ -378,6 +396,16 @@ const websiteSchema = JSON.stringify({
     </footer>
 
     <script>
+      document.querySelectorAll<HTMLAnchorElement>('[data-language-choice]').forEach((languageLink) => {
+        languageLink.addEventListener('click', () => {
+          try {
+            localStorage.setItem('hnsf-language', languageLink.dataset.languageChoice || '');
+          } catch {
+            // Language navigation still works when browser storage is unavailable.
+          }
+        });
+      });
+
       // Mobile menu toggle
       const mobileMenuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');

@@ -50,25 +50,40 @@ const getArticleLink = (article: (typeof news)[number]) => {
 
   <section class="py-16 bg-primary-faint">
     <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto mb-10" role="group" aria-label="资讯分类筛选">
+        <button type="button" data-news-filter="all" aria-pressed="true" class="w-full px-3 py-2 border border-primary rounded-sm bg-primary text-white text-sm font-medium transition-colors">
+          全部
+        </button>
+        <button type="button" data-news-filter="company" aria-pressed="false" class="w-full px-3 py-2 border border-neutral-300 rounded-sm text-neutral-dark text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+          公司动态
+        </button>
+        <button type="button" data-news-filter="product" aria-pressed="false" class="w-full px-3 py-2 border border-neutral-300 rounded-sm text-neutral-dark text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+          产品资讯
+        </button>
+        <button type="button" data-news-filter="knowledge" aria-pressed="false" class="w-full px-3 py-2 border border-neutral-300 rounded-sm text-neutral-dark text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+          知识分享
+        </button>
+      </div>
+
       {news.length > 0 ? (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {news.map((article, index) => (
-            <article data-news-card data-index={index} class:list={["bg-white rounded-lg overflow-hidden elegant-shadow hover:elegant-shadow-lg transition-shadow duration-300", index >= NEWS_PER_PAGE && 'hidden']}>
+            <article data-news-card data-news-category={article.data.category} data-index={index} class:list={["flex flex-col bg-white rounded-lg overflow-hidden elegant-shadow hover:elegant-shadow-lg transition-shadow duration-300", index >= NEWS_PER_PAGE && 'hidden']}>
               <a href={getArticleLink(article)} class="block overflow-hidden">
                 <img src={article.data.image} alt={article.data.title} class="w-full h-52 object-cover hover:scale-105 transition-transform duration-300" loading="lazy" />
               </a>
-              <div class="p-6">
+              <div class="flex flex-1 flex-col p-6">
                 <div class="flex items-center justify-between gap-3 mb-3 text-sm">
                   <span class="text-accent font-medium">{categoryLabels[article.data.category]}</span>
                   <time datetime={article.data.publishedDate.toISOString()} class="text-neutral-light">
                     {formatPublishedDate(article.data.publishedDate)}
                   </time>
                 </div>
-                <h2 class="text-xl font-semibold text-primary-dark mb-3 line-clamp-2">
+                <h2 class="min-h-[3.5rem] text-xl font-semibold text-primary-dark mb-3 line-clamp-2">
                   <a href={getArticleLink(article)} class="hover:text-primary-soft transition-colors">{article.data.title}</a>
                 </h2>
-                <p class="text-neutral leading-relaxed line-clamp-3">{article.data.summary}</p>
-                <a href={getArticleLink(article)} class="inline-flex items-center mt-5 text-primary font-medium hover:text-primary-soft transition-colors">
+                <p class="min-h-[4.5rem] text-neutral leading-relaxed line-clamp-3">{article.data.summary}</p>
+                <a href={getArticleLink(article)} class="inline-flex items-center mt-auto pt-5 text-primary font-medium hover:text-primary-soft transition-colors">
                   阅读全文 <span aria-hidden="true" class="ml-2">→</span>
                 </a>
               </div>
@@ -115,37 +130,73 @@ const getArticleLink = (article: (typeof news)[number]) => {
 
 <script define:vars={{ totalPages, newsPerPage: NEWS_PER_PAGE }}>
   const cards = Array.from(document.querySelectorAll('[data-news-card]'));
+  const filterButtons = Array.from(document.querySelectorAll('[data-news-filter]'));
   const pageButtons = Array.from(document.querySelectorAll('[data-news-page]'));
   const previousButton = document.querySelector('#news-prev');
   const nextButton = document.querySelector('#news-next');
   let currentPage = 1;
+  let activeFilter = 'all';
+
+  const getFilteredCards = () => cards.filter((card) => (
+    activeFilter === 'all' || card.dataset.newsCategory === activeFilter
+  ));
 
   const renderPage = (page) => {
-    currentPage = Math.max(1, Math.min(page, totalPages));
+    const filteredCards = getFilteredCards();
+    const filteredTotalPages = Math.max(1, Math.ceil(filteredCards.length / newsPerPage));
+    currentPage = Math.max(1, Math.min(page, filteredTotalPages));
     const start = (currentPage - 1) * newsPerPage;
     const end = start + newsPerPage;
 
     cards.forEach((card, index) => {
-      card.classList.toggle('hidden', index < start || index >= end);
+      const filteredIndex = filteredCards.indexOf(card);
+      card.classList.toggle('hidden', filteredIndex < start || filteredIndex >= end);
     });
 
     pageButtons.forEach((button) => {
-      const isCurrent = Number(button.dataset.newsPage) === currentPage;
+      const pageNumber = Number(button.dataset.newsPage);
+      const isCurrent = pageNumber === currentPage;
+      button.classList.toggle('hidden', pageNumber > filteredTotalPages);
       button.classList.toggle('bg-primary', isCurrent);
       button.classList.toggle('text-white', isCurrent);
       button.classList.toggle('border-primary', isCurrent);
       button.classList.toggle('border-neutral-300', !isCurrent);
       button.classList.toggle('text-neutral-dark', !isCurrent);
-      button.setAttribute('aria-current', isCurrent ? 'page' : 'false');
+      if (isCurrent) {
+        button.setAttribute('aria-current', 'page');
+      } else {
+        button.removeAttribute('aria-current');
+      }
     });
 
-    previousButton.disabled = currentPage === 1;
-    nextButton.disabled = currentPage === totalPages;
+    if (previousButton && nextButton) {
+      previousButton.disabled = currentPage === 1;
+      nextButton.disabled = currentPage === filteredTotalPages;
+    }
   };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.newsFilter || 'all';
+      currentPage = 1;
+      filterButtons.forEach((filterButton) => {
+        const isActive = filterButton === button;
+        filterButton.classList.toggle('bg-primary', isActive);
+        filterButton.classList.toggle('text-white', isActive);
+        filterButton.classList.toggle('border-primary', isActive);
+        filterButton.classList.toggle('text-neutral-dark', !isActive);
+        filterButton.classList.toggle('border-neutral-300', !isActive);
+        filterButton.setAttribute('aria-pressed', String(isActive));
+      });
+      renderPage(currentPage);
+    });
+  });
 
   pageButtons.forEach((button) => {
     button.addEventListener('click', () => renderPage(Number(button.dataset.newsPage)));
   });
   previousButton?.addEventListener('click', () => renderPage(currentPage - 1));
   nextButton?.addEventListener('click', () => renderPage(currentPage + 1));
+
+  renderPage(currentPage);
 </script>

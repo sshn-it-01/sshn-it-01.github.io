@@ -12,7 +12,7 @@ services:
   - "专业咨询"
   - "会员服务"
   - "物流配送"
-image: "/images/products/common/default-product-img.webp"
+image: "/images/stores/nanfeng_2/森孚_南丰_01.webp"
 mapLink: "/navigation"
 amapLink: "https://surl.amap.com/24wGW5Eq1N2"
 tencentMapLink: ""

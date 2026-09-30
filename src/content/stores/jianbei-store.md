@@ -13,7 +13,7 @@ services:
   - "产品购买"
   - "专业咨询"
   - "会员服务"
-image: "/images/stores/hnsf_jianbei_01.webp"
+image: "/images/stores/jianbei/森孚_键北_门店正面_1.webp"
 mapLink: "/navigation"
 amapLink: "https://surl.amap.com/F52Cjs1ia2W"
 tencentMapLink: ""

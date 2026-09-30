@@ -13,7 +13,7 @@ services:
   - "产品购买"
   - "专业咨询"
   - "会员服务"
-image: "/images/stores/hnsf_guanghai_01.webp"
+image: "/images/stores/guanghai/hnsf_guanghai_01.webp"
 mapLink: "/navigation"
 amapLink: "https://surl.amap.com/23XzW6yegtY"
 tencentMapLink: ""

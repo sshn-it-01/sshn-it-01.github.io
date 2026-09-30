@@ -1,9 +1,9 @@
 ---
-title: "现代化仓库2"
+title: "南丰仓库2"
 category: "warehouse"
-description: "配备先进存储系统的润滑油仓库"
-image: "/images/common/hnsf_warehouse_01_banner.webp"
-thumb: "/images/common/hnsf_warehouse_01_banner.webp"
-order: 7
-featured: false
+description: "润滑油仓库"
+image: "/images/stores/nanfeng_1/南丰店仓库_02.webp"
+thumb: "/images/stores/nanfeng_1/南丰店仓库_02.webp"
+order: 4
+featured: true
 ---

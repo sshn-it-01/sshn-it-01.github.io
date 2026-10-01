@@ -9,9 +9,9 @@ export const companyInfo = {
   
   // Contact Info
   landline: '0757-87723666',
-  phone: '13928559916 (何工)',
+  phone: '13702752346',
   landlineEn: '+86 0757-87723666',
-  phoneEn: '+86 13928559916 (Ho)',
+  phoneEn: '+86 13702752346',
   email: 'hnsh1991@126.com',
   
   // Address

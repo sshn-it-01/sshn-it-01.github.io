@@ -8,9 +8,9 @@ export const companyInfo = {
   nameEn: 'Foshan Huanan Senfu Trading Co., Ltd.',
   
   // Contact Info
-  landline: '0757-87722666',
+  landline: '0757-87723666',
   phone: '13928559916 (何工)',
-  landlineEn: '+86 0757-87722666',
+  landlineEn: '+86 0757-87723666',
   phoneEn: '+86 13928559916 (Ho)',
   email: 'hnsh1991@126.com',
   

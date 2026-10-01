@@ -3,7 +3,8 @@ interface Props {
   store: {
     name: string;
     address: string;
-    phone: string;
+    landline?: string;
+    phone?: string;
     email?: string;
     hours: string;
     services: string[];
@@ -58,16 +59,31 @@ const { store } = Astro.props;
       </div>
     </div>
 
-    <!-- Phone -->
-    <div class="flex items-center mb-4">
-      <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-      </svg>
-      <span class="text-primary-dark font-medium text-sm">电话:</span>
-      <a href={`tel:${store.phone}`} class="ml-2 text-neutral-dark hover:text-primary text-sm">
-        {store.phone}
-      </a>
-    </div>
+    {store.landline ? (
+      <div class="flex items-center mb-4">
+        <svg class="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+        </svg>
+        <span class="text-primary-dark font-medium text-sm">座机:</span>
+        <a href={`tel:${store.landline.replace(/[^+\d]/g, '')}`} class="ml-2 text-neutral-dark hover:text-primary text-sm">
+          {store.landline}
+        </a>
+      </div>
+    ) : null}
+
+    {store.phone ? (
+      <div class="flex items-center mb-4">
+        <svg class="w-5 h-5 text-primary mr-2" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <rect x="6.5" y="1.75" width="7" height="16.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M9 4h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="10" cy="15.75" r="0.5" fill="currentColor"/>
+        </svg>
+        <span class="text-primary-dark font-medium text-sm">手机:</span>
+        <a href={`tel:${store.phone.replace(/[^+\d]/g, '')}`} class="ml-2 text-neutral-dark hover:text-primary text-sm">
+          {store.phone}
+        </a>
+      </div>
+    ) : null}
 
     <!-- Email -->
     {store.email ? (

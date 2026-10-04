@@ -11,8 +11,10 @@ application: ["高压液压系统", "数控机床", "伺服阀", "齿轮轴承�
 image: "/images/products/hydraulic/美孚_dte_ut_长效液压油_封面.webp"
 images: 
   - "/images/products/hydraulic/美孚_dte_ut_长效液压油.webp"
+  - "/images/products/hydraulic/美孚_dte_25ut_长效液压油_208L.webp"
   - "/images/products/hydraulic/美孚_dte_25ut_长效液压油_18L.webp"
   - "/images/products/hydraulic/美孚_dte_25ut_长效液压油_18L_板.webp"
+  - "/images/products/hydraulic/美孚_dte_26ut_长效液压油_18L.webp"
 featured: true
 referenceUrl: "https://www.mobil.com.cn/zh-cn/industrial/lubricants/product-series/mobil-dte-20-series"
 ---
